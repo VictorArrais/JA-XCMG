@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornal da Engenharia de Aplicação - XCMG</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;500;600&display=swap");
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body { height: 100%;}
+
+        body {
+            font-family: 'Lora', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .newspaper {
+            flex:1 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Seletor de Idioma */
+        .language-selector {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            min-width: 150px;
+            display: none;
+            z-index: 101;
+            margin-top: 5px;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            color: #2c3e50;
+            border-bottom: 1px solid #f1f3f4;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .language-option.active {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+        /* Header do Jornal */
+        .newspaper-header {
+            position: relative;
+            background: linear-gradient(135deg, #0655a4 0%, #004080 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #fbbf24;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .xcmg-logo {
+            width: 180px;
+            height: auto;
+            margin-right: 20px;
+            background: white;
+            padding: 6px 8px;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .newspaper-title {
+            font-family: 'Times New Roman', serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .newspaper-subtitle {
+            font-size: 1.1em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .newspaper-date {
+            font-size: 1.1em;
+            font-weight: 500;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        /* Espaço para data de publicação */
+        .publication-date {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 20px;
+            margin: 15px auto 0;
+            max-width: 300px;
+            font-size: 1em;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Layout de Colunas */
+        .newspaper-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .column {
+            border-right: 1px solid #e5e7eb;
+            padding-right: 25px;
+        }
+
+        .column:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        /* Manchete Principal */
+        .headline {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .headline h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight: 900;
+            color: #003366;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .headline .lead {
+            font-size: 1.3em;
+            color: #6b7280;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Artigos */
+        .article {
+            margin-bottom: 35px;
+            break-inside: avoid;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #003366;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            border-left: 4px solid #fbbf24;
+            padding-left: 15px;
+        }
+
+        .article-subtitle {
+            font-size: 1.1em;
+            color: #ef4444;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-content {
+            text-align: justify;
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+        }
+
+        /* Caixas de Destaque */
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .highlight-box h3 {
+            color: #003366;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        /* Métricas */
+        .metrics-box {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* Seções */
+        .section-header {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px 25px;
+            margin: 40px 0 30px 0;   /* tira o negativo */
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            font-weight: 700;
+            text-align: center;
+
+            grid-column: 1 / -1;     /* força ocupar todas as colunas do grid */
+            width: 100%;             /* garante 100% da largura */
+        }
+
+
+        /* Lista de Eventos */
+        .events-list {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .event-link {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .event-link:hover {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+        .event-link:visited {
+            color: #003366;
+            text-decoration: none;
+        }
+        .event-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 15px 0;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: #003366;
+            font-size: 1.1em;
+        }
+
+        .event-title {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .event-location {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* Gráficos */
+        .chart-container {
+            text-align: center;
+            margin: 25px 0;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Estilos para a Seção da Equipe */
+        .team-presentation {
+            grid-column: 1 / -1;
+            margin: 40px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #cbd5e1;
+        }
+
+        .team-intro {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1e3a8a;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .team-category {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #fbbf24;
+        }
+
+        .team-category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #003366;
+            margin-bottom: 15px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .team-members {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .team-member {
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border-left: 3px solid #1e3a8a;
+        }
+
+        .member-name {
+            font-weight: 600;
+            color: #003366;
+            font-size: 1em;
+            margin-bottom: 4px;
+        }
+
+        .member-location {
+            font-size: 0.85em;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #cbd5e1;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .newspaper-footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 30px 16px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .newspaper-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .column {
+                border-right: none;
+                padding-right: 0;
+            }
+            
+            .newspaper-title {
+                font-size: 2.5em;
+            }
+            
+            .headline h1 {
+                font-size: 2em;
+            }
+
+            /* Ajustes para mobile - logo menor no canto superior esquerdo */
+            .xcmg-logo {
+                width: 80px;
+                top: 10px;
+                left: 10px;
+                padding: 4px 6px;
+            }
+
+            .logo-section {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .language-selector {
+                top: 10px;
+                right: 15px;
+            }
+
+            .language-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+
+            /* Responsividade para a seção da equipe */
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .team-stats {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .stat-box {
+                min-width: 100px;
+            }
+        }
+
+        /* Efeitos de Impressão */
+        @media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-size: 11pt;
+    background: white;
+  }
+
+  .newspaper-content {
+    display: block !important; /* remove grid */
+    column-count: 3;
+    column-gap: 8mm;
+  }
+
+  .column {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .article,
+  .headline,
+  .highlight-box,
+  .events-list {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 5mm;
+  }
+
+  .article-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 3mm auto;
+    page-break-inside: avoid;
+  }
+
+  .language-selector,
+  .newspaper-footer {
+    display: none;
+  }
+
+  .newspaper-header {
+    background: linear-gradient(135deg, #0655a4 0%, #004080 100%);
+    color: white;
+    border-bottom: 3px solid #fbbf24;
+    padding: 6mm 0;
+    text-align: center;
+  }
+
+  /* Estilos para impressão da seção da equipe */
+  .team-presentation {
+    background: white;
+    border: 1px solid #000;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .team-grid {
+    column-count: 2;
+    column-gap: 5mm;
+  }
+  
+  .team-category {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 3mm;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <!-- Header -->
+        <div class="newspaper-header">
+            <!-- Seletor de Idioma -->
+            <div class="language-selector">
+                <a href="index.html" class="language-btn" style="text-decoration: none;">🇧🇷 PT</a>
+                <a href="index-zh.html" class="language-btn" style="text-decoration: none;">🇨🇳 中文</a>
+            </div>
+
+            <div class="logo-section">
+                <img src="images/XCMG_logo.svg.png" alt="Logo XCMG" class="xcmg-logo">
+                <div>
+                    <div class="newspaper-title">JORNAL DA APLICAÇÃO</div>
+                    <div class="newspaper-subtitle">O PRIMEIRO NEWSLETTER DA ENGENHARIA DE APLICAÇÃO XCMG</div>
+                </div>
+            </div>
+            <div class="newspaper-date">Edição Agosto 2025 | Nº 001</div>
+            
+            <!-- Espaço para data de publicação -->
+            <div class="publication-date">
+                <span>Publicado em:</span> <span id="publication-date">15 de Agosto de 2025</span>
+            </div>
+        </div>
+
+        <!-- Manchete Principal -->
+        <div class="newspaper-content">
+            <div class="headline">
+                <h1>XE2000 REVOLUCIONA OPERAÇÕES NA VALE</h1>
+                <p class="lead">Sistema de pesagem inovador e suporte operacional elevam padrão de eficiência na mineração brasileira</p>
+            </div>
+
+
+        <!-- Seção de Apresentação da Equipe -->
+        <div class="section-header">
+            CONHEÇA NOSSA EQUIPE DE ENGENHARIA DE APLICAÇÃO
+        </div>
+
+        <div class="team-presentation">
+            <div class="team-intro">
+                <p class="article-content">
+                    <strong>Quem são os profissionais que fazem a diferença na XCMG Brasil?</strong> 
+                    Nossa equipe de Engenharia de Aplicação é composta por especialistas dedicados, 
+                    distribuídos estrategicamente pelo país para garantir o melhor suporte técnico 
+                    e operacional aos nossos clientes.
+                </p>
+            </div>
+
+            <div class="team-grid">
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Diretor</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">SHEN TIEN LUNG</div>
+                            <div class="member-location">Filial: Pouso Alegre</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Gerente de Performance</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">ADRIANO EUGENIO SANTANA</div>
+                            <div class="member-location">Região SUL | Filial: Contagem</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">WASHINGTON LUIZ ANDRADE GOMES</div>
+                            <div class="member-location">Filial: Pouso Alegre</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Gerente de suporte geral e projetos especias</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">TIAGO CUZZOL BERTOLINI</div>
+                            <div class="member-location">Filial: Pouso Alegre</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Coordenador de Performance</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">JOHNNY COSTA DE SOUZA</div>
+                            <div class="member-location">Região NORTE | Mina: SERRA NORTE | Filial: Parauapebas | Cliente: VALE</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Engenheiro de Performance</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">ALAN PATRICK DOS SANTOS</div>
+                            <div class="member-location">Região SUL | Mina: SIMAK | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">HENRIQUE RODRIGUES</div>
+                            <div class="member-location">Mina: POUSO ALEGRE | Filial: Fabrica</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">JOSE LUCIANO MENDONCA</div>
+                            <div class="member-location">Região SUL | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Especialista</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">JAIME EVANGELISTA DOS SANTOS</div>
+                            <div class="member-location">Região SUL | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Analista de Performance</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">AMANDA CRISTINA DE LIMA</div>
+                            <div class="member-location">Região SUL | Mina: POUSO ALEGRE | Filial: Fabrica | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">ANDRE KALLAS CAMELO RIBEIRO</div>
+                            <div class="member-location">Região SUL | Mina: POUSO ALEGRE | Filial: Fabrica | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">ANTONIO JERONIMO DE LIMA GOMES</div>
+                            <div class="member-location">Região SUL | Mina: NORTE | Filial: Parauapebas | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">BEN-HUR RICARDO SILVEIRA BARBOSA</div>
+                            <div class="member-location">Região SUL | Mina: R&D/EQUINOX GOLD | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">CARLOS HENRIQUE CRUZ NASCIMENTO</div>
+                            <div class="member-location">Região SUL | Mina: CSN/VIGA/FABRICA | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">CHRISTOPH CHRISTIAN LUNA COSTA</div>
+                            <div class="member-location">Região NORTE | Mina: SERRA LESTE | Filial: Norte | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">EBSON FREITAS DA COSTA</div>
+                            <div class="member-location">Região NORTE | Filial: Parauapebas | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">EDUARDO TELES DA ROCHA</div>
+                            <div class="member-location">Filial: Contagem</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">GABRIEL PHILIPE MOTA DIAS</div>
+                            <div class="member-location">Região NORTE | Mina: SERRA NORTE | Filial: Parauapebas | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">GUILHERME COSTA DE SOUZA</div>
+                            <div class="member-location">Região SUL | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">HEBERT VIEIRA CARDOSO DA SILVA</div>
+                            <div class="member-location">Região SUL | Mina: CREC08 | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">IZABELLA CRISTINA DOS ÁPOSTOLOS</div>
+                            <div class="member-location">Filial: Contagem</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">PAULO CESAR MENDANHA</div>
+                            <div class="member-location">Região SUL | Mina: PICO/CAPANEMA | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">ROBERT DOS SANTOS CAVALCANTE</div>
+                            <div class="member-location">Região NORTE | Mina: SERRA SUL | Filial: Parauapebas | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">TEDMILER APARECIDO DE MORAES</div>
+                            <div class="member-location">Região SUL | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">VICTOR ARRAIS SIQUEIRA</div>
+                            <div class="member-location">Filial: Contagem</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">VITOR AUGUSTO SOUZA SILVA</div>
+                            <div class="member-location">Região SUL | Mina: BRUCUTU/ITABIRA | Filial: Contagem | Cliente: VALE</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Analista de Aplicação</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">ELISA MARQUES MACHADO COUTINHO</div>
+                            <div class="member-location">Sede</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">FERNANDO DE OLIVEIRA COSTA</div>
+                            <div class="member-location">Filial: Pouso Alegre</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Assistente de Int.Mercado</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">ANDRE LUIZ RODRIGUES </div>
+                            <div class="member-location">Mina: POUSO ALEGRE | Filial: Fabrica</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">SUSY PEREIRA PRADO</div>
+                            <div class="member-location">Região SUL | Filial: Pouso Alegre</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Int.Mercado</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">PAULA LUIZA GONÇALVES DE SOUZA</div>
+                            <div class="member-location">Sede</div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-name">CECILIA LUIZA COSTA DELFINO</div>
+                            <div class="member-location">Sede</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="team-category">
+                    <h3 class="team-category-title">Jovem Aprendiz</h3>
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <div class="member-name">RYAN GIANINI RAYMUNDO</div>
+                            <div class="member-location">Filial: Pouso Alegre</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="team-stats">
+                <div class="stat-box">
+                    <div class="stat-number">34</div>
+                    <div class="stat-label">Profissionais</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Filiais</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Regiões</div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Primeira Coluna -->
+            <div class="column">
+                <div class="article">
+                    <div class="article-subtitle">MARCO HISTÓRICO</div>
+                    <h2 class="article-title">Gigante XE5600 Chega a Carajás: Um Novo Capítulo na Mineração Brasileira</h2>
+                    <img src="images/XE5600.png" alt="XE5600" class="article-image">
+                    
+                    <p class="article-content">
+                        <strong>Você já imaginou uma escavadeira de grande porte chegando para revolucionar a mineração?</strong> A XCMG marcou um passo histórico com a entrega da primeira XE5600 na Mina de Carajás. Um processo conduzido com rigor e precisão, garantindo excelência em cada etapa.
+                    </p>
+                    
+                    <p class="article-content">
+                        Toda a documentação foi organizada, planos de manutenção criados e a montagem executada com maestria. Essa entrega reforça nosso compromisso com eficiência, inovação e suporte total, consolidando a presença da XCMG no mercado nacional.
+                    </p>
+                    
+                </div>
+
+                <div class="article">
+                    <div class="article-subtitle">INOVAÇÃO TECNOLÓGICA</div>
+                    <h2 class="article-title">Primeiro Sistema Nacional de Pesagem OTR é Homologado</h2>
+                     <img src="images/balanca110.png" alt="XG110" class="article-image">
+                    
+                    <p class="article-content">
+                        <strong>Inovação em tecnologia de pesagem?</strong> Nossa equipe desenvolveu e homologou o primeiro sistema de pesagem nacional para OTR com suspensão mecânica, alcançando impressionantes 4% de precisão.
+                    </p>
+                    <div class="highlight-box">
+                        <h3>Precisão de 4% Conquistada!</h3>
+                        <p>O caminhão 3 eixos com suspensão por feixe de molas marca um novo capítulo na engenharia nacional.</p>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <div class="article-subtitle">MANUTENÇÃO DE PONTA</div>
+                    <h2 class="article-title">XE5600: Primeira Manutenção Preventiva Concluída com Sucesso</h2>
+                     <img src="images/manutencaoxe5600.png" alt="PreventivaXE5600" class="article-image">
+                    
+                    <p class="article-content">
+                        <strong>Qual o segredo para a longevidade e performance de nossas máquinas?</strong> A XCMG realizou a primeira manutenção preventiva da escavadeira XE5600, seguindo rigorosamente os planos de manutenção. Uma inspeção geral confirmou que a operação está no caminho certo para a máxima eficiência.
+                    </p>
+                    <p class="article-content">
+                        O feedback do cliente foi extremamente positivo, destacando a validade, potência e desempenho do equipamento. Isso reforça a confiabilidade e a qualidade das soluções XCMG no setor, garantindo que nossos equipamentos estejam sempre prontos para o desafio.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Segunda Coluna -->
+            <div class="column">
+                <div class="article">
+                    <div class="article-subtitle">GESTÃO ESTRATÉGICA</div>
+                    <h2 class="article-title">Kickoff de Novos Equipamentos se Mostra Eficiente</h2>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiNTBjN2ZiOTEtNTczNS00NmU0LWJjYzEtYzgzZGNiYjk2ODIyIiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
+                    <img src="images/kickoff.png" alt="Dashboard Kickoff" class="article-image">
+                    </a>
+                    <p class="article-content">
+                        <strong>Como a XCMG garante a entrega de equipamentos com excelência?</strong> Ao implementar um modelo estruturado de reuniões e acompanhamento interdepartamentais, reunindo times multidisciplinares para um comissionamento e entrega de qualidade.
+                    </p>
+                    
+                    <p class="article-content">Este processo otimiza a tomada de decisão, o acompanhamento de status e a homologação de novos equipamentos. Com reuniões semanais e painéis de Business Intelligence (BI), garantimos uma visão integrada e ágil, contribuindo para melhores resultados e o suporte ideal ao cliente.</p>
+                </div>
+
+                <div class="article">
+                    <div class="article-subtitle">REVOLUÇÃO NO CONTROLE</div>
+                    <h2 class="article-title">Fim do volante já aconteceu, agora o Joystick também está sendo ultrapassado?</h2>
+                    <img src="images/joystick.png" alt="Lw1200" class="article-image">
+                    <p class="article-content">
+                        <strong>A XCMG está redefinindo o controle de máquinas pesadas!</strong> Nossos estudos de aplicação na carregadeira LW1200KN identificaram a necessidade de um sistema direcional ainda mais preciso, indo além do conceito tradicional de joystick. Uma parceria estratégica com a fábrica na China já está desenvolvendo novos modelos que prometem revolucionar a forma como operamos.
+                    </p>
+                    
+                    <p class="article-content">
+                        Essa inovação visa otimizar a operação, com ajustes finos no contrapeso e redução de volumetria, aumentando a segurança e a confiabilidade em campo. Estamos sempre buscando superar os limites, garantindo que a XCMG esteja na vanguarda da tecnologia e da eficiência, tornando o controle das máquinas cada vez mais intuitivo e eficaz.
+                    </p>
+                </div>
+                <div class="article">
+                    <div class="article-subtitle">RESPONSABILIDADE SOCIAL</div>
+                    <h2 class="article-title">Agosto Lilás: XCMG Apoia a Luta Contra a Violência à Mulher</h2>
+                    <p class="article-content">
+                        <strong>Você sabe a importância do Agosto Lilás?</strong> Este mês é dedicado à conscientização sobre o enfrentamento à violência contra a mulher. A XCMG reforça a necessidade de informação, prevenção e denúncia de qualquer forma de agressão.
+                    </p>
+                    <p class="article-content">
+                        A campanha, criada em referência à Lei Maria da Penha (sancionada em 2006), é um marco no combate à violência doméstica. Instituições intensificam ações de orientação e apoio, destacando canais como o Disque 180, que funciona 24 horas por dia.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Terceira Coluna -->
+            <div class="column">
+                <div class="article">
+                    <div class="article-subtitle">O CÉREBRO ESTRATÉGICO</div>
+                    <h2 class="article-title">Engenharia de Aplicação: O Cérebro Estratégico por Trás das Máquinas</h2>
+                    
+                    <p class="article-content">
+                        <strong>O que faz os equipamentos XCMG operarem com alta eficiência no Brasil?</strong> A Engenharia de Aplicação! Ela atua como elo estratégico entre engenharia, mercado e cliente, garantindo que os equipamentos sejam mais eficientes, seguros e adequados às necessidades brasileiras.
+                    </p>
+                    
+                    <p class="article-content">
+                        Além do aspecto técnico, a equipe analisa tendências globais e cenários do setor, transformando tecnologia em soluções práticas. Por meio de estudos de aplicação, testes de campo e monitoramento remoto, otimiza frotas e aumenta a confiabilidade dos ativos.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h3>Mais que suporte técnico: um pilar de decisões!</h3>
+                        <p>A Engenharia de Aplicação molda o portfólio XCMG, apoia grandes projetos e define os rumos da marca no Brasil, garantindo que cada equipamento entregue seja uma solução sob medida e uma vantagem competitiva.</p>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <div class="article-subtitle">AGENDA ESTRATÉGICA</div>
+                    <h2 class="article-title">Eventos de Mineração Trazem Grandes Oportunidades</h2>
+                    
+                    <div class="events-list">
+                        <div class="event-item">
+                            <div class="event-date">26-28 de Agosto de 2025</div>
+                            <div class="event-title">
+                                <a class="event-link" href="https://eventos.galoa.com.br/cbmina-2025/page/5761-programacao..." target="_blank">CBMINA 2025</a>
+                            </div>
+                            <div class="event-location">Ouro Preto, Minas Gerais</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">9-11 de Setembro de 2025</div>
+                            <div class="event-title">
+                                <a class="event-link" href="https://www.abmbrasil.com.br/evento/abm-week-9" target="_blank">ABM WEEK 2025</a>
+                            </div>
+                            <div class="event-location">São Paulo</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">Outubro de 2025</div>
+                            <div class="event-title">
+                                <a class="event-link" href="https://exposibram2025.ibram.org.br/" target="_blank">EXPOSIBRAM 2025</a>
+                            </div>
+                            <div class="event-location">Belo Horizonte, Minas Gerais</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <div class="article-subtitle">MELHORIA CONTÍNUA</div>
+                    <h2 class="article-title">XE2000: Novo Sistema de Pesagem Eleva Precisão e Eficiência na Mineração</h2>
+                    
+                    <img src="images/xe2000.png" alt="XE2000 Vale" class="article-image">
+                    
+                    <p class="article-content">
+                        <strong>Você sabia que o XE2000 está elevando os padrões de eficiência na mineração?</strong> A XCMG equipou o XE2000 com dois novos sistemas de pesagem, aumentando a precisão e gerando uma economia superior a R$ 350 mil!
+                    </p>
+
+                    <p class="article-content">
+                        Além disso, uma solução de proteção de cabos está sendo desenvolvida para reduzir falhas operacionais, com previsão de instalação em breve nos quatro equipamentos. Uma equipe treinada já está de prontidão no Pará, garantindo resposta rápida e demonstrando o compromisso da XCMG com segurança e operação contínua.
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <h3>Equipe Especializada no Pará</h3>
+                        <p>Em parceria com fornecedores, disponibilizamos equipe treinada para suporte rápido, garantindo operação segura e eficiente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="newspaper-footer">
+            <h3>XCMG Brasil - Engenharia de Aplicação</h3>
+            <p>Solid to Succeed</p>
+            <p style="margin-top: 15px; opacity: 0.8;">
+                Contato: victor.siqueira@xcmgbrasil.com.br
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
