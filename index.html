@@ -254,6 +254,11 @@
             column-gap: 30px;
         }
 
+        .article-content-final {
+            margin-top: 20px;
+            column-span: all; /* força ocupar toda largura */
+        }
+
          /* Imagens otimizadas */
         .article-image {
             width: 100%;
@@ -618,89 +623,95 @@
             border-radius: 4px;
         }
 
-        /* Tabelas */
-        .stakeholder-table-container {
-            overflow-x: auto; /* Adiciona rolagem horizontal apenas quando necessário */
+        /* --- Estilos da Seção de Stakeholders (Layout de Referência) --- */
+        .stakeholder-section {
+            background-color: #f5f7fb;
+            border: 1px solid #e6eefc;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
         }
-
-        .stakeholder-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.7em;
-            margin: 15px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .stakeholder-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #003366;
+            margin-bottom: 20px;
+            padding-left: 10px;
         }
-
-        .stakeholder-table th {
-            background: #1e3a8a;
+        .stakeholder-accordion {
+            margin-bottom: 10px;
+        }
+        .stakeholder-accordion-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            cursor: pointer;
+            background: #0d47a1;
             color: white;
-            padding: 6px 4px;
-            border: 1px solid #ddd;
-            text-align: left;
+            list-style: none;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.8em;
+            font-size: 0.95rem;
+        }
+        .stakeholder-accordion-title::-webkit-details-marker { display: none; }
+        .accordion-icon {
+            width: 10px; height: 10px; border-right: 2px solid white;
+            border-bottom: 2px solid white; transform: rotate(45deg);
+            transition: transform 0.3s ease-in-out; margin-left: 15px;
+            flex-shrink: 0;
+        }
+        .stakeholder-accordion[open] > .stakeholder-accordion-title > .accordion-icon { transform: rotate(225deg); }
+        .stakeholder-accordion-content {
+            padding: 25px 15px 10px 15px;
+            background-color: transparent;
         }
 
-        .stakeholder-table td {
-            padding: 4px 3px;
-            border: 1px solid #ddd;
-            vertical-align: top;
-            line-height: 1.2;
+        /* --- AJUSTE: Estilo para o subtópico da tabela --- */
+        .table-subtopic td {
+            background-color: #e0e0e0; /* Cor de fundo cinza para destaque */
+            font-weight: bold;
+            text-align: center;
+            color: #333;
         }
 
-        .stakeholder-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
+        /* --- Estilos do Organograma --- */
+        .org-chart-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.6em; color: #003366; margin-bottom: 25px; }
+        .org-container { background-color: #ffffff; padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 30px; overflow-x: auto; }
+        .org-chart { text-align: center; }
+        .org-container2 {
+                overflow-x: auto;                 /* já tinha, reforça */
+                -webkit-overflow-scrolling: touch;
+                }
+        .org-chart ul { padding-top: 20px; position: relative; list-style-type: none; margin: 0; }
+        .org-chart li { display: inline-block; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; }
+        .org-chart li::before, .org-chart li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid #ccc; width: 50%; height: 20px; }
+        .org-chart li::after { right: auto; left: 50%; border-left: 2px solid #ccc; }
+        .org-chart li:only-child { padding-top: 0; }
+        .org-chart li:only-child::after, .org-chart li:only-child::before { display: none; }
+        .org-chart li:first-child::before, .org-chart li:last-child::after { border: 0 none; }
+        .org-chart li:last-child::before { border-right: 2px solid #ccc; border-radius: 0 5px 0 0; }
+        .org-chart li:first-child::after { border-radius: 5px 0 0 0; }
+        .org-chart ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #ccc; width: 0; height: 20px; }
+        .org-node { border: 2px solid #1e3a8a; padding: 8px 15px; text-decoration: none; color: #333; background-color: #ffffff; display: inline-block; border-radius: 8px; min-width: 140px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .org-node span { display: block; }
+        .org-title { font-size: 0.9em; font-weight: 600; color: #003366; }
+        .org-name { font-size: 1.1em; font-weight: 700; color: #1e3a8a; margin-top: 4px; }
+        .org-node.manager { background-color: #1e3a8a; border-color: #1e3a8a; }
+        .org-node.manager .org-title, .org-node.manager .org-name { color: #ffffff; }
+        .org-node.lead { background-color: #dbeafe; border-color: #3b82f6; }
+        .org-chart-split { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
 
-        .stakeholder-table tr:nth-child(odd) {
-            background: white;
-        }
+        /* --- AJUSTE: Estilos da Tabela com Linhas Verticais --- */
+        .data-table-container { overflow-x: auto; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9em; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; /* Borda externa */ }
+        .data-table thead tr { background-color: #1e3a8a; color: #ffffff; text-align: left; }
+        .data-table th, .data-table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; border-left: 1px solid #e2e8f0; /* Linha vertical */ vertical-align: middle; }
+        .data-table th:first-child, .data-table td:first-child { border-left: none; } /* Remove a primeira linha vertical */
+        .data-table tbody tr:last-of-type td { border-bottom: none; }
+        .data-table tbody tr:nth-of-type(even) { background-color: #f8f9fa; }
 
-        .celula-centralizada {
-        vertical-align: middle;
-    }
-
-        /* Stakeholders Accordion */
-        .stakeholders { 
-            margin: 15px 0; 
-            padding: 15px; 
-            background: #f5f7fb; 
-            border-radius: 12px; 
-            border: 1px solid #e6eefc; 
-        }
-        .stakeholders h2 { 
-            font-family: 'Playfair Display', serif; 
-            color: #003366; 
-            margin-bottom: 10px; 
-        }
-        .accordion { 
-            margin-bottom: 10px; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            border: 1px solid #dbeafe; 
-            background: white; 
-        }
-        .accordion input { 
-            display: none; 
-        }
-        .accordion label { 
-            display:block; 
-            padding:10px 12px; 
-            font-weight:700; 
-            background: linear-gradient(90deg,#0655a4,#004080); 
-            color:white; 
-            cursor:pointer; 
-            font-size:1rem; 
-        }
-        .accordion .content { 
-            display:none; 
-            padding:10px 12px; 
-            background:#fff; 
-        }
-        .accordion input:checked ~ .content { 
-            display:block; 
-        }
-
+        .newspaper-footer { background: #1f2937; color: white; text-align: center; padding: 25px 16px; width: 100%; flex-shrink: 0; }
         /* Footer */
         .newspaper-footer {
             background: #1f2937;
@@ -836,6 +847,12 @@
             .newspaper-container {
                 padding: 0 40px;
             }
+            .communication-content {
+                grid-template-columns: 1fr;
+            }
+            .part-columns.grandes-projetos {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -897,87 +914,98 @@
             .newspaper-container {
                 padding: 0 15px;
             }
+            .market-news-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Efeitos de Impressão */
         @media print {
-            @page {
-                size: A4 portrait;
-                margin: 10mm;
-            }
+    @page {
+        size: A4 portrait;     /* 210 x 297 mm */
+        margin: 20mm;          /* margem segura para gráfica */
+    }
 
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        background: white;
+        font-size: 10pt;       /* bom para leitura em papel */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
-            body {
-                font-size: 9pt;
-                background: white;
-            }
+    .newspaper {
+        width: 100%;
+        box-shadow: none;
+    }
 
-            .part-columns {
-                display: block !important;
-                column-count: 3;
-                column-gap: 6mm;
-            }
+    .newspaper-header {
+        padding: 10mm 0;
+        border-bottom-width: 3px;
+    }
 
-            .article,
-            .headline,
-            .highlight-box,
-            .events-list {
-                break-inside: avoid;
-                page-break-inside: avoid;
-                margin-bottom: 3mm;
-            }
+    .newspaper-container {
+        max-width: 100%;
+        padding: 0 10mm;
+    }
 
-            .article-image {
-                max-width: 100%;
-                height: auto;
-                display: block;
-                margin: 2mm auto;
-                page-break-inside: avoid;
-            }
+    /* Títulos não podem ficar sozinhos */
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
 
-            .language-selector,
-            .newspaper-footer {
-                display: none;
-            }
+    /* Colunas equilibradas */
+    .part-columns {
+        display: block !important;
+        column-count: 2;
+        column-gap: 8mm;
+        column-fill: balance;
+    }
 
-            .newspaper-header {
-                background: linear-gradient(135deg, #0655a4 0%, #004080 100%);
-                color: white;
-                border-bottom: 3px solid #fbbf24;
-                padding: 5mm 0;
-                text-align: center;
-            }
+    /* Evita cortes estranhos */
+    .article, .headline, .highlight-box, 
+    .events-list, .stakeholder-section, 
+    .communication-channel {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        page-break-before: auto;
+        page-break-after: auto;
+    }
 
-            .stakeholder-table {
-                font-size: 6pt;
-            }
+    /* Imagens nunca divididas */
+    img, .article-image, .market-share-image, 
+    .homologation-image-machine, .homologation-image-comp {
+        max-width: 100% !important;
+        height: auto;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
 
-            .stakeholder-table th,
-            .stakeholder-table td {
-                padding: 1px 2px;
-            }
+    /* Ocultar elementos web-only */
+    .language-selector, 
+    .newspaper-footer, 
+    .submit-btn, 
+    .contact-form {
+        display: none !important;
+    }
 
-            .article-title {
-                font-size: 1.2em;
-            }
+    /* Forçar abertura de detalhes na impressão */
+    .stakeholder-accordion[open] .stakeholder-accordion-content {
+        display: block !important;
+    }
 
-            .article-content {
-                font-size: 0.85em;
-            }
+    /* Layout da comunicação em coluna única */
+    .communication-content {
+        grid-template-columns: 1fr !important;
+    }
 
-            .accordion .content { 
-                display: block !important; 
-            } 
-
-            .accordion label { 
-                background: #ccc !important; 
-                color: #000 !important; 
-            }
-        }
+    .contact-info {
+        border: none;
+        padding: 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -1002,7 +1030,7 @@
             
             <!-- Espaço para data de publicação -->
             <div class="publication-date">
-                <span>Publicado em:</span> <span id="publication-date">XX de Setembro de 2025</span>
+                <span>Publicado em:</span> <span id="publication-date">03 de Outubro de 2025</span>
             </div>
         </div>
 </div>
@@ -1016,455 +1044,197 @@
                 </div>
 
                 <!-- Accordion: Mapeamento de Stakeholders -->
-                        <section class="stakeholders" aria-label="Mapeamento de Stakeholders">
-                            <h2>📌 Mapeamento de Stakeholders</h2>
+                 <section class="stakeholder-section">
+                    <h2 class="stakeholder-section-title">📌 Mapeamento de Stakeholders</h2>
 
-                            <!-- Bloco principal: Clientes e Minas -->
-                            <div class="accordion">
-                                <input type="checkbox" id="secao-clientes-minas" />
-                                <label for="secao-clientes-minas">Engenharia de Performance - Clientes e Minas - Manager: Adriano Santana</label>
-                                <div class="content">
-                                    <div style="overflow-x:auto;">
-                                <table class="stakeholder-table">
-                                    <thead>
-                                        <tr>
-                                            <th>CLIENTE</th>
-                                            <th>CORREDOR</th>
-                                            <th>MINA</th>
-                                            <th>REGIONAL ENGINNERING</th>
-                                            <th>SITE ENGINEERING </th>
-                                            <th>GENERAL MANAGER</th>
-                                            <th>REGIONAL MANAGER</th>
-                                            <th>SITE MANAGER</th>
-                                            <th>LEAD OPERATION</th>
-                                            <th>COMERCIAL</th>
-                                        </tr>
-                                    </thead>
+                    <!-- Tópico 1: Engenharia de Performance -->
+                    <details class="stakeholder-accordion">
+                        <summary class="stakeholder-accordion-title">👷‍♂️ Engenharia de Performance - Clientes e Minas - Manager: Adriano Santana <span class="accordion-icon"></span></summary>
+                        <div class="stakeholder-accordion-content">
+                            <div class="org-container2">
+                                <div class="org-chart">
+                                    <ul>
+  <li>
+    <div class="org-node manager">
+      <span class="org-title">Vale Sul, Sudeste e CSN</span>
+      <span class="org-name">José Luciano</span>
+    </div>
+    <ul>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Casa de Pedra</span>
+          <span class="org-name">Carlos</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Complexo Paraopebas</span>
+          <span class="org-name">Carlos</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Itabira</span>
+          <span class="org-name">Felipe</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Brucutu/CPX</span>
+          <span class="org-name">Jaime</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Pico/Capanema</span>
+          <span class="org-name">Paulo</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Fazendão</span>
+          <span class="org-name">José Geraldo</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Porto Tubarão</span>
+          <span class="org-name">Matheus</span>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+                                </div>
+                            </div>
+                            <div class="data-table-container">
+                                <br>
+                                <h3 class="org-chart-title">Mapeamento de Responsáveis por Cliente/Local/Máquina</h3>
+                                <table class="data-table">
+                                    <thead><tr><th>Local/Cliente</th><th>Responsável</th><th>Local/Cliente</th><th>Responsável</th></tr></thead>
                                     <tbody>
-                                        <tr>
-                                            <td rowspan="16" style="vertical-align: middle;">VALE</td>
-                                            <td rowspan="4" style="vertical-align: middle;">NORTE</td>
-                                            <td>CARAJÁS</td>
-                                            <td></td>
-                                            <td>Johnny Costa<br>Priscila</td>
-                                            <td rowspan="19" style="vertical-align: middle;">Marcos Santana </td>
-                                            <td>Adenilton Menezes</td>
-                                            <td>Washington</td>
-                                            <td>Hallyson Ribeiro</td>
-                                            <td rowspan="16" style="vertical-align: middle;">Helton Reis</td>
-                                        </tr>
-                                        <tr>
-                                            <td>S11D</td>
-                                            <td></td>
-                                            <td>Robert Cavalcante</td>
-                                            <td></td>
-                                            <td>Erick Leão</td>
-                                            <td>João Sergio</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SERRA LESTE</td>
-                                            <td></td>
-                                            <td>Christoph Luna</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>SUPORTE</td>
-                                            <td></td>
-                                            <td>Antonio Jerônimo<br>Ebson Freita</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Hellygton Pestana</td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="5" style="vertical-align: middle;">SUL</td>
-                                            <td>PICO</td>
-                                            <td rowspan="13" style="vertical-align: middle;">José Luciano</td>
-                                            <td></td>
-                                            <td rowspan="13" style="vertical-align: middle;">Jesus Rezende </td>
-                                            <td>Thiago Petrucci </td>
-                                            <td rowspan="3" style="vertical-align: middle;">Leandro Chagas</td>
-                                        </tr>
-                                        <tr>
-                                            <td>FÁBRICA</td>
-                                            <td>Carlos Henrique </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>VIGA</td>
-                                            <td>Carlos Henrique </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUBARÃO</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Jefferson Goes</td>
-                                        </tr>
-                                        <tr>
-                                            <td>HORIZONTES</td>
-                                            <td rowspan="2" style="vertical-align: middle;">Em Aberto - Sem máquina</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="9" style="vertical-align: middle;">SUDESTE</td>
-                                            <td>ÁGUA LIMPA</td>
-                                             <td></td>
-                                            <td rowspan="7" style="vertical-align: middle;">Gilson Jader</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CAPANEMA</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BRUCUTU</td>
-                                            <td>Vitor Augusto</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>ITABIRA</td>
-                                            <td>Guilherme Souza</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>EFVM</td>
-                                            <td>Em Aberto - Sem máquina</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>FABRICA NOVA</td>
-                                            <td>José Geraldo</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>FAZENDAO</td>
-                                            <td>José Geraldo</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CSN</td>
-                                            <td>CASA DE PEDRA</td>
-                                            <td>Carlos Henrique<br>Paulo Mendanha</td>
-                                            <td></td>
-                                            <td>Felipe Moraes</td>
-                                            <td>Thales Vilaça</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SIMAK</td>
-                                            <td>PATROCINIO</td>
-                                            <td rowspan="2" style="vertical-align: middle;">Alan Patric </td>
-                                            <td>Felipe Martins </td>
-                                            <td rowspan="2" style="vertical-align: middle;">Wiliam Martins</td>
-                                            <td>NA</td>
-                                            <td>NA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SIMAK</td>
-                                            <td>CENTRO OESTE</td>
-                                            <td>CMOC</td>
-                                            <td>Fernando de Oliveira  </td>
-                                            <td>NA</td>
-                                            <td>NA</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>RD</td>
-                                            <td rowspan="2" style="vertical-align: middle;">NORDESTE</td>
-                                            <td>ITAGIBA</td>
-                                            <td></td>
-                                            <td>Ben Hur</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>G3</td>
-                                            <td>ALMAS </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" style="vertical-align: middle;">Willian Martins</td>
-                                            <td></td>
-                                            <td rowspan="2" style="vertical-align: middle;">Douglas Freitas </td>
-                                            <td>Israel<br>Mario</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>G3</td>
-                                            <td rowspan="3" style="vertical-align: middle;">CENTRO OESTE</td>
-                                            <td>PONTES DE LACERDA</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Wanderson<br>Hayan </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>ZOOCAR </td>
-                                            <td>POCONE </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Marcos Santana</td>
-                                            <td>Willian<br>Adeinton</td>
-                                            <td>Jonas Santos</td>
-                                            <td>Thieres Donato</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CREC8</td>
-                                            <td>CMOC</td>
-                                            <td></td>
-                                            <td rowspan="2" style="vertical-align: middle;">Hebert Vieira</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BRITACAL</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                        <tr><td>Britadores</td><td>Cristiano</td><td>Casa de Pedra</td><td>Carlos</td></tr>
+                                        <tr><td>RD e G3</td><td>Guilherme</td><td>Porto Tubarão</td><td>Matheus</td></tr>
+                                        <tr><td>Itagiba</td><td>Benhur</td><td>Simak e Zocar</td><td>Alan</td></tr>
+                                        <tr><td>Teofilândia</td><td>Luan</td><td>Patrocínio</td><td>Felipe Martins</td></tr>
+                                        <tr><td>Harsco</td><td>Matheus</td><td>Britacal - Unaí</td><td>Hebert</td></tr>
+                                        <tr><td>CMOC</td><td>Hebert</td><td>Britacal - Coromandel</td><td>Felipe Martins</td></tr>
                                     </tbody>
                                 </table>
-                             </div>
+                            </div>
                         </div>
-                    </div>
+                    </details>
 
-                        <!-- Bloco 2: Homologação -->
-                        <div class="accordion">
-                            <input type="checkbox" id="secao-eng-especial" />
-                            <label for="secao-eng-especial">Homologação - Manager: Tiago Bertolini</label>
-                            <div class="content">
-                                <div style="overflow-x:auto;">
-                                <table class="stakeholder-table">
-                                    <thead>
-                                        <tr>
-                                            <th>SEÇÃO</th>
-                                            <th>PROCESSO</th>
-                                            <th>RESPONSÁVEL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td rowspan="4" style="vertical-align: middle;">Homologação</td>
-                                            <td>Homologação de Máquinas e Componentes</td>
-                                            <td>Henrique Rodrigues</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Homologação de Máquinas</td>
-                                            <td>Victor Arrais</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gestão de Kickoff</td>
-                                            <td>Izabella Cristina </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Homologação de Componentes</td>
-                                            <td>Elisa Marques</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CRC</td>
-                                            <td>Acompanhamento do Processo</td>
-                                            <td>Sinval Colares</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <!-- Tópico 2: Homologação -->
+                    <details class="stakeholder-accordion">
+                        <summary class="stakeholder-accordion-title">⚙️ Homologação - Manager: Tiago Bertolini <span class="accordion-icon"></span></summary>
+                        <div class="stakeholder-accordion-content">
+                            <div class="org-container">
+                                <h3 class="org-chart-title">Organograma do Setor de Homologação</h3>
+                                <div class="org-chart">
+                                    <ul>
+                                        <li>
+                                            <div class="org-node manager"><span class="org-title">Homologação</span><span class="org-name">Tiago</span></div>
+                                            <ul>
+                                                <li>
+                                                    <div class="org-node lead"><span class="org-title">Suporte Geral</span><span class="org-name">Henrique</span></div>
+                                                    <ul>
+                                                        <li><div class="org-node"><span class="org-title">Homologação Máquina</span><span class="org-name">Victor</span></div></li>
+                                                        <li><div class="org-node"><span class="org-title">Homologação Componentes</span><span class="org-name">Elisa</span></div></li>
+                                                        <li><div class="org-node"><span class="org-title">Kick-Off</span><span class="org-name">Izabella</span></div></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                    </details>
 
-                        <!-- Bloco 3: Inteligência de Mercado -->
-                        <div class="accordion">
-                            <input type="checkbox" id="secao-intel-market" />
-                            <label for="secao-intel-market">Inteligência de Mercado - Manager: Washington Luiz/Paula Souza</label>
-                            <div class="content">
-                                <div style="overflow-x:auto;">
-                                <table class="stakeholder-table">
-                                    <thead>
-                                        <tr>
-                                            <th>SEÇÃO</th>
-                                            <th>MANAGER</th>
-                                            <th>PROCESSO</th>
-                                            <th>RESPONSÁVEL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-
-                                            <td rowspan="2" style="vertical-align: middle;">Linha Amarela</td>
-                                            <td rowspan="2" style="vertical-align: middle;">Washington</td>
-                                            <td>Monitoramento de Mercado</td>
-                                            <td>Susy Prado</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Inteligência Competitiva</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="4" style="vertical-align: middle;">Mercado de Mineração</td>
-                                            <td rowspan="4" style="vertical-align: middle;">Paula</td>
-                                            <td>Monitoramento de Mercado</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Inteligência Competitiva</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pesquisa de Segmentação</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Latam</td>
-                                            <td>Cecilia</td>
-                                        </tr>
-                                        <tr>
-                                            <td>LogComex</td>
-                                            <td>Washington</td>
-                                            <td>LogComex</td>
-                                            <td>Camila Lopes</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <!-- Tópico 3: Inteligência de Mercado -->
+                    <details class="stakeholder-accordion">
+                        <summary class="stakeholder-accordion-title">📊 Inteligência de Mercado - Manager: Washington Luiz/Paula Souza <span class="accordion-icon"></span></summary>
+                        <div class="stakeholder-accordion-content">
+                            <div class="org-chart-split">
+                                <div class="org-container">
+                                    <h3 class="org-chart-title">Linha Amarela Brasil</h3>
+                                    <div class="org-chart">
+                                        <ul><li><div class="org-node manager"><span class="org-title">Inteligência de Mercado</span><span class="org-name">Washington</span></div><ul><li><div class="org-node"><span class="org-title">LogComex</span><span class="org-name">Camila</span></div></li><li><div class="org-node"><span class="org-title">Abmaq</span><span class="org-name">Susy</span></div></li></ul></li></ul>
+                                    </div>
+                                </div>
+                                <div class="org-container">
+                                    <h3 class="org-chart-title">Mineração e Latam</h3>
+                                    <div class="org-chart">
+                                        <ul><li><div class="org-node manager"><span class="org-title">Inteligência de Mercado</span><span class="org-name">Paula</span></div><ul><li><div class="org-node"><span class="org-title">Latam</span><span class="org-name">Cecilia</span></div></li><li><div class="org-node"><span class="org-title">Mineração</span><span class="org-name">Paula</span></div></li></ul></li></ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </details>
 
-                        <!-- Bloco 4: Marketing 
-                        <div class="accordion">
-                            <input type="checkbox" id="secao-marketing" />
-                            <label for="secao-marketing">Marketing</label>
-                            <div class="content">
-                                <div style="overflow-x:auto;">
-<table class="stakeholder-table">
-    <thead>
-        <tr>
-            <th>Marketing</th>
-            <th></th>
-            <th>Processo</th>
-            <th>Responsável</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Marketing</td>
-            <td>Shen Tien Lung</td>
-            <td>Eventos, conteúdo e Comunicação</td>
-            <td>Tiago Borges (9pessoas)</td>
-        </tr>
-            <tr>
-            <td>Marketing</td>
-            <td>Shen Tien Lung</td>
-            <td>Trade Marketing/ Marketing Comercial</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Marketing</td>
-            <td>Shen Tien Lung</td>
-            <td>Marketing Digital</td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-                            </div>
-                        </div>
--->
-
-<!-- Bloco 5: Eficiência Operacional -->
-                        <div class="accordion">
-                            <input type="checkbox" id="efici-op" />
-                            <label for="efici-op">Eficiência Operacional</label>
-                            <div class="content">
-                                <div style="overflow-x:auto;">
-                                <table class="stakeholder-table">
-                                    <thead>
-                                        <tr>
-                                            <th>CORREDOR</th>
-                                            <th>SEÇÃO</th>
-                                            <th>PROCESSO</th>
-                                            <th>RESPONSÁVEL</th>
-                                        </tr>
-                                    </thead>
+                    <!-- Tópico 4: Eficiência Operacional (COM AJUSTES) -->
+                    <details class="stakeholder-accordion">
+                        <summary class="stakeholder-accordion-title">🚀 Eficiência Operacional <span class="accordion-icon"></span></summary>
+                        <div class="stakeholder-accordion-content">
+                            <div class="data-table-container">
+                                <h3 class="org-chart-title">Mapeamento do Setor de Eficiência Operacional</h3>
+                                <table class="data-table">
+                                    <thead><tr><th>Corredor</th><th>Seção</th><th>Processo</th><th>Responsável</th></tr></thead>
                                     <tbody>
                                         <tr>
-                                            <td>NORTE</td>
-                                            <td rowspan="2" style="vertical-align: middle;">Visitas a Clientes</td>
-                                            <td rowspan="3" style="vertical-align: middle;">Relatórios</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>SUL</td>
+                                            <td>Sul</td>
+                                            <td rowspan="3" style="vertical-align: middle; text-align: center;">Visita a Clientes</td>
+                                            <td>Relatórios</td>
                                             <td>Antônio Ribeiro</td>
                                         </tr>
                                         <tr>
-                                            <td rowspan="2" style="vertical-align: middle;">BRASIL</td>
-                                            <td>Field Follow</td>
-                                            <td>Eduardo Teles</td>
+                                            <td>Norte</td>
+                                            <td>Relatórios</td>
+                                            <td>João Luiz</td>
                                         </tr>
                                         <tr>
-                                            <td>Visitas a Clientes</td>
-                                            <td>Suporte</td>
+                                            <td>Brasil</td>
+                                            <td>Cronograma</td>
                                             <td>Bruno Custódio</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bloco 5: Shen Tien Lung -->
-                        <div class="accordion">
-                            <input type="checkbox" id="secao-shen" />
-                            <label for="secao-shen">Suporte Geral</label>
-                            <div class="content">
-                                <div style="overflow-x:auto;">
-                                <table class="stakeholder-table">
-                                    <thead>
                                         <tr>
-                                            <th>SEÇÃO</th>
-                                            <th>PROCESSO</th>
-                                            <th>RESPONSÁVEL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Procedimentos e estratégias</td>
-                                            <td>Criação de Procedimento</td>
-                                            <td>Henrique Rodrigues<br>André Kallas<br>Bruno Custodio<br>Matheus Lopes</td>
-                                        </tr>
-                                        <tr>
-                                            <td>FD</td>
-                                            <td>Suporte Técnico </td>
-                                            <td>Henrique Rodrigues<br>André Kallas<br>Bruno Custodio<br>Matheus Lopes</td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="2" style="vertical-align: middle;">Report e resultados</td>
+                                            <td>Brasil</td>
+                                            <td>Field Follow</td>
                                             <td>Relatórios</td>
-                                            <td>Tedmiler<br>Cledson</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Telemetria</td>
-                                            <td>Guilherme<br>Jaime</td>
+                                            <td>Eduardo Teles</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </details>
+
+                    <!-- Tópico 5: Suporte Geral (COM AJUSTES) -->
+                    <details class="stakeholder-accordion">
+                        <summary class="stakeholder-accordion-title">🛠️ Suporte Geral <span class="accordion-icon"></span></summary>
+                        <div class="stakeholder-accordion-content">
+                            <div class="data-table-container">
+                                <h3 class="org-chart-title">Mapeamento de Suporte Geral</h3>
+                                <table class="data-table">
+                                    <thead><tr><th>Processo</th><th>Responsável</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Relatórios</td><td>Tedmiler, Vitor, Ebson</td></tr>
+                                        <tr><td>Telemetria</td><td>Danilo</td></tr>
+                                        <tr class="table-subtopic">
+                                            <td colspan="2">Report e Acompanhamento</td>
+                                        </tr>
+                                        <tr><td>Vale/CSN</td><td>André</td></tr>
+                                        <tr><td>RD/G3/Simak</td><td>Bruno</td></tr>
+                                        <tr><td>Harsco/Zocar/Crec</td><td>Fernando</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+
+                </section>
 
             <!-- PARTE 2: Engenharia de Performance -->
             <section class="part">
@@ -1479,38 +1249,40 @@
                     <p class="article-content">
                         A XCMG Brasil mantém um compromisso inabalável com a performance de seus equipamentos em campo, realizando um acompanhamento diário e detalhado da Disponibilidade Física (DF) de suas máquinas nas operações dos clientes. Este monitoramento proativo permite à equipe de Engenharia de Aplicação identificar rapidamente tendências, atuar preventivamente e otimizar a operação, garantindo que os equipamentos XCMG entreguem o máximo de produtividade.
                     </p>
-
-                    <h3 class="article-title">Vale Norte: Robustez em Diferentes Aplicações (28/08 a 03/09)</h3>
+                    <h4 class="article-title">Vale - Evolução Mensal</h4>
                     <div class="chart-container">
-                        <img src="images/DF Vale Norte 28-08 a 03-09 - 1.png" alt="DF Vale Norte">
-                        <img src="images/DF Vale Norte 28-08 a 03-09 - 2.png" alt="DF Vale Norte">
-                        <img src="images/DF Vale Norte 28-08 a 03-09 - 3.png" alt="DF Vale Norte">
+            <img src="images/Evolução Mensal 2025 - Vale.png" alt="Evolução Mensal da DF em 2025">
+        </div>
+
+                    <p class="article-content">
+                        O acompanhamento contínuo da DF mensal é uma ferramenta estratégica para a Engenharia de Aplicação, permitindo a identificação de tendências sazonais, a avaliação do impacto de melhorias implementadas e o planejamento de ações preventivas. A meta de 80% de DF é um referencial de excelência que guia os esforços da equipe para garantir a máxima produtividade dos equipamentos XCMG em campo.
+                    </p>
+                    
+                    <h3 class="article-title">Vale Norte: Transparência e Pontos de Atenção (01/09 a 30/09)</h3>
+                    <div class="chart-container">
+                        <img src="images/Vale Norte1 01-09 a 30-09.png" alt="DF Vale Norte">
+                        <img src="images/Vale Norte2 01-09 a 30-09.png" alt="DF Vale Norte">
+                        <img src="images/Vale Norte3 01-09 a 30-09.png" alt="DF Vale Norte">
                     </div>
 
-                    <h3 class="article-title">Vale Sudeste: Estabilidade e Pontos de Otimização (28/08 a 03/09)</h3>
+                    <h3 class="article-title">Vale Sudeste: Estabilidade e Pontos de Otimização (01/09 a 30/09)</h3>
                     <div class="chart-container">
-                        <img src="images/DF Vale Sudeste 28-08 a 03-09 - 1.png" alt="DF Vale Sudeste">
-                        <img src="images/DF Vale Sudeste 28-08 a 03-09 - 2.png" alt="DF Vale Sudeste">
-                        <img src="images/DF Vale Sudeste 28-08 a 03-09 - 3.png" alt="DF Vale Sudeste">
+                        <img src="images/Vale Sudeste1 01-09 a 30-09.png" alt="DF Vale Sudeste">
+                        <img src="images/Vale Sudeste2 01-09 a 30-09.png" alt="DF Vale Sudeste">
+                        <img src="images/Vale Sudeste3 01-09 a 30-09.png" alt="DF Vale Sudeste">
                     </div>
 
-                    <h3 class="article-title">Vale Sul: Desafios e Oportunidades (28/08 a 03/09)</h3>
+                    <h3 class="article-title">Vale Sul: Desafios e Oportunidades (01/09 a 30/09)</h3>
                     <div class="chart-container">
-                        <img src="images/DF Vale Sul 28-08 a 03-09 - 1.png" alt="DF Vale Sul">
+                        <img src="images/Vale Sul 01-09 a 30-09.png" alt="DF Vale Sul">
                     </div>
                     
-                    <h3 class="article-title">Desempenho Consolidado: Um Panorama de Excelência</h3>
+                    <h3 class="article-title">Desempenho Modesto Marca DF de Setembro, Com Clientes Acima e Abaixo da Meta</h3>
                     <div class="chart-container">
                         <img src="images/DF acumulado.png" alt="DF Acumulado">
                     </div>
                     <p class="article-content">
-                        O desempenho acumulado da DF em diversas frentes de trabalho demonstra a robustez e a confiabilidade dos equipamentos XCMG. Em um período recente, os resultados foram notáveis:
-                        <ul style="margin-left: 20px; margin-bottom: 15px;">
-                            <li><strong>CSN (28/08 a 03/09):</strong> Alcançou impressionantes <strong>94,48%</strong> de DF, evidenciando a alta performance das máquinas neste cliente.</li>
-                            <li><strong>R&D (28/08 a 03/09):</strong> Registrou uma DF de <strong>90,32%</strong>, um indicativo da eficiência mesmo em ambientes de pesquisa e desenvolvimento.</li>
-                            <li><strong>G3 (27/08 a 02/09):</strong> Apresentou uma sólida DF de <strong>84,69%</strong>, confirmando a capacidade de entrega em operações intensas.</li>
-                        </ul>
-                        Embora a maioria dos resultados seja positiva, a XCMG também monitora de perto os pontos que necessitam de atenção, como <strong>SIMAK (22/08 a 28/08)</strong> com <strong>56,03%</strong> e <strong>CREC 8 (28/08 a 03/09)</strong> com <strong>52,98%</strong>. Estes dados são cruciais para direcionar ações corretivas e otimizar o suporte técnico, visando a melhoria contínua da performance.
+                        O acompanhamento da Disponibilidade Física (DF) acumulada no mês de setembro nos diferentes clientes oferece uma visão clara da performance dos equipamentos XCMG. Os dados de 01/09 a 30/09 mostram um desempenho sólido em clientes como R&D e G3, com DF de 84,55% e 85,61%, respectivamente, indicando alta confiabilidade. Em paralelo, operações como SIMAK e CSN registraram DF de 75,53% e 76,81%, valores que, embora abaixo da meta de 80%, demonstram uma performance consistente que está sendo monitorada para otimização. O caso do CREC-8, com 44,22%, é um ponto de atenção que já está recebendo tratamento focado da nossa equipe técnica para identificar as causas e implementar ações corretivas, reforçando nosso compromisso com a melhoria contínua e a transparência.
                     </p>
 <br>
                     </div>
@@ -1604,25 +1376,22 @@
                         <div class="article-subtitle">HISTÓRICO DE VIAGENS</div>
                             <h2 class="article-title">Visita Estratégica da XCMG à On Board Impulsiona Otimização de Telemetria e Performance</h2>
                              <p class="article-content">
-                                <strong>Como aproveitar experiências de campo?</strong> Em um movimento estratégico visando aprimorar a performance de seus equipamentos de mineração e a celeridade na identificação de falhas, a XCMG realizou uma visita oficial à empresa On Board no último dia 10 de setembro. O encontro teve como foco principal a colaboração mútua para a melhoria dos dashboards do sistema de telemetria atualmente em uso.
+                                <strong>Como aproveitar experiências de campo?</strong> No dia 10 de setembro, a XCMG realizou uma visita oficial à empresa On Board, com foco na melhoria da performance de seus equipamentos de mineração e na agilidade na identificação de falhas. O encontro marcou um passo estratégico para fortalecer a colaboração no desenvolvimento de dashboards de telemetria.
                             </p>
                             
                             <p class="article-content">
-                                Durante a reunião, foram discutidos em profundidade diversos indicadores que poderão ser integrados aos visuais da plataforma da On Board. Entre os temas abordados, destacam-se a taxa de Disponibilidade Física (DF), a distribuição detalhada de falhas, o registro de alarmes por hora trabalhada e a crucial relação entre horas disponíveis e horas efetivamente trabalhadas. Essas inserções visam proporcionar uma visão mais completa e granular sobre o desempenho dos ativos.
+                                Durante a reunião, foram discutidos indicadores essenciais como Disponibilidade Física (DF), distribuição de falhas, alarmes por hora e a relação entre horas disponíveis e horas efetivamente trabalhadas. A meta é ampliar a precisão das análises e fornecer uma visão mais detalhada sobre o desempenho das máquinas em operação.
                             </p>
 
                             <p class="article-content">
-                                Um dos pontos centrais da agenda foi a busca pela viabilização do acesso ao banco de dados da telemetria. Este acesso é considerado fundamental pela XCMG para a realização de análises e tratativas internas mais ágeis, com o objetivo de acelerar a identificação de falhas críticas. Tal medida é vista como um passo essencial para aprimorar significativamente a performance global dos equipamentos.
+                                Um dos pontos centrais foi a solicitação de acesso direto ao banco de dados de telemetria, considerado pela XCMG fundamental para agilizar análises internas e acelerar o diagnóstico de falhas críticas, garantindo maior confiabilidade na operação.
                             </p>
 
                             <p class="article-content">
-                                Além das discussões técnicas e estratégicas, a equipe da XCMG teve a oportunidade de conhecer a linha de produção do produto utilizado em suas máquinas. Esta etapa da visita nos permitiu  constatar in loco a alta qualidade dos componentes que são empregados nos equipamentos, reforçando a confiança na robustez e confiabilidade de sua frota.
+                                Além das discussões técnicas, a equipe da XCMG conheceu a linha de produção dos produtos aplicados em suas máquinas, reforçando a confiança na qualidade e robustez dos componentes. A visita consolidou o compromisso da XCMG com a inovação e a excelência operacional na mineração.
                             </p>
 
-                            <p class="article-content">
-                                A visita à On Board representa um marco importante na busca contínua da XCMG por inovação e excelência operacional, reafirmando seu compromisso com a otimização de processos e a maximização da performance de seus ativos no setor de mineração.
-                            </p>
-                    </div>  
+                        </div>  
             </div>
     </section>                        
           <br> <br> <br>      
@@ -1645,7 +1414,7 @@
                         
                         <p>A introdução de um novo equipamento de grande porte em uma operação complexa como a de mineração exige mais do que apenas a entrega física da máquina. Exige um processo de gestão robusto, que alinhe expectativas, defina responsabilidades e garanta que todos os envolvidos estejam na mesma página desde o início. A Engenharia de Aplicações da XCMG, ciente desse desafio, implementou um modelo de reuniões de acompanhamento interdepartamentais que tem se provado fundamental para o sucesso de projetos como a entrega da escavadeira XE5600.</p>
 
-                        <p>A metodologia, que envolve reuniões semanais e o uso de painéis de Business Intelligence (BI), permite uma visão clara e em tempo real do andamento de cada etapa do projeto. Com um total de <strong>20 reuniões</strong> realizadas, envolvendo uma média de <strong>8 participantes</strong> por encontro, foi possível garantir o alinhamento constante entre as equipes de engenharia, logística, montagem e o cliente. O resultado foi a geração de <strong>12 atas</strong> detalhadas e a troca de mais de <strong>20 e-mails</strong> focados na resolução de pendências, culminando em <strong>70 ações concluídas</strong> com sucesso.</p>
+                        <p>A metodologia, que envolve reuniões semanais e o uso de painéis de Business Intelligence (BI), permite uma visão clara e em tempo real do andamento de cada etapa do projeto. Com um total de <strong>20 reuniões</strong> realizadas, envolvendo uma média de <strong>8 participantes</strong> por encontro, estima-se que <strong>270 pessoas</strong> tenham sido impactadas direta e indiretamente ao longo do processo, garantindo o alinhamento constante entre as equipes de engenharia, logística, montagem e o cliente. O resultado foi a geração de <strong>12 atas</strong> detalhadas e a troca de mais de <strong>20 e-mails</strong> focados na resolução de pendências, culminando em <strong>70 ações concluídas</strong> com sucesso.</p>
 
                         <p>A chegada da escavadeira <strong>XCMG XE5600</strong> à mina de Carajás representa um marco histórico para a mineração brasileira. O processo de entrega e montagem, conduzido com rigor e precisão, reforça o compromisso da XCMG com a eficiência, inovação e suporte total ao cliente. Toda a documentação foi organizada, planos de manutenção criados e a montagem executada com maestria, consolidando a presença da XCMG no mercado nacional.</p>
                     </div>
@@ -1658,6 +1427,10 @@
                         <div class="metrics-box">
                             <div class="metric-value">08</div>
                             <div class="metric-label">Média de Participantes</div>
+                        </div>
+                        <div class="metrics-box">
+                            <div class="metric-value">270</div>
+                            <div class="metric-label">Pessoas Atingidas</div>
                         </div>
                         <div class="metrics-box">
                             <div class="metric-value">12</div>
@@ -1693,42 +1466,56 @@
                         <p class="interview-answer">"Maior comprometimento de algumas áreas quanto às tratativas das ações e participação nas reuniões. Outros pontos de melhoria também: Responsabilidade pela entrega dos itens de bonificação; componentes e materiais de preventiva. E responsabilidade pelas replicações das adequações realizadas durante a montagem das máquinas ou melhorias implementadas durante a operação, para que as próximas máquinas já venham com as mesmas."</p>
                     </div>
                 
+<!-- Início testes 110 -->
+<div class="article">
+    <div class="article-subtitle">REALIDADE EM CAMPO</div>
+    <h2 class="article-title">XCMG Acompanha de Perto Desempenho dos Caminhões XG110 na Vale</h2>
+    
+    <p class="article-content">
+        A XCMG está empenhada em avaliar a performance de seus caminhões fora de estrada em condições reais e exigentes de mineração. Os testes recentes em duas minas distintas, com o modelo XG110, revelam cenários operacionais contrastantes que demandam análise aprofundada e soluções específicas para cada ambiente de trabalho.
+    </p>
 
-                        <div class="article">
-                            <div class="article-subtitle">REALIDADE EM CAMPO</div>
-                            <h2 class="article-title">XCMG Acompanha de Perto Desempenho dos Caminhões XG110 na Vale</h2>
-                            
-                            <p class="article-content">
-                               A XCMG está empenhada em avaliar a performance de seus caminhões fora de estrada em condições reais e exigentes de mineração. No entanto, os testes recentes em duas minas distintas, com o modelo XG110 e outro caminhão, revelam que o caminho para a otimização plena ainda apresenta obstáculos significativos, exigindo atenção redobrada e soluções mais robustas para garantir a eficiência e a confiabilidade prometidas.
-                            </p>
-                        <div class="image-gallery-uniform">
-                            <div class="gallery-item">
-                                <img src="images/XG110.jpeg" alt="Caminhão XG110 na mina">
-                            </div>
-                            <div class="gallery-item">
-                                <a href="https://app.powerbi.com/view?r=eyJrIjoiYzg1ZjIwN2MtNzliNC00NzQyLTgwOWQtMzllYjYzNzY1NjY3IiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
-                                <img src="images/110fabrica.png" alt="Dashboard de desempenho - Fábrica">
-                                </a>
-                            </div>
-                            <div class="gallery-item">
-                                <a href="https://app.powerbi.com/view?r=eyJrIjoiYzg1ZjIwN2MtNzliNC00NzQyLTgwOWQtMzllYjYzNzY1NjY3IiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
-                                <img src="images/110cpx.png" alt="Dashboard de desempenho - CPX">
-                                </a>
-                            </div>
-                        </div>
-                            <p class="article-content"><strong>Caminhão XG110 - 5602 - na Mina CPX: Uma Operação Desafiadora</strong></p>
-                            <p class="article-content">
-                                Durante o mês de Agosto, na Mina CPX, o caminhão XG110 (Placa 1330) registrou uma média de 13.92 horas trabalhadas por dia, com um consumo médio de 16.98 L/h. Contudo, o período de 01 a 25 de setembro foi marcado por falhas que impactaram a operação. Já no dia 03/09, uma manutenção preventiva identificou um dano no suporte superior e a quebra da mola da balança, resultando na liberação do caminhão para operação com a balança funcionando de forma comprometida. Apenas um dia depois, em 04/09, o equipamento parou novamente devido a uma nova falha, necessitando de suporte externo da Pesebem. A situação se repetiu em 10/09 com uma falha na câmera de monitoramento e, em 12/09, com a necessidade de troca do cabo de carregamento do tablet da balança. Além disso, foram identificados registros de pesagem inconsistentes, com valores fora do padrão, indicando problemas persistentes na balança ou falhas operacionais que demandam investigação aprofundada. A recorrência de interrupções e a necessidade de intervenções constantes levantam questões sobre a robustez dos componentes e a eficácia das soluções de manutenção.
-                            </p>
-                            <p class="article-content"><strong>Caminhão XG110 - 5601 - na Mina Fábrica: A Luta Contra Problemas Crônicos na Balança</strong></p>
-                            <p class="article-content">
-                                Na Mina Fábrica, o caminhão (Placa 1334) operou com uma média de apenas 2.96 horas diárias e um consumo médio de 11.11 L/h, acumulando um total de seis falhas no período. Os problemas foram particularmente críticos no sistema de balança. Em 03/09, um pneu foi substituído devido a uma falha no monitoramento. Em 10/09, a placa controladora da balança queimou, exigindo a substituição da CPU e a soldagem da mola, com o apoio da Pesebem. No entanto, as falhas no sensor da báscula persistiram, sendo relatadas em 17/09 e novamente em 20/09, culminando na substituição do inclinômetro, suporte do sensor e cabos da balança. Apesar das múltiplas intervenções, a persistência dos problemas na balança sugere uma complexidade maior na identificação e resolução das causas-raiz, impactando diretamente a disponibilidade e a precisão do equipamento.
-                            </p>
-                            <p class="article-content">
-                                Os resultados desses testes indicam que, embora a XCMG esteja investindo em tecnologia, a integração e a durabilidade dos componentes em ambientes de mineração ainda precisam de aprimoramento. A alta frequência de falhas e a necessidade de intervenções corretivas contínuas em ambos os caminhões apontam para a urgência de uma análise mais crítica e de um plano de ação robusto para garantir que os equipamentos da XCMG atinjam os níveis de confiabilidade e eficiência esperados pelos clientes em operações tão demandantes.
-                            </p>
-                        </div>
-                        </div>
+    <!-- Imagens maiores -->
+    <div class="image-container-flex">
+        <img src="images/XG110.jpeg" alt="Caminhão XG110 na mina" class="flex-image">
+        <img src="images/DF110.png" alt="DF110" class="flex-image">
+    </div>
+
+    <!-- Texto em duas colunas -->
+    <div class="article-content2">
+        <div style="break-after: column;">
+            <p class="article-content"><strong>Caminhão XG110 - 5602 - na Mina CPX (Capão Xavier)</strong></p>
+            <p class="article-content">
+                No período de 17 dias analisado, o caminhão XG110 na Mina CPX apresentou desempenho estável. O equipamento registrou uma média de 13.92 horas trabalhadas por dia, com consumo médio de 16.98 L/h, dentro do esperado para as condições de operação.
+            </p>
+             <p class="article-content">
+                Os gráficos de disponibilidade física indicaram resultados consistentes, em sua maioria entre 90% e 100%. Apenas nos dias 3 (63%) e 13 (59%) houve reduções mais relevantes. A utilização física variou entre 48% e 87%, com maiores índices nos dias 5, 6 e 7, quando superou 80%.
+            </p>
+            <p class="article-content">
+                As principais ocorrências registradas incluem: em 03/09, uma manutenção preventiva identificou dano no suporte superior e quebra da mola da balança, resultando na liberação do caminhão para operação com a balança funcionando de forma comprometida. Em 04/09, o equipamento parou novamente devido a uma nova falha, necessitando de suporte externo da Pesebem. A situação se repetiu em 10/09 com uma falha na câmera de monitoramento e, em 12/09, com a necessidade de troca do cabo de carregamento do tablet da balança. Foram identificados registros de pesagem inconsistentes, com valores fora do padrão, indicando problemas persistentes na balança que demandam investigação aprofundada.
+            </p>
+        </div>
+        
+            <p class="article-content"><strong>Caminhão XG110 - 5601 - na Mina Fábrica</strong></p>
+            <p class="article-content">
+                O caminhão XG110 em operação na Mina Fábrica apresentou menor tempo de trabalho, com média de 2.96 horas por dia e consumo médio de 11.11 L/h. A utilização foi limitada, refletindo condições mais restritivas do ambiente operacional.
+            </p>
+            <p class="article-content">
+                A disponibilidade física esteve frequentemente abaixo de 50%, com variações entre 34% e 63%. Entre os dias 7 e 12 houve uma melhora pontual, alcançando índices mais altos, mas nos demais dias os resultados permaneceram inferiores. A utilização física acompanhou esta tendência, ficando entre 8% e 52%.
+            </p>
+            <p class="article-content">
+                As ocorrências relevantes incluem: Em 03/09, um pneu foi substituído devido a uma falha no monitoramento. Em 10/09, a placa controladora da balança queimou, exigindo a substituição da CPU e a soldagem da mola, com o apoio da Pesebem. No entanto, as falhas no sensor da báscula persistiram, sendo relatadas em 17/09 e novamente em 20/09, culminando na substituição do inclinômetro, suporte do sensor e cabos da balança. Apesar das múltiplas intervenções, a persistência dos problemas na balança sugere uma complexidade maior na identificação e resolução das causas-raiz, impactando diretamente a disponibilidade e a precisão do equipamento.
+            </p>
+
+            <div class="article-content-final">
+            <p class="article-content">
+                A análise dos resultados demonstra que as condições operacionais específicas de cada mina influenciam diretamente a disponibilidade e a utilização dos equipamentos. O caminhão na Mina CPX manteve desempenho consistente, enquanto o equipamento na Mina Fábrica operou com menor eficiência devido a falhas recorrentes e ao ambiente mais desafiador. A recorrência de problemas no sistema de balança em ambos os locais reforça a importância de revisões técnicas direcionadas e do desenvolvimento de soluções adequadas às características de cada operação.
+            </p>
+    </div>
+</div>
+<!-- Fim testes 110 -->
+
+    
                         <div class="article">
                             <div class="article-subtitle">CRC</div>
                             <h2 class="article-title">XCMG Avalia Opções para Novo Centro de Reparo de Componentes (CRC)</h2>
@@ -1744,6 +1531,10 @@
                             <p class="article-content">
                                 É fundamental ressaltar que, neste momento, todas as possibilidades estão sob análise. A XCMG está comprometida em encontrar a solução mais estratégica e eficiente para o novo CRC, garantindo que qualquer decisão futura esteja alinhada com a demanda de mercado e a excelência operacional. A empresa continuará avaliando as opções para assegurar a melhor infraestrutura para o reparo de componentes, fortalecendo seu suporte aos clientes.
                             </p>    
+                            <img src="images/crc.jpg" alt="CRC" class="market-share-image">
+                            <p class="article-content" style="text-align: center;">
+                                Em breve, novidades.
+                            </p> 
                         </div>
                         
         </section>
@@ -1758,13 +1549,13 @@
                             <img src="images/Homologacaomaquina.png" alt="Nova Máquinas" class="homologation-image-machine">
                                <br><br> 
                             <p class="article-content">
-                                Entre os destaques que estão em fase de homologação, encontramos o Caminhão Elétrico XGE150EV Plus, com previsão de conclusão em dezembro de 2025 para a Vale em CPX, e o Caminhão Diesel-Elétrico XDE260, que deve finalizar seu processo na CSN em Casa de Pedra também em dezembro de 2025. A Carregadeira XC9150, destinada à Vale em S11D, tem sua conclusão prevista para o final de setembro de 2025, demonstrando a proximidade da finalização de importantes etapas.
+                                O processo de homologação na XCMG é uma etapa fundamental que se inicia com a criação detalhada da ficha técnica do produto, alinhando o desenvolvimento às demandas do mercado e normas regulatórias. Em seguida, o equipamento é submetido a testes rigorosos, incluindo avaliações em campo e simulações, com a colaboração de clientes para otimização. A conclusão do processo é validada pelo aceite formal do cliente, assegurando que a XCMG entregue soluções robustas, eficientes e confiáveis.
                             </p>
                             <p class="article-content">
-                                Outros equipamentos promissores incluem a Empilhadeira Elétrica XCB30-L5-C e o Terminal Tractor XPT90K, ambos com previsão de conclusão em fevereiro de 2026 para a Vale (Porto Tubarão) e CSN (Volta Redonda), respectivamente. A Motoniveladora Elétrica GR350EP, que está sendo homologada para a Vale em Itabira, tem sua conclusão esperada para novembro de 2025, reforçando o foco da XCMG em soluções elétricas e sustentáveis.
+                                Entre os destaques em homologação, o Caminhão Elétrico XGE150EV Plus para a Vale (CPX) e o Caminhão Diesel-Elétrico XDE260 para a CSN (Casa de Pedra) têm previsão de conclusão em maio e março de 2025, respectivamente. A Carregadeira XC9150 para a Vale (S11D) deve finalizar em setembro de 2025, enquanto a Motoniveladora Elétrica GR350EP para a Vale (Itabira) e o Terminal Tractor XPT90K para a CSN (Volta Redonda) estão previstos para 2026, reforçando o foco em soluções elétricas e de alta performance.
                             </p>
                             <p class="article-content">
-                               Esses processos de homologação sublinham o compromisso da XCMG em expandir seu portfólio com máquinas de ponta, adaptadas às necessidades específicas de grandes clientes como Vale e CSN. A empresa segue dedicada a garantir que cada novo equipamento passe por todas as etapas necessárias para assegurar sua excelência, antes de contribuir para a eficiência e a produtividade das operações no Brasil.
+                               Este portfólio em constante evolução demonstra o empenho da XCMG em expandir sua oferta com máquinas de ponta, adaptadas às necessidades específicas de grandes clientes como Vale e CSN. A empresa garante que cada novo equipamento passe por todas as etapas necessárias para assegurar sua excelência, contribuindo significativamente para a eficiência e a produtividade das operações no Brasil.
                             </p>
                         </div>
 
@@ -1776,25 +1567,168 @@
                             </p>
                             <img src="images/Homologacaocomponente.png" alt="Homologação de Componentes" class="homologation-image-comp"> <br><br>
                             <p class="article-content">
-                                O portfólio atual revela um equilíbrio entre componentes já homologados e aqueles em fases avançadas de desenvolvimento e testes. Entre os destaques já aprovados, a máquina XC958BR se beneficia de soluções como o Cabeçote de Engate Rápido e o Sistema Hidráulico para Engate Rápido, ambos fornecidos pela Coyote, que otimizam a funcionalidade e a versatilidade do equipamento. A LW500BRI, por sua vez, conta com o Aríete ACXCMG-6000, um componente crucial para operações de grande porte, também homologado com sucesso pela Coyote.
+                                O portfólio atual revela um equilíbrio entre componentes já homologados e aqueles em fases avançadas de desenvolvimento e testes. Entre os destaques, a máquina LW500BRI já se beneficia de soluções com homologação concluída, como o Cabeçote de Engate Rápido, o Sistema Hidráulico para Engate Rápido e o Aríete ACXCMG-6000, todos fornecidos pela Coyote, que otimizam a funcionalidade e a versatilidade do equipamento.
                             </p>
                             <p class="article-content">
-                                Diversos projetos inovadores estão em andamento, prometendo elevar ainda mais o patamar tecnológico da XCMG. Para as Carregadeiras, o Joystick JS1-H Steer by Wire, da Danfoss, está em fase de desenvolvimento, visando aprimorar a precisão e o conforto na operação. A LW1200KN receberá um Contrapeso desenvolvido pela XCMG China, enquanto a XGA5905 terá um Sistema de Lubrificação Automática (XCMG) e Parametrização de Eixo Diferencial (Auxtech) em desenvolvimento, focando na durabilidade e na eficiência da transmissão. O XE2000 e o Caminhão 3 Eixos terão seus Sistemas de Balança, da GHT (BRPesa) e Pesebem, respectivamente, em fase de testes para garantir a precisão na pesagem. Complementando, o Assento Auxiliar XG90H (XCMG Brasil) e o Suporte de Feixe de Molas XGA5905 (California Brasil) estão sendo desenvolvidos para otimizar o conforto e a robustez.
+                                Por outro lado, para a XC958BR, os mesmos componentes – Cabeçote de Engate Rápido, Sistema Hidráulico para Engate Rápido e o Aríete ACXCMG-6000, também da Coyote – foram aprovados em teste, mas o desenvolvimento da solução ainda está em andamento, indicando que a integração final e a validação para esta máquina específica estão em curso.
                             </p>
                             <p class="article-content">
-                               Além disso, a XCMG está investindo em testes de campo com Caminhões PIPA para os modelos XG110, XGA5905, XG90H e XDE260, em parceria com a CSN e a Vale, demonstrando a busca contínua por soluções adaptadas às necessidades específicas do mercado brasileiro. Este portfólio dinâmico e abrangente é a prova do compromisso da XCMG em oferecer equipamentos de ponta, com componentes homologados que garantem desempenho superior e confiabilidade inabalável em todas as suas aplicações.
+                               Diversos projetos inovadores estão em andamento, prometendo elevar ainda mais o patamar tecnológico da XCMG. Para as Carregadeiras, o Joystick JS1-H Steer by Wire, da Danfoss, está em fase de desenvolvimento, visando aprimorar a precisão e o conforto na operação. A LW1200KN receberá um Contrapeso desenvolvido pela XCMG China, enquanto a XGA5905 terá um Sistema de Lubrificação Automática (XCMG) e Parametrização de Eixo Diferencial (Auxtech) em desenvolvimento, focando na durabilidade e na eficiência da transmissão. O XE2000 e o Caminhão 3 Eixos terão seus Sistemas de Balança, da GHT (BRPesa) e Pesebem, respectivamente, em fase de testes para garantir a precisão na pesagem. Complementando, o Assento Auxiliar XG90H (XCMG Brasil) e o Suporte de Feixe de Molas XGA5905 (California Brasil) estão sendo desenvolvidos para otimizar o conforto e a robustez.
                             </p>
                             
                             <!-- Canal de Comunicação -->
     <section class="communication-channel">
         <div class="communication-header">
-            📞 Canal de Comunicação - Solicitações de Homologação
+            📞 Canal de Comunicação - Engenharia de Performance
+        </div>
+        <div class="communication-content">
+            <!-- Formulário de Solicitação -->
+            <div class="contact-form">
+                <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Solicitação à Engenharia de Performance</h3>
+                <form id="performanceForm">
+                    <div class="form-group">
+                        <label for="solicitante_perf">Nome do Solicitante:</label>
+                        <input type="text" id="solicitante_perf" name="solicitante" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departamento_perf">Departamento:</label>
+                        <select id="departamento_perf" name="departamento" required>
+                            <option value="">Selecione...</option>
+                            <option value="comercial">Comercial</option>
+                            <option value="pos-vendas">Pós-Vendas</option>
+                            <option value="qualidade">Qualidade</option>
+                            <option value="engenharia">Engenharia</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoSolicitacao_perf">Assunto:</label>
+                        <select id="tipoSolicitacao_perf" name="tipoSolicitacao" required>
+                            <option value="">Selecione...</option>
+                            <option value="gestao-performance">Gerenciamento de Performance</option>
+                            <option value="performance-sul">Engenharia de Performance - Vale Sul e CSN</option>
+                            <option value="coordenacao-performance">Coordenação de Performance - Norte</option>
+                            <option value="performance-norte">Engenharia de Performance - Norte</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="urgencia_perf">Nível de Urgência:</label>
+                        <select id="urgencia_perf" name="urgencia" required>
+                            <option value="">Selecione...</option>
+                            <option value="baixa">Baixa</option>
+                            <option value="media">Média</option>
+                            <option value="alta">Alta</option>
+                            <option value="critica">Crítica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao_perf">Descrição da Solicitação:</label>
+                        <textarea id="descricao_perf" name="descricao" placeholder="Ex: A escavadeira XE5600 está com consumo de combustível acima do esperado..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Solicitação</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Contatos Diretos</h3>
+                <div class="contact-item">
+                    <h4>Gerente de Performance</h4>
+                    <p><strong>Responsável:</strong> Adriano Santana</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:adriano.santana@xcmgbrasil.com.br">adriano.santana@xcmgbrasil.com.br</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Engenheiro de Performance - Vale Sul e CSN</h4>
+                    <p><strong>Responsável:</strong> José Luciano</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:jose.mendonca@xcmgbrasil.com.br">jose.mendonca@xcmgbrasil.com.br</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Coordenador de Performance - Norte</h4>
+                    <p><strong>Responsável:</strong> Johnny Souza</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:johnny.souza@xcmgbrasil.com.br">johnny.souza@xcmgbrasil.com.br</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Engenheira de Performance - Norte</h4>
+                    <p><strong>Responsável:</strong> Priscila Sales</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:priscila.sales@xcmgbrasil.com.br">priscila.sales@xcmgbrasil.com.br</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="communication-channel">
+        <div class="communication-header">
+            📞 Canal de Comunicação - Inteligência de Mercado
+        </div>
+        <div class="communication-content">
+            <!-- Formulário de Solicitação -->
+            <div class="contact-form">
+                <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Solicitação à Inteligência de Mercado</h3>
+                <form id="marketIntelForm">
+                    <div class="form-group">
+                        <label for="solicitante_mi">Nome do Solicitante:</label>
+                        <input type="text" id="solicitante_mi" name="solicitante" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departamento_mi">Departamento:</label>
+                        <select id="departamento_mi" name="departamento" required>
+                            <option value="">Selecione...</option>
+                            <option value="comercial">Comercial</option>
+                            <option value="pos-vendas">Pós-Vendas</option>
+                            <option value="qualidade">Qualidade</option>
+                            <option value="engenharia">Engenharia</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoSolicitacao_mi">Assunto:</label>
+                        <select id="tipoSolicitacao_mi" name="tipoSolicitacao" required>
+                            <option value="">Selecione...</option>
+                            <option value="linha-amarela">Linha Amarela - LogComex - Abmaq</option>
+                            <option value="mineracao-latam">Mineração - Latam</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="urgencia_mi">Nível de Urgência:</label>
+                        <select id="urgencia_mi" name="urgencia" required>
+                            <option value="">Selecione...</option>
+                            <option value="baixa">Baixa</option>
+                            <option value="media">Média</option>
+                            <option value="alta">Alta</option>
+                            <option value="critica">Crítica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao_mi">Descrição da Solicitação:</label>
+                        <textarea id="descricao_mi" name="descricao" placeholder="Ex: Gostaria de um relatório sobre a participação de mercado de escavadeiras no nordeste..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Solicitação</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Contatos Diretos</h3>
+                <div class="contact-item">
+                    <h4>Linha Amarela - LogComex - Abmaq</h4>
+                    <p><strong>Responsável:</strong> Washington Gomes</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:washington.gomes@xcmgbrasil.com.br">washington.gomes@xcmgbrasil.com.br</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Mineração - Latam</h4>
+                    <p><strong>Responsável:</strong> Paula Souza</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:paula.souza@xcmgbrasil.com.br">paula.souza@xcmgbrasil.com.br</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="communication-channel">
+        <div class="communication-header">
+            📞 Canal de Comunicação - Homologação
         </div>
         
         <div class="communication-content">
             <!-- Formulário de Solicitação -->
             <div class="contact-form">
-                <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Solicitar Homologação</h3>
+                <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Solicitação de Homologação</h3>
                 <form id="homologationForm">
                     <div class="form-group">
                         <label for="solicitante">Nome do Solicitante:</label>
@@ -1807,18 +1741,19 @@
                             <option value="">Selecione...</option>
                             <option value="comercial">Comercial</option>
                             <option value="pos-vendas">Pós-Vendas</option>
+                            <option value="pos-vendas">Qualidade</option>
+                            <option value="pos-vendas">Engenharia</option>
                             <option value="outros">Outros</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="tipoSolicitacao">Tipo de Solicitação:</label>
+                        <label for="tipoSolicitacao">Assunto:</label>
                         <select id="tipoSolicitacao" name="tipoSolicitacao" required>
                             <option value="">Selecione...</option>
                             <option value="homologacao-maquina">Homologação de Máquina</option>
                             <option value="homologacao-componente">Homologação de Componente</option>
-                            <option value="gestao-kickoff">Gestão de Kickoff</option>
-                            <option value="suporte-geral">Suporte Geral</option>
+                            <option value="gestao-kickoff">Kickoff</option>
                             <option value="outros">Outros</option>
                         </select>
                     </div>
@@ -1848,17 +1783,21 @@
                 <h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Contatos Diretos</h3>
                 
                 <div class="contact-item">
-                    <h4>Homologação de Máquinas</h4>
+                    <h4>Gerente de Homologação</h4>
                     <p><strong>Responsável:</strong> Tiago Bertolini</p>
-                    <p><strong>E-mail:</strong> <a href="mailto:victor.siqueira@xcmgbrasil.com.br">victor.siqueira@xcmgbrasil.com.br</a></p>
-                    <p><strong>Equipe:</strong> Victor Arrais</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:tiago.bertolini@xcmgbrasil.com.br">tiago.bertolini@xcmgbrasil.com.br</a></p>
                 </div>
                 
+                <div class="contact-item">
+                    <h4>Homologação de Máquinas</h4>
+                    <p><strong>Responsável:</strong> Victor Arrais</p>
+                    <p><strong>E-mail:</strong> <a href="mailto:victor.siqueira@xcmgbrasil.com.br">victor.siqueira@xcmgbrasil.com.br</a></p>
+                </div>
+
                 <div class="contact-item">
                     <h4>Homologação de Componentes</h4>
                     <p><strong>Responsável:</strong> Elisa Marques</p>
                     <p><strong>E-mail:</strong> <a href="mailto:elisa.coutinho@xcmgbrasil.com.br">elisa.coutinho@xcmgbrasil.com.br</a></p>
-                    <p><strong>Apoio:</strong> Henrique Rodrigues</p>
                 </div>
                 
                 <div class="contact-item">
@@ -1867,17 +1806,6 @@
                     <p><strong>E-mail:</strong> <a href="mailto:izabella.santana@xcmgbrasil.com.br">izabella.santana@xcmgbrasil.com.br</a></p>
                 </div>
                 
-                <div class="contact-item">
-                    <h4>Suporte Geral</h4>
-                    <p><strong>Responsável:</strong> Henrique Rodrigues</p>
-                    <p><strong>E-mail:</strong> <a href="mailto:henrique.rodrigues@xcmgbrasil.com.br">henrique.rodrigues@xcmgbrasil.com.br</a></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h4>Coordenação Geral</h4>
-                    <p><strong>Manager:</strong> Tiago Bertolini</p>
-                    <p><strong>E-mail:</strong> <a href="mailto:tiago.bertolini@xcmgbrasil.com.br">tiago.bertolini@xcmgbrasil.com.br</a></p>
-                </div>
             </div>
         </div>
     </section>
@@ -1888,8 +1816,25 @@
             <!-- PARTE 3: Eficiência Operacional -->
             <section class="part">
                 <h2 class="section-header">EFICIÊNCIA OPERACIONAL</h2>
-                <div class="part-columns" style="grid-template-columns: 1fr 1fr;">
+                <div class="part-columns">
                    
+                    <div class="article">
+                        <div class="article-subtitle">EFICIÊNCIA E PARCERIA EM FOCO</div>
+                        <h2 class="article-title">XCMG Aprofunda Suporte e Otimização Operacional com Visitas Estratégicas a Clientes</h2>
+                            <p class="article-content">
+                            XCMG, através de sua dedicada equipe de especialistas, intensificou sua presença em campo durante setembro de 2025, realizando visitas técnicas estratégicas a clientes. O objetivo principal foi aprofundar o entendimento das operações, identificar oportunidades de melhoria na eficiência e reforçar o compromisso da empresa em oferecer suporte técnico de ponta e soluções personalizadas, garantindo a máxima performance dos equipamentos.
+                        </p>
+                        <p class="article-content">
+                            <strong>Visita à R&D Ipiaú (BA) – 01 a 05 de Setembro de 2025:</strong> O especialista Antônio Ribeiro liderou a visita à R&D Ipiaú, focada em caminhões fora de estrada XG110 e XG105. A equipe investigou barulhos anormais em diferenciais e levantou informações operacionais. A conclusão apontou para a ausência de falhas graves nos diferenciais, mas ressaltou a necessidade de atenção a pontos críticos em manutenção, lubrificação e infraestrutura de vias. O plano de ação inclui acompanhamento mais próximo das manutenções, coleta periódica de óleo e monitoramento de folgas, visando maior confiabilidade da frota e redução de paradas.
+                        </p>
+                        <p class="article-content">
+                            <strong>Projeto Borborema (G3 Mineração/Aura, Currais Novos-RN) – 09 a 12 de Setembro de 2025:</strong> Antônio Ribeiro e Eduardo Teles realizaram a visita técnica ao Projeto Borborema. A avaliação do desempenho de caminhões XGA110, escavadeiras XE1350 e XE800DK, e pá carregadeira XC958, demonstrou alta disponibilidade da frota XCMG (92,6% geral), com o XGA110 atingindo impressionantes 95,5%. A XCMG se destacou frente a concorrentes como SANY, John Deere e Komatsu, apresentando menor consumo de combustível, manutenção simplificada e suporte técnico superior. Contudo, foram identificados desafios como atrasos no fornecimento de peças e falhas operacionais relacionadas à sobrecarga e uso inadequado de freios. Recomendações incluem padronização da frota e implementação de telemetria para otimização.
+                        </p>
+                        <p class="article-content">
+                            <strong>Terra Minas (Barão de Cocais-MG) – 22 a 26 de Setembro de 2025:</strong> Eduardo Teles conduziu a avaliação na Terra Minas, onde escavadeiras XE490DK, XE370BR, carregadeira XC958 e britadores XPE0912 e XFY1561, com cerca de 400 horas de uso, revelaram excelente desempenho em mina de ferro a céu aberto. A produtividade atual de 315 t/h tem potencial para 350 t/h com ajustes no carregamento. O feedback dos operadores destacou conforto, estabilidade e potência dos equipamentos XCMG, que superam a concorrência. O cliente demonstrou forte interesse em padronizar a frota com XCMG, reforçando a confiabilidade e o suporte técnico próximo como diferenciais da marca.
+                        </p>
+                    </div>
+                    
                     <div class="article">
                         <div class="article-subtitle">CONEXÃO E COMPROMETIMENTO</div>
                         <h2 class="article-title">XCMG Intensifica Presença no Campo com Cronograma Estratégico de Visitas</h2>
@@ -1937,14 +1882,6 @@
 
             <div class="market-news-grid">
 <div class="article">
-    <div class="article-subtitle">CONCORRENTES</div>
-    <h2 class="article-title">LiuGong reforça atuação no setor de mineração com novo gerente de pós-vendas e contratação estratégica em operações</h2>
-    <p class="article-date">Publicado em: 15 de Agosto de 2025</p>
-    <p class="article-content">A chegada dos novos executivos coincide com a ampliação do portfólio de soluções da marca para mineração e vem após o lançamento da pá carregadeira 886T e do caminhão fora de estrada DW105A.</p>
-    <a href="https://eaemaq.com.br/noticias-do-mercado/liugong-reforca-atuacao-no-setor-de-mineracao-com-novo-gerente-de-pos-vendas-e-contratacao-estrategica-em-operacoes/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
     <div class="article-subtitle">RESULTADOS FINANCEIROS</div>
     <h2 class="article-title">Zoomlion divulga fortes resultados no primeiro semestre de 2025, impulsionados pelo crescimento global e inovação tecnológica</h2>
     <p class="article-date">Publicado em: 06 de Setembro de 2025</p>
@@ -1953,15 +1890,7 @@
 </div>
 
 <div class="article">
-    <div class="article-subtitle">TECNOLOGIA</div>
-    <h2 class="article-title">Komatsu fortalece a modernização da mineração no Brasil com sistemas tecnológicos avançados</h2>
-    <p class="article-date">Publicado em: 15 de Agosto de 2025</p>
-    <p class="article-content">A Komatsu Mining Technology Solutions (KMTS) segue liderando a modernização do setor. Os sistemas DISPATCH, ProVision e MineCare têm sido implementados para aumentar a eficiência operacional, otimizando o gerenciamento de frotas, prevenindo falhas nos equipamentos e melhorando a sua precisão operacional.</p>
-    <a href="https://eaemaq.com.br/noticias-do-mercado/komatsu-fortalece-a-modernizacao-da-mineracao-no-brasil-com-sistemas-tecnologicos-avancados/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">LANÇAMENTOS</div>
+    <div class="article-subtitle">CONCORRENTES</div>
     <h2 class="article-title">Volvo renova série de escavadeiras</h2>
     <p class="article-date">Publicado em: 01 de Setembro de 2025</p>
     <p class="article-content">A Volvo CE introduziu no país sua nova série de escavadeiras, em 7 modelos: EC210, EC220, EC230, EC260, EC360, EC400 e EC500, para diversos setores, da mineração à infraestrutura pesada. O principal destaque é o salto na eficiência de combustível.</p>
@@ -1977,51 +1906,43 @@
 </div>
 
 <div class="article">
-    <div class="article-subtitle">PROJETOS</div>
-    <h2 class="article-title">Vale inaugura mina Capanema e anuncia investimentos de R$67 bilhões em MG</h2>
-    <p class="article-date">Publicado em: 04 de Setembro de 2025</p>
-    <p class="article-content">Em Ouro Preto, a retomada da operação marca o início de uma nova fase da Vale em Minas Gerais, com investimentos de R$ 67 bilhões até 2030. Os recursos serão destinados para processos produtivos mais seguros, inovadores e sustentáveis.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/vale-inaugura-mina-capanema-e-anuncia-investimentos-de-r-67-bilhoes-em-mg" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">RECORDE</div>
+    <h2 class="article-title">Quebra de recorde: maior pedido de exportação da China para equipamentos de mineração sustentável até o momento</h2>
+    <p class="article-date">Publicado em: 29 de Setembro de 2025</p>
+    <p class="article-content">A XCMG assina acordo estratégico e entregará de 150 a 200 unidades de caminhões basculantes elétricos a bateria de 240 t para a Fortescue, uma das maiores produtoras de minério de ferro do mundo, marcando o maior pedido de exportação da China para máquinas de mineração sustentável.</p>
+    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/quebra-de-recorde-maior-pedido-de-exportacao-da-china-para-equipamentos-de-mineracao-sustentavel-ate-o-momento-302569758.html" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">APROVAÇÕES</div>
-    <h2 class="article-title">Meteoric afirma que segue confiante sobre o projeto Caldeira</h2>
-    <p class="article-date">Publicado em: 01 de Setembro de 2025</p>
-    <p class="article-content">A Meteoric Resources NL divulgou atualização sobre o processo de aprovação do seu Projeto de Terras Raras de Argila Iônica Caldeira, no município de Caldas, em MG. Apesar de uma irregularidade na votação do CONGEAPA sobre o projeto, a Meteoric permanece confiante na aprovação e no cronograma.</p>
+    <div class="article-subtitle">UNDERGROUND</div>
+    <h2 class="article-title">Mineração subterrânea é estratégica para o futuro do setor no Brasil</h2>
+    <p class="article-date">Publicado em: 24 de Setembro de 2025</p>
+    <p class="article-content">Nas últimas três décadas, os avanços em automação, controle remoto e ventilação reduziram drasticamente os riscos aos trabalhadores. A escassez de novas descobertas a céu aberto e a pressão por práticas sustentáveis consolidaram a mineração subterrânea como alternativa estratégica.</p>
     <a href="https://www.brasilmineral.com.br/noticias/meteoric-afirma-que-segue-confiante-sobre-o-projeto-caldeira" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
     <div class="article-subtitle">INVESTIMENTOS</div>
-    <h2 class="article-title">Hochschild decide construção de Monte do Carmo em 2026</h2>
-    <p class="article-date">Publicado em: 01 de Setembro de 2025</p>
-    <p class="article-content">A Hochschild Mining pretende chegar a uma decisão final de investimento (FID) para construção do projeto de ouro Monte do Carmo no início de 2026. A empresa está finalizando estudos e espera obter "em breve" a licença de instalação (LP) para o empreendimento de US$ 250 milhões, no Tocantins.</p>
+    <h2 class="article-title">Crescimento de projetos alavancam investimentos no segmento</h2>
+    <p class="article-date">Publicado em: 17 de Setembro de 2025</p>
+    <p class="article-content">O faturamento do setor de minerais críticos atingiu R$ 21,6 bilhões no primeiro semestre de 2025 (41,6% acima do mesmo período em 2024), impulsionando investimentos de US$ 68,4 bilhões até 2029, com foco em terras raras e desafios como desenvolvimento tecnológico, licenciamento e sustentabilidade.</p>
     <a href="https://www.noticiasdemineracao.com/metais-preciosos/news-articles/4519325/hochschild-decide-construcao-monte-carmo-em-2026" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">FUSÕES</div>
-    <h2 class="article-title">Fusão de Anglo American e Teck Resources cria gigante global de cobre</h2>
-    <p class="article-date">Publicado em: 09 de Setembro de 2025</p>
-    <p class="article-content">A Anglo American e a Teck Resources Limited chegaram a um acordo para fusão das duas empresas, dando origem ao grupo Anglo Teck, com sede no Canadá, que passará a ocupar o 5º lugar na produção mundial de cobre. A Anglo Teck passará a deter um portfólio líder do setor de operações de produção.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/fusao-de-anglo-american-e-teck-resources-cria-gigante-global-de-cobre" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">LICENCIAMENTO</div>
+    <h2 class="article-title">Vale recebe licença de expansão do S11D em projeto de US$2,8 bilhões</h2>
+    <p class="article-date">Publicado em: 11 de Setembro de 2025</p>
+    <p class="article-content">A Vale anunciou que recebeu do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (Ibama) a licença de operação para as atividades ligadas ao Projeto Serra Sul +20 Mtpa, no Sistema Norte, no Pará. O projeto tem início do comissionamento previsto para o segundo semestre de 2026.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/vale-recebe-licenca-de-expansao-do-s11d-em-projeto-de-us-28-bilhoes" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">EXPLORAÇÃO</div>
-    <h2 class="article-title">Jaguar mira recursos de até 7Moz de ouro em MG</h2>
-    <p class="article-date">Publicado em: 09 de Setembro de 2025</p>
-    <p class="article-content">A empresa elaborou um plano de exploração para executar 222 mil m de sondagem em 5 anos. A meta é atingir recursos minerais entre 4 milhões e 7 milhões de onças de ouro em seus direitos em Minas Gerais.</p>
-    <a href="https://www.noticiasdemineracao.com/metais-preciosos/news-articles/4519754/jaguar-mira-recursos-ate-7moz-ouro-em-mg" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">DESCOBERTAS</div>
-    <h2 class="article-title">GMIN faz nova descoberta em Oko West e expande mineralização em Gurupi</h2>
-    <p class="article-date">Publicado em: 10 de Setembro de 2025</p>
-    <p class="article-content">A G Mining Ventures Corp. anuncia descobertas promissoras de ouro em Oko West (Guiana) e Gurupi (Brasil), expandindo a mineralização e impulsionando o potencial de crescimento da empresa. O programa deve começar logo após o recebimento de todas as licenças necessárias.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/gmin-faz-nova-descoberta-em-oko-west-e-expande-mineralizacao-em-gurupi" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">RESULTADOS</div>
+    <h2 class="article-title">Subsidiária da Atlas Lithium tem bons resultados em projetos em GO e MG</h2>
+    <p class="article-date">Publicado em: 22 de Setembro de 2025</p>
+    <p class="article-content">A Atlas Lithium Corporation informa que a subsidiária Atlas Critical Minerals Corporation (ACM) reportou excelentes resultados com sua estratégia diversificada de portfólio de terras raras, estabelecendo o portfólio de projetos de terras raras mais abrangente do Brasil.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/subsidiaria-da-atlas-lithium-tem-bons-resultados-em-projetos-em-go-e-mg" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
@@ -2033,51 +1954,67 @@
 </div>
 
 <div class="article">
-    <div class="article-subtitle">LICENCIAMENTO</div>
-    <h2 class="article-title">Novo licenciamento pode acelerar projetos de 6 mineradoras</h2>
-    <p class="article-date">Publicado em: 25 de Agosto de 2025</p>
-    <p class="article-content">A MP que cria a licença ambiental especial (LAE) pode acelerar 8 projetos de 6 mineradoras: Vale, Sul Americana de Metais (SAM), Belo Sun, Indústrias Nucleares do Brasil (INB), Rio Grande Mineração (RGM) e Mineração Rio do Norte (MRN). A maioria já tem licença prévia e ficam em áreas de floresta densa na Amazônia.</p>
-    <a href="https://www.noticiasdemineracao.com/sustentabilidade/news-articles/4518963/novo-licenciamento-pode-acelerar-projetos-seis-mineradoras" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">MINA INTELIGENTE</div>
+    <h2 class="article-title">Huawei e Vale estudam mina inteligente</h2>
+    <p class="article-date">Publicado em: 16 de Setembro de 2025</p>
+    <p class="article-content">Huawei e Vale avaliam implantar um projeto de minas inteligentes, conectadas em redes 5G e até 5,5G, que prometem maior velocidade de dados e menor tempo de respostas, e que no Brasil ainda está em testes.</p>
+    <a href="https://www.noticiasdemineracao.com/ti-e-comunicacao/news-articles/4520118/huawei-vale-estudam-mina-inteligente?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2017%202025%20-%2014%3A52%3A14%20UTC&utm_content=Huawei%20e%20Vale%20estudam%20mina%20inteligente&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">LOGÍSTICA</div>
-    <h2 class="article-title">Plano visa retirar 1.500 carretas de minério das estradas federais</h2>
-    <p class="article-date">Publicado em: 01 de Setembro de 2025</p>
-    <p class="article-content">Para solucionar os problemas de tráfego intenso de caminhões de minério nas rodovias BR-040 e BR-381 (MG), um grupo executivo liderado pelo MPMG propôs medidas como um Plano de Segurança Viária e o uso compartilhado da Estrada Pico-Fábrica, da Vale.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/plano-visa-retirar-1500-carretas-de-minerio-de-rodovias-federais" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">IA</div>
+    <h2 class="article-title">A nova tecnologia da mineração com Inteligência Artificial</h2>
+    <p class="article-date">Publicado em: 30 de Setembro de 2025</p>
+    <p class="article-content">Máquinas já chegam com tecnologia de informação embarcada, transmitindo em tempo real indicadores de desempenho e segurança. Mineradoras reportam ganhos de dois dígitos em eficiência, redução significativa de custos e maior confiança em segurança e sustentabilidade.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/a-nova-economia-da-mineracao-com-inteligencia-artificial" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">DADOS GLOBAIS</div>
-    <h2 class="article-title">ICMM lança Conjunto de Dados Globais sobre Mineração para oferecer dados mais confiáveis sobre mineração e metais</h2>
-    <p class="article-date">Publicado em: 03 de Setembro de 2025</p>
-    <p class="article-content">O conjunto de dados do International Council on Mining and Metals (ICMM) é a compilação mais abrangente disponível ao público sobre instalações de mineração e metais em todo o mundo, que inclui 15.188 minas e instalações de processamento e abrange 47 commodities primárias diferentes.</p>
-    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/o-icmm-lanca-um-conjunto-de-dados-globais-sobre-mineracao-para-oferecer-dados-mais-confiaveis-sobre-mineracao-e-metais-302544415.html" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">DESAFIOS</div>
+    <h2 class="article-title">Geopolítica, tecnologias e transição energética são os desafios da mineração</h2>
+    <p class="article-date">Publicado em: 22 de Setembro de 2025</p>
+    <p class="article-content">A corrida global por minerais críticos, impulsionada pela transição energética e pela corrida pela supremacia tecnológica, está redefinindo as cadeias de suprimentos e, com isso, a dinâmica no setor, além das incertezas geopolíticas e necessidade de redefinir a produtividade e a excelência operacional.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/geopolitica-tecnologias-e-transicao-energetica-sao-os-desafios-da-mineracao" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">ESG</div>
-    <h2 class="article-title">XCMG organizou a Cúpula Global de Mineração sobre Soluções Inteligentes de Carbono Zero e destacou inovações em mineração inteligente e carbono zero</h2>
-    <p class="article-date">Publicado em: 22 de Agosto de 2025</p>
-    <p class="article-content">Com o tema Inovação sólida para mineração ecológica, a cúpula se concentrou no desenvolvimento de mineração ecológica e inteligente. A XCMG destacou suas soluções completas, avançadas e práticas que integram conjuntos de equipamentos, casos de aplicação no mundo real e serviços completos.</p>
-    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/a-xcmg-organiza-a-cupula-global-de-mineracao-sobre-solucoes-inteligentes-de-carbono-zero-e-destaca-as-inovacoes-em-mineracao-inteligente-de-carbono-zero-302536745.html" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">TERRAS RARAS</div>
+    <h2 class="article-title">As terras raras e a reorganização silenciosa das cadeias globais</h2>
+    <p class="article-date">Publicado em: 27 de Setembro de 2025</p>
+    <p class="article-content">A China concentra cerca de 60% da produção mundial de minério bruto e, mais decisivamente, 90% da capacidade global de refino químico. Enquanto EUA, Europa e Japão se movimentam, o Brasil permanece numa posição de potencial adormecido.</p>
+    <a href="https://eaemaq.com.br/noticias-do-mercado/as-terras-raras-e-a-reorganizacao-silenciosa-das-cadeias-globais/" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">INICIATIVAS CLIMÁTICAS</div>
-    <h2 class="article-title">Vale, em parceria com setor privado, lança a iniciativa C.A.S.E., para posicionar o Brasil como protagonista na agenda climática global</h2>
-    <p class="article-date">Sem data de publicação</p>
-    <p class="article-content">Em parceria com Bradesco, Itaúsa, Itaú Unibanco, Natura, Nestlé, a Vale lançou a Climate Action Solutions & Engagement (C.A.S.E.) para evidenciar e impulsionar soluções climáticas e socioambientais concretas no Brasil, com potencial de escala internacional.</p>
-    <a href="https://www.abmbrasil.com.br/noticia/vale-em-parceria-com-o-setor-privado-lanca-c-a-s-e-iniciativa-para-posicionar-o-brasil-como-protagonista-na-agenda-climatica-global" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">TRANSIÇÃO ENERGÉTICA</div>
+    <h2 class="article-title">Pesquisa aponta 'colonialismo' com metais para transição energética</h2>
+    <p class="article-date">Publicado em: 29 de Setembro de 2025</p>
+    <p class="article-content">A transição energética está sendo capturada por empresas e países super ricos, reproduzindo padrões coloniais que aprofundam desigualdades e alimentam violações de direitos humanos. Sul Global detém 70% de reservas minerais, mas 46% do investimento está no Norte e 29% na China.</p>
+    <a href="https://www.noticiasdemineracao.com/brasil/news-articles/4520760/pesquisa-aponta-colonialismo-com-metais-para-transicao-energetica?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2029%202025%20-%2018%3A52%3A58%20UTC&utm_content=Pesquisa%20aponta%20%27colonialismo%27%20com%20metais%20para%20transi%C3%A7%C3%A3o%20energ%C3%A9tica&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">TRANSPARÊNCIA</div>
-    <h2 class="article-title">Brasil amplia controle e transparência na mineração</h2>
-    <p class="article-date">Publicado em: 29 de Agosto de 2025</p>
-    <p class="article-content">A Plataforma de Gestão de Recursos Minerais (PGRM) redesenha a relação entre o Estado e o setor mineral ao reunir, em um ambiente digital único, dados, declarações e instrumentos de controle. O novo canal garante que os frutos retornem, de forma justa e transparente, para as comunidades impactadas.</p>
-    <a href="https://eaemaq.com.br/noticias-do-mercado/brasil-amplia-controle-e-transparencia-na-mineracao/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">PARCERIAS</div>
+    <h2 class="article-title">Brasil e Canadá avançam parcerias em mineração e energia</h2>
+    <p class="article-date">Publicado em: 11 de Setembro de 2025</p>
+    <p class="article-content">O Memorando de Entendimento entre a pasta e o Natural Resources Canada pretende estabelecer um marco de cooperação bilateral em áreas estratégicas como mineração, energia, combustíveis renováveis e desenvolvimento social de recursos naturais.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/brasil-e-canada-avancam-parcerias-em-mineracao-e-energia" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">DESENVOLVIMENTO</div>
+    <h2 class="article-title">Rio Tinto perto do primeiro embarque em Simandou</h2>
+    <p class="article-date">Publicado em: 10 de Setembro de 2025</p>
+    <p class="article-content">Rio Tinto se aproxima do primeiro embarque de minério de ferro em Simandou, na Guiné, com foco no desenvolvimento local e na possibilidade de investimentos em refinarias e pelotização, visando agregar valor à produção.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/rio-tinto-perto-do-primeiro-embarque-em-simandou" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">EVENTO</div>
+    <h2 class="article-title">EXPOSIBRAM 2025 marca retorno a Salvador, com foco na nova fronteira mineral do Nordeste</h2>
+    <p class="article-date">Publicado em: 18 de Setembro de 2025</p>
+    <p class="article-content">O evento reforçará o protagonismo da Bahia e do Nordeste - onde há uma concentração relevante de minerais estratégicos como cobre, lítio, níquel, vanádio e terras raras -, destacando seu potencial crescente para o desenvolvimento de projetos voltados à mineração responsável e à transição energética.</p>
+    <a href="https://ibram.org.br/noticia/exposibram-2025-marca-retorno-a-salvador-com-foco-na-nova-fronteira-mineral-do-nordeste-2/" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <!-- Agenda -->
@@ -2085,17 +2022,7 @@
     <div class="article-subtitle">AGENDA</div>
     <h2 class="article-title">Eventos e Feiras</h2>
     <div class="events-list">
-            <div class="event-item">
-                <div class="event-date">22-26 Set</div>
-                <a class="event-link" href="https://www.perumin.com/perumin37/public/es" target="_blank">PERUMIN</a>
-                <div class="event-location">Arequipa, Peru (mineração)</div>
-            </div>
-            <div class="event-item">
-                <div class="event-date">23-25 Set</div>
-                <a class="event-link" href="https://paving.com.br/" target="_blank">Paving Expo 2025</a>
-                <div class="event-location">São Paulo, SP (construção e infraestrutura)</div>
-            </div>
-            <div class="event-item">
+                      <div class="event-item">
                 <div class="event-date">05-09 Out</div>
                 <a class="event-link" href="https://entmme2025.com.br/" target="_blank">XXX ENTMME – Congresso de Metalurgia e Mineração</a>
                 <div class="event-location">Gramado, RS (minério e metalurgia)</div>
@@ -2111,9 +2038,19 @@
                 <div class="event-location">Montevidéu, Uruguai (construção)</div>
             </div>
             <div class="event-item">
+                <div class="event-date">21-23 Out</div>
+                <a class="event-link" href="https://fenasan.com.br/" target="_blank">FENASAN 2025</a>
+                <div class="event-location">São Paulo, SP (saneamento e meio ambiente)</div>
+            </div>
+            <div class="event-item">
                 <div class="event-date">27-30 Out</div>
                 <a class="event-link" href="https://exposibram2025.ibram.org.br/" target="_blank">EXPOSIBRAM 2025</a>
                 <div class="event-location">Salvador, BA (mineração)</div>
+            </div>
+            <div class="event-item">
+                <div class="event-date">29-31 Out</div>
+                <a class="event-link" href="https://www.argentinamining.com/en/index.php/argentina-mining-cuyo-2025-mendoza" target="_blank">Argentina Mining Cuyo 2025</a>
+                <div class="event-location">Mendoza, Argentina (mineração)</div>
             </div>
         </div>
     </div>
@@ -2136,24 +2073,60 @@
 </div>
 </section>
 <!-- MarketShare -->
- <section class="part">
-<div class="article">
+<section class="part">
     <div class="subsection-header">Market Share</div>
-    <div class="article-subtitle">MARKET SHARE</div>
-    <h2 class="article-title">Como está o MarketShare de importações do Brasil da XCMG?</h2>
-    <p class="article-content">Ao comparar o ano anterior, a XCMG apresentou um pequeno aumento de 0,3% em seu MarketShare ao analisar as importações. No ano de 2025, até junho, foram 27 equipamentos importados, enquanto a indústria total teve um volume de 10.642 importações. Houve uma variação mensal no volume das importações, tendo os meses de fevereiro e junho importado nenhum maquinário.</p>
-    <img src="images/Marketshare1.png" alt="Market Share" class="market-share-image">
-    <p class="article-content">Ao comparar com os concorrentes próximos em 2025 somente, é notável o aumento crescente da chinesa Sany no mercado. Já a posição da Bobcat mantém a marca consolidada entre os equipamentos mini, especialmente mini escavadeiras, que compõem 27,6% do MarketShare. Com relação às marcas, observa-se que apesar de algumas consideradas mais tradicionais manterem entre as 10 com maior importação, como New Holland e JCB, as marcas chinesas têm ganhado cada vez mais espaço, o que evidencia sua competitividade e boa aceitação no mercado brasileiro, além de uma demanda cada vez mais crescente. É válido destacar ainda a manutenção da importação de equipamentos mais tradicionais, como carregadeiras, que se mantêm muito significativos, com 15% e 13% respectivamente.</p>
-    <img src="images/Marketshare2.png" alt="Market Share" class="market-share-image">
-    <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
-</div>  
-</section>
+    <div class="article">
+        <div class="article-subtitle">ANÁLISE DE MERCADO</div>
+        <h2 class="article-title">Como está o Market Share de importações da XCMG no Brasil?</h2>
 
-<!-- Segmentação -->
+        <div class="part-columns" style="grid-template-columns: 1fr 1fr; gap: 25px; align-items: flex-start;">
+            <!-- Coluna Esquerda: Texto e Imagens 1 e 2 -->
+            <div>
+                <p class="article-content">Ao comparar os resultados de 2024 com o desempenho registrado em 2025, a XCMG apresentou um crescimento relevante em termos de participação de mercado. Embora ainda modesto, o avanço de 0,5% no Market Share demonstra que a marca começa a ganhar maior representatividade nas importações brasileiras.</p>
+                <p class="article-content">Até julho de 2025, a empresa já contabilizava 58 equipamentos importados, contra apenas 2 unidades em 2024, o que evidencia um salto significativo em volume. No mesmo período, a indústria como um todo atingiu 12.283 importações, reforçando o espaço ainda em expansão para a XCMG no setor.</p>
+                <p class="article-content">Dentro desse contexto, o mercado da construção se mantém como o principal motor de demanda, respondendo por 11.646 unidades em 2025, frente a 10.495 em 2024. Apesar da leve retração no segmento de florestal (381 em 2024 para 323 em 2025), o setor de mineração apresentou evolução, passando de 269 para 314 unidades, o que indica uma diversificação gradual da demanda.</p>
+                <p class="article-content">O movimento da XCMG, ainda que tímido em participação percentual, sinaliza um posicionamento estratégico de entrada no mercado brasileiro, sustentado por um crescimento exponencial no volume importado e pela presença cada vez mais competitiva da indústria chinesa no cenário global de máquinas pesadas.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare1.png" alt="Gráfico de Market Share 1" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
+                
+
+                <p class="article-content">Ao observar o cenário de 2025, fica evidente o avanço da chinesa Sany, que desponta com uma participação de mercado em ascensão, consolidando-se como uma das principais referências do setor. Em paralelo, a Bobcat preserva sua posição, sustentada especialmente pelo desempenho expressivo no segmento de mini escavadeiras, categoria que sozinha representa 27,0% do Market Share.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare2.png" alt="Gráfico de Market Share 2" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
+            </div>
+
+            <!-- Coluna Direita: Texto e Imagens 3 e 4 -->
+            <div>
+                <p class="article-content">No campo das marcas tradicionais, nomes como New Holland e JCB continuam presentes entre as dez mais importadas, reforçando sua relevância histórica. No entanto, chama atenção o movimento crescente das fabricantes chinesas, que vêm conquistando espaço de forma consistente no mercado brasileiro. Esse avanço traduz não apenas a competitividade, mas também a boa aceitação dos equipamentos de origem chinesa, cada vez mais requisitados. Dentro desse cenário, destaca-se a presença da XCMG, que figura entre as marcas chinesas de maior participação no Brasil, fortalecendo a percepção de que o país asiático se consolida como protagonista nesse setor.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare3.png" alt="Gráfico de Market Share 3" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
+                <p class="article-content">Por outro lado, observa-se também a manutenção da relevância de equipamentos mais tradicionais e de grande porte, como as carregadeiras, que seguem representando fatias significativas do mercado, com 14,6% (Wheel Loader) e 12,4% (Crawler Excavator), respectivamente. Essa combinação de crescimento das marcas chinesas e estabilidade dos equipamentos clássicos evidencia um mercado em transformação, no qual inovação, competitividade e tradição caminham lado a lado.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare4.png" alt="Gráfico de Market Share 4" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
+            </div>
+        </div>
+    </div>  
+</section>
+<!-- Fim da Seção Market Share -->
+
+
+<!-- Tópico Quinzenal -->
  <section class="part">
 <div class="article">
-    <div class="subsection-header">Segmentação</div>
-    <div class="article-subtitle">INTELIGÊNCIA DE MERCADO E SEGMENTAÇÃO</div>
+    <div class="subsection-header">No Radar</div>
+    <div class="article-subtitle">INTELIGÊNCIA DE MERCADO DOS HÍBRIDOS</div>
     <h2 class="article-title">Estudo Aprofundado Revela o Potencial dos Equipamentos Híbridos no Brasil e na América Latina</h2>
     <p class="article-content">A XCMG, por meio de sua área de Inteligência de Mercado, realizou um estudo abrangente sobre o panorama dos equipamentos híbridos, destacando seu potencial transformador nos setores de mineração e construção. A pesquisa aponta para uma transição inevitável em direção a soluções mais sustentáveis e eficientes, impulsionada pela busca por redução de impacto ambiental, otimização de consumo de combustível e melhoria do desempenho operacional. Este movimento estratégico posiciona a XCMG na vanguarda da inovação, preparando o terreno para um futuro mais verde e produtivo.</p>
    <img src="images/TRANSIÇÃOVERDE.png" alt="Market Share" class="market-share-image"> 
@@ -2165,6 +2138,63 @@
     <p class="article-content">As perspectivas futuras para equipamentos híbridos no Brasil e na América Latina são promissoras, com o fortalecimento de políticas de eficiência energética e incentivos fiscais. A pesquisa da SOBRATEMA, inclusive, indica uma crescente preferência por soluções híbridas, representando 26% da demanda prevista. A XCMG, ao investir em inovação, suporte especializado e estratégias financeiras adaptáveis, está pronta para liderar essa transformação, impulsionando um setor mais sustentável e consolidando sua liderança no mercado global de equipamentos pesados.</p>
 </div>  
 </section>
+
+<!-- Início da Seção Novos Grandes Projetos -->
+<section class="part">
+    <div class="subsection-header">Novos Grandes Projetos</div>
+    <div class="article">
+        <div class="article-subtitle">PARCERIA ESTRATÉGICA</div>
+        <h2 class="article-title">XCMG Brasil Inicia Nova Parceria com a Mineração Taboca</h2>
+
+        <div class="part-columns" style="grid-template-columns: 1.2fr 0.8fr; align-items: flex-start; gap: 25px;">
+            <!-- Coluna de Texto -->
+            <div>
+                <p class="article-content">
+                    A XCMG Brasil anuncia o início de uma potencial parceria com a <b>Mineração Taboca S.A.</b>, um passo estratégico que visa fortalecer a presença da empresa em projetos de mineração de grande porte no país. A colaboração com a Mineração Taboca, uma das principais produtoras de estanho refinado do Brasil, representa uma oportunidade significativa para ambas as partes.
+                </p>
+                
+                <p class="article-content">
+                    A Mineração Taboca, com operações em Manaus/AM, é reconhecida no setor por possuir mina própria (Pitinga) e uma fundição em Pirapora, característica que a distingue no mercado mundial de estanho.
+                </p>
+               
+                <p class="article-content">
+                    Recentemente, a Mineração Taboca passou por uma importante mudança em sua estrutura acionária, sendo adquirida em novembro de 2024 pela China Nonferrous Metal Mining Group Co. (CNMC), uma estatal chinesa. A transação, avaliada em US$ 340 milhões, envolveu a compra de 100% das ações da mineradora do grupo peruano Minsur, consolidando a presença chinesa no setor de mineração brasileiro.
+                </p>
+                    <p class="article-content">
+                        <p class="metric-label" style="text-align: center;">Fonte: http://g1.globo.com/am/amazonas/noticia/2024/11/28/reserva-rica-em-uranio-localizada-no-amazonas-e-vendida-a-china.ghtml</p> <br>
+                    </p>
+                <p class="article-content">
+                    Essa aquisição pela CNMC abre novas perspectivas para a Mineração Taboca e para seus parceiros, como a XCMG Brasil, que busca expandir sua atuação em projetos de grande escala e alta complexidade, alinhando-se às novas diretrizes e oportunidades que surgem com essa gestão.
+                </p>
+
+                <p class="article-content">
+                    A proposta comercial da XCMG Brasil para a Mineração Taboca inclui uma gama de equipamentos pesados projetados para otimizar as operações de mineração.
+                </p>
+
+                <div class="highlight-box" style="margin-top: 15px; padding: 15px;">
+                    <h3 style="font-size: 1.1em; margin-bottom: 10px;">Entre os modelos apresentados, destacam-se:</h3>
+                    <ul style="margin-left: 20px; font-size: 0.9em; line-height: 1.6;">
+                        <li><b>Escavadeiras:</b> Modelos XE800DK e XE380G</li>
+                        <li><b>Caminhões:</b> Modelos XGA5905D3T, XG110 e XG90H PIPA</li>
+                        <li><b>Motoniveladoras:</b> Modelos GR2605T e GR3005T</li>
+                        <li><b>Tratores de Esteira:</b> Modelo D360</li>
+                        <li><b>Pá Carregadeira:</b> Modelo LW1000KN</li>
+                    </ul>
+                </div>
+                <p class="article-content">
+                    Esses equipamentos representam a capacidade da XCMG em fornecer soluções completas e de alta tecnologia, adaptadas às demandas específicas de operações de mineração de grande porte, visando aumentar a produtividade e a segurança no local de trabalho.
+                </p>
+            </div>
+
+            <!-- Coluna de Imagens -->
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <img src="images/Grandesprojetos1.png" alt="Equipamentos da Proposta Taboca 1" class="article-image" style="margin: 0; width: 450px;">
+                <img src="images/Grandesprojetos2.png" alt="Equipamentos da Proposta Taboca 2" class="article-image" style="margin: 0; width: 450px">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fim da Seção Novos Grandes Projetos -->
   </div>      
     
 
@@ -2178,6 +2208,8 @@
     </div>
 </div>
      <script>
+
+//Homologação       
         document.getElementById('homologationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2218,8 +2250,135 @@ Enviado através do Jornal da Engenharia de Aplicação XCMG
                 case 'gestao-kickoff':
                     destinatario = 'izabella.santana@xcmgbrasil.com.br';
                     break;
-                case 'suporte-geral':
-                    destinatario = 'henrique.rodrigues@xcmgbrasil.com.br';
+                case 'outros':
+                    destinatario = 'tiago.bertolini@xcmgbrasil.com.br';
+                    break;
+            }
+            
+            // Abre o cliente de e-mail
+            const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Feedback visual
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'E-mail aberto! ✓';
+            submitBtn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
+
+//Performance
+        document.getElementById('performanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta os dados do formulário
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Monta o corpo do e-mail
+            const subject = `Solicitação de ${data.tipoSolicitacao} - ${data.urgencia.toUpperCase()}`;
+            const body = `
+Solicitação de Performance - XCMG Brasil
+
+DADOS DO SOLICITANTE:
+Nome: ${data.solicitante}
+Departamento: ${data.departamento}
+
+DETALHES DA SOLICITAÇÃO:
+Tipo: ${data.tipoSolicitacao}
+Urgência: ${data.urgencia}
+
+DESCRIÇÃO:
+${data.descricao}
+
+---
+Enviado através do Jornal da Engenharia de Aplicação XCMG
+            `.trim();
+            
+            // Determina o e-mail de destino baseado no tipo de solicitação
+            let destinatario = 'adriano.santana@xcmgbrasil.com.br'; // padrão
+            
+            switch(data.tipoSolicitacao) {
+                case 'gestao-performance':
+                    destinatario = 'adriano.santana@xcmgbrasil.com.br';
+                    break;
+                case 'performance-sul':
+                    destinatario = 'jose.mendonca@xcmgbrasil.com.br';
+                    break;
+                case 'coordenacao-performance':
+                    destinatario = 'johnny.souza@xcmgbrasil.com.br';
+                    break;
+                case 'performance-norte':
+                    destinatario = 'priscila.sales@xcmgbrasil.com.br';
+                    break;
+                case 'outros':
+                    destinatario = 'adriano.santana@xcmgbrasil.com.br';
+                    break;
+            }
+            
+            // Abre o cliente de e-mail
+            const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Feedback visual
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'E-mail aberto! ✓';
+            submitBtn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
+
+//Inteligência de Mercado
+
+document.getElementById('marketIntelForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta os dados do formulário
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Monta o corpo do e-mail
+            const subject = `Solicitação de ${data.tipoSolicitacao} - ${data.urgencia.toUpperCase()}`;
+            const body = `
+Solicitação de Inteligência de Mercado - XCMG Brasil
+
+DADOS DO SOLICITANTE:
+Nome: ${data.solicitante}
+Departamento: ${data.departamento}
+
+DETALHES DA SOLICITAÇÃO:
+Tipo: ${data.tipoSolicitacao}
+Urgência: ${data.urgencia}
+
+DESCRIÇÃO:
+${data.descricao}
+
+---
+Enviado através do Jornal da Engenharia de Aplicação XCMG
+            `.trim();
+            
+            // Determina o e-mail de destino baseado no tipo de solicitação
+            let destinatario = 'washington.gomes@xcmgbrasil.com.br'; // padrão
+            
+            switch(data.tipoSolicitacao) {
+                case 'linha-amarela':
+                    destinatario = 'washington.gomes@xcmgbrasil.com.br';
+                    break;
+                case 'mineracao-latam':
+                    destinatario = 'paula.souza@xcmgbrasil.com.br';
+                    break;
+                case 'outros':
+                    destinatario = 'washington.gomes@xcmgbrasil.com.br';
                     break;
             }
             
