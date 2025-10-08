@@ -842,7 +842,23 @@
             text-decoration: underline;
         }
 
-        /* Responsividade */
+        /* Adicione este estilo ao seu CSS existente */
+        .article-columns-2 {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid #e5e7eb; /* Linha sutil entre as colunas */
+            margin-top: 20px;
+        }
+
+        /* Garante que o título de cada coluna não quebre */
+        .article-columns-2 h3 {
+            break-before: column;
+            font-size: 1.2em;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+ /* Responsividade */
         @media (max-width: 1024px) {
             .newspaper-container {
                 padding: 0 40px;
@@ -860,17 +876,24 @@
                 padding: 0 25px;
             }
             
+            /* CORREÇÃO 2 e 3: Engenharia Aplicada e Market Share - Coluna única no mobile */
             .part-columns {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
                 gap: 12px;
             }
 
+            /* CORREÇÃO 3: Market Share - Forçar coluna única */
             .market-news-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr !important;
+                gap: 15px;
             }
             
+            .image-container-flex {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+            }
             .newspaper-title {
-                font-size: 2.5em;
+                font-size: 2.2em; /* Reduzir tamanho da fonte */
             }
             
             .headline h1 {
@@ -908,7 +931,87 @@
                 max-width: 400px;
                 margin: 0 auto;
             }
+            .section-header, .subsection-header, .stakeholder-section-title, .travel-planning-header, .communication-header {
+                font-size: 1.5em; /* Ajustar tamanhos de cabeçalhos */
+                padding: 10px 15px;
+            }
+
+            .article-title {
+                font-size: 1.2em;
+            }
+
+            .article-content, .article-content2 {
+                font-size: 0.85em;
+                columns: 1; /* Desativar colunas para conteúdo de artigo */
+            }
+
+            .org-chart ul {
+                display: block; /* Permitir que o UL ocupe a largura total */
+            }
+            .org-chart li {
+                padding: 10px 0;
+            }
+            .org-chart li::before, .org-chart li::after, .org-chart ul ul::before {
+                display: none; /* Remover linhas de conexão complexas */
+            }
+            .org-node {
+                min-width: unset; /* Remover largura mínima */
+                width: 90%; /* Ocupar a maior parte da largura */
+                margin: 0 auto; /* Centralizar */
+            }
+            .org-chart-split {
+                flex-direction: column; /* Empilhar organogramas divididos */
+                gap: 20px;
+            }
+            .data-table-container {
+                overflow-x: auto; /* Manter rolagem horizontal para tabelas */
+            }
+            .data-table {
+                font-size: 0.8em;
+            }
+            .metrics-container {
+                grid-template-columns: 1fr; /* Uma coluna para métricas */
+            }
+            .highlight-box {
+                padding: 15px;
+            }
+            .highlight-box h3 {
+                font-size: 1.3em;
+            }
+            .communication-content {
+                grid-template-columns: 1fr;
+            }
+
+            /* CORREÇÃO 4: Garantir que imagens apareçam em Novos Grandes Projetos */
+            .image-gallery-uniform {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-item {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                min-height: 200px;
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
         }
+
+       /* Media query para desativar colunas em telas menores */
+        @media (max-width: 768px) {
+            .article-columns-2 {
+                column-count: 1; /* Volta para uma única coluna */
+                column-rule: none;
+            }
+            .article-columns-2 h3 {
+                break-before: auto; /* Comportamento padrão */
+            }
+        } 
 
         @media (max-width: 480px) {
             .newspaper-container {
@@ -917,95 +1020,193 @@
             .market-news-grid {
                 grid-template-columns: 1fr;
             }
+            /* CORREÇÃO 3: Market Share - Uma coluna em telas muito pequenas */
+            .market-news-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .newspaper-title {
+                font-size: 1.8em;
+            }
+            .headline h1 {
+                font-size: 1.5em;
+            }
+            .language-selector {
+                position: static; /* Mover seletor de idioma para fluxo normal */
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .language-btn {
+                margin: 5px;
+            }
+            
+            /* CORREÇÃO 1: Logo XCMG - Ajuste para telas muito pequenas */
+            .xcmg-logo {
+                width: 100px !important;
+                top: 5px;
+                left: 5px;
+            }
+            
+            .logo-section {
+                margin-top: 50px;
+                margin-bottom: 10px;
+            }
+            .newspaper-header {
+                padding: 20px 0;
+            }
+            .publication-date {
+                max-width: 250px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            .section-header, .subsection-header, .stakeholder-section-title, .travel-planning-header, .communication-header {
+                font-size: 1.2em;
+                padding: 8px 10px;
+            }
+            .article-title {
+                font-size: 1.1em;
+            }
+            .article-subtitle {
+                font-size: 0.8em;
+            }
+            .article-date {
+                font-size: 0.7em;
+            }
+            .metric-value {
+                font-size: 1.8em;
+            }
+            .metric-label {
+                font-size: 0.7em;
+            }
+            .contact-item h4 {
+                font-size: 1em;
+            }
+            .contact-item p {
+                font-size: 0.8em;
+            }
+            .form-group label, .form-group input, .form-group select, .form-group textarea {
+                font-size: 0.85em;
+            }
+            .submit-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
         }
+   /* ==========================================================================
+   CSS DE IMPRESSÃO - VERSÃO FINAL COM CORREÇÃO DE KICKOFF
+   ========================================================================== */
+@media print {
 
-        /* Efeitos de Impressão */
-        @media print {
+    /* --- 1. CONFIGURAÇÃO GERAL E FIDELIDADE DE COR --- */
     @page {
-        size: A4 portrait;     /* 210 x 297 mm */
-        margin: 20mm;          /* margem segura para gráfica */
+        size: A4 portrait;
+        margin: 1.8cm;
     }
 
     html, body {
-        width: 210mm;
-        height: 297mm;
-        background: white;
-        font-size: 10pt;       /* bom para leitura em papel */
+        font-family: 'Lora', serif;
+        font-size: 9.5pt;
+        line-height: 1.35;
+        background: #fff !important;
+        color: #2c3e50 !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    .newspaper {
-        width: 100%;
-        box-shadow: none;
-    }
-
-    .newspaper-header {
-        padding: 10mm 0;
-        border-bottom-width: 3px;
-    }
-
-    .newspaper-container {
-        max-width: 100%;
-        padding: 0 10mm;
-    }
-
-    /* Títulos não podem ficar sozinhos */
-    h1, h2, h3, h4 {
-        page-break-after: avoid;
-        page-break-inside: avoid;
-    }
-
-    /* Colunas equilibradas */
-    .part-columns {
-        display: block !important;
-        column-count: 2;
-        column-gap: 8mm;
-        column-fill: balance;
-    }
-
-    /* Evita cortes estranhos */
-    .article, .headline, .highlight-box, 
-    .events-list, .stakeholder-section, 
-    .communication-channel {
-        break-inside: avoid;
-        page-break-inside: avoid;
-        page-break-before: auto;
-        page-break-after: auto;
-    }
-
-    /* Imagens nunca divididas */
-    img, .article-image, .market-share-image, 
-    .homologation-image-machine, .homologation-image-comp {
-        max-width: 100% !important;
-        height: auto;
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-
-    /* Ocultar elementos web-only */
-    .language-selector, 
-    .newspaper-footer, 
-    .submit-btn, 
-    .contact-form {
+    /* --- 2. OCULTAR ELEMENTOS DESNECESSÁRIOS --- */
+    .language-selector, .newspaper-footer, .accordion-icon, .xcmg-logo,
+    .publication-date, br, .communication-channel {
         display: none !important;
     }
 
-    /* Forçar abertura de detalhes na impressão */
-    .stakeholder-accordion[open] .stakeholder-accordion-content {
+    /* --- 3. RESET DE LAYOUT E CONTROLE DE ESPAÇAMENTO --- */
+    .newspaper-content { gap: 20px !important; }
+    .headline { margin-bottom: 20px !important; }
+
+    /* Desativa layouts complexos que causam problemas */
+    .part-columns, .travel-history, .org-chart-split, .logo-section {
         display: block !important;
     }
-
-    /* Layout da comunicação em coluna única */
-    .communication-content {
-        grid-template-columns: 1fr !important;
+    /* CORREÇÃO KICKOFF (Ponto 4): Reseta o container das imagens */
+    .image-container-flex {
+        display: block !important;
+        height: auto !important;
+    }
+    .part-columns > *, .flex-image {
+        width: 100% !important; max-width: 100% !important; height: auto !important;
     }
 
-    .contact-info {
-        border: none;
-        padding: 0;
+    /* --- 4. SOLUÇÃO DEFINITIVA PARA STAKEHOLDERS --- */
+    .stakeholder-section {
+        page-break-before: always;
+        border: none !important; padding: 0 !important;
     }
+    details.stakeholder-accordion {
+        page-break-inside: avoid !important;
+        margin-bottom: 20px !important;
+    }
+    details.stakeholder-accordion > .stakeholder-accordion-content {
+        display: block !important;
+        padding-top: 15px !important;
+    }
+    details.stakeholder-accordion > summary.stakeholder-accordion-title {
+        display: block !important; list-style: none !important;
+    }
+    details.stakeholder-accordion > summary.stakeholder-accordion-title::-webkit-details-marker {
+        display: none !important;
+    }
+
+    /* --- 5. CONTROLE DE FLUXO E QUEBRAS DE PÁGINA --- */
+    .section-header, .subsection-header, .headline, .article-title, .article-subtitle, h1, h2, h3, h4 {
+        page-break-after: avoid !important;
+    }
+    .highlight-box, .article, figure, table, .chart-container, .org-container {
+        page-break-inside: avoid !important;
+    }
+
+    /* --- 6. CORREÇÕES DE LAYOUT ESPECÍFICAS --- */
+    /* Ponto 4: Garante que o texto não tenha colunas para evitar sobreposição */
+    .article-content2 {
+        column-count: 1 !important;
+    }
+    /* Layout de colunas para as novidades do mercado */
+    .market-news-grid {
+        display: block !important;
+        column-count: 3;
+        column-gap: 6mm;
+        column-fill: balance;
+    }
+    .market-news-grid > .article {
+        break-inside: avoid;
+        padding-bottom: 10px;
+    }
+    
+    /* CORREÇÃO BOXES (Ponto adicional): Deixa os boxes de métricas mais compactos */
+    .metrics-container {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+        gap: 8px !important;
+        margin: 15px 0 !important;
+    }
+    .metrics-box {
+        padding: 8px !important;
+        margin: 0 !important;
+    }
+    .metric-value { font-size: 16pt !important; }
+    .metric-label { font-size: 8pt !important; }
+
+    /* --- 7. AJUSTES FINAIS DE ESTILO PARA IMPRESSÃO --- */
+    * { box-shadow: none !important; border-radius: 0 !important; }
+    p, .article-content { margin-bottom: 12px !important; }
+    .article, .highlight-box, .chart-container, .org-container { margin-bottom: 20px !important; }
+    .section-header, .subsection-header { padding: 8px 12px !important; font-size: 16pt !important; margin-bottom: 15px !important; }
+    .article-title { font-size: 14pt !important; }
+    img { max-width: 100% !important; height: auto !important; display: block; margin: 10px auto; }
+    .data-table-container, .org-container, .org-container2 { overflow: visible !important; }
 }
+
     </style>
 </head>
 <body>
@@ -1040,7 +1241,7 @@
                 <!-- Manchete Principal -->
                 <div class="headline">
                     <h1>XCMG BRASIL ACELERA EXPANSÃO COM NOVA ESTRUTURA ORGANIZACIONAL</h1>
-                    <p class="lead">Engenharia de Aplicação implementa sistema integrado de gestão para atender crescimento nas operações de mineração</p>
+                    <p class="lead">Engenharia de Aplicação implementa sistema integrado de gestão para atender ao crescimento nas operações de mineração</p>
                 </div>
 
                 <!-- Accordion: Mapeamento de Stakeholders -->
@@ -1120,6 +1321,8 @@
                                         <tr><td>Teofilândia</td><td>Luan</td><td>Patrocínio</td><td>Felipe Martins</td></tr>
                                         <tr><td>Harsco</td><td>Matheus</td><td>Britacal - Unaí</td><td>Hebert</td></tr>
                                         <tr><td>CMOC</td><td>Hebert</td><td>Britacal - Coromandel</td><td>Felipe Martins</td></tr>
+                                        <tr><td>Vale - Norte </td><td>Johnny e Priscilla</td><td>Carajás</td><td>Gabriel e Paulo</td></tr>
+                                        <tr><td>S11D</td><td>Robert e Monica</td><td>Serra Leste</td><td>Christoph e Jeronimo</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -1247,7 +1450,7 @@
                     <div class="article-subtitle">MONITORAMENTO DIÁRIO</div>
                     <h2 class="article-title">Disponibilidade Física: A XCMG ao Lado dos Clientes, Dia a Dia</h2>
                     <p class="article-content">
-                        A XCMG Brasil mantém um compromisso inabalável com a performance de seus equipamentos em campo, realizando um acompanhamento diário e detalhado da Disponibilidade Física (DF) de suas máquinas nas operações dos clientes. Este monitoramento proativo permite à equipe de Engenharia de Aplicação identificar rapidamente tendências, atuar preventivamente e otimizar a operação, garantindo que os equipamentos XCMG entreguem o máximo de produtividade.
+                        A XCMG Brasil mantém um compromisso inabalável com a performance de seus equipamentos em campo, realizando um acompanhamento diário e detalhado da Disponibilidade Física (DF) de suas máquinas nas operações dos clientes. Este monitoramento permite à equipe de Engenharia de Aplicação identificar rapidamente tendências, atuar preventivamente e otimizar a operação, garantindo que os equipamentos XCMG entreguem o máximo de produtividade.
                     </p>
                     <h4 class="article-title">Vale - Evolução Mensal</h4>
                     <div class="chart-container">
@@ -1289,10 +1492,11 @@
 
                 <div class="article">
                     <div class="article-subtitle">TECNOLOGIA AVANÇADA</div>
-                    <h2 class="article-title">Telemetria: conectando máquinas, prevenindo falhas e elevando a eficiência</h2>
+                    <h2 class="article-title">Telemetria: Conectando Máquinas, Prevenindo Falhas e Elevando a Eficiência</h2>
                     
                     <p class="article-content">
-                        <strong>O que a telemetria pode revelar sobre o desempenho real de uma máquina em operação?</strong> A XCMG, em parceria com a Onboard, vem avançando na implementação de soluções de telemetria via satélite em equipamentos que operam em minas e regiões de difícil acesso. Atualmente, já são centenas de máquinas monitoradas em tempo real, com transmissão contínua de dados operacionais e de geolocalização para a plataforma de acompanhamento.
+                        <strong>O que a telemetria pode revelar sobre o desempenho real de uma máquina em operação?</strong> <br>
+                        A XCMG, em parceria com a Onboard, vem avançando na implementação de soluções de telemetria via satélite em equipamentos que operam em minas e regiões de difícil acesso. Atualmente, já são centenas de máquinas monitoradas em tempo real, com transmissão contínua de dados operacionais e de geolocalização para a plataforma de acompanhamento.
                     </p>
 
                     <img src="images/telemetria1.png" alt="Telemetria" class="market-share-image">
@@ -1333,11 +1537,11 @@
                         <div class="article-subtitle">GESTÃO DE FALHAS E OTIMIZAÇÃO</div>
                         <h2 class="article-title">XCMG e VALE: O Sistema FMS que Redefine a Manutenção de Equipamentoss</h2>
                         <p class="article-content">
-                            A equipe de Engenharia de Aplicações da XCMG desenvolveu e implementou um novo sistema inovador, denominado <strong>FMS</strong>, para o registro e análise das paradas de equipamentos.
+                            A equipe de Engenharia de Aplicações da XCMG desenvolveu e implementou um novo sistema inovador, denominado <strong>FMS (Fleet Management System)</strong>, para o registro e análise das paradas de equipamentos.
                         </p>
                         <img src="images/FMS1.png" alt="FMS Tela" class="article-image">
                         <p class="article-content">
-                            O FMS foi criado para otimizar a coleta de informações sobre as paradas em manutenção, permitindo a geração de um <strong>perfil de perdas mais robusto e detalhado</strong>. Além disso, o sistema integra eficientemente os dados do <strong>Logbook</strong>, consolidando as informações para uma análise mais completa.
+                            O FMS foi criado para otimizar a coleta de informações sobre as paradas em manutenção, permitindo gerar de um <strong>perfil de perdas mais robusto e detalhado</strong>. Além disso, o sistema integra eficientemente os dados do <strong>Logbook</strong>, consolidando as informações para uma análise mais completa.
                         </p>
                         <img src="images/FMS2.png" alt="FMS2 Tela" class="article-image">
                         <p class="article-content">
@@ -1469,52 +1673,59 @@
 <!-- Início testes 110 -->
 <div class="article">
     <div class="article-subtitle">REALIDADE EM CAMPO</div>
-    <h2 class="article-title">XCMG Acompanha de Perto Desempenho dos Caminhões XG110 na Vale</h2>
+    <h2 class="article-title">XCMG Acompanha de Perto Desempenho dos Caminhões XG110 na Vale - Setembro</h2>
     
     <p class="article-content">
-        A XCMG está empenhada em avaliar a performance de seus caminhões fora de estrada em condições reais e exigentes de mineração. Os testes recentes em duas minas distintas, com o modelo XG110, revelam cenários operacionais contrastantes que demandam análise aprofundada e soluções específicas para cada ambiente de trabalho.
+        A XCMG continua a aprofundar a avaliação de seus caminhões XG110 em ambientes de mineração. O relatório de <strong>setembro de 2025</strong> traz um panorama detalhado da performance de duas unidades distintas: o CA5602 na Mina de Capão Xavier (CPX) e o CA5601 na Mina Fábrica. A análise dos Key Performance Indicators (KPIs) revela a complexidade e os desafios inerentes à operação, ao mesmo tempo em que destaca a busca contínua da XCMG por otimização e soluções adaptadas às realidades de cada cliente.
     </p>
 
-    <!-- Imagens maiores -->
-    <div class="image-container-flex">
-        <img src="images/XG110.jpeg" alt="Caminhão XG110 na mina" class="flex-image">
-        <img src="images/DF110.png" alt="DF110" class="flex-image">
+   <!-- Bloco 2: Análise da Mina Fábrica -->
+    <div style="margin-top: 40px;">
+        <h3 class="article-title" style="border-left-color: #ef4444; font-size: 1.2em;">Desempenho do Caminhão CA5601 na Mina Fábrica</h3>
+
+        <!-- Imagem do Dashboard Fábrica (Largura Total) -->
+        <div class="chart-container" style="background-color: #fff; padding: 0; margin-top: 15px;">
+            <img src="images/XG110Fabrica.png" alt="Análise de Performance Operacional - Caminhão CA5601 na Mina Fábrica" class="article-image" style="border: none; border-radius: 0;">
+        </div>
+
+        <!-- Texto de Análise da Fábrica -->
+        <p class="article-content" style="margin-top: 15px;">
+            Na Mina Fábrica, o caminhão CA5601 registrou um Desempenho Físico (DF) de apenas 36.9% e uma Utilização Física (UF) de 38.9% em setembro. Com uma produtividade de 162.8 t/h, e um consumo médio de combustível de 12,53 L/h, o equipamento enfrentou sérios desafios. Os principais pontos de atenção incluem a baixa performance diretamente ligada a falhas no sistema de balança, problemas de manutenção e monitoramento de pneus. Além disso, a baixa utilização foi agravada pela falta de operador, ausência de equipamento de carga e condições climáticas desfavoráveis, impactando significativamente a capacidade operacional do caminhão.
+        </p>
+        <p class="article-content" style="margin-top: 15px;">
+            Diante deste cenário, a XCMG implementou uma Gestão de Mudança estratégica para o ativo, visando sua operação na mina de Viga, um ambiente potencialmente mais adequado. A previsão de aprovação de um aditivo de prazo de contrato até 31/12/25 e a transferência física do ativo para 07/10 demonstram a proatividade da empresa em buscar alternativas. A operação futura do CA5601 está condicionada à conclusão das ações estabelecidas nesta Gestão de Mudança, sublinhando o compromisso da XCMG em reverter o quadro de baixa disponibilidade e otimizar o desempenho do equipamento.
+        </p>
+   
+    <!-- Bloco 1: Análise da Mina de Capão Xavier (CPX) -->
+    <div style="margin-top: 30px;">
+        <h3 class="article-title" style="border-left-color: #3b82f6; font-size: 1.2em;">Desempenho do Caminhão CA5602 na Mina de Capão Xavier (CPX)</h3>
+        
+        <!-- Imagem do Dashboard CPX (Largura Total) -->
+        <div class="chart-container" style="background-color: #fff; padding: 0; margin-top: 15px;">
+            <img src="images/XG110CPX.png" alt="Análise de Performance Operacional - Caminhão CA5602 na Mina Capão Xavier" class="article-image" style="border: none; border-radius: 0;">
+        </div>
+
+        <!-- Texto de Análise do CPX -->
+        <p class="article-content" style="margin-top: 15px;">
+            Em contraste, o caminhão CA5602, operando na Mina de Capão Xavier, apresentou um cenário mais positivo, com uma notável Disponibilidade Física (DF) de 94.3% e Utilização Física (UF) de 67.4%. Com produtividade de 110.4 t/h, e um consumo médio de combustível de 16,34 L/h, o equipamento alcançou um Rendimento Operacional (RO) de 64%, um ponto positivo que reflete sua eficiência e robustez em condições de teste. Este resultado demonstra a capacidade do XG110 de entregar alta performance quando as condições operacionais são mais favoráveis.
+        </p>
+        <p class="article-content" style="margin-top: 15px;">
+            No entanto, o ciclo de testes do CA5602 na Mina de Capão Xavier chegou ao seu término. O contrato foi encerrado em 03/10 às 23h, com a paralisação operacional do ativo às 18h do mesmo dia. A desmobilização do equipamento está agendada para 09/10, marcando o encerramento desta fase de avaliação. A XCMG agora se prepara para a emissão do relatório final do teste, que consolidará todos os dados e aprendizados obtidos, fornecendo insights valiosos para futuras otimizações e desenvolvimentos.
+        </p>
     </div>
 
-    <!-- Texto em duas colunas -->
-    <div class="article-content2">
-        <div style="break-after: column;">
-            <p class="article-content"><strong>Caminhão XG110 - 5602 - na Mina CPX (Capão Xavier)</strong></p>
-            <p class="article-content">
-                No período de 17 dias analisado, o caminhão XG110 na Mina CPX apresentou desempenho estável. O equipamento registrou uma média de 13.92 horas trabalhadas por dia, com consumo médio de 16.98 L/h, dentro do esperado para as condições de operação.
-            </p>
-             <p class="article-content">
-                Os gráficos de disponibilidade física indicaram resultados consistentes, em sua maioria entre 90% e 100%. Apenas nos dias 3 (63%) e 13 (59%) houve reduções mais relevantes. A utilização física variou entre 48% e 87%, com maiores índices nos dias 5, 6 e 7, quando superou 80%.
-            </p>
-            <p class="article-content">
-                As principais ocorrências registradas incluem: em 03/09, uma manutenção preventiva identificou dano no suporte superior e quebra da mola da balança, resultando na liberação do caminhão para operação com a balança funcionando de forma comprometida. Em 04/09, o equipamento parou novamente devido a uma nova falha, necessitando de suporte externo da Pesebem. A situação se repetiu em 10/09 com uma falha na câmera de monitoramento e, em 12/09, com a necessidade de troca do cabo de carregamento do tablet da balança. Foram identificados registros de pesagem inconsistentes, com valores fora do padrão, indicando problemas persistentes na balança que demandam investigação aprofundada.
-            </p>
-        </div>
-        
-            <p class="article-content"><strong>Caminhão XG110 - 5601 - na Mina Fábrica</strong></p>
-            <p class="article-content">
-                O caminhão XG110 em operação na Mina Fábrica apresentou menor tempo de trabalho, com média de 2.96 horas por dia e consumo médio de 11.11 L/h. A utilização foi limitada, refletindo condições mais restritivas do ambiente operacional.
-            </p>
-            <p class="article-content">
-                A disponibilidade física esteve frequentemente abaixo de 50%, com variações entre 34% e 63%. Entre os dias 7 e 12 houve uma melhora pontual, alcançando índices mais altos, mas nos demais dias os resultados permaneceram inferiores. A utilização física acompanhou esta tendência, ficando entre 8% e 52%.
-            </p>
-            <p class="article-content">
-                As ocorrências relevantes incluem: Em 03/09, um pneu foi substituído devido a uma falha no monitoramento. Em 10/09, a placa controladora da balança queimou, exigindo a substituição da CPU e a soldagem da mola, com o apoio da Pesebem. No entanto, as falhas no sensor da báscula persistiram, sendo relatadas em 17/09 e novamente em 20/09, culminando na substituição do inclinômetro, suporte do sensor e cabos da balança. Apesar das múltiplas intervenções, a persistência dos problemas na balança sugere uma complexidade maior na identificação e resolução das causas-raiz, impactando diretamente a disponibilidade e a precisão do equipamento.
-            </p>
+    
+    </div>
 
-            <div class="article-content-final">
-            <p class="article-content">
-                A análise dos resultados demonstra que as condições operacionais específicas de cada mina influenciam diretamente a disponibilidade e a utilização dos equipamentos. O caminhão na Mina CPX manteve desempenho consistente, enquanto o equipamento na Mina Fábrica operou com menor eficiência devido a falhas recorrentes e ao ambiente mais desafiador. A recorrência de problemas no sistema de balança em ambos os locais reforça a importância de revisões técnicas direcionadas e do desenvolvimento de soluções adequadas às características de cada operação.
-            </p>
+    <!-- Conclusão Final da Matéria -->
+    <div class="highlight-box" style="margin-top: 30px;">
+        <h3 style="font-size: 1.2em;">Conclusão da Análise</h3>
+        <p class="article-content" style="margin-bottom: 0;">
+            Os resultados de setembro para os caminhões XG110 oferecem uma visão clara dos desafios e sucessos na operação de equipamentos pesados. Enquanto o CA5602 exemplifica a alta performance e disponibilidade que a XCMG busca, o CA5601 destaca a importância de uma análise crítica e de planos de ação adaptativos para superar obstáculos. A XCMG reitera seu compromisso em utilizar esses dados para aprimorar continuamente seus produtos e serviços, garantindo que seus equipamentos atendam às exigências rigorosas do setor de mineração com a máxima eficiência e confiabilidade.
+        </p>
     </div>
 </div>
-<!-- Fim testes 110 -->
-
+<!-- Fim da Matéria Especial -->
     
                         <div class="article">
                             <div class="article-subtitle">CRC</div>
@@ -1576,7 +1787,397 @@
                                Diversos projetos inovadores estão em andamento, prometendo elevar ainda mais o patamar tecnológico da XCMG. Para as Carregadeiras, o Joystick JS1-H Steer by Wire, da Danfoss, está em fase de desenvolvimento, visando aprimorar a precisão e o conforto na operação. A LW1200KN receberá um Contrapeso desenvolvido pela XCMG China, enquanto a XGA5905 terá um Sistema de Lubrificação Automática (XCMG) e Parametrização de Eixo Diferencial (Auxtech) em desenvolvimento, focando na durabilidade e na eficiência da transmissão. O XE2000 e o Caminhão 3 Eixos terão seus Sistemas de Balança, da GHT (BRPesa) e Pesebem, respectivamente, em fase de testes para garantir a precisão na pesagem. Complementando, o Assento Auxiliar XG90H (XCMG Brasil) e o Suporte de Feixe de Molas XGA5905 (California Brasil) estão sendo desenvolvidos para otimizar o conforto e a robustez.
                             </p>
                             
-                            <!-- Canal de Comunicação -->
+                           
+                           
+            </div>
+    </section>
+            <!-- PARTE 3: Eficiência Operacional -->
+            <section class="part">
+                <h2 class="section-header">EFICIÊNCIA OPERACIONAL</h2>
+                <div class="part-columns">
+                   
+                    <div class="article">
+                        <div class="article-subtitle">EFICIÊNCIA E PARCERIA EM FOCO</div>
+                        <h2 class="article-title">XCMG Aprofunda Suporte e Otimização Operacional com Visitas Estratégicas a Clientes</h2>
+                            <p class="article-content">
+                            XCMG, através de sua dedicada equipe de especialistas, intensificou sua presença em campo durante setembro de 2025, realizando visitas técnicas estratégicas a clientes. O objetivo principal foi aprofundar o entendimento das operações, identificar oportunidades de melhoria na eficiência e reforçar o compromisso da empresa em oferecer suporte técnico de ponta e soluções personalizadas, garantindo a máxima performance dos equipamentos.
+                        </p>
+                        <p class="article-content">
+                            <strong>Visita à R&D Ipiaú (BA) – 01 a 05 de Setembro de 2025:</strong> O especialista Antônio Ribeiro liderou a visita à R&D Ipiaú, focada em caminhões fora de estrada XG110 e XG105. A equipe investigou barulhos anormais em diferenciais e levantou informações operacionais. A conclusão apontou para a ausência de falhas graves nos diferenciais, mas ressaltou a necessidade de atenção a pontos críticos em manutenção, lubrificação e infraestrutura de vias. O plano de ação inclui acompanhamento mais próximo das manutenções, coleta periódica de óleo e monitoramento de folgas, visando maior confiabilidade da frota e redução de paradas.
+                        </p>
+                        <p class="article-content">
+                            <strong>Projeto Borborema (G3 Mineração/Aura, Currais Novos-RN) – 09 a 12 de Setembro de 2025:</strong> Antônio Ribeiro e Eduardo Teles realizaram a visita técnica ao Projeto Borborema. A avaliação do desempenho de caminhões XGA110, escavadeiras XE1350 e XE800DK, e pá carregadeira XC958, demonstrou alta disponibilidade da frota XCMG (92,6% geral), com o XGA110 atingindo impressionantes 95,5%. A XCMG se destacou frente a concorrentes como SANY, John Deere e Komatsu, apresentando menor consumo de combustível, manutenção simplificada e suporte técnico superior. Contudo, foram identificados desafios como atrasos no fornecimento de peças e falhas operacionais relacionadas à sobrecarga e uso inadequado de freios. Recomendações incluem padronização da frota e implementação de telemetria para otimização.
+                        </p>
+                        <p class="article-content">
+                            <strong>Terra Minas (Barão de Cocais-MG) – 22 a 26 de Setembro de 2025:</strong> Eduardo Teles conduziu a avaliação na Terra Minas, onde escavadeiras XE490DK, XE370BR, carregadeira XC958 e britadores XPE0912 e XFY1561, com cerca de 400 horas de uso, revelaram excelente desempenho em mina de ferro a céu aberto. A produtividade atual de 315 t/h tem potencial para 350 t/h com ajustes no carregamento. O feedback dos operadores destacou conforto, estabilidade e potência dos equipamentos XCMG, que superam a concorrência. O cliente demonstrou forte interesse em padronizar a frota com XCMG, reforçando a confiabilidade e o suporte técnico próximo como diferenciais da marca.
+                        </p>
+                    </div>
+                    
+                    <div class="article">
+    <div class="article-subtitle">CONEXÃO E COMPROMETIMENTO</div>
+    <h2 class="article-title">XCMG Intensificou Presença no Campo com Cronograma Estratégico de Visitas</h2>
+    <img src="images/cronogramavisita.png" alt="cronogramavisita" class="article-image">
+    <p class="article-content">
+        <strong>Como a presença constante em campo fortalece a confiança e a performance nas operações de mineração?</strong> A XCMG Brasil reforçou seu compromisso com a excelência operacional e a proximidade com seus clientes por meio de um cronograma intensificado de visitas e treinamentos. A agenda de setembro evidenciou a dedicação da equipe de Engenharia de Aplicação em estar lado a lado com as operações, garantindo suporte técnico de ponta e fortalecendo parcerias estratégicas em todo o país.
+    </p>
+    <p class="article-content">
+        Entre os destaques, Antônio Ribeiro e Bruno Custódio se dedicaram a atividades cruciais. Antônio Ribeiro, de 22 a 24 de setembro, concentrou-se no desenvolvimento de relatórios internos na XCMG Indústria em Pouso Alegre-MG e, de 29 de setembro a 03 de outubro, acompanhou operacionalmente a entrega de um equipamento XC9150 na Vale Serra Leste, em Canaã/Carajás-PA. Já Bruno Custódio, no mesmo período de 22 a 24 de setembro, prestou suporte interno na XCMG Indústria, também em Pouso Alegre-MG.
+    </p>
+    <p class="article-content">
+        O cronograma de visitas também contou com a atuação de Eduardo Teles, que de 22 a 24 de setembro realizou uma visita à Terra Minas, em Barão de Cocais-MG, para a elaboração de um relatório de Field Follow sobre britadores. Paralelamente, João Luiz esteve em Canaã/Carajás-PA, de 22 a 24 de setembro, conduzindo um treinamento de mobilização na Vale S11D, assegurando que as equipes estivessem preparadas para as demandas operacionais.
+    </p>
+    <p class="article-content">
+        Essa presença estratégica em campo não apenas otimizou a performance dos equipamentos, mas também fortaleceu a confiança e a parceria com os clientes. A XCMG demonstrou, com esse cronograma, seu empenho em oferecer soluções personalizadas e um suporte técnico de excelência, consolidando sua posição como um parceiro essencial para o sucesso das operações de mineração e construção no Brasil.
+    </p>
+</div>
+
+                    <div class="article">
+                        <div class="article-subtitle">ESTRATÉGIA DE SUCESSO</div>
+                        <h2 class="article-title">Field Follow: Transformando Dados de Campo em Soluções Estratégicas para a XCMG</h2>
+                        <img src="images/5600fieldfollow.jpeg" alt="5600FIELDFOLLOW" class="article-image">
+                        <p class="article-content">
+                            <strong>De que forma o Field Follow da XCMG redefine a relação entre máquina, operador e mina?</strong> Longe dos escritórios, engenheiros e especialistas da empresa atuam diretamente no campo, garantindo que máquinas como a gigante XE5600 operem com máxima performance mesmo nos ambientes mais desafiadores do país, como a emblemática mina de Carajás.
+                        </p>
+                        <p class="article-content">
+                            O Field Follow não é apenas um acompanhamento técnico; é uma imersão profunda na realidade operacional. Essa prática permite à XCMG identificar necessidades em tempo real, otimizar rotinas e capacitar equipes, resultando em menos paradas, custos de manutenção reduzidos e uma disponibilidade recorde dos equipamentos. É a garantia de que cada máquina entrega seu potencial máximo, traduzindo-se em maior produtividade e segurança para o cliente.
+                        </p>
+                        <p class="article-content">
+                           Um marco dessa abordagem foi o rigoroso Field Follow da escavadeira hidráulica XE5600 em Carajás. Submetida a condições extremas de carregamento e escavação, a máquina teve seu desempenho analisado em detalhes: da eficiência de ciclo ao consumo de combustível, da adaptação ao terreno amazônico ao conforto do operador. Os resultados comprovaram que a XE5600 está preparada para superar os grandes desafios da mineração, entregando robustez, confiabilidade e alto desempenho em um dos ambientes mais exigentes do mundo.
+                        </p>
+                        <p class="article-content">
+                            Para a XCMG, o Field Follow é a expressão de um compromisso inabalável: estar ao lado do cliente, transformando cada desafio em campo em melhorias contínuas. Essa proximidade estratégica, aliada à tecnologia de ponta, solidifica a posição da XCMG como parceira essencial para operações que buscam novos patamares de eficiência, segurança e inovação na mineração brasileira.
+                        </p>
+        </div>
+                </div>
+            </section>
+
+            <!-- PARTE 4: Inteligência de Mercado -->
+<section class="part">
+    <h2 class="section-header">INTELIGÊNCIA DE MERCADO</h2>
+
+     <!-- Novidades do Mercado - Layout 4 colunas com Saiba Mais -->
+        <div class="subsection-header">Novidades do Mercado - Mineração </div>
+
+            <div class="market-news-grid">
+<div class="article">
+    <div class="article-subtitle">RESULTADOS FINANCEIROS</div>
+    <h2 class="article-title">Zoomlion divulga fortes resultados no primeiro semestre de 2025, impulsionados pelo crescimento global e inovação tecnológica</h2>
+    <p class="article-date">Publicado em: 06 de Setembro de 2025</p>
+    <p class="article-content">Os negócios internacionais da Zoomlion têm crescido fortemente, com a receita do primeiro semestre de 2025 atingindo 13,815 bilhões de yuans, um aumento de 15% em relação ao ano anterior e respondendo por 55,6% da receita total.</p>
+    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/zoomlion-divulga-fortes-resultados-no-primeiro-semestre-de-2025-impulsionados-pelo-crescimento-global-e-inovacao-tecnologica-302548215.html" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">CONCORRENTES</div>
+    <h2 class="article-title">Volvo renova série de escavadeiras</h2>
+    <p class="article-date">Publicado em: 01 de Setembro de 2025</p>
+    <p class="article-content">A Volvo CE introduziu no país sua nova série de escavadeiras, em 7 modelos: EC210, EC220, EC230, EC260, EC360, EC400 e EC500, para diversos setores, da mineração à infraestrutura pesada. O principal destaque é o salto na eficiência de combustível.</p>
+    <a href="https://revistamt.com.br/Noticias/Exibir/volvo-renova-serie-de-escavadeiras" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">EXPANSÃO</div>
+    <h2 class="article-title">Com mineração em expansão, Grupo Inova assume distribuição da Epiroc em cinco estados</h2>
+    <p class="article-date">Publicado em: 02 de Setembro de 2025</p>
+    <p class="article-content">O Grupo Inova tornou-se o distribuidor oficial da Epiroc em 5 estados: Minas Gerais, São Paulo, Rio de Janeiro, Espírito Santo e Bahia, regiões estratégicas para a atividade mineral do país. A previsão de investimentos em mineração entre 2025 e 2029 é de US$ 68,4 bilhões em novos projetos, 6,6% a mais do que o anterior.</p>
+    <a href="https://eaemaq.com.br/noticias-do-mercado/com-mineracao-em-expansao-grupo-inova-assume-distribuicao-da-epiroc-em-cinco-estados/" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">RECORDE</div>
+    <h2 class="article-title">Quebra de recorde: maior pedido de exportação da China para equipamentos de mineração sustentável até o momento</h2>
+    <p class="article-date">Publicado em: 29 de Setembro de 2025</p>
+    <p class="article-content">A XCMG assina acordo estratégico e entregará de 150 a 200 unidades de caminhões basculantes elétricos a bateria de 240 t para a Fortescue, uma das maiores produtoras de minério de ferro do mundo, marcando o maior pedido de exportação da China para máquinas de mineração sustentável.</p>
+    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/quebra-de-recorde-maior-pedido-de-exportacao-da-china-para-equipamentos-de-mineracao-sustentavel-ate-o-momento-302569758.html" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">UNDERGROUND</div>
+    <h2 class="article-title">Mineração subterrânea é estratégica para o futuro do setor no Brasil</h2>
+    <p class="article-date">Publicado em: 24 de Setembro de 2025</p>
+    <p class="article-content">Nas últimas três décadas, os avanços em automação, controle remoto e ventilação reduziram drasticamente os riscos aos trabalhadores. A escassez de novas descobertas a céu aberto e a pressão por práticas sustentáveis consolidaram a mineração subterrânea como alternativa estratégica.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/meteoric-afirma-que-segue-confiante-sobre-o-projeto-caldeira" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">INVESTIMENTOS</div>
+    <h2 class="article-title">Crescimento de projetos alavancam investimentos no segmento</h2>
+    <p class="article-date">Publicado em: 17 de Setembro de 2025</p>
+    <p class="article-content">O faturamento do setor de minerais críticos atingiu R$ 21,6 bilhões no primeiro semestre de 2025 (41,6% acima do mesmo período em 2024), impulsionando investimentos de US$ 68,4 bilhões até 2029, com foco em terras raras e desafios como desenvolvimento tecnológico, licenciamento e sustentabilidade.</p>
+    <a href="https://www.noticiasdemineracao.com/metais-preciosos/news-articles/4519325/hochschild-decide-construcao-monte-carmo-em-2026" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">LICENCIAMENTO</div>
+    <h2 class="article-title">Vale recebe licença de expansão do S11D em projeto de US$2,8 bilhões</h2>
+    <p class="article-date">Publicado em: 11 de Setembro de 2025</p>
+    <p class="article-content">A Vale anunciou que recebeu do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (Ibama) a licença de operação para as atividades ligadas ao Projeto Serra Sul +20 Mtpa, no Sistema Norte, no Pará. O projeto tem início do comissionamento previsto para o segundo semestre de 2026.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/vale-recebe-licenca-de-expansao-do-s11d-em-projeto-de-us-28-bilhoes" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">RESULTADOS</div>
+    <h2 class="article-title">Subsidiária da Atlas Lithium tem bons resultados em projetos em GO e MG</h2>
+    <p class="article-date">Publicado em: 22 de Setembro de 2025</p>
+    <p class="article-content">A Atlas Lithium Corporation informa que a subsidiária Atlas Critical Minerals Corporation (ACM) reportou excelentes resultados com sua estratégia diversificada de portfólio de terras raras, estabelecendo o portfólio de projetos de terras raras mais abrangente do Brasil.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/subsidiaria-da-atlas-lithium-tem-bons-resultados-em-projetos-em-go-e-mg" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">CRESCIMENTO REGIONAL</div>
+    <h2 class="article-title">Mineração cresce mais de 400% no Piauí</h2>
+    <p class="article-date">Publicado em: 10 de Setembro de 2025</p>
+    <p class="article-content">O setor teve aumento de mais de 4000% na produção do minério de ferro entre 2023 e 2024. Atualmente, o Piauí possui uma reserva estimada em mais de 1 bilhão de toneladas de minério de ferro, com produção anual de 1 milhão, o que coloca o estado como 6º maior exportador de minério de ferro do Brasil.</p>
+    <a href="https://revistamineracao.com.br/2025/09/10/mineracao-cresce-mais-de-400-no-piaui/" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">MINA INTELIGENTE</div>
+    <h2 class="article-title">Huawei e Vale estudam mina inteligente</h2>
+    <p class="article-date">Publicado em: 16 de Setembro de 2025</p>
+    <p class="article-content">Huawei e Vale avaliam implantar um projeto de minas inteligentes, conectadas em redes 5G e até 5,5G, que prometem maior velocidade de dados e menor tempo de respostas, e que no Brasil ainda está em testes.</p>
+    <a href="https://www.noticiasdemineracao.com/ti-e-comunicacao/news-articles/4520118/huawei-vale-estudam-mina-inteligente?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2017%202025%20-%2014%3A52%3A14%20UTC&utm_content=Huawei%20e%20Vale%20estudam%20mina%20inteligente&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">IA</div>
+    <h2 class="article-title">A nova tecnologia da mineração com Inteligência Artificial</h2>
+    <p class="article-date">Publicado em: 30 de Setembro de 2025</p>
+    <p class="article-content">Máquinas já chegam com tecnologia de informação embarcada, transmitindo em tempo real indicadores de desempenho e segurança. Mineradoras reportam ganhos de dois dígitos em eficiência, redução significativa de custos e maior confiança em segurança e sustentabilidade.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/a-nova-economia-da-mineracao-com-inteligencia-artificial" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">DESAFIOS</div>
+    <h2 class="article-title">Geopolítica, tecnologias e transição energética são os desafios da mineração</h2>
+    <p class="article-date">Publicado em: 22 de Setembro de 2025</p>
+    <p class="article-content">A corrida global por minerais críticos, impulsionada pela transição energética e pela corrida pela supremacia tecnológica, está redefinindo as cadeias de suprimentos e, com isso, a dinâmica no setor, além das incertezas geopolíticas e necessidade de redefinir a produtividade e a excelência operacional.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/geopolitica-tecnologias-e-transicao-energetica-sao-os-desafios-da-mineracao" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">TERRAS RARAS</div>
+    <h2 class="article-title">As terras raras e a reorganização silenciosa das cadeias globais</h2>
+    <p class="article-date">Publicado em: 27 de Setembro de 2025</p>
+    <p class="article-content">A China concentra cerca de 60% da produção mundial de minério bruto e, mais decisivamente, 90% da capacidade global de refino químico. Enquanto EUA, Europa e Japão se movimentam, o Brasil permanece numa posição de potencial adormecido.</p>
+    <a href="https://eaemaq.com.br/noticias-do-mercado/as-terras-raras-e-a-reorganizacao-silenciosa-das-cadeias-globais/" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">TRANSIÇÃO ENERGÉTICA</div>
+    <h2 class="article-title">Pesquisa aponta 'colonialismo' com metais para transição energética</h2>
+    <p class="article-date">Publicado em: 29 de Setembro de 2025</p>
+    <p class="article-content">A transição energética está sendo capturada por empresas e países super ricos, reproduzindo padrões coloniais que aprofundam desigualdades e alimentam violações de direitos humanos. Sul Global detém 70% de reservas minerais, mas 46% do investimento está no Norte e 29% na China.</p>
+    <a href="https://www.noticiasdemineracao.com/brasil/news-articles/4520760/pesquisa-aponta-colonialismo-com-metais-para-transicao-energetica?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2029%202025%20-%2018%3A52%3A58%20UTC&utm_content=Pesquisa%20aponta%20%27colonialismo%27%20com%20metais%20para%20transi%C3%A7%C3%A3o%20energ%C3%A9tica&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">PARCERIAS</div>
+    <h2 class="article-title">Brasil e Canadá avançam parcerias em mineração e energia</h2>
+    <p class="article-date">Publicado em: 11 de Setembro de 2025</p>
+    <p class="article-content">O Memorando de Entendimento entre a pasta e o Natural Resources Canada pretende estabelecer um marco de cooperação bilateral em áreas estratégicas como mineração, energia, combustíveis renováveis e desenvolvimento social de recursos naturais.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/brasil-e-canada-avancam-parcerias-em-mineracao-e-energia" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">DESENVOLVIMENTO</div>
+    <h2 class="article-title">Rio Tinto perto do primeiro embarque em Simandou</h2>
+    <p class="article-date">Publicado em: 10 de Setembro de 2025</p>
+    <p class="article-content">Rio Tinto se aproxima do primeiro embarque de minério de ferro em Simandou, na Guiné, com foco no desenvolvimento local e na possibilidade de investimentos em refinarias e pelotização, visando agregar valor à produção.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/rio-tinto-perto-do-primeiro-embarque-em-simandou" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">EVENTO</div>
+    <h2 class="article-title">EXPOSIBRAM 2025 marca retorno a Salvador, com foco na nova fronteira mineral do Nordeste</h2>
+    <p class="article-date">Publicado em: 18 de Setembro de 2025</p>
+    <p class="article-content">O evento reforçará o protagonismo da Bahia e do Nordeste - onde há uma concentração relevante de minerais estratégicos como cobre, lítio, níquel, vanádio e terras raras -, destacando seu potencial crescente para o desenvolvimento de projetos voltados à mineração responsável e à transição energética.</p>
+    <a href="https://ibram.org.br/noticia/exposibram-2025-marca-retorno-a-salvador-com-foco-na-nova-fronteira-mineral-do-nordeste-2/" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<!-- Agenda -->
+<div class="article">
+    <div class="article-subtitle">AGENDA</div>
+    <h2 class="article-title">Eventos e Feiras</h2>
+    <div class="events-list">
+                      <div class="event-item">
+                <div class="event-date">05-09 Out</div>
+                <a class="event-link" href="https://entmme2025.com.br/" target="_blank">XXX ENTMME – Congresso de Metalurgia e Mineração</a>
+                <div class="event-location">Gramado, RS (minério e metalurgia)</div>
+            </div>
+            <div class="event-item">
+                <div class="event-date">15-17 Out</div>
+                <a class="event-link" href="https://www.construnordeste.com.br/" target="_blank">ConstruNordeste 2025</a>
+                <div class="event-location">Salvador, BA (construção e infraestrutura)</div>
+            </div>
+            <div class="event-item">
+                <div class="event-date">15-19 Out</div>
+                <a class="event-link" href="https://feriadelaconstruccion.com.uy/" target="_blank">Feria de la Construcción</a>
+                <div class="event-location">Montevidéu, Uruguai (construção)</div>
+            </div>
+            <div class="event-item">
+                <div class="event-date">21-23 Out</div>
+                <a class="event-link" href="https://fenasan.com.br/" target="_blank">FENASAN 2025</a>
+                <div class="event-location">São Paulo, SP (saneamento e meio ambiente)</div>
+            </div>
+            <div class="event-item">
+                <div class="event-date">27-30 Out</div>
+                <a class="event-link" href="https://exposibram2025.ibram.org.br/" target="_blank">EXPOSIBRAM 2025</a>
+                <div class="event-location">Salvador, BA (mineração)</div>
+            </div>
+            <div class="event-item">
+                <div class="event-date">29-31 Out</div>
+                <a class="event-link" href="https://www.argentinamining.com/en/index.php/argentina-mining-cuyo-2025-mendoza" target="_blank">Argentina Mining Cuyo 2025</a>
+                <div class="event-location">Mendoza, Argentina (mineração)</div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- Distribuição das Máquinas -->
+ <section class="part">
+<div class="article">
+    <div class="subsection-header">Distribuição de Máquinas</div>
+    <div class="article-subtitle">MAPEAMENTO ESTRATÉGICO</div>
+    <h2 class="article-title">Onde operam as máquinas da XCMG?</h2>
+    <p class="article-content">O mapa abaixo apresenta a cobertura dos equipamentos pela Engenharia de Aplicações, produzido pelo analista Vitor Silva. Dos 1.608 equipamentos se encontram principalmente no Sudeste, com mais de 1.000 maquinários, seguidos pelo Centro-Oeste, Nordeste, Norte e Sul, respectivamente, além de um equipamento em operação na Guiana.</p>
+    <p class="article-content">Os círculos maiores referem-se ao maior volume de equipamentos em operação na região, enquanto os menores representam um volume menor de maquinários em operação. As áreas em vermelho indicam regiões e máquinas sem cobertura, enquanto as áreas azuis indicam máquinas que estão sob cobertura de um analista responsável.</p>
+    <div class="chart-container">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiNmEzNjRjYzEtODdkMS00MDJlLTk1MDEtY2IwYzNmNjQ5NjBlIiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
+        <img src="images/mapa_distribuicao.png" alt="Mapa de Distribuição das Máquinas" >
+        </a>
+        <p class="metric-label">Fonte: Dashboard elaborado pelo departamento.</p>
+</div>
+</div>
+</section>
+<!-- MarketShare -->
+<section class="part">
+    <div class="subsection-header">Market Share</div>
+    <div class="article">
+        <div class="article-subtitle">ANÁLISE DE MERCADO</div>
+        <h2 class="article-title">Como está o Market Share de importações da XCMG no Brasil?</h2>
+
+        <div class="part-columns" style="grid-template-columns: 1fr 1fr; gap: 25px; align-items: flex-start;">
+            <!-- Coluna Esquerda: Texto e Imagens 1 e 2 -->
+            <div>
+                <p class="article-content">Ao comparar os resultados de 2024 com o desempenho registrado em 2025, a XCMG apresentou um crescimento relevante em termos de participação de mercado. Embora ainda modesto, o avanço de 0,5% no Market Share demonstra que a marca começa a ganhar maior representatividade nas importações brasileiras.</p>
+                <p class="article-content">Até julho de 2025, a empresa já contabilizava 58 equipamentos importados(reportados pela aduana), contra apenas 2 unidades em 2024, o que evidencia um salto significativo em volume. No mesmo período, a indústria como um todo atingiu 12.283 importações, reforçando o espaço ainda em expansão para a XCMG no setor.</p>
+                <p class="article-content">Dentro desse contexto, o mercado da construção se mantém como o principal motor de demanda, respondendo por 11.646 unidades em 2025, frente a 10.495 em 2024. Apesar da leve retração no segmento de florestal (381 em 2024 para 323 em 2025), o setor de mineração apresentou evolução, passando de 269 para 314 unidades, o que indica uma diversificação gradual da demanda.</p>
+                <p class="article-content">O movimento da XCMG, ainda que tímido em participação percentual, sinaliza um posicionamento estratégico de entrada no mercado brasileiro, sustentado por um crescimento exponencial no volume importado e pela presença cada vez mais competitiva da indústria chinesa no cenário global de máquinas pesadas.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare1.png" alt="Gráfico de Market Share 1" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
+                
+
+                <p class="article-content">Ao observar o cenário de 2025, fica evidente o avanço da chinesa Sany, que desponta com uma participação de mercado em ascensão, consolidando-se como uma das principais referências do setor. Em paralelo, a Bobcat preserva sua posição, sustentada especialmente pelo desempenho expressivo no segmento de mini escavadeiras, categoria que sozinha representa 27,0% do Market Share.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare2.png" alt="Gráfico de Market Share 2" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
+            </div>
+
+            <!-- Coluna Direita: Texto e Imagens 3 e 4 -->
+            <div>
+                <p class="article-content">No campo das marcas tradicionais, nomes como New Holland e JCB continuam presentes entre as dez mais importadas, reforçando sua relevância histórica. No entanto, chama atenção o movimento crescente das fabricantes chinesas, que vêm conquistando espaço de forma consistente no mercado brasileiro. Esse avanço traduz não apenas a competitividade, mas também a boa aceitação dos equipamentos de origem chinesa, cada vez mais requisitados. Dentro desse cenário, destaca-se a presença da XCMG, que figura entre as marcas chinesas de maior participação no Brasil, fortalecendo a percepção de que o país asiático se consolida como protagonista nesse setor.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare3.png" alt="Gráfico de Market Share 3" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
+                <p class="article-content">Por outro lado, observa-se também a manutenção da relevância de equipamentos mais tradicionais e de grande porte, como as carregadeiras, que seguem representando fatias significativas do mercado, com 14,6% (Wheel Loader) e 12,4% (Crawler Excavator), respectivamente. Essa combinação de crescimento das marcas chinesas e estabilidade dos equipamentos clássicos evidencia um mercado em transformação, no qual inovação, competitividade e tradição caminham lado a lado.</p>
+                
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+                    <img src="images/Marketshare4.png" alt="Gráfico de Market Share 4" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                </div>
+                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
+            </div>
+        </div>
+    </div>  
+</section>
+<!-- Fim da Seção Market Share -->
+
+
+<!-- Tópico Quinzenal -->
+ <section class="part">
+<div class="article">
+    <div class="subsection-header">No Radar</div>
+    <div class="article-subtitle">INTELIGÊNCIA DE MERCADO DOS HÍBRIDOS</div>
+    <h2 class="article-title">Estudo Aprofundado Revela o Potencial dos Equipamentos Híbridos no Brasil e na América Latina</h2>
+    <p class="article-content">A XCMG, por meio de sua área de Inteligência de Mercado, realizou um estudo abrangente sobre o panorama dos equipamentos híbridos, destacando seu potencial transformador nos setores de mineração e construção. A pesquisa aponta para uma transição inevitável em direção a soluções mais sustentáveis e eficientes, impulsionada pela busca por redução de impacto ambiental, otimização de consumo de combustível e melhoria do desempenho operacional. Este movimento estratégico posiciona a XCMG na vanguarda da inovação, preparando o terreno para um futuro mais verde e produtivo.</p>
+   <img src="images/TRANSIÇÃOVERDE.png" alt="Market Share" class="market-share-image"> 
+    <p class="metric-label" style="text-align: center;">Fonte: Estudo Sobratema do Mercado Brasileiro de Equipamentos para Construção 2024.</p><br> <br>
+    <p class="article-content">O estudo detalha que, embora o custo inicial dos equipamentos híbridos ainda seja um desafio, o retorno sobre o investimento é promissor a longo prazo, principalmente devido à significativa economia de combustível e à redução dos custos de manutenção. A análise também aborda os obstáculos de implantação, como a necessidade de infraestrutura adequada e capacitação técnica especializada, especialmente em regiões remotas. No entanto, a XCMG já se destaca nesse cenário, tendo lançado a primeira escavadeira de mineração híbrida do mundo, a XE650GK-HEV, e outros modelos como a XE1600H e a carregadeira XC988-HEV, demonstrando seu compromisso com a modernização do maquinário pesado.</p>
+    <p class="article-content">O perfil dos clientes que investem em tecnologias híbridas é majoritariamente composto por empresas de médio e grande porte, que veem na eficiência energética e na redução de custos operacionais fatores estratégicos. O estudo ressalta que, apesar da importância da sustentabilidade, o principal motivador ainda é o retorno econômico, que impacta diretamente a competitividade e a lucratividade. A XCMG, ao oferecer máquinas eficientes e adaptadas às realidades locais, com pacotes que equilibram CAPEX e OPEX, busca facilitar essa transição para seus clientes.</p>
+    <img src="images/TENDENCIA.png" alt="Market Share" class="market-share-image">
+    <p class="metric-label" style="text-align: center;">Fonte: Estudo Sobratema do Mercado Brasileiro de Equipamentos para Construção 2024.</p><br> <br>
+    <p class="article-content">As perspectivas futuras para equipamentos híbridos no Brasil e na América Latina são promissoras, com o fortalecimento de políticas de eficiência energética e incentivos fiscais. A pesquisa da SOBRATEMA, inclusive, indica uma crescente preferência por soluções híbridas, representando 26% da demanda prevista. A XCMG, ao investir em inovação, suporte especializado e estratégias financeiras adaptáveis, está pronta para liderar essa transformação, impulsionando um setor mais sustentável e consolidando sua liderança no mercado global de equipamentos pesados.</p>
+</div>  
+</section>
+
+<!-- Início da Seção Novos Grandes Projetos -->
+<section class="part">
+    <div class="subsection-header">Novos Grandes Projetos</div>
+    <div class="article">
+        <div class="article-subtitle">PARCERIA ESTRATÉGICA</div>
+        <h2 class="article-title">XCMG Brasil Inicia Nova Parceria com a Mineração Taboca</h2>
+
+        <div class="part-columns" style="grid-template-columns: 1.2fr 0.8fr; align-items: flex-start; gap: 25px;">
+            <!-- Coluna de Texto -->
+            <div>
+                <p class="article-content">
+                    A XCMG Brasil anuncia o início de uma potencial parceria com a <b>Mineração Taboca S.A.</b>, um passo estratégico que visa fortalecer a presença da empresa em projetos de mineração de grande porte no país. A colaboração com a Mineração Taboca, uma das principais produtoras de estanho refinado do Brasil, representa uma oportunidade significativa para ambas as partes.
+                </p>
+                
+                <p class="article-content">
+                    A Mineração Taboca, com operações em Manaus/AM, é reconhecida no setor por possuir mina própria (Pitinga) e uma fundição em Pirapora, característica que a distingue no mercado mundial de estanho.
+                </p>
+               
+                <p class="article-content">
+                    Recentemente, a Mineração Taboca passou por uma importante mudança em sua estrutura acionária, sendo adquirida em novembro de 2024 pela China Nonferrous Metal Mining Group Co. (CNMC), uma estatal chinesa. A transação, avaliada em US$ 340 milhões, envolveu a compra de 100% das ações da mineradora do grupo peruano Minsur, consolidando a presença chinesa no setor de mineração brasileiro.
+                </p>
+                    
+                <p class="article-content">
+                    Essa aquisição pela CNMC abre novas perspectivas para a Mineração Taboca e para seus parceiros, como a XCMG Brasil, que busca expandir sua atuação em projetos de grande escala e alta complexidade, alinhando-se às novas diretrizes e oportunidades que surgem com essa gestão.
+                </p>
+
+                <p class="article-content">
+                    A proposta comercial da XCMG Brasil para a Mineração Taboca inclui uma gama de equipamentos pesados projetados para otimizar as operações de mineração.
+                </p>
+
+                <div class="highlight-box" style="margin-top: 15px; padding: 15px;">
+                    <h3 style="font-size: 1.1em; margin-bottom: 10px;">Entre os modelos apresentados, destacam-se:</h3>
+                    <ul style="margin-left: 20px; font-size: 0.9em; line-height: 1.6;">
+                        <li><b>Escavadeiras:</b> Modelos XE800DK e XE380G</li>
+                        <li><b>Caminhões:</b> Modelos XGA5905D3T, XG110 e XG90H PIPA</li>
+                        <li><b>Motoniveladoras:</b> Modelos GR2605T e GR3005T</li>
+                        <li><b>Tratores de Esteira:</b> Modelo D360</li>
+                        <li><b>Pá Carregadeira:</b> Modelo LW1000KN</li>
+                    </ul>
+                </div>
+                <p class="article-content">
+                    Esses equipamentos representam a capacidade da XCMG em fornecer soluções completas e de alta tecnologia, adaptadas às demandas específicas de operações de mineração de grande porte, visando aumentar a produtividade e a segurança no local de trabalho.
+                </p>
+
+                <p class="article-content">
+                        <p class="metric-label" style="text-align: center;">Fonte: http://g1.globo.com/am/amazonas/noticia/2024/11/28/reserva-rica-em-uranio-localizada-no-amazonas-e-vendida-a-china.ghtml</p> <br>
+                    </p>
+            </div>
+
+            <!-- Coluna de Imagens -->
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <img src="images/Grandesprojetos1.png" alt="Equipamentos da Proposta Taboca 1" class="article-image" style="margin: 0; width: 450px;">
+                <img src="images/Grandesprojetos2.png" alt="Equipamentos da Proposta Taboca 2" class="article-image" style="margin: 0; width: 450px">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fim da Seção Novos Grandes Projetos -->
+  </div>      
+
+   <!-- Canal de Comunicação -->
     <section class="communication-channel">
         <div class="communication-header">
             📞 Canal de Comunicação - Engenharia de Performance
@@ -1809,394 +2410,6 @@
             </div>
         </div>
     </section>
-
-                           
-            </div>
-    </section>
-            <!-- PARTE 3: Eficiência Operacional -->
-            <section class="part">
-                <h2 class="section-header">EFICIÊNCIA OPERACIONAL</h2>
-                <div class="part-columns">
-                   
-                    <div class="article">
-                        <div class="article-subtitle">EFICIÊNCIA E PARCERIA EM FOCO</div>
-                        <h2 class="article-title">XCMG Aprofunda Suporte e Otimização Operacional com Visitas Estratégicas a Clientes</h2>
-                            <p class="article-content">
-                            XCMG, através de sua dedicada equipe de especialistas, intensificou sua presença em campo durante setembro de 2025, realizando visitas técnicas estratégicas a clientes. O objetivo principal foi aprofundar o entendimento das operações, identificar oportunidades de melhoria na eficiência e reforçar o compromisso da empresa em oferecer suporte técnico de ponta e soluções personalizadas, garantindo a máxima performance dos equipamentos.
-                        </p>
-                        <p class="article-content">
-                            <strong>Visita à R&D Ipiaú (BA) – 01 a 05 de Setembro de 2025:</strong> O especialista Antônio Ribeiro liderou a visita à R&D Ipiaú, focada em caminhões fora de estrada XG110 e XG105. A equipe investigou barulhos anormais em diferenciais e levantou informações operacionais. A conclusão apontou para a ausência de falhas graves nos diferenciais, mas ressaltou a necessidade de atenção a pontos críticos em manutenção, lubrificação e infraestrutura de vias. O plano de ação inclui acompanhamento mais próximo das manutenções, coleta periódica de óleo e monitoramento de folgas, visando maior confiabilidade da frota e redução de paradas.
-                        </p>
-                        <p class="article-content">
-                            <strong>Projeto Borborema (G3 Mineração/Aura, Currais Novos-RN) – 09 a 12 de Setembro de 2025:</strong> Antônio Ribeiro e Eduardo Teles realizaram a visita técnica ao Projeto Borborema. A avaliação do desempenho de caminhões XGA110, escavadeiras XE1350 e XE800DK, e pá carregadeira XC958, demonstrou alta disponibilidade da frota XCMG (92,6% geral), com o XGA110 atingindo impressionantes 95,5%. A XCMG se destacou frente a concorrentes como SANY, John Deere e Komatsu, apresentando menor consumo de combustível, manutenção simplificada e suporte técnico superior. Contudo, foram identificados desafios como atrasos no fornecimento de peças e falhas operacionais relacionadas à sobrecarga e uso inadequado de freios. Recomendações incluem padronização da frota e implementação de telemetria para otimização.
-                        </p>
-                        <p class="article-content">
-                            <strong>Terra Minas (Barão de Cocais-MG) – 22 a 26 de Setembro de 2025:</strong> Eduardo Teles conduziu a avaliação na Terra Minas, onde escavadeiras XE490DK, XE370BR, carregadeira XC958 e britadores XPE0912 e XFY1561, com cerca de 400 horas de uso, revelaram excelente desempenho em mina de ferro a céu aberto. A produtividade atual de 315 t/h tem potencial para 350 t/h com ajustes no carregamento. O feedback dos operadores destacou conforto, estabilidade e potência dos equipamentos XCMG, que superam a concorrência. O cliente demonstrou forte interesse em padronizar a frota com XCMG, reforçando a confiabilidade e o suporte técnico próximo como diferenciais da marca.
-                        </p>
-                    </div>
-                    
-                    <div class="article">
-                        <div class="article-subtitle">CONEXÃO E COMPROMETIMENTO</div>
-                        <h2 class="article-title">XCMG Intensifica Presença no Campo com Cronograma Estratégico de Visitas</h2>
-                        <img src="images/cronogramavisita.png" alt="cronogramavisita" class="article-image">
-                        <p class="article-content">
-                            <strong>Como a presença constante em campo fortalece a confiança e a performance nas operações de mineração?</strong> A XCMG Brasil reforça seu compromisso com a excelência operacional e a proximidade com seus clientes através de um cronograma de visitas e treinamentos intensificado. A agenda de setembro destaca a dedicação da equipe de Engenharia de Aplicação em estar lado a lado com as operações, garantindo suporte técnico de ponta e fortalecendo parcerias estratégicas em todo o país.
-                        </p>
-                        <p class="article-content">
-                            Entre os destaques, Antônio Ribeiro e Bruno Custódio estarão dedicados a atividades cruciais. Antônio Ribeiro, de 22 a 24 de setembro, foca no desenvolvimento de relatórios internos na XCMG Indústria em Pouso Alegre-MG, e de 29 de setembro a 03 de outubro, acompanhará operacionalmente a entrega de um equipamento XC9150 na Vale Serra Leste, em Canaã/Carajás-PA. Bruno Custódio, no mesmo período de 22 a 24 de setembro, prestará suporte interno na XCMG Indústria, também em Pouso Alegre-MG.
-                        </p>
-                        <p class="article-content">
-                            O cronograma de visitas se estende com Eduardo Teles, que de 22 a 24 de setembro, realizará uma visita à Terra Minas em Barão de Cocais-MG, para elaborar um relatório de Field Follow sobre britadores. Paralelamente, João Luiz estará em Canaã/Carajás-PA, de 22 a 24 de setembro, para um treinamento de mobilização na Vale S11D, assegurando que as equipes estejam preparadas para as demandas operacionais.
-                        </p>
-                        <p class="article-content">
-                            Essa presença estratégica em campo não apenas otimiza a performance dos equipamentos, mas também fortalece a confiança e a parceria com os clientes. A XCMG demonstra, com este cronograma, seu empenho em oferecer soluções personalizadas e um suporte técnico de excelência, consolidando sua posição como um parceiro essencial para o sucesso das operações de mineração e construção no Brasil.
-                        </p>
-                    </div>
-
-                    <div class="article">
-                        <div class="article-subtitle">ESTRATÉGIA DE SUCESSO</div>
-                        <h2 class="article-title">Field Follow: Transformando Dados de Campo em Soluções Estratégicas para a XCMG</h2>
-                        <img src="images/5600fieldfollow.jpeg" alt="5600FIELDFOLLOW" class="article-image">
-                        <p class="article-content">
-                            <strong>De que forma o Field Follow da XCMG redefine a relação entre máquina, operador e mina?</strong> Longe dos escritórios, engenheiros e especialistas da empresa atuam diretamente no campo, garantindo que máquinas como a gigante XE5600 operem com máxima performance mesmo nos ambientes mais desafiadores do país, como a emblemática mina de Carajás.
-                        </p>
-                        <p class="article-content">
-                            O Field Follow não é apenas um acompanhamento técnico; é uma imersão profunda na realidade operacional. Essa prática permite à XCMG identificar necessidades em tempo real, otimizar rotinas e capacitar equipes, resultando em menos paradas, custos de manutenção reduzidos e uma disponibilidade recorde dos equipamentos. É a garantia de que cada máquina entrega seu potencial máximo, traduzindo-se em maior produtividade e segurança para o cliente.
-                        </p>
-                        <p class="article-content">
-                           Um marco dessa abordagem foi o rigoroso Field Follow da escavadeira hidráulica XE5600 em Carajás. Submetida a condições extremas de carregamento e escavação, a máquina teve seu desempenho analisado em detalhes: da eficiência de ciclo ao consumo de combustível, da adaptação ao terreno amazônico ao conforto do operador. Os resultados comprovaram que a XE5600 está preparada para superar os grandes desafios da mineração, entregando robustez, confiabilidade e alto desempenho em um dos ambientes mais exigentes do mundo.
-                        </p>
-                        <p class="article-content">
-                            Para a XCMG, o Field Follow é a expressão de um compromisso inabalável: estar ao lado do cliente, transformando cada desafio em campo em melhorias contínuas. Essa proximidade estratégica, aliada à tecnologia de ponta, solidifica a posição da XCMG como parceira essencial para operações que buscam novos patamares de eficiência, segurança e inovação na mineração brasileira.
-                        </p>
-        </div>
-                </div>
-            </section>
-
-            <!-- PARTE 4: Inteligência de Mercado -->
-<section class="part">
-    <h2 class="section-header">INTELIGÊNCIA DE MERCADO</h2>
-
-     <!-- Novidades do Mercado - Layout 4 colunas com Saiba Mais -->
-        <div class="subsection-header">Novidades do Mercado - Mineração </div>
-
-            <div class="market-news-grid">
-<div class="article">
-    <div class="article-subtitle">RESULTADOS FINANCEIROS</div>
-    <h2 class="article-title">Zoomlion divulga fortes resultados no primeiro semestre de 2025, impulsionados pelo crescimento global e inovação tecnológica</h2>
-    <p class="article-date">Publicado em: 06 de Setembro de 2025</p>
-    <p class="article-content">Os negócios internacionais da Zoomlion têm crescido fortemente, com a receita do primeiro semestre de 2025 atingindo 13,815 bilhões de yuans, um aumento de 15% em relação ao ano anterior e respondendo por 55,6% da receita total.</p>
-    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/zoomlion-divulga-fortes-resultados-no-primeiro-semestre-de-2025-impulsionados-pelo-crescimento-global-e-inovacao-tecnologica-302548215.html" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">CONCORRENTES</div>
-    <h2 class="article-title">Volvo renova série de escavadeiras</h2>
-    <p class="article-date">Publicado em: 01 de Setembro de 2025</p>
-    <p class="article-content">A Volvo CE introduziu no país sua nova série de escavadeiras, em 7 modelos: EC210, EC220, EC230, EC260, EC360, EC400 e EC500, para diversos setores, da mineração à infraestrutura pesada. O principal destaque é o salto na eficiência de combustível.</p>
-    <a href="https://revistamt.com.br/Noticias/Exibir/volvo-renova-serie-de-escavadeiras" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">EXPANSÃO</div>
-    <h2 class="article-title">Com mineração em expansão, Grupo Inova assume distribuição da Epiroc em cinco estados</h2>
-    <p class="article-date">Publicado em: 02 de Setembro de 2025</p>
-    <p class="article-content">O Grupo Inova tornou-se o distribuidor oficial da Epiroc em 5 estados: Minas Gerais, São Paulo, Rio de Janeiro, Espírito Santo e Bahia, regiões estratégicas para a atividade mineral do país. A previsão de investimentos em mineração entre 2025 e 2029 é de US$ 68,4 bilhões em novos projetos, 6,6% a mais do que o anterior.</p>
-    <a href="https://eaemaq.com.br/noticias-do-mercado/com-mineracao-em-expansao-grupo-inova-assume-distribuicao-da-epiroc-em-cinco-estados/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">RECORDE</div>
-    <h2 class="article-title">Quebra de recorde: maior pedido de exportação da China para equipamentos de mineração sustentável até o momento</h2>
-    <p class="article-date">Publicado em: 29 de Setembro de 2025</p>
-    <p class="article-content">A XCMG assina acordo estratégico e entregará de 150 a 200 unidades de caminhões basculantes elétricos a bateria de 240 t para a Fortescue, uma das maiores produtoras de minério de ferro do mundo, marcando o maior pedido de exportação da China para máquinas de mineração sustentável.</p>
-    <a href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/quebra-de-recorde-maior-pedido-de-exportacao-da-china-para-equipamentos-de-mineracao-sustentavel-ate-o-momento-302569758.html" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">UNDERGROUND</div>
-    <h2 class="article-title">Mineração subterrânea é estratégica para o futuro do setor no Brasil</h2>
-    <p class="article-date">Publicado em: 24 de Setembro de 2025</p>
-    <p class="article-content">Nas últimas três décadas, os avanços em automação, controle remoto e ventilação reduziram drasticamente os riscos aos trabalhadores. A escassez de novas descobertas a céu aberto e a pressão por práticas sustentáveis consolidaram a mineração subterrânea como alternativa estratégica.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/meteoric-afirma-que-segue-confiante-sobre-o-projeto-caldeira" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">INVESTIMENTOS</div>
-    <h2 class="article-title">Crescimento de projetos alavancam investimentos no segmento</h2>
-    <p class="article-date">Publicado em: 17 de Setembro de 2025</p>
-    <p class="article-content">O faturamento do setor de minerais críticos atingiu R$ 21,6 bilhões no primeiro semestre de 2025 (41,6% acima do mesmo período em 2024), impulsionando investimentos de US$ 68,4 bilhões até 2029, com foco em terras raras e desafios como desenvolvimento tecnológico, licenciamento e sustentabilidade.</p>
-    <a href="https://www.noticiasdemineracao.com/metais-preciosos/news-articles/4519325/hochschild-decide-construcao-monte-carmo-em-2026" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">LICENCIAMENTO</div>
-    <h2 class="article-title">Vale recebe licença de expansão do S11D em projeto de US$2,8 bilhões</h2>
-    <p class="article-date">Publicado em: 11 de Setembro de 2025</p>
-    <p class="article-content">A Vale anunciou que recebeu do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (Ibama) a licença de operação para as atividades ligadas ao Projeto Serra Sul +20 Mtpa, no Sistema Norte, no Pará. O projeto tem início do comissionamento previsto para o segundo semestre de 2026.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/vale-recebe-licenca-de-expansao-do-s11d-em-projeto-de-us-28-bilhoes" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">RESULTADOS</div>
-    <h2 class="article-title">Subsidiária da Atlas Lithium tem bons resultados em projetos em GO e MG</h2>
-    <p class="article-date">Publicado em: 22 de Setembro de 2025</p>
-    <p class="article-content">A Atlas Lithium Corporation informa que a subsidiária Atlas Critical Minerals Corporation (ACM) reportou excelentes resultados com sua estratégia diversificada de portfólio de terras raras, estabelecendo o portfólio de projetos de terras raras mais abrangente do Brasil.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/subsidiaria-da-atlas-lithium-tem-bons-resultados-em-projetos-em-go-e-mg" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">CRESCIMENTO REGIONAL</div>
-    <h2 class="article-title">Mineração cresce mais de 400% no Piauí</h2>
-    <p class="article-date">Publicado em: 10 de Setembro de 2025</p>
-    <p class="article-content">O setor teve aumento de mais de 4000% na produção do minério de ferro entre 2023 e 2024. Atualmente, o Piauí possui uma reserva estimada em mais de 1 bilhão de toneladas de minério de ferro, com produção anual de 1 milhão, o que coloca o estado como 6º maior exportador de minério de ferro do Brasil.</p>
-    <a href="https://revistamineracao.com.br/2025/09/10/mineracao-cresce-mais-de-400-no-piaui/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">MINA INTELIGENTE</div>
-    <h2 class="article-title">Huawei e Vale estudam mina inteligente</h2>
-    <p class="article-date">Publicado em: 16 de Setembro de 2025</p>
-    <p class="article-content">Huawei e Vale avaliam implantar um projeto de minas inteligentes, conectadas em redes 5G e até 5,5G, que prometem maior velocidade de dados e menor tempo de respostas, e que no Brasil ainda está em testes.</p>
-    <a href="https://www.noticiasdemineracao.com/ti-e-comunicacao/news-articles/4520118/huawei-vale-estudam-mina-inteligente?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2017%202025%20-%2014%3A52%3A14%20UTC&utm_content=Huawei%20e%20Vale%20estudam%20mina%20inteligente&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">IA</div>
-    <h2 class="article-title">A nova tecnologia da mineração com Inteligência Artificial</h2>
-    <p class="article-date">Publicado em: 30 de Setembro de 2025</p>
-    <p class="article-content">Máquinas já chegam com tecnologia de informação embarcada, transmitindo em tempo real indicadores de desempenho e segurança. Mineradoras reportam ganhos de dois dígitos em eficiência, redução significativa de custos e maior confiança em segurança e sustentabilidade.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/a-nova-economia-da-mineracao-com-inteligencia-artificial" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">DESAFIOS</div>
-    <h2 class="article-title">Geopolítica, tecnologias e transição energética são os desafios da mineração</h2>
-    <p class="article-date">Publicado em: 22 de Setembro de 2025</p>
-    <p class="article-content">A corrida global por minerais críticos, impulsionada pela transição energética e pela corrida pela supremacia tecnológica, está redefinindo as cadeias de suprimentos e, com isso, a dinâmica no setor, além das incertezas geopolíticas e necessidade de redefinir a produtividade e a excelência operacional.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/geopolitica-tecnologias-e-transicao-energetica-sao-os-desafios-da-mineracao" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">TERRAS RARAS</div>
-    <h2 class="article-title">As terras raras e a reorganização silenciosa das cadeias globais</h2>
-    <p class="article-date">Publicado em: 27 de Setembro de 2025</p>
-    <p class="article-content">A China concentra cerca de 60% da produção mundial de minério bruto e, mais decisivamente, 90% da capacidade global de refino químico. Enquanto EUA, Europa e Japão se movimentam, o Brasil permanece numa posição de potencial adormecido.</p>
-    <a href="https://eaemaq.com.br/noticias-do-mercado/as-terras-raras-e-a-reorganizacao-silenciosa-das-cadeias-globais/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">TRANSIÇÃO ENERGÉTICA</div>
-    <h2 class="article-title">Pesquisa aponta 'colonialismo' com metais para transição energética</h2>
-    <p class="article-date">Publicado em: 29 de Setembro de 2025</p>
-    <p class="article-content">A transição energética está sendo capturada por empresas e países super ricos, reproduzindo padrões coloniais que aprofundam desigualdades e alimentam violações de direitos humanos. Sul Global detém 70% de reservas minerais, mas 46% do investimento está no Norte e 29% na China.</p>
-    <a href="https://www.noticiasdemineracao.com/brasil/news-articles/4520760/pesquisa-aponta-colonialismo-com-metais-para-transicao-energetica?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2029%202025%20-%2018%3A52%3A58%20UTC&utm_content=Pesquisa%20aponta%20%27colonialismo%27%20com%20metais%20para%20transi%C3%A7%C3%A3o%20energ%C3%A9tica&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">PARCERIAS</div>
-    <h2 class="article-title">Brasil e Canadá avançam parcerias em mineração e energia</h2>
-    <p class="article-date">Publicado em: 11 de Setembro de 2025</p>
-    <p class="article-content">O Memorando de Entendimento entre a pasta e o Natural Resources Canada pretende estabelecer um marco de cooperação bilateral em áreas estratégicas como mineração, energia, combustíveis renováveis e desenvolvimento social de recursos naturais.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/brasil-e-canada-avancam-parcerias-em-mineracao-e-energia" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">DESENVOLVIMENTO</div>
-    <h2 class="article-title">Rio Tinto perto do primeiro embarque em Simandou</h2>
-    <p class="article-date">Publicado em: 10 de Setembro de 2025</p>
-    <p class="article-content">Rio Tinto se aproxima do primeiro embarque de minério de ferro em Simandou, na Guiné, com foco no desenvolvimento local e na possibilidade de investimentos em refinarias e pelotização, visando agregar valor à produção.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/rio-tinto-perto-do-primeiro-embarque-em-simandou" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">EVENTO</div>
-    <h2 class="article-title">EXPOSIBRAM 2025 marca retorno a Salvador, com foco na nova fronteira mineral do Nordeste</h2>
-    <p class="article-date">Publicado em: 18 de Setembro de 2025</p>
-    <p class="article-content">O evento reforçará o protagonismo da Bahia e do Nordeste - onde há uma concentração relevante de minerais estratégicos como cobre, lítio, níquel, vanádio e terras raras -, destacando seu potencial crescente para o desenvolvimento de projetos voltados à mineração responsável e à transição energética.</p>
-    <a href="https://ibram.org.br/noticia/exposibram-2025-marca-retorno-a-salvador-com-foco-na-nova-fronteira-mineral-do-nordeste-2/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<!-- Agenda -->
-<div class="article">
-    <div class="article-subtitle">AGENDA</div>
-    <h2 class="article-title">Eventos e Feiras</h2>
-    <div class="events-list">
-                      <div class="event-item">
-                <div class="event-date">05-09 Out</div>
-                <a class="event-link" href="https://entmme2025.com.br/" target="_blank">XXX ENTMME – Congresso de Metalurgia e Mineração</a>
-                <div class="event-location">Gramado, RS (minério e metalurgia)</div>
-            </div>
-            <div class="event-item">
-                <div class="event-date">15-17 Out</div>
-                <a class="event-link" href="https://www.construnordeste.com.br/" target="_blank">ConstruNordeste 2025</a>
-                <div class="event-location">Salvador, BA (construção e infraestrutura)</div>
-            </div>
-            <div class="event-item">
-                <div class="event-date">15-19 Out</div>
-                <a class="event-link" href="https://feriadelaconstruccion.com.uy/" target="_blank">Feria de la Construcción</a>
-                <div class="event-location">Montevidéu, Uruguai (construção)</div>
-            </div>
-            <div class="event-item">
-                <div class="event-date">21-23 Out</div>
-                <a class="event-link" href="https://fenasan.com.br/" target="_blank">FENASAN 2025</a>
-                <div class="event-location">São Paulo, SP (saneamento e meio ambiente)</div>
-            </div>
-            <div class="event-item">
-                <div class="event-date">27-30 Out</div>
-                <a class="event-link" href="https://exposibram2025.ibram.org.br/" target="_blank">EXPOSIBRAM 2025</a>
-                <div class="event-location">Salvador, BA (mineração)</div>
-            </div>
-            <div class="event-item">
-                <div class="event-date">29-31 Out</div>
-                <a class="event-link" href="https://www.argentinamining.com/en/index.php/argentina-mining-cuyo-2025-mendoza" target="_blank">Argentina Mining Cuyo 2025</a>
-                <div class="event-location">Mendoza, Argentina (mineração)</div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-<!-- Distribuição das Máquinas -->
- <section class="part">
-<div class="article">
-    <div class="subsection-header">Distribuição de Máquinas</div>
-    <div class="article-subtitle">MAPEAMENTO ESTRATÉGICO</div>
-    <h2 class="article-title">Onde operam as máquinas da XCMG?</h2>
-    <p class="article-content">O mapa abaixo apresenta a cobertura dos equipamentos pela Engenharia de Aplicações, produzido pelo analista Vitor Silva. Dos 1.608 equipamentos se encontram principalmente no Sudeste, com mais de 1.000 maquinários, seguidos pelo Centro-Oeste, Nordeste, Norte e Sul, respectivamente, além de um equipamento em operação na Guiana.</p>
-    <p class="article-content">Os círculos maiores referem-se ao maior volume de equipamentos em operação na região, enquanto os menores representam um volume menor de maquinários em operação. As áreas em vermelho indicam regiões e máquinas sem cobertura, enquanto as áreas azuis indicam máquinas que estão sob cobertura de um analista responsável.</p>
-    <div class="chart-container">
-        <a href="https://app.powerbi.com/view?r=eyJrIjoiNmEzNjRjYzEtODdkMS00MDJlLTk1MDEtY2IwYzNmNjQ5NjBlIiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
-        <img src="images/mapa_distribuicao.png" alt="Mapa de Distribuição das Máquinas" >
-        </a>
-        <p class="metric-label">Fonte: Dashboard elaborado pelo departamento.</p>
-</div>
-</div>
-</section>
-<!-- MarketShare -->
-<section class="part">
-    <div class="subsection-header">Market Share</div>
-    <div class="article">
-        <div class="article-subtitle">ANÁLISE DE MERCADO</div>
-        <h2 class="article-title">Como está o Market Share de importações da XCMG no Brasil?</h2>
-
-        <div class="part-columns" style="grid-template-columns: 1fr 1fr; gap: 25px; align-items: flex-start;">
-            <!-- Coluna Esquerda: Texto e Imagens 1 e 2 -->
-            <div>
-                <p class="article-content">Ao comparar os resultados de 2024 com o desempenho registrado em 2025, a XCMG apresentou um crescimento relevante em termos de participação de mercado. Embora ainda modesto, o avanço de 0,5% no Market Share demonstra que a marca começa a ganhar maior representatividade nas importações brasileiras.</p>
-                <p class="article-content">Até julho de 2025, a empresa já contabilizava 58 equipamentos importados, contra apenas 2 unidades em 2024, o que evidencia um salto significativo em volume. No mesmo período, a indústria como um todo atingiu 12.283 importações, reforçando o espaço ainda em expansão para a XCMG no setor.</p>
-                <p class="article-content">Dentro desse contexto, o mercado da construção se mantém como o principal motor de demanda, respondendo por 11.646 unidades em 2025, frente a 10.495 em 2024. Apesar da leve retração no segmento de florestal (381 em 2024 para 323 em 2025), o setor de mineração apresentou evolução, passando de 269 para 314 unidades, o que indica uma diversificação gradual da demanda.</p>
-                <p class="article-content">O movimento da XCMG, ainda que tímido em participação percentual, sinaliza um posicionamento estratégico de entrada no mercado brasileiro, sustentado por um crescimento exponencial no volume importado e pela presença cada vez mais competitiva da indústria chinesa no cenário global de máquinas pesadas.</p>
-                
-                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare1.png" alt="Gráfico de Market Share 1" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-                </div>
-                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
-                
-
-                <p class="article-content">Ao observar o cenário de 2025, fica evidente o avanço da chinesa Sany, que desponta com uma participação de mercado em ascensão, consolidando-se como uma das principais referências do setor. Em paralelo, a Bobcat preserva sua posição, sustentada especialmente pelo desempenho expressivo no segmento de mini escavadeiras, categoria que sozinha representa 27,0% do Market Share.</p>
-                
-                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare2.png" alt="Gráfico de Market Share 2" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-                </div>
-                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
-            </div>
-
-            <!-- Coluna Direita: Texto e Imagens 3 e 4 -->
-            <div>
-                <p class="article-content">No campo das marcas tradicionais, nomes como New Holland e JCB continuam presentes entre as dez mais importadas, reforçando sua relevância histórica. No entanto, chama atenção o movimento crescente das fabricantes chinesas, que vêm conquistando espaço de forma consistente no mercado brasileiro. Esse avanço traduz não apenas a competitividade, mas também a boa aceitação dos equipamentos de origem chinesa, cada vez mais requisitados. Dentro desse cenário, destaca-se a presença da XCMG, que figura entre as marcas chinesas de maior participação no Brasil, fortalecendo a percepção de que o país asiático se consolida como protagonista nesse setor.</p>
-                
-                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare3.png" alt="Gráfico de Market Share 3" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-                </div>
-                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
-                <p class="article-content">Por outro lado, observa-se também a manutenção da relevância de equipamentos mais tradicionais e de grande porte, como as carregadeiras, que seguem representando fatias significativas do mercado, com 14,6% (Wheel Loader) e 12,4% (Crawler Excavator), respectivamente. Essa combinação de crescimento das marcas chinesas e estabilidade dos equipamentos clássicos evidencia um mercado em transformação, no qual inovação, competitividade e tradição caminham lado a lado.</p>
-                
-                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare4.png" alt="Gráfico de Market Share 4" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
-                </div>
-                <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
-            </div>
-        </div>
-    </div>  
-</section>
-<!-- Fim da Seção Market Share -->
-
-
-<!-- Tópico Quinzenal -->
- <section class="part">
-<div class="article">
-    <div class="subsection-header">No Radar</div>
-    <div class="article-subtitle">INTELIGÊNCIA DE MERCADO DOS HÍBRIDOS</div>
-    <h2 class="article-title">Estudo Aprofundado Revela o Potencial dos Equipamentos Híbridos no Brasil e na América Latina</h2>
-    <p class="article-content">A XCMG, por meio de sua área de Inteligência de Mercado, realizou um estudo abrangente sobre o panorama dos equipamentos híbridos, destacando seu potencial transformador nos setores de mineração e construção. A pesquisa aponta para uma transição inevitável em direção a soluções mais sustentáveis e eficientes, impulsionada pela busca por redução de impacto ambiental, otimização de consumo de combustível e melhoria do desempenho operacional. Este movimento estratégico posiciona a XCMG na vanguarda da inovação, preparando o terreno para um futuro mais verde e produtivo.</p>
-   <img src="images/TRANSIÇÃOVERDE.png" alt="Market Share" class="market-share-image"> 
-    <p class="metric-label" style="text-align: center;">Fonte: Estudo Sobratema do Mercado Brasileiro de Equipamentos para Construção 2024.</p><br> <br>
-    <p class="article-content">O estudo detalha que, embora o custo inicial dos equipamentos híbridos ainda seja um desafio, o retorno sobre o investimento é promissor a longo prazo, principalmente devido à significativa economia de combustível e à redução dos custos de manutenção. A análise também aborda os obstáculos de implantação, como a necessidade de infraestrutura adequada e capacitação técnica especializada, especialmente em regiões remotas. No entanto, a XCMG já se destaca nesse cenário, tendo lançado a primeira escavadeira de mineração híbrida do mundo, a XE650GK-HEV, e outros modelos como a XE1600H e a carregadeira XC988-HEV, demonstrando seu compromisso com a modernização do maquinário pesado.</p>
-    <p class="article-content">O perfil dos clientes que investem em tecnologias híbridas é majoritariamente composto por empresas de médio e grande porte, que veem na eficiência energética e na redução de custos operacionais fatores estratégicos. O estudo ressalta que, apesar da importância da sustentabilidade, o principal motivador ainda é o retorno econômico, que impacta diretamente a competitividade e a lucratividade. A XCMG, ao oferecer máquinas eficientes e adaptadas às realidades locais, com pacotes que equilibram CAPEX e OPEX, busca facilitar essa transição para seus clientes.</p>
-    <img src="images/TENDENCIA.png" alt="Market Share" class="market-share-image">
-    <p class="metric-label" style="text-align: center;">Fonte: Estudo Sobratema do Mercado Brasileiro de Equipamentos para Construção 2024.</p><br> <br>
-    <p class="article-content">As perspectivas futuras para equipamentos híbridos no Brasil e na América Latina são promissoras, com o fortalecimento de políticas de eficiência energética e incentivos fiscais. A pesquisa da SOBRATEMA, inclusive, indica uma crescente preferência por soluções híbridas, representando 26% da demanda prevista. A XCMG, ao investir em inovação, suporte especializado e estratégias financeiras adaptáveis, está pronta para liderar essa transformação, impulsionando um setor mais sustentável e consolidando sua liderança no mercado global de equipamentos pesados.</p>
-</div>  
-</section>
-
-<!-- Início da Seção Novos Grandes Projetos -->
-<section class="part">
-    <div class="subsection-header">Novos Grandes Projetos</div>
-    <div class="article">
-        <div class="article-subtitle">PARCERIA ESTRATÉGICA</div>
-        <h2 class="article-title">XCMG Brasil Inicia Nova Parceria com a Mineração Taboca</h2>
-
-        <div class="part-columns" style="grid-template-columns: 1.2fr 0.8fr; align-items: flex-start; gap: 25px;">
-            <!-- Coluna de Texto -->
-            <div>
-                <p class="article-content">
-                    A XCMG Brasil anuncia o início de uma potencial parceria com a <b>Mineração Taboca S.A.</b>, um passo estratégico que visa fortalecer a presença da empresa em projetos de mineração de grande porte no país. A colaboração com a Mineração Taboca, uma das principais produtoras de estanho refinado do Brasil, representa uma oportunidade significativa para ambas as partes.
-                </p>
-                
-                <p class="article-content">
-                    A Mineração Taboca, com operações em Manaus/AM, é reconhecida no setor por possuir mina própria (Pitinga) e uma fundição em Pirapora, característica que a distingue no mercado mundial de estanho.
-                </p>
-               
-                <p class="article-content">
-                    Recentemente, a Mineração Taboca passou por uma importante mudança em sua estrutura acionária, sendo adquirida em novembro de 2024 pela China Nonferrous Metal Mining Group Co. (CNMC), uma estatal chinesa. A transação, avaliada em US$ 340 milhões, envolveu a compra de 100% das ações da mineradora do grupo peruano Minsur, consolidando a presença chinesa no setor de mineração brasileiro.
-                </p>
-                    <p class="article-content">
-                        <p class="metric-label" style="text-align: center;">Fonte: http://g1.globo.com/am/amazonas/noticia/2024/11/28/reserva-rica-em-uranio-localizada-no-amazonas-e-vendida-a-china.ghtml</p> <br>
-                    </p>
-                <p class="article-content">
-                    Essa aquisição pela CNMC abre novas perspectivas para a Mineração Taboca e para seus parceiros, como a XCMG Brasil, que busca expandir sua atuação em projetos de grande escala e alta complexidade, alinhando-se às novas diretrizes e oportunidades que surgem com essa gestão.
-                </p>
-
-                <p class="article-content">
-                    A proposta comercial da XCMG Brasil para a Mineração Taboca inclui uma gama de equipamentos pesados projetados para otimizar as operações de mineração.
-                </p>
-
-                <div class="highlight-box" style="margin-top: 15px; padding: 15px;">
-                    <h3 style="font-size: 1.1em; margin-bottom: 10px;">Entre os modelos apresentados, destacam-se:</h3>
-                    <ul style="margin-left: 20px; font-size: 0.9em; line-height: 1.6;">
-                        <li><b>Escavadeiras:</b> Modelos XE800DK e XE380G</li>
-                        <li><b>Caminhões:</b> Modelos XGA5905D3T, XG110 e XG90H PIPA</li>
-                        <li><b>Motoniveladoras:</b> Modelos GR2605T e GR3005T</li>
-                        <li><b>Tratores de Esteira:</b> Modelo D360</li>
-                        <li><b>Pá Carregadeira:</b> Modelo LW1000KN</li>
-                    </ul>
-                </div>
-                <p class="article-content">
-                    Esses equipamentos representam a capacidade da XCMG em fornecer soluções completas e de alta tecnologia, adaptadas às demandas específicas de operações de mineração de grande porte, visando aumentar a produtividade e a segurança no local de trabalho.
-                </p>
-            </div>
-
-            <!-- Coluna de Imagens -->
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <img src="images/Grandesprojetos1.png" alt="Equipamentos da Proposta Taboca 1" class="article-image" style="margin: 0; width: 450px;">
-                <img src="images/Grandesprojetos2.png" alt="Equipamentos da Proposta Taboca 2" class="article-image" style="margin: 0; width: 450px">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Fim da Seção Novos Grandes Projetos -->
-  </div>      
-    
 
         <!-- Footer -->
         <div class="newspaper-footer">

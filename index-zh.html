@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>应用工程通讯 - XCMG</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;500;600&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;500;600&display=swap" );
         
         * {
             margin: 0;
@@ -13,7 +13,10 @@
             box-sizing: border-box;
         }
 
-        html, body { height: 100%;}
+        html, body { 
+            height: 100%;
+            overflow-x: hidden;
+        }
 
         body {
             font-family: 'Lora', serif;
@@ -28,9 +31,9 @@
             flex:1 0 auto;
             background: white;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 100%;
         }
 
-        /* Seletor de Idioma */
         .language-selector {
             position: absolute;
             top: 15px;
@@ -49,6 +52,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            text-decoration: none;
         }
 
         .language-btn:hover {
@@ -57,12 +61,11 @@
             transform: translateY(-2px);
         }
 
-        /* Header do Jornal */
         .newspaper-header {
             position: relative;
             background: linear-gradient(135deg, #0655a4 0%, #004080 100%);
             color: white;
-            padding: 30px;
+            padding: 30px 0;
             text-align: center;
             border-bottom: 5px solid #fbbf24;
         }
@@ -73,20 +76,18 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 20px;
-            text-align: center;
         }
 
         .xcmg-logo {
             width: 180px;
             height: auto;
-            margin-right: 20px;
             background: white;
             padding: 6px 8px;
             border-radius: 8px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.08);
             position: absolute;
-            top: 5px;
-            left: 5px;
+            top: 15px;
+            left: 15px;
         }
 
         .newspaper-title {
@@ -101,7 +102,7 @@
             font-size: 1.1em;
             font-weight: 300;
             opacity: 0.9;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
         }
 
         .newspaper-date {
@@ -110,9 +111,9 @@
             border-top: 2px solid rgba(255,255,255,0.3);
             padding-top: 15px;
             margin-top: 15px;
+            display: inline-block;
         }
 
-        /* Espaço para data de publicação */
         .publication-date {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
@@ -124,30 +125,24 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Layout de Colunas */
+        .newspaper-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         .newspaper-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 40px 0;
         }
-
-        .column {
-            border-right: 1px solid #e5e7eb;
-            padding-right: 25px;
-        }
-
-        .column:last-child {
-            border-right: none;
-            padding-right: 0;
-        }
-
-        /* Manchete Principal */
+        
         .headline {
-            grid-column: 1 / -1;
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 3px solid #1e3a8a;
         }
 
@@ -168,70 +163,279 @@
             margin: 0 auto;
         }
 
-        /* Artigos */
+        .part {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-header {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .part-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .market-news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
         .article {
-            margin-bottom: 35px;
+            margin-bottom: 20px;
             break-inside: avoid;
         }
 
         .article-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
+            font-size: 1.4em;
             font-weight: 700;
             color: #003366;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             line-height: 1.3;
             border-left: 4px solid #fbbf24;
-            padding-left: 15px;
+            padding-left: 12px;
         }
 
         .article-subtitle {
-            font-size: 1.1em;
+            font-size: 0.9em;
             color: #ef4444;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
+        .article-date {
+            font-size: 0.8em;
+            color: #6b7280;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            padding-left: 16px;
+        }
+
         .article-content {
+            text-align: justify;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .article-content2 {
             text-align: justify;
             font-size: 1em;
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            columns: 2;
+            column-gap: 30px;
         }
 
         .article-image {
             width: 100%;
+            max-width: 100%;
             height: auto;
+            margin: 15px 0;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .image-gallery-uniform {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin: 20px 0;
+        }
+
+        .gallery-item {
+            flex: 1;
+            max-width: 400px;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .homologation-image-machine, .homologation-image-comp {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin: 15px auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .market-share-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 15px auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .saiba-mais {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .saiba-mais:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .image-container-flex {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            height: 400px;
+            align-items: stretch;
+        }
+
+        .flex-image {
+            flex: 1;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
             border: 1px solid #e5e7eb;
             border-radius: 4px;
         }
 
-        /* Caixas de Destaque */
         .highlight-box {
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border: 2px solid #3b82f6;
+            border-left: 5px solid #3b82f6;
             border-radius: 8px;
-            padding: 20px;
-            margin: 25px 0;
+            padding: 25px;
+            margin: 30px 0;
+            column-span: all;
         }
 
         .highlight-box h3 {
             color: #003366;
             font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box p {
+            font-size: 1em;
+            line-height: 1.6;
         }
 
-        /* Lista de Eventos */
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .metrics-box {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 2.2em;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        .interview-question {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .interview-answer {
+            font-style: italic;
+            color: #4b5563;
+            padding-left: 15px;
+            border-left: 3px solid #fbbf24;
+            margin-top: 8px;
+            font-size: 1em;
+        }
+
+        .subsection-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 12px 20px;
+            margin: 20px 0 15px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .travel-history {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-top: 15px;
+        }
+
+        .travel-history-image {
+            width: 350px;
+            height: auto;
+            flex-shrink: 0;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+        }
+
+        .travel-history-content {
+            flex: 1;
+        }
+
         .events-list {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 20px;
-            margin: 20px 0;
+            margin: 15px 0;
         }
         .event-link {
             color: #003366;
@@ -244,13 +448,10 @@
             color: #0066cc;
             text-decoration: underline;
         }
-        .event-link:visited {
-            color: #003366;
-            text-decoration: none;
-        }
+
         .event-item {
             border-bottom: 1px solid #e2e8f0;
-            padding: 15px 0;
+            padding: 10px 0;
         }
 
         .event-item:last-child {
@@ -258,96 +459,418 @@
         }
 
         .event-date {
-            font-weight: 600;
+            font-weight: 700;
             color: #003366;
-            font-size: 1.1em;
+            font-size: 0.9em;
         }
 
         .event-title {
             font-weight: 600;
-            margin: 5px 0;
+            margin: 4px 0;
+            font-size: 1em;
         }
 
         .event-location {
             color: #6b7280;
             font-style: italic;
+            font-size: 0.85em;
         }
 
-        /* Footer */
+        .chart-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #eef2f7;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .chart-container a:hover img {
+            opacity: 0.9;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        .stakeholder-section {
+            background-color: #f5f7fb;
+            border: 1px solid #e6eefc;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .stakeholder-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #003366;
+            margin-bottom: 20px;
+            padding-left: 10px;
+        }
+        .stakeholder-accordion {
+            margin-bottom: 10px;
+        }
+        .stakeholder-accordion-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            cursor: pointer;
+            background: #0d47a1;
+            color: white;
+            list-style: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .stakeholder-accordion-title::-webkit-details-marker { display: none; }
+        .accordion-icon {
+            width: 10px; height: 10px; border-right: 2px solid white;
+            border-bottom: 2px solid white; transform: rotate(45deg);
+            transition: transform 0.3s ease-in-out; margin-left: 15px;
+            flex-shrink: 0;
+        }
+        .stakeholder-accordion[open] > .stakeholder-accordion-title > .accordion-icon { transform: rotate(225deg); }
+        .stakeholder-accordion-content {
+            padding: 25px 15px 10px 15px;
+            background-color: transparent;
+        }
+
+        .table-subtopic td {
+            background-color: #e9ecef;
+            font-weight: bold;
+            text-align: center;
+            color: #343a40;
+        }
+
+        .org-chart-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.6em; color: #003366; margin-bottom: 25px; }
+        .org-container { background-color: #ffffff; padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 30px; overflow-x: auto; }
+        .org-chart { text-align: center; min-width: 600px; }
+        .org-container2 {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .org-chart ul { padding-top: 20px; position: relative; list-style-type: none; margin: 0; }
+        .org-chart li { display: inline-block; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; }
+        .org-chart li::before, .org-chart li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid #ccc; width: 50%; height: 20px; }
+        .org-chart li::after { right: auto; left: 50%; border-left: 2px solid #ccc; }
+        .org-chart li:only-child { padding-top: 0; }
+        .org-chart li:only-child::after, .org-chart li:only-child::before { display: none; }
+        .org-chart li:first-child::before, .org-chart li:last-child::after { border: 0 none; }
+        .org-chart li:last-child::before { border-right: 2px solid #ccc; border-radius: 0 5px 0 0; }
+        .org-chart li:first-child::after { border-radius: 5px 0 0 0; }
+        .org-chart ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #ccc; width: 0; height: 20px; }
+        .org-node { border: 2px solid #1e3a8a; padding: 8px 15px; text-decoration: none; color: #333; background-color: #ffffff; display: inline-block; border-radius: 8px; min-width: 140px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .org-node span { display: block; }
+        .org-title { font-size: 0.9em; font-weight: 600; color: #003366; }
+        .org-name { font-size: 1.1em; font-weight: 700; color: #1e3a8a; margin-top: 4px; }
+        .org-node.manager { background-color: #1e3a8a; border-color: #1e3a8a; }
+        .org-node.manager .org-title, .org-node.manager .org-name { color: #ffffff; }
+        .org-node.lead { background-color: #dbeafe; border-color: #3b82f6; }
+        .org-chart-split { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+
+        .data-table-container { overflow-x: auto; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9em; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .data-table thead tr { background-color: #1e3a8a; color: #ffffff; text-align: left; }
+        .data-table th, .data-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; border-left: 1px solid #e2e8f0; vertical-align: middle; }
+        .data-table th:first-child, .data-table td:first-child { border-left: none; }
+        .data-table tbody tr:last-of-type td { border-bottom: none; }
+        .data-table tbody tr:nth-of-type(even) { background-color: #f8f9fa; }
+
+        .communication-channel {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .communication-header {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            color: white;
+            padding: 15px 25px;
+            margin: -30px -30px 25px -30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .communication-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-form, .contact-info {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 0.95em;
+            font-family: 'Lora', serif;
+        }
+
+        .form-group textarea { height: 100px; resize: vertical; }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .contact-item h4 {
+            color: #003366;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .contact-item p { color: #6b7280; font-size: 0.9em; margin: 2px 0; }
+        .contact-item a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+        .contact-item a:hover { text-decoration: underline; }
+
         .newspaper-footer {
             background: #1f2937;
             color: white;
             text-align: center;
-            padding: 30px 16px;
+            padding: 30px 20px;
             width: 100%;
             flex-shrink: 0;
+            margin-top: 40px;
         }
 
-        /* Responsividade */
+        /* --- Responsividade --- */
+        @media (max-width: 1024px) {
+            .part-columns, .market-news-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .image-container-flex {
+                height: 300px;
+            }
+            .travel-history-image {
+                width: 280px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .newspaper-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-            }
+            .newspaper-title { font-size: 2.5em; }
+            .headline h1 { font-size: 2.2em; }
+            .section-header { font-size: 1.6em; }
             
-            .column {
-                border-right: none;
-                padding-right: 0;
-            }
-            
-            .newspaper-title {
-                font-size: 2.5em;
-            }
-            
-            .headline h1 {
-                font-size: 2em;
-            }
-
             .xcmg-logo {
-                width: 80px;
-                top: 10px;
-                left: 10px;
-                padding: 4px 6px;
+                position: static;
+                width: 120px;
+                margin: 0 auto 20px auto;
             }
-
-            .logo-section {
-                margin-top: 20px;
-                /* padding-left: 100px; */ /* Removido para permitir centralização */
-                text-align: center; /* Centraliza o texto dos filhos */
-            }
-
             .language-selector {
                 top: 10px;
-                right: 15px;
+                right: 10px;
             }
-
             .language-btn {
                 padding: 6px 12px;
                 font-size: 0.8em;
             }
-        }
 
-        @media print {
-            body {
-                background: white;
+            .part-columns, .market-news-grid, .communication-content, .org-chart-split {
+                grid-template-columns: 1fr;
             }
-            
-            .newspaper {
-                box-shadow: none;
-                margin: 0;
+            .image-container-flex, .travel-history, .image-gallery-uniform {
+                flex-direction: column;
+                height: auto;
             }
+            .flex-image, .travel-history-image {
+                width: 100%;
+            }
+            .article-content2 {
+                columns: 1;
+            }
+            .org-chart { min-width: auto; }
+            .org-chart ul { display: block; }
+            .org-chart li { display: block; padding: 10px 0; }
+            .org-chart li::before, .org-chart li::after, .org-chart ul ul::before { display: none; }
+            .org-node { min-width: unset; width: 90%; margin: 0 auto; }
+        } 
 
+        @media (max-width: 480px) {
+            .newspaper-container { padding: 0 15px; }
+            .newspaper-title { font-size: 2em; }
+            .headline h1 { font-size: 1.8em; }
             .language-selector {
-                display: none;
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
             }
+            .logo-section { margin-top: 30px; }
         }
+
+        /* ==========================================================================
+   CSS DE IMPRESSÃO - VERSÃO FINAL COM CORREÇÃO DE KICKOFF
+   ========================================================================== */
+@media print {
+
+    /* --- 1. CONFIGURAÇÃO GERAL E FIDELIDADE DE COR --- */
+    @page {
+        size: A4 portrait;
+        margin: 1.8cm;
+    }
+
+    html, body {
+        font-family: 'Lora', serif;
+        font-size: 9.5pt;
+        line-height: 1.35;
+        background: #fff !important;
+        color: #2c3e50 !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* --- 2. OCULTAR ELEMENTOS DESNECESSÁRIOS --- */
+    .language-selector, .newspaper-footer, .accordion-icon, .xcmg-logo,
+    .publication-date, br, .communication-channel {
+        display: none !important;
+    }
+
+    /* --- 3. RESET DE LAYOUT E CONTROLE DE ESPAÇAMENTO --- */
+    .newspaper-content { gap: 20px !important; }
+    .headline { margin-bottom: 20px !important; }
+
+    /* Desativa layouts complexos que causam problemas */
+    .part-columns, .travel-history, .org-chart-split, .logo-section {
+        display: block !important;
+    }
+    /* CORREÇÃO KICKOFF (Ponto 4): Reseta o container das imagens */
+    .image-container-flex {
+        display: block !important;
+        height: auto !important;
+    }
+    .part-columns > *, .flex-image {
+        width: 100% !important; max-width: 100% !important; height: auto !important;
+    }
+
+    /* --- 4. SOLUÇÃO DEFINITIVA PARA STAKEHOLDERS --- */
+    .stakeholder-section {
+        page-break-before: always;
+        border: none !important; padding: 0 !important;
+    }
+    details.stakeholder-accordion {
+        page-break-inside: avoid !important;
+        margin-bottom: 20px !important;
+    }
+    details.stakeholder-accordion > .stakeholder-accordion-content {
+        display: block !important;
+        padding-top: 15px !important;
+    }
+    details.stakeholder-accordion > summary.stakeholder-accordion-title {
+        display: block !important; list-style: none !important;
+    }
+    details.stakeholder-accordion > summary.stakeholder-accordion-title::-webkit-details-marker {
+        display: none !important;
+    }
+
+    /* --- 5. CONTROLE DE FLUXO E QUEBRAS DE PÁGINA --- */
+    .section-header, .subsection-header, .headline, .article-title, .article-subtitle, h1, h2, h3, h4 {
+        page-break-after: avoid !important;
+    }
+    .highlight-box, .article, figure, table, .chart-container, .org-container {
+        page-break-inside: avoid !important;
+    }
+
+    /* --- 6. CORREÇÕES DE LAYOUT ESPECÍFICAS --- */
+    /* Ponto 4: Garante que o texto não tenha colunas para evitar sobreposição */
+    .article-content2 {
+        column-count: 1 !important;
+    }
+    /* Layout de colunas para as novidades do mercado */
+    .market-news-grid {
+        display: block !important;
+        column-count: 3;
+        column-gap: 6mm;
+        column-fill: balance;
+    }
+    .market-news-grid > .article {
+        break-inside: avoid;
+        padding-bottom: 10px;
+    }
+    
+    /* CORREÇÃO BOXES (Ponto adicional): Deixa os boxes de métricas mais compactos */
+    .metrics-container {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+        gap: 8px !important;
+        margin: 15px 0 !important;
+    }
+    .metrics-box {
+        padding: 8px !important;
+        margin: 0 !important;
+    }
+    .metric-value { font-size: 16pt !important; }
+    .metric-label { font-size: 8pt !important; }
+
+    /* --- 7. AJUSTES FINAIS DE ESTILO PARA IMPRESSÃO --- */
+    * { box-shadow: none !important; border-radius: 0 !important; }
+    p, .article-content { margin-bottom: 12px !important; }
+    .article, .highlight-box, .chart-container, .org-container { margin-bottom: 20px !important; }
+    .section-header, .subsection-header { padding: 8px 12px !important; font-size: 16pt !important; margin-bottom: 15px !important; }
+    .article-title { font-size: 14pt !important; }
+    img { max-width: 100% !important; height: auto !important; display: block; margin: 10px auto; }
+    .data-table-container, .org-container, .org-container2 { overflow: visible !important; }
+}
+
     </style>
 </head>
 <body>
     <div class="newspaper">
         <!-- Header -->
-        <div class="newspaper-header">
+        <header class="newspaper-header">
+            <div class="newspaper-container">
             <div class="language-selector">
                 <a href="index.html" class="language-btn" style="text-decoration: none;">🇧🇷 PT</a>
                 <a href="index-zh.html" class="language-btn" style="text-decoration: none;">🇨🇳 中文</a>
@@ -355,188 +878,1159 @@
 
             <div class="logo-section">
                 <img src="images/XCMG_logo.svg.png" alt="XCMG 标志" class="xcmg-logo">
-                <div>
-                    <div class="newspaper-title">应用工程通讯</div>
-                    <div class="newspaper-subtitle">XCMG 应用工程部首份新闻简报</div>
-                </div>
+        </div>
+<div class="newspaper-title">应用期刊</div>
+<div class="newspaper-subtitle">徐工应用工程第一期通讯</div>
+<div class="newspaper-date">2025年9月版 | Nº001</div>
+
+<!-- Espaço para data de publicação -->
+<div class="publication-date">
+<span>发表于：</span> <span id="publication-date">2025 年 10 月 3 日</span>
             </div>
-            <div class="newspaper-date">2025年8月刊 | 第 001 期</div>
+            </div>
+        </header>
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="newspaper-content">
+<div class="newspaper-container">
+<!-- Manchete Principal -->
+<div class="headline">
+<h1>XCMG巴西通过新的组织结构加速扩展</h1>
+<p class="lead">应用程序工程实施集成管理系统，以实现采矿业务的增长</p>
+</div>
+<!-- Accordion: Mapeamento de Stakeholders -->
+<section class="stakeholder-section">
+<h2 class="stakeholder-section-title">📌利益相关者映射</h2>
+<!-- Tópico 1: Engenharia de Performance -->
+<details class="stakeholder-accordion">
+<summary class="stakeholder-accordion-title">👷‍♂️绩效工程 - 客户和MINAS-经理：Adriano Santana<span class="accordion-icon"></span></summary>
+<div class="stakeholder-accordion-content">
+<div class="org-container2">
+<div class="org-chart">
+<ul>
+<li>
+<div class="org-node manager">
+<span class="org-title">南，东南和CSN山谷</span>
+<span class="org-name">何塞·卢西亚诺</span>
+</div>
+<ul>
+<li>
+<div class="org-node">
+<span class="org-title">石屋</span>
+<span class="org-name">卡洛斯</span>
+</div>
+</li>
+<li>
+<div class="org-node">
+<span class="org-title">帕劳阿佩巴斯综合体</span>
+<span class="org-name">卡洛斯</span>
+</div>
+</li>
+<li>
+<div class="org-node">
+<span class="org-title">伊塔比拉</span>
+<span class="org-name">费利佩</span>
+</div>
+</li>
+<li>
+<div class="org-node">
+<span class="org-title">布鲁库图/CPX</span>
+<span class="org-name">Jaime</span>
+</div>
+</li>
+<li>
+<div class="org-node">
+<span class="org-title">皮科/卡帕内玛</span>
+<span class="org-name">保罗</span>
+</div>
+</li>
+<li>
+<div class="org-node">
+<span class="org-title">农场</span>
+<span class="org-name">何塞·杰拉尔多</span>
+</div>
+</li>
+<li>
+<div class="org-node">
+<span class="org-title">图巴朗港</span>
+<span class="org-name">Matheus</span>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="data-table-container">
+<br/>
+<h3 class="org-chart-title">按客户/位置/机器划分的负责人映射</h3>
+<table class="data-table">
+<thead><tr><th>本地/客户端</th><th>负责任的</th><th>地点/客户</th><th>负责任的</th></tr></thead>
+<tbody>
+<tr><td>破碎机</td><td>克里斯蒂亚诺</td><td>石屋</td><td>卡洛斯</td></tr>
+<tr><td>RD E G3</td><td>威廉</td><td>图巴朗港</td><td>Matheus</td></tr>
+<tr><td>伊塔吉巴</td><td>本赫</td><td>查看E Zocar</td><td>艾伦</td></tr>
+<tr><td>特奥菲兰迪亚</td><td>六安</td><td>赞助</td><td>费利佩·马丁斯</td></tr>
+<tr><td>哈斯科</td><td>马修斯</td><td>Britacal -Unaí</td><td>赫伯特</td></tr>
+<tr><td>cmoc</td><td>赫伯特</td><td>Britacal -Coromandel</td><td>费利佩·马丁斯</td></tr>
+<tr><td>淡水河谷 - 北部</td><td>约翰尼·普里西拉</td><td>卡拉哈斯</td><td>加布里埃尔和保罗</td></tr>
+<tr><td>S11D</td><td>罗伯特·莫妮卡（Robert E Monica）</td><td>塞拉莱斯特</td><td>杰罗尼莫的克里斯托夫</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</details>
+<!-- Tópico 2: Homologação -->
+<details class="stakeholder-accordion">
+<summary class="stakeholder-accordion-title">⚙️认定 - 经理：Tiago Bertolini<span class="accordion-icon"></span></summary>
+<div class="stakeholder-accordion-content">
+<div class="org-container">
+<h3 class="org-chart-title">批准部门的组织图</h3>
+<div class="org-chart">
+<ul>
+<li>
+<div class="org-node manager"><span class="org-title">正式批准</span><span class="org-name">蒂亚戈</span></div>
+<ul>
+<li>
+<div class="org-node lead"><span class="org-title">一般支持</span><span class="org-name">亨里克</span></div>
+<ul>
+<li><div class="org-node"><span class="org-title">机器认可</span><span class="org-name">胜利者</span></div></li>
+<li><div class="org-node"><span class="org-title">组件批准</span><span class="org-name">Elisa</span></div></li>
+<li><div class="org-node"><span class="org-title">开球</span><span class="org-name">伊莎贝拉</span></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+<!-- Tópico 3: Inteligência de Mercado -->
+<details class="stakeholder-accordion">
+<summary class="stakeholder-accordion-title">📊 市场情报 - 经理：Washington Luiz/Paula Souza<span class="accordion-icon"></span></summary>
+<div class="stakeholder-accordion-content">
+<div class="org-chart-split">
+<div class="org-container">
+<h3 class="org-chart-title">巴西黄线</h3>
+<div class="org-chart">
+<ul><li><div class="org-node manager"><span class="org-title">市场智能</span><span class="org-name">华盛顿</span></div><ul><li><div class="org-node"><span class="org-title">logcomex</span><span class="org-name">卡米拉</span></div></li><li><div class="org-node"><span class="org-title">公寓</span><span class="org-name">苏西</span></div></li></ul></li></ul>
+</div>
+</div>
+<div class="org-container">
+<h3 class="org-chart-title">采矿和拉坦</h3>
+<div class="org-chart">
+<ul><li><div class="org-node manager"><span class="org-title">市场情报</span><span class="org-name">保拉</span></div><ul><li><div class="org-node"><span class="org-title">拉坦</span><span class="org-name">塞西莉亚</span></div></li><li><div class="org-node"><span class="org-title">矿业</span><span class="org-name">保拉</span></div></li></ul></li></ul>
+</div>
+</div>
+</div>
+</div>
+</details>
+<!-- Tópico 4: Eficiência Operacional (COM AJUSTES) -->
+<details class="stakeholder-accordion">
+<summary class="stakeholder-accordion-title">🚀 运营效率<span class="accordion-icon"></span></summary>
+<div class="stakeholder-accordion-content">
+<div class="data-table-container">
+<h3 class="org-chart-title">运营效率部门映射</h3>
+<table class="data-table">
+<thead><tr><th>门厅</th><th>部分</th><th>过程</th><th>负责任的</th></tr></thead>
+<tbody>
+<tr>
+<td>在</td>
+<td rowspan="3" style="vertical-align: middle; text-align: center;">访问客户</td>
+<td>报告</td>
+<td>安东尼奥·里贝罗</td>
+</tr>
+<tr>
+<td>北</td>
+<td>报告</td>
+<td>若昂·路易斯</td>
+</tr>
+<tr>
+<td>巴西</td>
+<td>时间表</td>
+<td>BrunoCustódio</td>
+</tr>
+<tr>
+<td>巴西</td>
+<td>字段跟随</td>
+<td>报告</td>
+<td>爱德华多电视</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details>
+<!-- Tópico 5: Suporte Geral (COM AJUSTES) -->
+<details class="stakeholder-accordion">
+<summary class="stakeholder-accordion-title">🛠️一般支持<span class="accordion-icon"></span></summary>
+<div class="stakeholder-accordion-content">
+<div class="data-table-container">
+<h3 class="org-chart-title">一般支持映射</h3>
+<table class="data-table">
+<thead><tr><th>过程</th><th>负责任的</th></tr></thead>
+<tbody>
+<tr><td>报告</td><td>Tedmiles，Vitor，Ebson</td></tr>
+<tr><td>遥测</td><td>达尼洛</td></tr>
+<tr class="table-subtopic">
+<td colspan="2">报告和监视</td>
+</tr>
+<tr><td>谷/CSN</td><td>安德烈</td></tr>
+<tr><td>RD/G3/西马克</td><td>布鲁诺</td></tr>
+<tr><td>哈斯科/佐卡/我相信</td><td>费尔南多</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</details>
+</section>
+<!-- PARTE 2: Engenharia de Performance -->
+<section class="part">
+<h2 class="section-header">性能工程</h2>
+<!-- Subseção: Indicadores de Acompanhamento -->
+<div class="subsection-header">遵循 -  up指示器</div>
+<div class="article" style="grid-column: 1 / -1;">
+<div class="article-subtitle">日常监测</div>
+<h2 class="article-title">物理可用性：徐工日常在客户身边</h2>
+<p class="article-content">XCMG Brasil对其在现场的设备表现保持了不可动摇的承诺，对其在客户操作中的机器的物理可用性（DF）进行了每日详细的跟随。该监视使应用程序工程团队能够快速识别趋势，预防性采取行动并优化操作，从而确保XCMG设备可提供最大的生产率。</p>
+<h4 class="article-title">谷 - 每月进化</h4>
+<div class="chart-container">
+<img alt="Evolução Mensal da DF em 2025" src="images/Evolução Mensal 2025 - Vale.png"/>
+</div>
+<p class="article-content">对每月DF的连续监视是应用程序工程的战略工具，可以识别季节性趋势，评估实施改进的影响以及预防措施的计划。80％的DF目标是参考参考，该参考指导团队为确保XCMG设备在现场的最高生产率而做出的努力。</p>
+<h3 class="article-title">北谷：透明和关注点（01/09至30/09）</h3>
+<div class="chart-container">
+<img alt="DF Vale Norte" src="images/Vale Norte1 01-09 a 30-09.png"/>
+<img alt="DF Vale Norte" src="images/Vale Norte2 01-09 a 30-09.png"/>
+<img alt="DF Vale Norte" src="images/Vale Norte3 01-09 a 30-09.png"/>
+</div>
+<h3 class="article-title">东南谷：稳定性和优化点（01/09 至 30/09）</h3>
+<div class="chart-container">
+<img alt="DF Vale Sudeste" src="images/Vale Sudeste1 01-09 a 30-09.png"/>
+<img alt="DF Vale Sudeste" src="images/Vale Sudeste2 01-09 a 30-09.png"/>
+<img alt="DF Vale Sudeste" src="images/Vale Sudeste3 01-09 a 30-09.png"/>
+</div>
+<h3 class="article-title">南谷：挑战和机遇（01/09至30/09）</h3>
+<div class="chart-container">
+<img alt="DF Vale Sul" src="images/Vale Sul 01-09 a 30-09.png"/>
+</div>
+<h3 class="article-title">DF品牌9月表现温和，客户数量高于或低于目标</h3>
+<div class="chart-container">
+<img alt="DF Acumulado" src="images/DF acumulado.png"/>
+</div>
+<p class="article-content">监控不同客户9月份累计的物理可用性（DF），可以清晰地了解徐工设备的性能。从01/09到30/09的数据显示，R&amp;D、G3等客户表现稳健，DF分别达到84.55%和85.61%，可靠性较高。与此同时，SIMAK 和 CSN 等操作记录的 DF 分别为 75.53% 和 76.81%，虽然低于 80% 的目标，但表现出一致的性能，正在监控优化。CREC-8 的案例（占 44.22%）是一个关注点，我们的技术团队已对其进行重点处理，以查明原因并实施纠正措施，加强我们对持续改进和透明度的承诺。</p>
+<br/>
+</div>
+<div class="article">
+<div class="article-subtitle">先进技术</div>
+<h2 class="article-title">遥测：连接机器、防止故障并提高效率</h2>
+<p class="article-content">
+<strong>遥测可以揭示机器运行中的实际性能的哪些信息？</strong> <br/>徐工集团与Onboard合作，一直在推进在矿山和难以进入地区运行的设备中实施卫星遥测解决方案。目前，数百台机器受到实时监控，并将运行和地理定位数据持续传输到监控平台。</p>
+<img alt="Telemetria" class="market-share-image" src="images/telemetria1.png"/>
+<p class="article-content">在淡水河谷，自 9 月初以来，包括平地机、轮式装载机和挖掘机在内的 30 台设备已启用该系统，并发送按严重程度分类的故障代码。在遥测分析师的支持和现场团队的及时响应下，这种集成减少了维护时间，避免了纠正性停机，并确保了资产更高的物理可用性 (DF)。</p>
+<p class="article-content">Mina do Pico 发生了一个引人注目的例子，其中一台 GR3505 平地机在 KV 包中连续发出打滑警报，最初被解释为传输故障。第一个遥测警报在纠正性关闭前几周出现，反复表明断电和相关传输故障的症状。这些迹象再次出现导致要求进行详细检查。经过压力测试、检查线束、传感器和连接，没有发现明显的异常情况。</p>
+<img alt="Telemetria" class="market-share-image" src="images/Telemetria2.png"/>
+<p class="article-content">但是，维护历史记录已经记录了注射系统和燃油泵的先前情况。对数据的交叉分析表明，发动机功率损耗诱导操作员迫使齿轮，这使设备进入安全模式并生成变速箱警报。</p>
+<p class="article-content">通过精致的诊断，干预措施包括更换磨损的燃油泵，两个注射单元，以及速度传感器的交换和变速箱校准。维修后，汽车分级机恢复正常运行，没有新的故障记录。</p>
+<p class="article-content">此案增强了遥测作为一种预测工具的重要性，能够预测失败，支持现场的技术决策并提高XCMG设备的可靠性。</p>
+<p class="article-content">徐工机器遥测技术的发展体现了该品牌致力于提高设备性能和可靠性的承诺。智能监控可实现更快、更果断的决策，从而提高运营效率并为客户带来更好的结果。</p>
+</div>
+</section>
+<!-- Subseção: Engenharia Aplicada -->
+<section class="part">
+<div class="subsection-header">应用工程</div>
+<div class="part-columns" style="grid-template-columns: 1fr 1fr;">
+<div class="article">
+<div class="article-subtitle">故障管理和优化</div>
+<h2 class="article-title">徐工与VALE：重新定义设备维护的FMS系统</h2>
+<p class="article-content">XCMG应用工程团队已经开发并实施了一个新的创新系统，称为<strong>FMS（车队管理系统）</strong>，用于记录和分析设备停机时间。</p>
+<img alt="FMS Tela" class="article-image" src="images/FMS1.png"/>
+<p class="article-content">创建FMS以优化维护停止的信息的收集，从而使您能够生成一个<strong>更稳健、更详细的损失概况</strong>。此外，系统有效地整合了<strong>航海日志</strong>，整合信息以进行更完整的分析。</p>
+<img alt="FMS2 Tela" class="article-image" src="images/FMS2.png"/>
+<p class="article-content">借助 FMS，徐工提高了识别模式、优化维护策略的能力，从而提高了设备​​的性能和可用性。</p>
+</div>
+<div class="article">
+<div class="article-subtitle">持续改进</div>
+<h2 class="article-title">先进的控制面板彻底改变了技术通知管理</h2>
+<p class="article-content">XCMG已实施了一个高级控制面板，以与Vale合作管理技术设备通知。这种战略工具使您可以遵循<strong>应用程序演变百分比</strong>通知并使用<strong>曲线</strong>使监控与零件交付预测和客户计划保持一致。</p>
+<img alt="Curva S" class="article-image" src="images/CurvaS.png"/>
+<p class="article-content">仪表板还按以下方式对通知进行分类<strong>设备目标和系统</strong>，提供干预措施的详细视图。关键差异是测量<strong>通知效率</strong>，评估应用后故障的重现情况，保证纠正措施的有效性。</p>
+<img alt="Melhoria" class="article-image" src="images/Melhoria.png"/>
+<p class="article-content">这一举措强化了徐工集团对优化设备性能和可靠性的承诺，加强了与淡水河谷的战略合作伙伴关系。</p>
+<div class="article">
+</div>
+</div>
+</div>
+</section>
+<!-- Seção de Planejamento de Viagem - Página Horizontal -->
+<section class="part">
+<div class="subsection-header">旅行计划</div>
+<!-- Histórico de viagens com foto menor à esquerda -->
+<div class="travel-history">
+<img alt="Visita a Onboard" class="travel-history-image" src="images/visitaonboard.jpg"/>
+<div class="travel-history-content">
+<div class="article-subtitle">旅行历史</div>
+<h2 class="article-title">XCMG对船上的战略访问提升遥测和性能优化</h2>
+<p class="article-content">
+<strong>如何享受现场体验？</strong>9月10日，徐工对On Board公司进行正式走访，重点提升其矿山设备性能和故障识别敏捷性。这次会议标志着加强遥测仪表板开发合作的战略步骤。</p>
+<p class="article-content">在会议期间，实际指标，例如物理可用性（DF），故障分布，警报每小时以及可用小时数之间的关系。目的是扩大分析的准确性，并对正在运行的机器的性能提供更详细的视图。</p>
+<p class="article-content">中心点之一是直接访问遥测数据库的请求，XCMG认为简化内部分析并加速了重大失败的诊断，从而确保了操作的更高可靠性。</p>
+<p class="article-content">除了技术讨论之外，徐工团队还了解了其机器所用产品的生产线，增强了对部件质量和坚固性的信心。此次访问巩固了徐工集团对采矿业创新和卓越运营的承诺。</p>
+</div>
+</div>
+</section>
+<br/> <br/> <br/>
+<!-- Subseção: Homologação -->
+<section class="part">
+<h2 class="section-header">批准</h2>
+<div class="subsection-header">开球，批准和测试的历史</div>
+<div class="article">
+<div class="article-subtitle">战略管理</div>
+<h2 class="article-title">开球和升级管理确保在交付大型设备方面取得成功</h2>
+<div class="image-container-flex">
+<img alt="Escavadeira XE5600" class="flex-image" src="images/XE5600.png"/>
+<img alt="Kick off" class="flex-image" src="images/kickoff2.png"/>
+</div>
+<div class="article-content2">
+<p><strong>事实证明，实施新设备启动和投产的结构化管理模式是徐工的竞争优势，可以优化交付并确保客户满意度。</strong>最近在卡拉加斯矿交付的巨型 XE5600 挖掘机是严格规划和多学​​科监控如何产生卓越成果的一个象征性例子。</p>
+<p>将新的大型设备引入采矿等复杂作业中需要的不仅仅是机器的实际交付。它需要一个强大的管理流程来调整期望、定义职责并确保所有相关人员从一开始就达成共识。徐工应用工程部意识到这一挑战，实施了跨部门监控会议模式，事实证明，该模式对于 XE5600 挖掘机的交付等项目的成功至关重要。</p>
+<p>该方法涉及每周会议和使用商业智能（BI）面板的使用，可以清楚地了解项目的每个阶段。总共<strong>20次会议</strong>进行，平均<strong>8 名参加者</strong>通过开会，据估计<strong>270人</strong>它们在整个过程中都受到直接和间接的影响，以确保工程，物流，组装和客户团队之间的持续一致性。结果是一代<strong>12顶</strong>详细信息和交流以上<strong>20封电子邮件</strong>专注于解决悬而未决的问题，最终<strong>完成了70个动作</strong>成功地。</p>
+<p>挖掘机的到来<strong>徐工XE5600</strong>卡拉加斯矿是巴西采矿业的一个历史性里程碑。交付和装配过程严格而精确，强化了徐工对效率、创新和全面客户支持的承诺。所有文件都已整理完毕，维护计划已制定，组装也得到了巧妙执行，巩固了徐工在全国市场的地位。</p>
+</div>
+<div class="metrics-container">
+<div class="metrics-box">
+<div class="metric-value">20</div>
+<div class="metric-label">会议</div>
+</div>
+<div class="metrics-box">
+<div class="metric-value">08</div>
+<div class="metric-label">平均参与者</div>
+</div>
+<div class="metrics-box">
+<div class="metric-value">270</div>
+<div class="metric-label">受影响的人</div>
+</div>
+<div class="metrics-box">
+<div class="metric-value">12</div>
+<div class="metric-label">生成分钟</div>
+</div>
+<div class="metrics-box">
+<div class="metric-value">70</div>
+<div class="metric-label">已完成的行动</div>
+</div>
+</div>
+<!-- Entrevistas -->
+<div class="highlight-box">
+<h3>参与人员的观点：管理层对实践的影响</h3>
+<p><strong>亚历山德罗·米利唐（商业）</strong></p>
+<p class="interview-question">您认为如果不进行初始控制，可能会发生什么影响？</p>
+<p class="interview-answer">“以前，该信息散布在该地区之间，我们一直想与客户交付。缺乏信息，缺乏商业上承诺的知识，缺乏封闭供应服务，公司被视为无序的图像问题等。等等。”</p>
+<p class="interview-question">您认为哪些方面是积极的，哪些方面可以改进？</p>
+<p class="interview-answer">“这无疑是过程控制和管理的重大收益！可以改善的是参与者的更大参与并了解工作的重要性。”</p>
+</div>
+<div class="highlight-box">
+<p><strong>华盛顿Teixeira Santos（服务）</strong></p>
+<p class="interview-question">您认为如果不进行初始控制，可能会发生什么影响？</p>
+<p class="interview-answer">“机器交付延迟，所有合同项目均未交付。”</p>
+<p class="interview-question">您认为什么是积极的？</p>
+<p class="interview-answer">“通过每个领域的责任分裂以及通过每周会议监视行动的清晰观点。”</p>
+<p class="interview-question">还有什么可以改进的地方？</p>
+<p class="interview-answer">“对某些领域的采取行动和参与会议的承诺更大。其他改进点也是：交付奖金项目的责任；组件和预防材料。以及在操作过程中实施的机器组装过程中进行调整或改进的调整的责任，因此下一个机器已经与同一机器相同。”</p>
+</div>
+<!-- Início testes 110 -->
+<div class="article">
+<div class="article-subtitle">现实</div>
+<h2 class="article-title">徐工密切监控淡水河谷 XG110 卡车的性能 - 9 月</h2>
+<p class="article-content">XCMG继续在采矿环境中加深对其XG110卡车的评估。报告<strong>2025 年 9 月</strong>它详细概述了两个不同单元的性能：CapãoXavier矿井（CPX）和工厂矿山中的CA5601。对关键绩效指标（KPI）的分析揭示了操作中固有的复杂性和挑战，同时通过优化和适应每个客户端现实的解决方案突出显示XCMG的持续搜索。</p>
+<!-- Bloco 2: Análise da Mina Fábrica -->
+<div style="margin-top: 40px;">
+<h3 class="article-title" style="border-left-color: #ef4444; font-size: 1.2em;">CA5601工厂矿山的卡车性能</h3>
+<!-- Imagem do Dashboard Fábrica (Largura Total) -->
+<div class="chart-container" style="background-color: #fff; padding: 0; margin-top: 15px;">
+<img alt="Análise de Performance Operacional - Caminhão CA5601 na Mina Fábrica" class="article-image" src="images/XG110Fabrica.png" style="border: none; border-radius: 0;"/>
+</div>
+<!-- Texto de Análise da Fábrica -->
+<p class="article-content" style="margin-top: 15px;">在矿井工厂，CA5601卡车在9月的身体表现（DF）仅为36.9％，并在9月份进行了38.9％的物理用途（UF）。该设备面临着162.8 T/H的生产率，平均油耗为12.53 L/H，面临着严重的挑战。主要关注点包括与规模系统故障，维护问题和轮胎监测直接相关的低性能。此外，由于缺乏运营商，缺乏负载设备和不利的天气条件，低使用会加剧使用，从而显着影响卡车的运营能力。</p>
+<p class="article-content" style="margin-top: 15px;">鉴于这种情况，徐工对该资产实施了战略变更管理，旨在使其在维加矿区这一可能更适合的环境中运营。预计将于 2025 年 12 月 31 日批准合同条款附录，并于 10 月 7 日实际转移资产，这表明该公司在寻求替代方案方面的积极性。CA5601的未来运营取决于本变更管理中规定的行动的完成，这突显了徐工扭转低可用性状况和优化设备性能的承诺。</p>
+<!-- Bloco 1: Análise da Mina de Capão Xavier (CPX) -->
+<div style="margin-top: 30px;">
+<h3 class="article-title" style="border-left-color: #3b82f6; font-size: 1.2em;">CA5602卡普Xavier矿（CPX）的卡车性能</h3>
+<!-- Imagem do Dashboard CPX (Largura Total) -->
+<div class="chart-container" style="background-color: #fff; padding: 0; margin-top: 15px;">
+<img alt="Análise de Performance Operacional - Caminhão CA5602 na Mina Capão Xavier" class="article-image" src="images/XG110CPX.png" style="border: none; border-radius: 0;"/>
+</div>
+<!-- Texto de Análise do CPX -->
+<p class="article-content" style="margin-top: 15px;">相比之下，在CapãoXavier矿中运行的CA5602卡车呈现出更为积极的情况，其物理可用性（DF）为94.3％，物理使用（UF）为67.4％。该设备的生产率为110.4 t/h，平均燃油消耗为16.34 L/h，其运营收益率（RO）达到了64％，这是反映其在测试条件下其效率和稳健性的正点。该结果表明，当操作条件更有利时，XG110能够提供高性能。</p>
+<p class="article-content" style="margin-top: 15px;">然而，Capão Xavier 矿的 CA5602 测试周期已经结束。该合同于 10 月 3 日晚上 11 点终止，该资产于当天下午 6 点停止运营。设备复员计划于 10 月 9 日进行，标志着这一评估阶段的结束。徐工现正准备发布最终测试报告，该报告将整合所有获得的数据和经验教训，为未来的优化和发展提供宝贵的见解。</p>
+</div>
+</div>
+<!-- Conclusão Final da Matéria -->
+<div class="highlight-box" style="margin-top: 30px;">
+<h3 style="font-size: 1.2em;">分析结论</h3>
+<p class="article-content" style="margin-bottom: 0;">XG110卡车的9月结果可清楚地了解重型设备运行中的挑战和成功。CA5602例证了XCMG寻求的高性能和可用性，而CA5601强调了批判性分析和适应性行动计划的重要性，以克服障碍。XCMG重申其使用此数据不断改善其产品和服务的承诺，以确保其设备满足采矿业的严格要求，并具有最大的效率和可靠性。</p>
+</div>
+</div>
+<!-- Fim da Matéria Especial -->
+<div class="article">
+<div class="article-subtitle">CRC</div>
+<h2 class="article-title">徐工评估新零部件维修中心 (CRC) 的选择</h2>
+<p class="article-content">XCMG开采正处于用于在Contagem-MG中建造新组件维修中心（CRC）的研究的早期阶段。该项目旨在优化设备的维护和技术支持，目前处于可行性评估阶段，而无需对位置或最终实施模型的具体定义。</p>
+<p class="article-content">详细的研究探讨了安装CRC的几种选择，包括当前XCMG地址的适当性，新分支附近的土地上的建筑或同一公寓内的土地上的建筑。每种替代方案都有其自身的优势和缺点，例如靠近仓库，现有的基础设施和未来的扩张潜力，以及财务考虑和建筑截止日期。</p>
+<p class="article-content">虽然徐工康塔任分公司目前的地址设有仓库，但初步分析表明，其尚未满足CRC运营的需求，需要大量投资进行基础设施改造。其他选择考虑从头开始建造一个具备所有工业先决条件的仓库，从长远来看，这可能更可行。</p>
+<p class="article-content">必须强调的是，目前所有的可能性都在分析之中。徐工致力于为新的CRC寻找最具战略性和最高效的解决方案，确保未来的任何决策都符合市场需求和卓越运营。该公司将继续评估各种方案，以确保提供最佳的组件维修基础设施，从而加强对客户的支持。</p>
+<img alt="CRC" class="market-share-image" src="images/crc.jpg"/>
+<p class="article-content" style="text-align: center;">消息即将传来。</p>
+</div>
+</div></section>
+<section class="part">
+<div class="subsection-header">新机器和部件批准</div>
+<div class="article">
+<div class="article-subtitle">创新与可持续发展</div>
+<h2 class="article-title">徐工宣布新的尖端机器正在巴西市场认证过程中</h2>
+<p class="article-content">XCMG继续在重型设备行业中促进创新，目前有许多新的高科技机器正在批准中。这些设备有望提高效率和可持续性，正在经历严格的测试和评估，以确保它们在全面介绍巴西市场之前符合最高的质量和性能标准。</p>
+<img alt="Nova Máquinas" class="homologation-image-machine" src="images/Homologacaomaquina.png"/>
+<br/><br/>
+<p class="article-content">XCMG的批准过程是一个基本的步骤，从详细的产品创建技术表开始，将开发与市场需求和监管标准保持一致。然后，该设备与客户合作进行优化，包括严格的测试，包括现场评估和仿真。该过程的完成通过客户的正式接受验证，以确保XCMG提供了强大，高效且可靠的解决方案。</p>
+<p class="article-content">批准的亮点包括淡水河谷 (CPX) 的 XGE150EV Plus 电动卡车和南航 (Casa de Pedra) 的 XDE260 柴油电动卡车计划分别于 2025 年 5 月和 2025 年 3 月完工。淡水河谷的 XC9150 轮式装载机 (S11D) 预计将于 2025 年 9 月完工，而淡水河谷 (Itabira) 的 GR350EP 电动平地机和 CSN (Volta Redonda) 的 XPT90K 码头牵引车计划于 2026 年完工，从而加强了对电气和高性能解决方案的关注。</p>
+<p class="article-content">这一不断发展的产品组合体现了徐工集团致力于通过尖端机器扩展其产品范围，以满足淡水河谷和南航等大客户的特定需求。该公司确保每台新设备都经过所有必要的步骤，以确保其卓越性能，从而为巴西的运营效率和生产力做出重大贡献。</p>
+</div>
+<div class="article">
+<div class="article-subtitle">技术进步</div>
+<h2 class="article-title">XCMG：组件处理投资组合驱动创新和质量</h2>
+<p class="article-content">
+<strong>如何在竞争日益激烈的市场中脱颖而出？</strong>XCMG通过强大的组件同源产品组合重申了其对卓越和创新的承诺。这种严格的过程确保了与机器集成的每个作品和系统符合最高质量，安全性和性能标准，从而提高了操作效率和客户满意度。</p>
+<img alt="Homologação de Componentes" class="homologation-image-comp" src="images/Homologacaocomponente.png"/> <br/><br/>
+<p class="article-content">当前的投资组合揭示了已经批准的组件与开发和测试高级阶段的组件之间的平衡。在亮点中，LW500BRI机器已经受益于已完成的批准解决方案，例如快速耦合头，快速耦合液压系统和ACXCMG-6000持有人，所有这些都由土狼提供，这一切都优化了设备的功能和多功能性。</p>
+<p class="article-content">另一方面，对于 XC958BR，相同的组件 - 快速连接器头、快速连接器液压系统和同样来自 Coyote 的 ACXCMG-6000 Ram - 通过了测试，但解决方案的开发仍在进行中，这表明该特定机器的最终集成和验证正在进行中。</p>
+<p class="article-content">多个创新项目正在进行中，有望进一步提升徐工的技术水平。对于装载机，丹佛斯的 JS1-H 线控转向操纵杆正处于开发阶段，旨在提高操作精度和舒适度。LW1200KN将配备徐工中国开发的配重，而XGA5905将配备正在开发的自动润滑系统（XCMG）和差速器轴参数化（Auxtech），重点关注变速箱的耐用性和效率。XE2000 和 3 轴卡车在测试阶段将分别使用 GHT (BRPesa) 和 Pesebem 的秤系统，以确保称重准确性。此外，XG90H辅助座椅（徐工巴西）和XGA5905弹簧梁支撑（加州巴西）正在开发中，以优化舒适性和坚固性。</p>
+</div>
+</section>
+<!-- PARTE 3: Eficiência Operacional -->
+<section class="part">
+<h2 class="section-header">运营效率</h2>
+<div class="part-columns">
+<div class="article">
+<div class="article-subtitle">重点效率和伙伴关系</div>
+<h2 class="article-title">徐工通过战略客户拜访深化支持和运营优化</h2>
+<p class="article-content">XCMG通过他的专业专家团队，在2025年9月在该领域的存在加强了对客户的战略访问。主要目的是加深对运营的理解，确定提高效率的机会，并加强公司对提供切割边缘技术支持和个性化解决方案的承诺，从而确保设备的最高性能。</p>
+<p class="article-content">
+<strong>访问R＆DIpiaú（BA） -  2025年9月1日至05年：</strong>专家安东尼奥·里贝罗（Antonio Ribeiro）带领R＆DIpiaú进行了访问，该访问的重点是海上卡车XG110和XG105。该小组调查了差异和增加操作信息中的异常噪音。结论表明，差异差异没有严重故障，但强调需要注意维护，润滑和道路基础设施中的关键点。该行动计划包括更紧随的遵循 - 维护，定期收集和休息时间，旨在提高车队的可靠性和降低。</p>
+<p class="article-content">
+<strong>Borborema 项目（G3 Mineração/Aura、Currais Novos-RN）——2025 年 9 月 9 日至 12 日：</strong>AntônioRibeiro和Eduardo Teles对Borborema项目进行了技术访问。XGA110卡车，XE1350和XE800DK挖掘机以及XC958装载机的性能评估显示出XCMG车队的高可用性（92.6％），XGA110的性能为95.5％。XCMG与Sany，John Deere和Komatsu等竞争对手脱颖而出，燃油消耗较低，维护简化和卓越的技术支持。但是，确定了提供与超负荷和使用不足有关的零件等延迟的挑战。建议包括车队标准化和遥测实施以进行优化。</p>
+<p class="article-content">
+<strong>特拉米纳斯 (Barão de Cocais-MG) – 2025 年 9 月 22 日至 26 日：</strong>Eduardo Teles对Earth Minas进行了评估，其中XE490DK，XE370BR挖掘机，XC958装载机和XPE0912和XFY1561 Crusher（约有400小时）使用，在开放空气铁矿中使用了出色的表现。当前315吨/小时的生产率具有350吨/h的潜力，并调整负载。操作员的反馈突出了超过竞争的XCMG设备的舒适性，稳定性和功率。客户对标准化XCMG车队，增强可靠性和作为品牌差异的紧密技术支持表现出浓厚的兴趣。</p>
+</div>
+<div class="article">
+<div class="article-subtitle">连接和承诺</div>
+<h2 class="article-title">徐工战略出访强化实地布局</h2>
+<img alt="cronogramavisita" class="article-image" src="images/cronogramavisita.png"/>
+<p class="article-content">
+<strong>在现场的持续存在如何增强采矿业务中的信任和表现？</strong>徐工巴西公司通过加强访问和培训计划，强化了其对卓越运营和贴近客户的承诺。9 月份的议程强调了应用工程团队致力于与运营并肩作战，确保尖端技术支持并加强全国范围内的战略合作伙伴关系。</p>
+<p class="article-content">其中，安东尼奥·里贝罗 (Antônio Ribeiro) 和布鲁诺·卡斯托迪奥 (Bruno Custódio) 致力于重要活动。Antônio Ribeiro 于 9 月 22 日至 24 日重点关注位于 Pouso Alegre-MG 的 XCMG Indústria 的内部报告的编写，并于 9 月 29 日至 10 月 3 日在位于卡纳/卡拉加斯的 Vale Serra Leste 对 XC9150 设备的交付进行了操作监控。Bruno Custódio 于 9 月 22 日至 24 日同期为同样位于 Pouso Alegre-MG 的 XCMG Indústria 提供内部支持。</p>
+<p class="article-content">访问时间表还包括Eduardo Teles的表演，从9月22日到24日，他在BarãoDeCocais-MG访问了Terra Minas，以详细说明了一份关于压碎的报告。同时，JoãoLuiz从9月22日至24日在Canaã/Carajás-Pa进行，在Vale S11D进行了动员培训，以确保他们为运营需求做好了准备。</p>
+<p class="article-content">这一在该领域的战略布局不仅优化了设备性能，还加强了与客户的信任和合作伙伴关系。通过这一时间表，徐工展示了其提供个性化解决方案和卓越技术支持的承诺，巩固了其作为巴西采矿和建筑业务成功的重要合作伙伴的地位。</p>
+</div>
+<div class="article">
+<div class="article-subtitle">成功的策略</div>
+<h2 class="article-title">字段关注：将现场数据转换为XCMG的战略解决方案</h2>
+<img alt="5600FIELDFOLLOW" class="article-image" src="images/5600fieldfollow.jpeg"/>
+<p class="article-content">
+<strong>徐工现场跟随如何重新定义机器、操作员和矿山之间的关系？</strong>工程师和专家远离公司的办公室，直接在乡村行动，确保巨型XE5600等机器即使在该国最具挑战性的环境中，例如卡拉雅山的象征性矿山，也具有最高的性能。</p>
+<p class="article-content">现场跟踪不仅仅是技术监控；这是对实际操作的深度沉浸。这种做法使徐工能够实时识别需求、优化例程并培训团队，从而减少停机次数、降低维护成本并记录设备可用性。它保证每台机器都能发挥最大潜力，从而为客户带来更高的生产力和安全性。</p>
+<p class="article-content">这种方法的一个里程碑是Carajás的Xe5600液压挖掘机的严格领域。这台机器详细介绍了极端的装载和发掘条件，从周期效率到燃料消耗，从适应到亚马逊的地形到操作员的舒适性。结果表明，XE5600准备克服采矿的主要挑战，在世界上最苛刻的环境之一中提供鲁棒性，可靠性和高性能。</p>
+<p class="article-content">对于徐工来说，现场跟随是坚定不移的承诺的体现：站在客户一边，将现场的每一个挑战转化为持续改进。这种战略上的邻近性与尖端技术相结合，巩固了徐工作为巴西采矿业寻求新的效率、安全和创新水平的运营重要合作伙伴的地位。</p>
+</div>
+</div>
+</section>
+<!-- PARTE 4: Inteligência de Mercado -->
+<section class="part">
+<h2 class="section-header">市场情报</h2>
+<!-- Novidades do Mercado - Layout 4 colunas com Saiba Mais -->
+<div class="subsection-header">市场新闻 - 矿业</div>
+<div class="market-news-grid">
+<div class="article">
+<div class="article-subtitle">财务业绩</div>
+<h2 class="article-title">在全球增长和技术创新的推动下，中联重科公布 2025 年上半年业绩强劲</h2>
+<p class="article-date">发布于：2025 年 9 月 6 日</p>
+<p class="article-content">Zoomlion的国际业务增长了强劲增长，2025年上半年的收入达到1381.50亿元人民币，比上一年增长了15％，占总收入的55.6％。</p>
+<a class="saiba-mais" href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/zoomlion-divulga-fortes-resultados-no-primeiro-semestre-de-2025-impulsionados-pelo-crescimento-global-e-inovacao-tecnologica-302548215.html" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">竞争对手</div>
+<h2 class="article-title">沃尔沃·里诺瓦（Volvo Renova）系列挖掘机</h2>
+<p class="article-date">发布日期： 2025 年 9 月 1 日</p>
+<p class="article-content">沃尔沃建筑设备公司在该国推出了新系列挖掘机，共有 7 种型号：EC210、EC220、EC230、EC260、EC360、EC400 和 EC500，适用于从采矿到重型基础设施等各个领域。主要亮点是燃油效率的跃升。</p>
+<a class="saiba-mais" href="https://revistamt.com.br/Noticias/Exibir/volvo-renova-serie-de-escavadeiras" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">扩张</div>
+<h2 class="article-title">随着采矿的扩大，INOVA组在五个州假设Epiroc分布</h2>
+<p class="article-date">发布日期： 2025 年 9 月 2 日</p>
+<p class="article-content">Inova 集团成为安百拓在 5 个州的官方经销商：米纳斯吉拉斯州、圣保罗、里约热内卢、圣埃斯皮里图州和巴伊亚州，这些州是该国矿产活动的战略区域。预计2025年至2029年采矿业新项目投资额为684亿美元，比上一期增长6.6%。</p>
+<a class="saiba-mais" href="https://eaemaq.com.br/noticias-do-mercado/com-mineracao-em-expansao-grupo-inova-assume-distribuicao-da-epiroc-em-cinco-estados/" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">记录</div>
+<h2 class="article-title">记录违规：到目前为止，中国对可持续采矿设备的出口要求更大</h2>
+<p class="article-date">发表于：2025年9月29日</p>
+<p class="article-content">XCMG签署战略协议，并将从150到200台电动倾斜卡车，至240吨电池，以达到世界上最大的铁矿石生产商之一Fortescue，这标志着中国对可持续采矿机器的最大出口要求。</p>
+<a class="saiba-mais" href="https://www.prnewswire.com/br/comunicados-para-a-imprensa/quebra-de-recorde-maior-pedido-de-exportacao-da-china-para-equipamentos-de-mineracao-sustentavel-ate-o-momento-302569758.html" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">地下</div>
+<h2 class="article-title">地下采矿对于巴西该行业的未来具有战略意义</h2>
+<p class="article-date">发布日期： 2025 年 9 月 24 日</p>
+<p class="article-content">在过去的三十年中，自动化、远程控制和通风技术的进步极大地降低了工人面临的风险。新露天矿发现的稀缺和可持续实践的压力使地下采矿成为一种战略替代方案。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/meteoric-afirma-que-segue-confiante-sobre-o-projeto-caldeira" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">投资</div>
+<h2 class="article-title">项目增长利用该细分市场的投资</h2>
+<p class="article-date">发表于：2025年9月17日</p>
+<p class="article-content">在2025年上半年，关键的矿产收入达到216亿雷亚（2024年比同期41.6％），到2029年提高了684亿美元的投资，重点是稀有土地和诸如技术发展，许可和可持续性等挑战。</p>
+<a class="saiba-mais" href="https://www.noticiasdemineracao.com/metais-preciosos/news-articles/4519325/hochschild-decide-construcao-monte-carmo-em-2026" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">许可</div>
+<h2 class="article-title">Vale在28亿美元的项目中获得S11D的扩展许可证</h2>
+<p class="article-date">发表于：2025年9月11日</p>
+<p class="article-content">Vale宣布，它是从巴西环境与可再生能源研究所（IBAMA）收到的，该活动的运营许可证与北部系统中的Serra Sul +20 MTPA项目有关的活动许可。该项目开始于2026年下半年的预定调试。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/vale-recebe-licenca-de-expansao-do-s11d-em-projeto-de-us-28-bilhoes" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">结果</div>
+<h2 class="article-title">Atlas Lithium子公司在GO和MG项目中取得良好成绩</h2>
+<p class="article-date">发表于：2025年9月22日</p>
+<p class="article-content">Atlas Lithium Corporation告知，子公司Atlas Critical Critical Minerals Corporation（ACM）通过其多样化的稀有土地投资组合战略报告了良好的业绩，建立了巴西稀有土地项目的投资组合。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/subsidiaria-da-atlas-lithium-tem-bons-resultados-em-projetos-em-go-e-mg" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">区域增长</div>
+<h2 class="article-title">采矿在Piauí中增长了400％以上</h2>
+<p class="article-date">发表于：2025年9月10日</p>
+<p class="article-content">2023年至2024年间，该行业的铁矿石产量增长了4000%以上。目前，皮奥伊的铁矿石估计储量超过10亿吨，年产量为100万吨，使该州成为巴西第六大铁矿石出口国。</p>
+<a class="saiba-mais" href="https://revistamineracao.com.br/2025/09/10/mineracao-cresce-mais-de-400-no-piaui/" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">智能矿山</div>
+<h2 class="article-title">华为和谷研究智能矿山</h2>
+<p class="article-date">发表于：2025年9月16日</p>
+<p class="article-content">华为和淡水河谷正在评估智能矿山项目的实施，该项目连接到5G甚至5.5G网络，该项目承诺更高的数据速度和更短的响应时间，目前仍在巴西进行测试。</p>
+<a class="saiba-mais" href="https://www.noticiasdemineracao.com/ti-e-comunicacao/news-articles/4520118/huawei-vale-estudam-mina-inteligente?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2017%202025%20-%2014%3A52%3A14%20UTC&amp;utm_content=Huawei%20e%20Vale%20estudam%20mina%20inteligente&amp;utm_term=&amp;utm_medium=email&amp;utm_source=Adestra" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">ia</div>
+<h2 class="article-title">人工智能的新型采矿技术</h2>
+<p class="article-date">发布于：2025 年 9 月 30 日</p>
+<p class="article-content">机器已经配备了嵌入式信息技术，可以实时传输性能和安全指标。矿业公司报告称，效率实现了两位数的增长，成本显着降低，对安全和可持续发展的信心增强。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/a-nova-economia-da-mineracao-com-inteligencia-artificial" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">挑战</div>
+<h2 class="article-title">地缘政治，技术和能源过渡是采矿的挑战</h2>
+<p class="article-date">发表于：2025年9月22日</p>
+<p class="article-content">在能源过渡和技术至高无上的种族驱动的全球关键矿物种族是重新定义供应链，因此，该行业的动态以及地缘政治不确定性以及需要重新定义生产力和卓越运营的供应。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/geopolitica-tecnologias-e-transicao-energetica-sao-os-desafios-da-mineracao" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">稀土</div>
+<h2 class="article-title">稀土与全球产业链的悄然重组</h2>
+<p class="article-date">发表于：2025年9月27日</p>
+<p class="article-content">中国集中了全球约60%的原矿石产量，更确切地说，集中了全球90%的化学炼油能力。尽管美国、欧洲和日本都在行动，但巴西仍处于潜在潜力的位置。</p>
+<a class="saiba-mais" href="https://eaemaq.com.br/noticias-do-mercado/as-terras-raras-e-a-reorganizacao-silenciosa-das-cadeias-globais/" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">能源转型</div>
+<h2 class="article-title">研究指出利用金属进行能源转型的“殖民主义”</h2>
+<p class="article-date">发表于：2025年9月29日</p>
+<p class="article-content">能源过渡是由公司和超级富裕国家捕获的，繁殖了加深不平等和侵犯人权行为的殖民模式。全球南部拥有70％的矿产储量，但投资的46％在北部，在中国有29％。</p>
+<a class="saiba-mais" href="https://www.noticiasdemineracao.com/brasil/news-articles/4520760/pesquisa-aponta-colonialismo-com-metais-para-transicao-energetica?utm_campaign=NMB%20Daily%20Newsletter%20-%20SEP%2029%202025%20-%2018%3A52%3A58%20UTC&amp;utm_content=Pesquisa%20aponta%20%27colonialismo%27%20com%20metais%20para%20transi%C3%A7%C3%A3o%20energ%C3%A9tica&amp;utm_term=&amp;utm_medium=email&amp;utm_source=Adestra" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">伙伴关系</div>
+<h2 class="article-title">巴西和加拿大推进采矿和能源领域的伙伴关系</h2>
+<p class="article-date">发布日期： 2025 年 9 月 11 日</p>
+<p class="article-content">加拿大文件夹与自然资源之间的理解备忘录打算在战略领域建立双边合作的里程碑，例如采矿，能源，可再生燃料和自然资源的社会发展。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/brasil-e-canada-avancam-parcerias-em-mineracao-e-energia" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">发展</div>
+<h2 class="article-title">力拓即将在西芒杜首次登船</h2>
+<p class="article-date">发布于：2025 年 9 月 10 日</p>
+<p class="article-content">里约·廷托（Rio Tinto）接近几内亚西南杜（Simandou）的第一台铁矿石董事会，重点关注当地发展以及对炼油厂和质量化投资的可能性，旨在为生产增加价值。</p>
+<a class="saiba-mais" href="https://www.brasilmineral.com.br/noticias/rio-tinto-perto-do-primeiro-embarque-em-simandou" target="_blank">了解更多</a>
+</div>
+<div class="article">
+<div class="article-subtitle">事件</div>
+<h2 class="article-title">Exposibram 2025标记返回萨尔瓦多，重点关注东北的新矿物边界</h2>
+<p class="article-date">发布日期： 2025 年 9 月 18 日</p>
+<p class="article-content">此次活动将强化巴伊亚和东北部地区的主导地位——那里是铜、锂、镍、钒和稀土等战略矿产的集中地——并突显它们在开发旨在负责任采矿和能源转型的项目方面日益增长的潜力。</p>
+<a class="saiba-mais" href="https://ibram.org.br/noticia/exposibram-2025-marca-retorno-a-salvador-com-foco-na-nova-fronteira-mineral-do-nordeste-2/" target="_blank">了解更多</a>
+</div>
+<!-- Agenda -->
+<div class="article">
+<div class="article-subtitle">议程</div>
+<h2 class="article-title">活动和展览会</h2>
+<div class="events-list">
+<div class="event-item">
+<div class="event-date">05-09淘汰</div>
+<a class="event-link" href="https://entmme2025.com.br/" target="_blank">XXX ENTMME – 冶金矿业大会</a>
+<div class="event-location">格拉玛多 (RS)（矿石和冶金）</div>
+</div>
+<div class="event-item">
+<div class="event-date">15-17淘汰</div>
+<a class="event-link" href="https://www.construnordeste.com.br/" target="_blank">2025年北欧建设展</a>
+<div class="event-location">萨尔瓦多，BA（建筑和基础设施）</div>
+</div>
+<div class="event-item">
+<div class="event-date">15-19 出局</div>
+<a class="event-link" href="https://feriadelaconstruccion.com.uy/" target="_blank">建筑博览会</a>
+<div class="event-location">乌拉圭蒙得维的亚（建筑）</div>
+</div>
+<div class="event-item">
+<div class="event-date">21-23淘汰</div>
+<a class="event-link" href="https://fenasan.com.br/" target="_blank">芬森2025</a>
+<div class="event-location">圣保罗，SP（卫生和环境）</div>
+</div>
+<div class="event-item">
+<div class="event-date">27-30 出局</div>
+<a class="event-link" href="https://exposibram2025.ibram.org.br/" target="_blank">2025 年展会</a>
+<div class="event-location">萨尔瓦多，学士学位（采矿）</div>
+</div>
+<div class="event-item">
+<div class="event-date">29-31</div>
+<a class="event-link" href="https://www.argentinamining.com/en/index.php/argentina-mining-cuyo-2025-mendoza" target="_blank">阿根廷库约矿业 2025</a>
+<div class="event-location">阿根廷门多萨（采矿业）</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Distribuição das Máquinas -->
+<section class="part">
+<div class="article">
+<div class="subsection-header">机器分布</div>
+<div class="article-subtitle">战略映射</div>
+<h2 class="article-title">徐工机器在哪里运营？</h2>
+<p class="article-content">下面的地图显示了应用工程的设备覆盖范围，由分析师 Vitor Silva 制作。在这1,608台设备中，主要分布在东南部，拥有1,000多台机器，其次是中西部、东北部、北部和南部，此外还有一台设备在圭亚那运行。</p>
+<p class="article-content">较大的圆圈是指该地区运行中最高的设备，而较小的设备代表运行的机械量较低。红色区域表示没有覆盖范围的区域和机器，而蓝色区域表示在负责任分析师屋顶下的机器。</p>
+<div class="chart-container">
+<a href="https://app.powerbi.com/view?r=eyJrIjoiNmEzNjRjYzEtODdkMS00MDJlLTk1MDEtY2IwYzNmNjQ5NjBlIiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
+<img alt="Mapa de Distribuição das Máquinas" src="images/mapa_distribuicao.png"/>
+</a>
+<p class="metric-label">资料来源：部门准备的仪表板。</p>
+</div>
+</div>
+</section>
+<!-- MarketShare -->
+<section class="part">
+<div class="subsection-header">市场份额</div>
+<div class="article">
+<div class="article-subtitle">市场分析</div>
+<h2 class="article-title">徐工在巴西的进口市场份额如何？</h2>
+<div class="part-columns" style="grid-template-columns: 1fr 1fr; gap: 25px; align-items: flex-start;">
+<!-- Coluna Esquerda: Texto e Imagens 1 e 2 -->
+<div>
+<p class="article-content">将2024年的业绩与2025年的业绩进行比较时，徐工的市场份额出现了相应的增长。尽管市场份额仍不大，但 0.5% 的增长表明该品牌开始在巴西进口产品中获得更大的代表性。</p>
+<p class="article-content">到2025年7月，该公司已经占58台进口设备（由海关报告），而2024年仅2个单位，这表明数量很大。在同一时期，整个行业已经达到了12,283个进口，增强了该行业XCMG的不断扩展的空间。</p>
+<p class="article-content">在此背景下，建筑市场仍然是需求的主要驱动力，2025年建筑市场数量为11,646套，而2024年为10,495套。尽管林业领域略有萎缩（2024年为381套，2025年为323套），但采矿业却取得了进展，从269套增至314套，这表明需求逐渐多元化。</p>
+<p class="article-content">XCMG运动的参与百分比害羞，这标志着进入巴西市场的战略定位，这是进口量的指数增长以及中国工业在重型机器的全球情况下的竞争日益增长的支持。</p>
+<div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+<img alt="Gráfico de Market Share 1" src="images/Marketshare1.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;"/>
+</div>
+<p class="metric-label" style="text-align: center;">Fonte：Marketpins。</p><br/>
+<p class="article-content">展望 2025 年，中国公司三一重工的进步是显而易见的，其市场份额不断上升，巩固了自己作为该行业主要参考之一的地位。与此同时，山猫保持了自己的地位，尤其是在小型挖掘机领域令人印象深刻的表现，仅这一类别就占据了 27.0% 的市场份额。</p>
+<div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+<img alt="Gráfico de Market Share 2" src="images/Marketshare2.png" style="max-width: 80%; height: auto; display: block; margin: 0 auto;"/>
+</div>
+<p class="metric-label" style="text-align: center;">字体：MarketPins。</p>
+</div>
+<!-- Coluna Direita: Texto e Imagens 3 e 4 -->
+<div>
+<p class="article-content">在传统品牌领域，New Holland 和 JCB 等品牌继续跻身十大进口品牌之列，增强了其历史相关性。然而，在巴西市场上不断取得进展的中国制造商的不断增长的动作引起了人们的关注。这一进步不仅体现了竞争力，也体现了人们对中国设备的良好接受度，而中国设备的需求日益增长。在这种情况下，徐工集团的存在脱颖而出，它是在巴西影响力最大的中国品牌之一，强化了人们对这个亚洲国家正在巩固自己作为该领域主角的看法。</p>
+<div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+<img alt="Gráfico de Market Share 3" src="images/Marketshare3.png" style="max-width: 80%; height: auto; display: block; margin: 0 auto;"/>
+</div>
+<p class="metric-label" style="text-align: center;">Fonte：Marketpins。</p><br/>
+<p class="article-content">另一方面，更传统的大型设备也保持了相关性，例如装载机，它们继续占据重要的市场份额，分别为 14.6%（轮式装载机）和 12.4%（履带式挖掘机）。中国品牌的成长与经典装备的稳定结合，凸显了一个创新、竞争力和传统齐头并进的转型市场。</p>
+<div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
+<img alt="Gráfico de Market Share 4" src="images/Marketshare4.png" style="max-width: 80%; height: auto; display: block; margin: 0 auto;"/>
+</div>
+<p class="metric-label" style="text-align: center;">Fonte：Marketpins。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Fim da Seção Market Share -->
+<!-- Tópico Quinzenal -->
+<section class="part">
+<div class="article">
+<div class="subsection-header">不要雷达</div>
+<div class="article-subtitle">混合市场智能</div>
+<h2 class="article-title">在-Depth的研究中揭示了巴西和拉丁美洲混合设备的潜力</h2>
+<p class="article-content">XCMG通过其市场情报区，对混合设备全景进行了全面研究，强调了其在采矿和建筑领域的变革潜力。研究表明，在寻找减少环境影响，燃油消耗优化和改善绩效改善的驱动下，不可避免地要过渡到更可持续和有效的解决方案。这种战略运动将XCMG定位在创新的最前沿，为地形做准备，以实现更绿色，更有生产力的未来。</p>
+<img alt="Market Share" class="market-share-image" src="images/TRANSIÇÃOVERDE.png"/>
+<p class="metric-label" style="text-align: center;">资料来源：巴西建筑设备市场2024年的Sobratema研究。</p><br/> <br/>
+<p class="article-content">研究详细指出，尽管混合动力设备的初始成本仍然是一个挑战，但从长远来看，投资回报是有希望的，这主要是由于显着节省燃料和降低维护成本。该分析还解决了实施障碍，例如需要足够的基础设施和专门的技术培训，特别是在偏远地区。然而，徐工已经在这一场景中脱颖而出，推出了全球首款混合动力矿用挖掘机XE650GK-HEV，以及XE1600H和XC988-HEV装载机等其他型号，展现了其对重型机械现代化的承诺。</p>
+<p class="article-content">投资混合动力技术的客户主要是中型和大型公司，他们将能源效率和降低运营成本视为战略因素。该研究强调，尽管可持续性很重要，但主要动力仍然是经济回报，这直接影响竞争力和盈利能力。徐工通过提供适合当地实际情况的高效机器以及平衡资本支出和运营支出的套餐，力求促进客户的这一转变。</p>
+<img alt="Market Share" class="market-share-image" src="images/TENDENCIA.png"/>
+<p class="metric-label" style="text-align: center;">资料来源：Sobratema 对 2024 年巴西建筑设备市场的研究。</p><br/> <br/>
+<p class="article-content">巴西和拉丁美洲的混合设备的未来前景很有希望，并加强了能源效率政策和税收优惠。对剩余的调查，甚至表明对混合解决方案的偏爱越来越偏爱，占预期需求的26％。XCMG通过投资创新，专业支持和适应性的财务战略，准备领导这种转型，增强更具可持续性的部门并巩固其在全球重型设备市场中的领导力。</p>
+</div>
+</section>
+<!-- Início da Seção Novos Grandes Projetos -->
+<section class="part">
+<div class="subsection-header">新重大项目</div>
+<div class="article">
+<div class="article-subtitle">战略合作伙伴关系</div>
+<h2 class="article-title">徐工巴西与 Mineração Taboca 建立新合作伙伴关系</h2>
+<div class="part-columns" style="grid-template-columns: 1.2fr 0.8fr; align-items: flex-start; gap: 25px;">
+<!-- Coluna de Texto -->
+<div>
+<p class="article-content">XCMG巴西宣布与<b>塔博卡矿业S.A.</b>这是一个战略步骤，旨在加强公司在该国大型采矿项目中的存在。与巴西精制锡的主要生产商之一塔博卡采矿公司合作，这对双方都是一个重要的机会。</p>
+<p class="article-content">塔博卡采矿（Taboca Mining）在马纳斯（Manaus）/AM的运营中被公认，因为它具有自己的矿山（Pitinga）和Pirapora的铸造厂，该特征是在锡世界市场中区分它的特征。</p>
+<p class="article-content">最近，Mineração Taboca 的股权结构发生了重大变化，于 2024 年 11 月被中国国有企业中国有色金属矿业集团有限公司 (CNMC) 收购。此次交易价值3.4亿美元，涉及从秘鲁Minsur集团收购该矿业公司100%的股份，巩固了中国在巴西矿业领域的影响力。</p>
+<p class="article-content">
+<p class="metric-label" style="text-align: center;">资料来源：http://g1.globo.com/am/amazonas/noticia/​​2024/11/28/reserva-rica-em-uranio-localizada-no-amazonas-e-vendida-a-china.ghtml</p> <br/>
+</p>
+<p class="article-content">CNMC 的此次收购为 Mineração Taboca 及其合作伙伴（例如徐工巴西）开辟了新的前景，徐工巴西寻求扩大其在大型和高度复杂项目中的业务，以适应管理层带来的新指导方针和机遇。</p>
+<p class="article-content">徐工巴西的 Mineração Taboca 商业提案包括一系列旨在优化采矿作业的重型设备。</p>
+<div class="highlight-box" style="margin-top: 15px; padding: 15px;">
+<h3 style="font-size: 1.1em; margin-bottom: 10px;">在所展示的模型中，以下模型脱颖而出：</h3>
+<ul style="margin-left: 20px; font-size: 0.9em; line-height: 1.6;">
+<li><b>挖掘机：</b>XE800DK 和 XE380G 型号</li>
+<li><b>卡车：</b>型号 XGA5905D3T、XG110 和 XG90H PIPA</li>
+<li><b>平地机：</b>GR2605T 和 GR3005T 型号</li>
+<li><b>履带式拖拉机：</b>型号D360</li>
+<li><b>加载程序页面：</b>型号LW1000KN</li>
+</ul>
+</div>
+<p class="article-content">该设备代表了徐工有能力提供完整的高科技解决方案，适应大型采矿作业的具体需求，旨在提高工作场所的生产力和安全性。</p>
+</div>
+<!-- Coluna de Imagens -->
+<div style="display: flex; flex-direction: column; gap: 15px;">
+<img alt="Equipamentos da Proposta Taboca 1" class="article-image" src="images/Grandesprojetos1.png" style="margin: 0; width: 450px;"/>
+<img alt="Equipamentos da Proposta Taboca 2" class="article-image" src="images/Grandesprojetos2.png" style="margin: 0; width: 450px"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Fim da Seção Novos Grandes Projetos -->
+</div>
+<!-- Canal de Comunicação -->
+<section class="communication-channel">
+<div class="communication-header">📞通信渠道 - 性能工程</div>
+<div class="communication-content">
+<!-- Formulário de Solicitação -->
+<div class="contact-form">
+<h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">向性能工程提出请求</h3>
+<form id="performanceForm">
+<div class="form-group">
+<label for="solicitante_perf">请求者姓名：</label>
+<input id="solicitante_perf" name="solicitante" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="departamento_perf">部门：</label>
+<select id="departamento_perf" name="departamento" required="">
+<option value="">选择 ...</option>
+<option value="comercial">商业的</option>
+<option value="pos-vendas">售后</option>
+<option value="qualidade">质量</option>
+<option value="engenharia">工程</option>
+<option value="outros">其他的</option>
+</select>
+</div>
+<div class="form-group">
+<label for="tipoSolicitacao_perf">主题：</label>
+<select id="tipoSolicitacao_perf" name="tipoSolicitacao" required="">
+<option value="">选择 ...</option>
+<option value="gestao-performance">绩效管理</option>
+<option value="performance-sul">性能工程 - Vale Sul 和 CSN</option>
+<option value="coordenacao-performance">绩效协调 - 北</option>
+<option value="performance-norte">绩效工程 - 北</option>
+<option value="outros">其他的</option>
+</select>
+</div>
+<div class="form-group">
+<label for="urgencia_perf">紧急程度：</label>
+<select id="urgencia_perf" name="urgencia" required="">
+<option value="">选择 ...</option>
+<option value="baixa">低的</option>
+<option value="media">平均的</option>
+<option value="alta">阿尔塔</option>
+<option value="critica">批评</option>
+</select>
+</div>
+<div class="form-group">
+<label for="descricao_perf">请求说明：</label>
+<textarea id="descricao_perf" name="descricao" placeholder="Ex: A escavadeira XE5600 está com consumo de combustível acima do esperado..." required=""></textarea>
+</div>
+<button class="submit-btn" type="submit">提交请求</button>
+</form>
+</div>
+<div class="contact-info">
+<h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">直接联系</h3>
+<div class="contact-item">
+<h4>绩效经理</h4>
+<p><strong>负责任的：</strong>阿德里亚诺·桑塔纳（Adriano Santana）</p>
+<p><strong>电子邮件：</strong> <a href="mailto:adriano.santana@xcmgbrasil.com.br">adriano.santana@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>性能工程师 - Vale Sul 和 CSN</h4>
+<p><strong>负责任的：</strong>何塞·卢西亚诺</p>
+<p><strong>电子邮件：</strong> <a href="mailto:jose.mendonca@xcmgbrasil.com.br">jose.mendonca@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>性能协调员 - 北</h4>
+<p><strong>负责任的：</strong>约翰尼·苏扎</p>
+<p><strong>电子邮件：</strong> <a href="mailto:johnny.souza@xcmgbrasil.com.br">johnny.souza@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>性能工程师 - 北部</h4>
+<p><strong>负责任的：</strong>普里西拉·销售</p>
+<p><strong>电子邮件：</strong> <a href="mailto:priscila.sales@xcmgbrasil.com.br">priscila.sales@xcmgbrasil.com.br</a></p>
+</div>
+</div>
+</div>
+</section>
+<section class="communication-channel">
+<div class="communication-header">📞 沟通渠道-市场情报</div>
+<div class="communication-content">
+<!-- Formulário de Solicitação -->
+<div class="contact-form">
+<h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Mercado Intelligence请求</h3>
+<form id="marketIntelForm">
+<div class="form-group">
+<label for="solicitante_mi">申请人名称：</label>
+<input id="solicitante_mi" name="solicitante" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="departamento_mi">部门：</label>
+<select id="departamento_mi" name="departamento" required="">
+<option value="">选择 ...</option>
+<option value="comercial">商业的</option>
+<option value="pos-vendas">售后</option>
+<option value="qualidade">质量</option>
+<option value="engenharia">工程</option>
+<option value="outros">其他的</option>
+</select>
+</div>
+<div class="form-group">
+<label for="tipoSolicitacao_mi">主题：</label>
+<select id="tipoSolicitacao_mi" name="tipoSolicitacao" required="">
+<option value="">选择...</option>
+<option value="linha-amarela">黄线 - LogComex - Abmaq</option>
+<option value="mineracao-latam">采矿 - 拉坦</option>
+<option value="outros">其他的</option>
+</select>
+</div>
+<div class="form-group">
+<label for="urgencia_mi">紧急程度：</label>
+<select id="urgencia_mi" name="urgencia" required="">
+<option value="">选择...</option>
+<option value="baixa">低的</option>
+<option value="media">平均的</option>
+<option value="alta">阿尔塔</option>
+<option value="critica">审查</option>
+</select>
+</div>
+<div class="form-group">
+<label for="descricao_mi">请求说明：</label>
+<textarea id="descricao_mi" name="descricao" placeholder="Ex: Gostaria de um relatório sobre a participação de mercado de escavadeiras no nordeste..." required=""></textarea>
+</div>
+<button class="submit-btn" type="submit">提交请求</button>
+</form>
+</div>
+<div class="contact-info">
+<h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">直接联系</h3>
+<div class="contact-item">
+<h4>黄线 -  logcomex -abmaq</h4>
+<p><strong>负责任的：</strong>华盛顿戈麦斯</p>
+<p><strong>电子邮件：</strong> <a href="mailto:washington.gomes@xcmgbrasil.com.br">washington.gomes@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>采矿业 - 拉美</h4>
+<p><strong>负责任的：</strong>Paula Souza</p>
+<p><strong>电子邮件：</strong> <a href="mailto:paula.souza@xcmgbrasil.com.br">paula.souza@xcmgbrasil.com.br</a></p>
+</div>
+</div>
+</div>
+</section>
+<section class="communication-channel">
+<div class="communication-header">📞 沟通渠道-审批</div>
+<div class="communication-content">
+<!-- Formulário de Solicitação -->
+<div class="contact-form">
+<h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">认证请求</h3>
+<form id="homologationForm">
+<div class="form-group">
+<label for="solicitante">申请人名称：</label>
+<input id="solicitante" name="solicitante" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="departamento">部门：</label>
+<select id="departamento" name="departamento" required="">
+<option value="">选择...</option>
+<option value="comercial">商业的</option>
+<option value="pos-vendas">售后</option>
+<option value="pos-vendas">质量</option>
+<option value="pos-vendas">工程</option>
+<option value="outros">其他的</option>
+</select>
+</div>
+<div class="form-group">
+<label for="tipoSolicitacao">主题：</label>
+<select id="tipoSolicitacao" name="tipoSolicitacao" required="">
+<option value="">选择 ...</option>
+<option value="homologacao-maquina">机器批准</option>
+<option value="homologacao-componente">组件批准</option>
+<option value="gestao-kickoff">开球</option>
+<option value="outros">其他的</option>
+</select>
+</div>
+<div class="form-group">
+<label for="urgencia">紧迫水平：</label>
+<select id="urgencia" name="urgencia" required="">
+<option value="">选择 ...</option>
+<option value="baixa">低的</option>
+<option value="media">平均的</option>
+<option value="alta">阿尔塔</option>
+<option value="critica">审查</option>
+</select>
+</div>
+<div class="form-group">
+<label for="descricao">请求说明：</label>
+<textarea id="descricao" name="descricao" placeholder="Ex: Preciso de uma solução de borracha para a cabine, pois o atual está apresentando desgaste prematuro..." required=""></textarea>
+</div>
+<button class="submit-btn" type="submit">提交请求</button>
+</form>
+</div>
+<!-- Informações de Contato Direto -->
+<div class="contact-info">
+<h3 style="color: #003366; font-family: 'Playfair Display', serif; margin-bottom: 15px;">直接联系</h3>
+<div class="contact-item">
+<h4>审批经理</h4>
+<p><strong>负责任的：</strong>蒂亚戈·贝尔托里尼</p>
+<p><strong>电子邮件：</strong> <a href="mailto:tiago.bertolini@xcmgbrasil.com.br">tiago.bertolini@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>机器批准</h4>
+<p><strong>负责任的：</strong>Victor Arrais</p>
+<p><strong>电子邮件：</strong> <a href="mailto:victor.siqueira@xcmgbrasil.com.br">victor.siqueira@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>组件批准</h4>
+<p><strong>负责任的：</strong>伊丽莎·马克斯</p>
+<p><strong>电子邮件：</strong> <a href="mailto:elisa.coutinho@xcmgbrasil.com.br">elisa.coutinho@xcmgbrasil.com.br</a></p>
+</div>
+<div class="contact-item">
+<h4>开球管理</h4>
+<p><strong>负责任的：</strong>伊莎贝拉·克里斯蒂娜</p>
+<p><strong>电子邮件：</strong> <a href="mailto:izabella.santana@xcmgbrasil.com.br">izabella.santana@xcmgbrasil.com.br</a></p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<div class="newspaper-footer">
+<div class="newspaper-container">
+<h3>XCMG巴西 - 应用程序工程</h3>
+<p>坚持成功</p>
+<p style="margin-top: 15px; opacity: 0.8;">编辑团队：izabella.santana@xcmgbrasil.com.br<br/>victor.siqueira@xcmgbrasil.com.br</p>
+</div>
+</div>
+</div>
+<script>
+
+//Homologação       
+        document.getElementById('homologationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            <div class="publication-date">
-                <span>发布日期：</span> <span>2025年8月15日</span>
-            </div>
-        </div>
+            // Coleta os dados do formulário
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Monta o corpo do e-mail
+            const subject = `Solicitação de ${data.tipoSolicitacao} - ${data.urgencia.toUpperCase()}`;
+            const body = `
+Solicitação de Homologação - XCMG Brasil
 
-        <!-- Manchete Principal -->
-        <div class="newspaper-content">
-            <div class="headline">
-                <h1>XE2000 革新了 VALE 的运营</h1>
-                <p class="lead">创新称重系统与运营支持提升了巴西矿业的效率标准</p>
-            </div>
+DADOS DO SOLICITANTE:
+Nome: ${data.solicitante}
+Departamento: ${data.departamento}
 
-            <!-- Primeira Coluna -->
-            <div class="column">
-                <div class="article">
-                    <div class="article-subtitle">历史性里程碑</div>
-                    <h2 class="article-title">巨无霸 XE5600 抵达 Carajás：巴西采矿业新篇章</h2>
-                    <img src="images/XE5600.png" alt="XE5600" class="article-image">
-                    
-                    <p class="article-content">
-                        <strong>你能想象一台超大型挖掘机到来，彻底改变采矿业吗？</strong> XCMG 在 Carajás 矿山交付首台 XE5600，标志着一个历史性时刻。整个过程严格执行，确保每个环节的卓越品质。
-                    </p>
-                    
-                    <p class="article-content">
-                        所有文件齐全，维护计划制定完善，组装工作精益求精。此次交付进一步巩固了 XCMG 在巴西市场的地位，彰显效率、创新和全方位支持的承诺。
-                    </p>
-                </div>
+DETALHES DA SOLICITAÇÃO:
+Tipo: ${data.tipoSolicitacao}
+Urgência: ${data.urgencia}
 
-                <div class="article">
-                    <div class="article-subtitle">技术创新</div>
-                    <h2 class="article-title">首个国产 OTR 称重系统通过认证</h2>
-                    <img src="images/balanca110.png" alt="XG110" class="article-image">
-                    
-                    <p class="article-content">
-                        <strong>称重技术的创新？</strong> 我们的团队开发并认证了首个适用于机械悬挂 OTR 的国产称重系统，精度达到了令人瞩目的 4%。
-                    </p>
-                    <div class="highlight-box">
-                        <h3>4% 精度达成！</h3>
-                        <p>三轴钢板弹簧悬挂卡车标志着国产工程的新篇章。</p>
-                    </div>
-                </div>
+DESCRIÇÃO:
+${data.descricao}
 
-                <div class="article">
-                    <div class="article-subtitle">先进维护</div>
-                    <h2 class="article-title">XE5600：首个预防性维护圆满完成</h2>
-                    <img src="images/manutencaoxe5600.png" alt="PreventivaXE5600" class="article-image">
-                    
-                    <p class="article-content">
-                        <strong>保持机器长寿与高性能的秘诀是什么？</strong> XCMG 按照既定维护计划，成功完成 XE5600 的首次预防性维护。全面检查确认设备运行良好，保障最高效率。
-                    </p>
-                    <p class="article-content">
-                        客户反馈极为积极，强调了设备的可靠性、动力与性能。这进一步证明了 XCMG 解决方案在行业中的可信度和质量保证。
-                    </p>
-                </div>
-            </div>
+---
+Enviado através do Jornal da Engenharia de Aplicação XCMG
+            `.trim();
+            
+            // Determina o e-mail de destino baseado no tipo de solicitação
+            let destinatario = 'tiago.bertolini@xcmgbrasil.com.br'; // padrão
+            
+            switch(data.tipoSolicitacao) {
+                case 'homologacao-maquina':
+                    destinatario = 'victor.siqueira@xcmgbrasil.com.br';
+                    break;
+                case 'homologacao-componente':
+                    destinatario = 'elisa.coutinho@xcmgbrasil.com.br';
+                    break;
+                case 'gestao-kickoff':
+                    destinatario = 'izabella.santana@xcmgbrasil.com.br';
+                    break;
+                case 'outros':
+                    destinatario = 'tiago.bertolini@xcmgbrasil.com.br';
+                    break;
+            }
+            
+            // Abre o cliente de e-mail
+            const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Feedback visual
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'E-mail aberto! ✓';
+            submitBtn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
 
-            <!-- Segunda Coluna -->
-            <div class="column">
-                <div class="article">
-                    <div class="article-subtitle">战略管理</div>
-                    <h2 class="article-title">新设备启动会证明高效</h2>
-                    <a href="https://app.powerbi.com/view?r=eyJrIjoiNTBjN2ZiOTEtNTczNS00NmU0LWJjYzEtYzgzZGNiYjk2ODIyIiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
-                        <img src="images/kickoff.png" alt="Dashboard Kickoff" class="article-image">
-                    </a>
-                    <p class="article-content">
-                        <strong>XCMG 如何确保设备交付卓越？</strong> 通过建立结构化的跨部门例会和跟进模式，聚集多学科团队，保证调试与交付质量。
-                    </p>
-                    
-                    <p class="article-content">这一过程优化了决策、状态跟踪和新设备认证。每周会议与商业智能 (BI) 面板确保全局、敏捷的视角，为客户提供最佳支持。</p>
-                </div>
+//Performance
+        document.getElementById('performanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta os dados do formulário
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Monta o corpo do e-mail
+            const subject = `Solicitação de ${data.tipoSolicitacao} - ${data.urgencia.toUpperCase()}`;
+            const body = `
+Solicitação de Performance - XCMG Brasil
 
-                <div class="article">
-                    <div class="article-subtitle">控制革命</div>
-                    <h2 class="article-title">方向盘已成历史，操纵杆也将被取代？</h2>
-                    <img src="images/joystick.png" alt="Lw1200" class="article-image">
-                    <p class="article-content">
-                        <strong>XCMG 正在重新定义重型机械的控制方式！</strong> 在 LW1200KN 装载机应用研究中，我们发现需要更精准的操控系统，超越传统的操纵杆。与中国工厂的战略合作正在开发新方案，势必革新操作方式。
-                    </p>
-                    
-                    <p class="article-content">
-                        该创新旨在优化操作，提升安全与可靠性，使控制更直观高效。XCMG 一直致力于突破极限，保持技术与效率的前沿地位。
-                    </p>
-                </div>
-                <div class="article">
-                    <div class="article-subtitle">社会责任</div>
-                    <h2 class="article-title">紫色八月：XCMG 支持反对针对女性的暴力</h2>
-                    <p class="article-content">
-                        <strong>你知道"紫色八月"的意义吗？</strong> 本月致力于提高对反对针对女性暴力的意识。XCMG 重申信息传播、预防和举报的重要性。
-                    </p>
-                    <p class="article-content">
-                        该活动源于 2006 年的《玛丽亚·达·佩尼亚法》，是反对家庭暴力的重要里程碑。机构加强了宣传与支持，强调如"180 热线"这样的举报渠道，全天候开放。
-                    </p>
-                </div>
-            </div>
+DADOS DO SOLICITANTE:
+Nome: ${data.solicitante}
+Departamento: ${data.departamento}
 
-            <!-- Terceira Coluna -->
-            <div class="column">
-                <div class="article">
-                    <div class="article-subtitle">战略大脑</div>
-                    <h2 class="article-title">应用工程：机器背后的战略大脑</h2>
-                    
-                    <p class="article-content">
-                        <strong>是什么让 XCMG 在巴西的设备高效运行？</strong> 应用工程部！它作为工程、市场与客户之间的战略纽带，确保设备最高效、安全并适应巴西需求。
-                    </p>
-                    
-                    <p class="article-content">
-                        除了技术层面，团队还分析全球趋势和行业环境，将技术转化为切实可行的解决方案。通过应用研究、现场测试和远程监控，优化车队并提高资产可靠性。
-                    </p>
+DETALHES DA SOLICITAÇÃO:
+Tipo: ${data.tipoSolicitacao}
+Urgência: ${data.urgencia}
 
-                    <div class="highlight-box">
-                        <h3>不仅是技术支持：更是决策支柱！</h3>
-                        <p>应用工程部塑造了 XCMG 的产品组合，支持重大项目，确定品牌在巴西的发展方向，确保每台交付的设备都是量身定制的解决方案与竞争优势。</p>
-                    </div>
-                </div>
+DESCRIÇÃO:
+${data.descricao}
 
-                <div class="article">
-                    <div class="article-subtitle">战略日程</div>
-                    <h2 class="article-title">矿业活动带来巨大机遇</h2>
-                    
-                    <div class="events-list">
-                        <div class="event-item">
-                            <div class="event-date">2025年8月26-28日</div>
-                            <div class="event-title">
-                                <a class="event-link" href="https://eventos.galoa.com.br/cbmina-2025/page/5761-programacao..." target="_blank">CBMINA 2025</a>
-                            </div>
-                            <div class="event-location">米纳斯吉拉斯州 Ouro Preto</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-date">2025年9月9-11日</div>
-                            <div class="event-title">
-                                <a class="event-link" href="https://www.abmbrasil.com.br/evento/abm-week-9" target="_blank">ABM WEEK 2025</a>
-                            </div>
-                            <div class="event-location">圣保罗</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-date">2025年10月</div>
-                            <div class="event-title">
-                                <a class="event-link" href="https://exposibram2025.ibram.org.br/" target="_blank">EXPOSIBRAM 2025</a>
-                            </div>
-                            <div class="event-location">米纳斯吉拉斯州 贝洛奥里藏特</div>
-                        </div>
-                    </div>
-                </div>
+---
+Enviado através do Jornal da Engenharia de Aplicação XCMG
+            `.trim();
+            
+            // Determina o e-mail de destino baseado no tipo de solicitação
+            let destinatario = 'adriano.santana@xcmgbrasil.com.br'; // padrão
+            
+            switch(data.tipoSolicitacao) {
+                case 'gestao-performance':
+                    destinatario = 'adriano.santana@xcmgbrasil.com.br';
+                    break;
+                case 'performance-sul':
+                    destinatario = 'jose.mendonca@xcmgbrasil.com.br';
+                    break;
+                case 'coordenacao-performance':
+                    destinatario = 'johnny.souza@xcmgbrasil.com.br';
+                    break;
+                case 'performance-norte':
+                    destinatario = 'priscila.sales@xcmgbrasil.com.br';
+                    break;
+                case 'outros':
+                    destinatario = 'adriano.santana@xcmgbrasil.com.br';
+                    break;
+            }
+            
+            // Abre o cliente de e-mail
+            const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Feedback visual
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'E-mail aberto! ✓';
+            submitBtn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
 
-                <div class="article">
-                    <div class="article-subtitle">持续改进</div>
-                    <h2 class="article-title">XE2000：新称重系统提升矿山精度与效率</h2>
-                    
-                    <img src="images/xe2000.png" alt="XE2000 Vale" class="article-image">
-                    
-                    <p class="article-content">
-                        <strong>你知道 XE2000 正在提升采矿效率标准吗？</strong> XCMG 为 XE2000 配置了两套新称重系统，精度提升并节省超 35 万雷亚尔！
-                    </p>
+//Inteligência de Mercado
 
-                    <p class="article-content">
-                        此外，电缆保护方案正在开发中，将减少操作故障，预计很快在全部四台设备上安装。经过培训的团队已在帕拉州待命，确保快速响应，体现 XCMG 对安全与持续运营的承诺。
-                    </p>
-                    
-                    <div class="highlight-box">
-                        <h3>帕拉州专业团队</h3>
-                        <p>与供应商合作，提供训练有素的团队，实现快速支持，确保运营安全高效。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+document.getElementById('marketIntelForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta os dados do formulário
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Monta o corpo do e-mail
+            const subject = `Solicitação de ${data.tipoSolicitacao} - ${data.urgencia.toUpperCase()}`;
+            const body = `
+Solicitação de Inteligência de Mercado - XCMG Brasil
 
-        <!-- Footer -->
-        <div class="newspaper-footer">
-            <h3>XCMG 巴西 - 应用工程部</h3>
-            <p>Solid to Succeed</p>
-            <p style="margin-top: 15px; opacity: 0.8;">
-                联系方式: victor.siqueira@xcmgbrasil.com.br
-            </p>
-        </div>
-    </div>
-</body>
+DADOS DO SOLICITANTE:
+Nome: ${data.solicitante}
+Departamento: ${data.departamento}
+
+DETALHES DA SOLICITAÇÃO:
+Tipo: ${data.tipoSolicitacao}
+Urgência: ${data.urgencia}
+
+DESCRIÇÃO:
+${data.descricao}
+
+---
+Enviado através do Jornal da Engenharia de Aplicação XCMG
+            `.trim();
+            
+            // Determina o e-mail de destino baseado no tipo de solicitação
+            let destinatario = 'washington.gomes@xcmgbrasil.com.br'; // padrão
+            
+            switch(data.tipoSolicitacao) {
+                case 'linha-amarela':
+                    destinatario = 'washington.gomes@xcmgbrasil.com.br';
+                    break;
+                case 'mineracao-latam':
+                    destinatario = 'paula.souza@xcmgbrasil.com.br';
+                    break;
+                case 'outros':
+                    destinatario = 'washington.gomes@xcmgbrasil.com.br';
+                    break;
+            }
+            
+            // Abre o cliente de e-mail
+            const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Feedback visual
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'E-mail aberto! ✓';
+            submitBtn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
+    </script>
+    </body>
 </html>
-
