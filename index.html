@@ -858,6 +858,20 @@
             margin-bottom: 10px;
         }
 
+        .confidentiality-notice {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid #dc2626;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 15px auto 0;
+            max-width: 500px;
+            font-size: 0.8em;
+            font-weight: 500;
+            text-align: center;
+            color: #ebe1e1;
+        }
+
+
  /* Responsividade */
         @media (max-width: 1024px) {
             .newspaper-container {
@@ -1091,8 +1105,8 @@
                 font-size: 0.9em;
             }
         }
-   /* ==========================================================================
-   CSS DE IMPRESSÃO - VERSÃO FINAL COM CORREÇÃO DE KICKOFF
+/* ==========================================================================
+   CSS DE IMPRESSÃO - VERSÃO FINAL COM DATA E AJUSTE DE IMAGENS
    ========================================================================== */
 @media print {
 
@@ -1105,7 +1119,7 @@
     html, body {
         font-family: 'Lora', serif;
         font-size: 9.5pt;
-        line-height: 1.35;
+        line-height: 1.3;
         background: #fff !important;
         color: #2c3e50 !important;
         width: 100% !important;
@@ -1116,21 +1130,16 @@
     }
 
     /* --- 2. OCULTAR ELEMENTOS DESNECESSÁRIOS --- */
+    /* PONTO 1: .publication-date foi REMOVIDO desta lista para que apareça na impressão */
     .language-selector, .newspaper-footer, .accordion-icon, .xcmg-logo,
-    .publication-date, br, .communication-channel {
+    br, .communication-channel {
         display: none !important;
     }
 
     /* --- 3. RESET DE LAYOUT E CONTROLE DE ESPAÇAMENTO --- */
-    .newspaper-content { gap: 20px !important; }
-    .headline { margin-bottom: 20px !important; }
+    .newspaper-content { gap: 10px !important; }
 
-    /* Desativa layouts complexos que causam problemas */
-    .part-columns, .travel-history, .org-chart-split, .logo-section {
-        display: block !important;
-    }
-    /* CORREÇÃO KICKOFF (Ponto 4): Reseta o container das imagens */
-    .image-container-flex {
+    .part-columns, .travel-history, .org-chart-split, .logo-section, .image-container-flex {
         display: block !important;
         height: auto !important;
     }
@@ -1138,72 +1147,90 @@
         width: 100% !important; max-width: 100% !important; height: auto !important;
     }
 
-    /* --- 4. SOLUÇÃO DEFINITIVA PARA STAKEHOLDERS --- */
-    .stakeholder-section {
-        page-break-before: always;
-        border: none !important; padding: 0 !important;
+    /* --- 4. SOLUÇÃO PARA STAKEHOLDERS (MÁXIMA COMPACTAÇÃO) --- */
+    .headline {
+        margin: 0 !important;
+        padding: 0 0 15px 0 !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
     }
+    .headline h1 { font-size: 18pt !important; margin-bottom: 5px !important; }
+    .headline .lead { font-size: 10pt !important; }
+
+    .stakeholder-section {
+        margin: 0 !important;
+        padding: 10px !important;
+        border: 1px solid #e6eefc !important; 
+        background-color: #f5f7fb !important;
+    }
+    .stakeholder-section-title { font-size: 1.2em !important; margin-bottom: 10px !important; }
     details.stakeholder-accordion {
         page-break-inside: avoid !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 5px !important;
     }
-    details.stakeholder-accordion > .stakeholder-accordion-content {
-        display: block !important;
-        padding-top: 15px !important;
-    }
-    details.stakeholder-accordion > summary.stakeholder-accordion-title {
-        display: block !important; list-style: none !important;
-    }
-    details.stakeholder-accordion > summary.stakeholder-accordion-title::-webkit-details-marker {
-        display: none !important;
-    }
+    details.stakeholder-accordion > .stakeholder-accordion-content { display: block !important; padding: 8px 2px 2px 2px !important; }
+    details.stakeholder-accordion > summary.stakeholder-accordion-title { display: block !important; list-style: none !important; padding: 5px 10px !important; font-size: 0.75rem !important; }
+    details.stakeholder-accordion > summary.stakeholder-accordion-title::-webkit-details-marker { display: none !important; }
+    .stakeholder-accordion .org-container, .stakeholder-accordion .org-container2 { padding: 5px !important; margin-bottom: 10px !important; }
+    .stakeholder-accordion .org-chart-title { font-size: 1em !important; margin-bottom: 8px !important; }
+    .stakeholder-accordion .data-table th, .stakeholder-accordion .data-table td { padding: 3px 5px; font-size: 7pt; }
+    .stakeholder-accordion .org-node { padding: 3px 6px; font-size: 7pt; min-width: 120px; }
+    .stakeholder-accordion .org-name { font-size: 1em; }
+    .stakeholder-accordion .org-title { font-size: 0.9em; }
 
     /* --- 5. CONTROLE DE FLUXO E QUEBRAS DE PÁGINA --- */
-    .section-header, .subsection-header, .headline, .article-title, .article-subtitle, h1, h2, h3, h4 {
+    .section-header, .subsection-header, .article-title, .article-subtitle, h1, h2, h3, h4 {
         page-break-after: avoid !important;
     }
     .highlight-box, .article, figure, table, .chart-container, .org-container {
         page-break-inside: avoid !important;
     }
+    .article.allow-break {
+        page-break-inside: auto !important;
+    }
 
     /* --- 6. CORREÇÕES DE LAYOUT ESPECÍFICAS --- */
-    /* Ponto 4: Garante que o texto não tenha colunas para evitar sobreposição */
-    .article-content2 {
-        column-count: 1 !important;
-    }
-    /* Layout de colunas para as novidades do mercado */
-    .market-news-grid {
-        display: block !important;
-        column-count: 3;
-        column-gap: 6mm;
-        column-fill: balance;
-    }
-    .market-news-grid > .article {
-        break-inside: avoid;
-        padding-bottom: 10px;
-    }
+    .article-content2 { column-count: 1 !important; }
+    .market-news-grid { display: block !important; column-count: 3; column-gap: 6mm; column-fill: balance; }
+    .market-news-grid > .article { break-inside: avoid; padding-bottom: 10px; }
     
-    /* CORREÇÃO BOXES (Ponto adicional): Deixa os boxes de métricas mais compactos */
-    .metrics-container {
-        display: grid !important;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
-        gap: 8px !important;
-        margin: 15px 0 !important;
-    }
-    .metrics-box {
-        padding: 8px !important;
-        margin: 0 !important;
-    }
-    .metric-value { font-size: 16pt !important; }
-    .metric-label { font-size: 8pt !important; }
+    .metrics-container { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)) !important; gap: 8px !important; margin: 15px 0 !important; }
+    .metrics-box { padding: 6px !important; margin: 0 !important; }
+    .metric-value { font-size: 14pt !important; }
+    .metric-label { font-size: 7.5pt !important; }
 
-    /* --- 7. AJUSTES FINAIS DE ESTILO PARA IMPRESSÃO --- */
+    /* --- 7. AJUSTES FINAIS: IMAGENS CENTRALIZADAS E PADRONIZADAS --- */
     * { box-shadow: none !important; border-radius: 0 !important; }
-    p, .article-content { margin-bottom: 12px !important; }
-    .article, .highlight-box, .chart-container, .org-container { margin-bottom: 20px !important; }
-    .section-header, .subsection-header { padding: 8px 12px !important; font-size: 16pt !important; margin-bottom: 15px !important; }
-    .article-title { font-size: 14pt !important; }
-    img { max-width: 100% !important; height: auto !important; display: block; margin: 10px auto; }
+    p, .article-content { margin-bottom: 10px !important; }
+    .article, .highlight-box, .chart-container, .org-container { margin-bottom: 15px !important; }
+    
+    .section-header, .subsection-header { padding: 6px 10px !important; font-size: 14pt !important; margin-bottom: 12px !important; }
+    .article-title { font-size: 12pt !important; }
+
+    /* PADRÃO GERAL PARA IMAGENS */
+    img, .article-image, .market-share-image, .flex-image {
+        max-width: 65% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 10px auto !important;
+        float: none !important;
+    }
+
+    /* EXCEÇÃO: IMAGENS QUE DEVEM PERMANECER GRANDES */
+    .chart-container img, .homologation-image-comp, .homologation-image-machine {
+        max-width: 100% !important;
+    }
+
+    /* AJUSTE FINAL: Reduzir imagens específicas */
+    .travel-history-image, .image-compact {
+        max-width: 55% !important;
+    }
+
+    /* PONTO 2: Reduzir imagens da seção Market Share */
+    .image-market-share {
+        max-width: 50% !important;
+    }
+
     .data-table-container, .org-container, .org-container2 { overflow: visible !important; }
 }
 
@@ -1233,6 +1260,13 @@
             <div class="publication-date">
                 <span>Publicado em:</span> <span id="publication-date">03 de Outubro de 2025</span>
             </div>
+            <!-- Aviso de Confidencialidade -->
+<div class="confidentiality-notice">
+    <span>⚠️ <strong>CONFIDENCIAL - </strong></span>  
+
+    <span style="font-size: 0.8em;">As informações são exclusivas para uso interno e não devem ser divulgadas externamente</span>
+</div>
+
         </div>
 </div>
         <!-- CONTEÚDO PRINCIPAL -->
@@ -2066,7 +2100,8 @@
                 <p class="article-content">O movimento da XCMG, ainda que tímido em participação percentual, sinaliza um posicionamento estratégico de entrada no mercado brasileiro, sustentado por um crescimento exponencial no volume importado e pela presença cada vez mais competitiva da indústria chinesa no cenário global de máquinas pesadas.</p>
                 
                 <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare1.png" alt="Gráfico de Market Share 1" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                    <img src="images/Marketshare1.png" alt="Gráfico de Market Share 1" class="image-market-share" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
                 </div>
                 <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
                 
@@ -2074,7 +2109,8 @@
                 <p class="article-content">Ao observar o cenário de 2025, fica evidente o avanço da chinesa Sany, que desponta com uma participação de mercado em ascensão, consolidando-se como uma das principais referências do setor. Em paralelo, a Bobcat preserva sua posição, sustentada especialmente pelo desempenho expressivo no segmento de mini escavadeiras, categoria que sozinha representa 27,0% do Market Share.</p>
                 
                 <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare2.png" alt="Gráfico de Market Share 2" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                    <img src="images/Marketshare2.png" alt="Gráfico de Market Share 1" class="image-market-share" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
                 </div>
                 <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
             </div>
@@ -2084,13 +2120,15 @@
                 <p class="article-content">No campo das marcas tradicionais, nomes como New Holland e JCB continuam presentes entre as dez mais importadas, reforçando sua relevância histórica. No entanto, chama atenção o movimento crescente das fabricantes chinesas, que vêm conquistando espaço de forma consistente no mercado brasileiro. Esse avanço traduz não apenas a competitividade, mas também a boa aceitação dos equipamentos de origem chinesa, cada vez mais requisitados. Dentro desse cenário, destaca-se a presença da XCMG, que figura entre as marcas chinesas de maior participação no Brasil, fortalecendo a percepção de que o país asiático se consolida como protagonista nesse setor.</p>
                 
                 <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare3.png" alt="Gráfico de Market Share 3" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                    <img src="images/Marketshare3.png" alt="Gráfico de Market Share 1" class="image-market-share" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
                 </div>
                 <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p><br>
                 <p class="article-content">Por outro lado, observa-se também a manutenção da relevância de equipamentos mais tradicionais e de grande porte, como as carregadeiras, que seguem representando fatias significativas do mercado, com 14,6% (Wheel Loader) e 12,4% (Crawler Excavator), respectivamente. Essa combinação de crescimento das marcas chinesas e estabilidade dos equipamentos clássicos evidencia um mercado em transformação, no qual inovação, competitividade e tradição caminham lado a lado.</p>
                 
                 <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; background-color: #f8f9fa; margin-bottom: 20px; text-align: center;">
-                    <img src="images/Marketshare4.png" alt="Gráfico de Market Share 4" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
+                    <img src="images/Marketshare4.png" alt="Gráfico de Market Share 1" class="image-market-share" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
                 </div>
                 <p class="metric-label" style="text-align: center;">Fonte: MarketPins.</p>
             </div>
@@ -2120,7 +2158,8 @@
 <!-- Início da Seção Novos Grandes Projetos -->
 <section class="part">
     <div class="subsection-header">Novos Grandes Projetos</div>
-    <div class="article">
+    <div class="article allow-break">
+
         <div class="article-subtitle">PARCERIA ESTRATÉGICA</div>
         <h2 class="article-title">XCMG Brasil Inicia Nova Parceria com a Mineração Taboca</h2>
 
@@ -2611,6 +2650,20 @@ Enviado através do Jornal da Engenharia de Aplicação XCMG
                 this.reset();
             }, 3000);
         });
+
+        // SCRIPT PARA GARANTIR A ABERTURA DOS STAKEHOLDERS ANTES DE IMPRIMIR
+        (function() {
+            const beforePrint = () => {
+                const allDetails = document.querySelectorAll('details.stakeholder-accordion');
+                allDetails.forEach((details) => {
+                    if (!details.hasAttribute('open')) {
+                        details.setAttribute('open', '');
+                    }
+                });
+            };
+
+            window.addEventListener('beforeprint', beforePrint);
+        })();
     </script>
 
 </body>
