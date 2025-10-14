@@ -44,7 +44,7 @@ const fs = require('fs');
 
     // Gera o PDF
     await page.pdf({
-      path: 'Jornal-XCMG.pdf',      // saída
+      path: 'Jornal da Aplicação - XCMG.pdf',      // saída
       printBackground: true,        // imprimir fundos (cores/gradientes)
       format: 'A4',                 // tamanho A4
       margin: {                     // margens (mesma que no CSS recomendado)
