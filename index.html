@@ -251,7 +251,6 @@
             line-height: 1.6;
             margin-bottom: 15px;
             margin-left: 15px;
-            columns: 2;
             column-gap: 30px;
         }
 
@@ -586,8 +585,8 @@
         .org-chart ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #ccc; width: 0; height: 20px; }
         .org-node { border: 2px solid #1e3a8a; padding: 8px 15px; text-decoration: none; color: #333; background-color: #ffffff; display: inline-block; border-radius: 8px; min-width: 140px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .org-node span { display: block; }
-        .org-title { font-size: 0.9em; font-weight: 600; color: #003366; }
-        .org-name { font-size: 1.1em; font-weight: 700; color: #1e3a8a; margin-top: 4px; }
+        .org-title { font-size: 0.7em; font-weight: 600; color: #003366; }
+        .org-name { font-size: 0.9em; font-weight: 700; color: #1e3a8a; margin-top: 4px; }
         .org-node.manager { background-color: #1e3a8a; border-color: #1e3a8a; }
         .org-node.manager .org-title, .org-node.manager .org-name { color: #ffffff; }
         .org-node.lead { background-color: #dbeafe; border-color: #3b82f6; }
@@ -1089,7 +1088,7 @@
   }
 
   /* Compactação de tabelas e outros elementos */
-  .data-table th, .data-table td { padding: 3px 5px !important; font-size: 8pt !important; }
+  .data-table th, .data-table td { padding: 0px 2px !important; font-size: 8pt !important; }
   .highlight-box, .chart-container, .org-container { margin-bottom: 10px !important; padding: 8px !important; }
   .newspaper { width: 100% !important; overflow: hidden !important; position: static !important; }
 }
@@ -1111,14 +1110,14 @@
                 <img src="images/XCMG_logo.svg.png" alt="Logo XCMG" class="xcmg-logo">
                 <div>
                     <div class="newspaper-title">JORNAL DA APLICAÇÃO</div>
-                    <div class="newspaper-subtitle">O SEGUNDO NEWSLETTER DA ENGENHARIA DE APLICAÇÃO XCMG</div>
+                    <div class="newspaper-subtitle">O TERCEIRO NEWSLETTER DA ENGENHARIA DE APLICAÇÃO XCMG</div>
                 </div>
             </div>
-            <div class="newspaper-date">Edição Outubro 2025 | Nº 002</div>
+            <div class="newspaper-date">Edição Novembro 2025 | Nº 003</div>
             
             <!-- Espaço para data de publicação -->
             <div class="publication-date">
-                <span>Publicado em:</span> <span id="publication-date">10 de Novembro de 2025</span>
+                <span>Publicado em:</span> <span id="publication-date">09 de Dezembro de 2025</span>
             </div>
             <!-- Aviso de Confidencialidade -->
 <div class="confidentiality-notice">
@@ -1134,8 +1133,8 @@
             <div class="newspaper-container">
                 <!-- Manchete Principal -->
                 <div class="headline">
-                    <h1>XDE260 DEMONSTRA ALTA DISPONIBILIDADE NOS TESTES INICIAIS NA CSN</h1>
-                    <p class="lead">Primeiro caminhão fora de estrada diesel-elétrico da XCMG em operação no Brasil demonstra desempenho sólido e Disponibilidade Física acima da meta prevista.</p>
+                    <h1>BRASIL RECEBE SEU PRIMEIRO XDE130: XCMG E G3 CONCRETIZAM MARCO NA MINERAÇÃO</h1>
+                    <p class="lead">Montagem nacional reforça a capacidade técnica da XCMG e acelera a adoção de equipamentos de grande porte nas operações no Mato Grosso.</p>
                 </div>
 
                 <!-- Accordion: Mapeamento de Stakeholders -->
@@ -1155,12 +1154,6 @@
       <span class="org-name">José Luciano</span>
     </div>
     <ul>
-      <li>
-        <div class="org-node">
-          <span class="org-title">Casa de Pedra</span>
-          <span class="org-name">Carlos Henrique</span>
-        </div>
-      </li>
       <li>
         <div class="org-node">
           <span class="org-title">Complexo Paraopebas</span>
@@ -1202,6 +1195,37 @@
 </ul>
 
                                 </div>
+                                <div class="org-chart">
+                                    <ul>
+  <li>
+    <div class="org-node manager">
+      <span class="org-title">Vale - Norte</span>
+      <span class="org-name">Johnny e Priscilla</span>
+    </div>
+    <ul>
+      <li>
+        <div class="org-node">
+          <span class="org-title">S11D</span>
+          <span class="org-name">Robert e Monica</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Carajás</span>
+          <span class="org-name">Gabriel e Paulo</span>
+        </div>
+      </li>
+      <li>
+        <div class="org-node">
+          <span class="org-title">Serra Leste</span>
+          <span class="org-name">Jeronimo</span>
+        </div>
+      </li>
+        </ul>
+  </li>
+</ul>
+
+                                </div>
                             </div>
                             <div class="data-table-container">
                                 <br>
@@ -1209,14 +1233,12 @@
                                 <table class="data-table">
                                     <thead><tr><th>Local/Cliente</th><th>Responsável</th><th>Local/Cliente</th><th>Responsável</th></tr></thead>
                                     <tbody>
-                                        <tr><td>Britadores</td><td>Christiano Gomes</td><td>Casa de Pedra</td><td>Carlos Henrique</td></tr>
+                                        <tr><td>Britadores</td><td>Christiano Gomes</td><td>CSN - Casa de Pedra</td><td>Carlos Henrique</td></tr>
                                         <tr><td>RD e G3</td><td>Guilherme Costa</td><td>Porto Tubarão</td><td>Matheus Barros</td></tr>
                                         <tr><td>Itagiba</td><td>Ben-Hur</td><td>Simak e Zocar</td><td>Alan</td></tr>
                                         <tr><td>Teofilândia</td><td>Luan Oliveira</td><td>Patrocínio</td><td>Felipe Martins</td></tr>
                                         <tr><td>Harsco</td><td>Matheus Barros</td><td>Britacal - Unaí</td><td>Hebert</td></tr>
                                         <tr><td>CMOC</td><td>Hebert</td><td>Britacal - Coromandel</td><td>Felipe Martins</td></tr>
-                                        <tr><td>Vale - Norte </td><td>Johnny e Priscilla</td><td>Carajás</td><td>Gabriel e Paulo</td></tr>
-                                        <tr><td>S11D</td><td>Robert e Monica</td><td>Serra Leste</td><td>Christoph e Jeronimo</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -1341,197 +1363,113 @@
                 
                 <div class="article" style="grid-column: 1 / -1;">
                     <div class="article-subtitle">MONITORAMENTO DIÁRIO</div>
-                    <h2 class="article-title">Disponibilidade Física em Outubro: XCMG Mantém Foco na Performance e Suporte ao Cliente</h2>
+                    <h2 class="article-title">Disponibilidade Física em Novembro: XCMG Expande Monitoramento</h2>
                     <p class="article-content">
-                        A XCMG Brasil segue com seu compromisso de garantir a máxima performance de seus equipamentos em campo, realizando um acompanhamento diário e detalhado da Disponibilidade Física (DF) de suas máquinas nas operações da Vale. O trabalho de monitoramento realizado em outubro permitiu à Engenharia de Aplicação antecipar demandas, implementar melhorias e manter o desempenho elevado dos equipamentos. 
+                        A XCMG Brasil continua a demonstrar seu compromisso com a excelência operacional, divulgando os resultados de Disponibilidade Física (DF) de seus equipamentos em campo no mês de novembro. O monitoramento contínuo, realizado pela Engenharia de Aplicação, não apenas manteve o desempenho elevado em clientes estratégicos, mas também expandiu a cobertura de dados, refletindo a evolução na gestão de ativos.
                     </p>
                     <h4 class="article-title">Vale - Evolução Mensal</h4>
                     <div class="chart-container">
-            <img src="images/Evolução Mensal 2025 - Vale.png" alt="Evolução Mensal da DF em 2025">
+            <img src="images/Evolução Mensal.png" alt="Evolução Mensal da DF em 2025">
         </div>
 
                     <p class="article-content">
-                        A XCMG Brasil segue com seu compromisso de garantir a máxima performance de seus equipamentos em campo, realizando um acompanhamento diário e detalhado da Disponibilidade Física (DF) de suas máquinas nas operações da Vale. Em outubro, o monitoramento contínuo permitiu à equipe de Engenharia de Aplicação identificar pontos de melhoria, atuar de forma proativa e otimizar a operação, assegurando que os equipamentos XCMG continuem a entregar alta produtividade.
+                        A análise de Disponibilidade Física (DF) apresenta a evolução mensal dos equipamentos ao longo de 2025, evidenciando avanços consistentes no desempenho das máquinas e permitindo uma comparação clara com as metas e, agora, também com a Referência Técnica, recém-incluída no monitoramento. Esse novo parâmetro, que representa a melhor performance possível segundo as melhores práticas de manutenção e operação, fornece uma visão mais precisa dos gaps e fortalece o direcionamento das ações do time de Engenharia de Aplicações. Com isso, a XCMG amplia sua capacidade de análise, aprimora o acompanhamento das frotas e reforça seu compromisso em elevar continuamente a produtividade dos equipamentos em campo.
                     </p>
                     
-                    <h3 class="article-title">Vale Norte: Pontos de Atenção e Foco na Melhoria Contínua (01/10 a 31/10)</h3>
+                    <h3 class="article-title">Vale Norte: Desafios Para Atingir as Metas (01/11 a 30/11)</h3>
                     <div class="chart-container">
-                        <img src="images/Vale Norte1 01-10 a 31-10.png" alt="DF Vale Norte">
-                        <img src="images/Vale Norte2 01-10 a 31-10.png" alt="DF Vale Norte">
-                        <img src="images/Vale Norte3 01-10 a 31-10.png" alt="DF Vale Norte">
+                        <img src="images/Vale Norte1 01-11 a 30-11.png" alt="DF Vale Norte">
+                        <img src="images/Vale Norte2 01-11 a 30-11.png" alt="DF Vale Norte">
+                        <img src="images/Vale Norte3 01-11 a 30-11.png" alt="DF Vale Norte">
                     </div>
 
-                    <h3 class="article-title">Vale Sudeste: Estabilidade e Otimização em Foco (01/10 a 31/10)</h3>
+                    <h3 class="article-title">Vale Sudeste: Mais um Desempenho Estável Com Pontos de Atenção (01/11 a 30/11)</h3>
                     <div class="chart-container">
-                        <img src="images/Vale Sudeste1 01-10 a 31-10.png" alt="DF Vale Sudeste">
-                        <img src="images/Vale Sudeste2 01-10 a 31-10.png" alt="DF Vale Sudeste">
-                        <img src="images/Vale Sudeste3 01-10 a 31-10.png" alt="DF Vale Sudeste">
+                        <img src="images/Vale Sudeste1 01-11 a 30-11.png" alt="DF Vale Sudeste">
+                        <img src="images/Vale Sudeste2 01-11 a 30-11.png" alt="DF Vale Sudeste">
+                        <img src="images/Vale Sudeste3 01-11 a 30-11.png" alt="DF Vale Sudeste">
                     </div>
 
-                    <h3 class="article-title">Vale Sul: Desempenho Modesto (01/10 a 31/10)</h3>
+                    <h3 class="article-title">Vale Sul: Desempenho Segue Modesto (01/11 a 30/11)</h3>
                     <div class="chart-container">
-                        <img src="images/Vale Sul 01-10 a 31-10.png" alt="DF Vale Sul">
+                        <img src="images/Vale Sul 01-11 a 30-11.png" alt="DF Vale Sul">
                     </div>
                     <div class="article-block">
-                    <h3 class="article-title">Desempenho Misto em Outubro: Metas Excedidas em Alguns Clientes e Pontos Críticos em Outros</h3>
+                    <h3 class="article-title">Novembro: Desempenho Robusto em Clientes-Chave</h3>
                     <div class="chart-container">
-                        <img src="images/DF acumulado.png" alt="DF Acumulado">
+                        <img src="images/DF acumulada.png" alt="DF Acumulada">
                     </div>
                     <p class="article-content">
-                        O acompanhamento da Disponibilidade Física (DF) acumulada em outubro em diferentes clientes revela um cenário de desempenho variado. Clientes como R&D e G3 superaram a meta de 80%, com 80,59% e 82,78%, respectivamente, o que demonstra a alta confiabilidade dos equipamentos XCMG. A CSN, com uma meta de 90%, registrou 83,93%, um resultado que, embora robusto, está sendo analisado para alcançar o objetivo estabelecido. Por outro lado, as operações na SIMAK (67,56%) e, principalmente, no CREC 8 (43,78%), ficaram abaixo do esperado. Esses casos já estão sendo tratados com prioridade pela nossa equipe técnica para identificar as causas e implementar ações corretivas, reforçando o compromisso da XCMG com a melhoria contínua e a transparência em todas as operações.
+                        O acompanhamento da DF acumulada em novembro revela um cenário de performance robusta em clientes-chave. A CSN se destacou com 95,21% de DF, superando o resultado de outubro (83,93%) e a meta de 90%. Clientes como R&D e G3 mantiveram um desempenho sólido, com 80,66% e 80,59%, respectivamente, confirmando a alta confiabilidade dos equipamentos XCMG. Além disso, o monitoramento foi expandido para a empresa Zocar, que já apresenta um resultado promissor de 81,4% no período.
+                    </p>
+                    <p class="article-content">
+                        Por outro lado, a operação no CREC 8 registrou 51,40%, um resultado que, embora ainda abaixo do esperado, representa uma melhoria em relação a outubro (43,78%). É importante notar que a ausência de dados da SIMAK se deve à paralisação da operação da empresa no período, o que não reflete a performance dos equipamentos. Esses casos de menor desempenho estão sendo tratados com prioridade pela equipe técnica para identificar as causas e implementar ações corretivas, reforçando o compromisso da XCMG com a melhoria contínua.
                     </p>
                     </div>
 </div>
-             <section class="part">
-  <div class="article">
-    <div class="article-subtitle">TECNOLOGIA AVANÇADA</div>
-    <h2 class="article-title">Cálculo dinâmico de Disponibilidade Física Reforça a Precisão dos Indicadores de Performance</h2>
-
-    <div class="part-columns" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: flex-start;">
-      
-      <!-- Coluna Esquerda -->
-      <div>
-        <p class="article-content">
-          <i>Integração automática entre manutenção e disponibilidade física garante dados atualizados em tempo real e amplia a confiabilidade dos indicadores</i>
-        </p>
-        <p class="article-content">
-          A integração entre os módulos de manutenção e disponibilidade física (DF), desenvolvida pela Onboard em parceria com a XCMG, marca um novo avanço na gestão de performance dos equipamentos em campo.
-        </p>
-        <p class="article-content">
-          Agora, sempre que uma manutenção é registrada como “executada” no sistema, o cálculo da DF diária é atualizado automaticamente no painel de Relatório de Disponibilidade Física do equipamento. O recurso elimina a necessidade de cálculos manuais e garante que o indicador reflita, em tempo real, o impacto das intervenções sobre a operação.
-        </p>
-        <img src="images/exemplo_manutencao_onboard_MN3502.png" alt="OnBoard" class="article-image">
-       
-      </div>
-
-      <!-- Coluna Direita -->
-      <div>
-        <p class="article-content">
-          O cálculo segue a lógica operacional de disponibilidade, considerando o total de 24 horas por dia e descontando o período em que o ativo permaneceu em manutenção. Assim, se uma máquina ficou seis horas parada, a DF diária registrada será de 75%, reforçando a rastreabilidade e a confiabilidade dos dados.
-        </p>
-        <img src="images/df_onboard_MN3502.png" alt="DF OnBoard" class="article-image">
-        <p class="article-content">
-          Com isso, os analistas de performance passam a ter uma visão ainda mais precisa da disponibilidade acumulada e dos períodos críticos de cada equipamento, permitindo respostas mais rápidas e decisões técnicas mais assertivas.
-        </p>
-        <p class="article-content">
-          A novidade também reforça o compromisso da XCMG em evoluir continuamente os sistemas de monitoramento e gestão de ativos, promovendo maior transparência, eficiência e controle operacional para os clientes em campo.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
                 </section>                
                <!-- Subseção: Qualidade Operacional -->
                <section class="part">  
                     <div class="subsection-header">Report de Qualidade Operacional</div>
                 <div class="part-columns" style="grid-template-columns: 1fr 1fr;">
                     <div class="article">
-                        <div class="article-subtitle">Perfil de Perdas</div>
-                        <h2 class="article-title">Resultados de Outubro: Perfil de Perdas dos Equipamentos Vale Aponta Foco Estratégico</h2>
+                        <div class="article-subtitle">Perfil de Perdas em Novembro: GR3505 e GR5505</div>
+                        <h2 class="article-title">Análise Mensal via FMS Revela Padrões Críticos nos Equipamentos da Vale, com Foco nos Sistemas: Elétrico, Estrutura e Hidráulico</h2>
                         <p class="article-content">
-                            <i>Monitoramento revela sistemas críticos e direciona ações para otimização da frota.</i>
+                            Em novembro de 2025, o monitoramento via Sistema FMS nos equipamentos da Vale destacou os perfis de perdas nas Motoniveladoras, modelos GR3505 e GR5505. Esses insights orientam ações preventivas para elevar a disponibilidade operacional.
+                            <img src="images/perfildeperdagr3505.png" alt="Perfil de Perda GR3505" class="article-image">
+                            <br><strong>GR3505: Destaques</strong>
+                            <ul class="article-content2">
+                        <li><strong>Tempo de Falhas:</strong> Lubrificação (68,72h), Hidráulico (60,90h), Estrutura (47,65h), Elétrico (33,00h), Transmissão (30,92h).</li>
+                        <li><strong>Quantidade de Falhas (NIC):</strong> Lubrificação (16), Elétrico (9), Hidráulico (9), Estrutura (7), Transmissão (4).</li>
+                            </ul>
                         </p>
                         <p class="article-content">
-                            O acompanhamento contínuo do perfil de perdas dos equipamentos monitorados no cliente Vale, referente ao mês de outubro, forneceu um panorama detalhado das principais ocorrências que impactaram a disponibilidade operacional. A análise estratégica desses dados é fundamental para aprimorar a manutenção e a gestão da frota.
+                            O modelo acumula cerca de 241 horas de perdas, com lubrificação e hidráulicos como principais gargalos.
                         </p>
-                        <img src="images/PerfilPerda.png" alt="Perfil de Perda" class="article-image">
-                        <h4 class="article-content"><strong>Top 5 - Tempo de Falhas (Horas)</strong></h4>
+                        <img src="images/perfildeperdagr5505.png" alt="Perfil de Perda GR5505" class="article-image">
                         <p class="article-content">
-                            A distribuição do tempo total de falhas em outubro apontou os sistemas que mais contribuíram para as perdas operacionais, indicando prioridades para ações corretivas e preventivas:
+                            <strong>GR5505: Destaques</strong>
                         </p>
+                                                      
                         <ul class="article-content2">
-                        <li><strong>ELÉTRICO:</strong> 365.24 horas</li>
-                        <li><strong>HIDRÁULICO:</strong> 245.61 horas</li>
-                        <li><strong>LOCOMOÇÃO:</strong> 183.54 horas</li>
-                        <li><strong>TRANSMISSÃO:</strong> 182.83 horas</li>
-                        <li><strong>MOTOR DIESEL:</strong> 145.79 horas</li>
+                        <li><strong>Tempo de Falhas:</strong> Elétrico (212,27h), Estrutura (126,22h), Hidráulico (104,43h), Direção (47,03h), Motor Diesel (45,21h).</li>
+                        <li><strong>Quantidade de Falhas (NIC):</strong> Estrutura (25), Elétrico (24), Hidráulico (14), Motor Diesel (10), Direção (3).</li>
                         </ul>
+                    <p class="article-content">
+                        Nesse modelo, as perdas superam 535 horas, impulsionadas pelo sistema elétrico e estrutura.
+                    </p>
+                    <p class="article-content"><strong>Análise e Ações</strong></p>
+                    <p class="article-content">O modelo GR5505 apresentou um volume de perdas três vezes maior que o GR3505, reforçando a necessidade de intervenções nos sistemas elétricos e hidráulicos. O FMS continuará guiando priorizações para reduzir downtime e alinhar com metas de produtividade.</p>
 
-                    <h4 class="article-content">Top 5 - Quantidade de Falhas (NIC)</h4>
-                    <p class="article-content">
-                        Em termos de frequência de ocorrências (Número de Incidentes de Componentes - NIC), os dados de outubro reforçaram alguns dos pontos de atenção já identificados pelo tempo de falha:
-                    </p>
-                    <ul class="article-content2">
-                        <li><strong>ELÉTRICO:</strong> 37 falhas</li>
-                        <li><strong>HIDRÁULICO:</strong> 21 falhas</li>
-                        <li><strong>MOTOR DIESEL:</strong> 20 falhas</li>
-                        <li><strong>TRANSMISSÃO:</strong> 8 falhas</li>
-                        <li><strong>LOCOMOÇÃO:</strong> 3 falhas</li>
-                    </ul>
-
-                     <p class="article-content">
-                        A análise combinada desses dois indicadores revelou que o sistema ELÉTRICO se destacou como o principal responsável pelas perdas em outubro, contribuindo significativamente tanto em tempo de indisponibilidade quanto em quantidade de ocorrências. Esse dado sugere a necessidade de um foco especial nas tratativas relacionadas a esse componente.
-                        Para uma compreensão mais aprofundada, os dados detalhados de cada falha específica estão disponíveis em uma tabela complementar, organizada por maior tempo de duração. Esse nível de detalhe é crucial para identificar as causas-raiz e desenvolver soluções mais eficazes.
-                    </p>
-                    <p class="article-content">
-                        O monitoramento contínuo e a análise rigorosa desses perfis de perdas são ferramentas essenciais para otimizar a performance dos equipamentos, reduzir a indisponibilidade e garantir a eficiência operacional da frota na Vale, permitindo a priorização de tratativas e a alocação estratégica de recursos.
-                    </p>
-                        <div class="article">
-                        <div class="article-subtitle">AVANÇO DO CONTROLE DE MELHORIA</div>
-                    <h2 class="article-title">Evolução no Controle de Aplicação das Melhorias</h2>
-                    <p class="article-content">
-                        <i>Desdobramento por período aumenta transparência, acelera priorização e reforça a governança do plano</i>
-                    </p>
-                    <p class="article-content">
-                        Com o aumento do volume de Notificações técnicas, a equipe adotou o desdobramento por período de publicação como novo padrão de acompanhamento. A mudança permite avaliar o avanço de forma segmentada no tempo, evidenciando gaps, possíveis atrasos e oportunidades de priorização por janelas de publicação.
-                    </p>
-                    <img src="images/AplicaçãoMelhoria.png" alt="Aplicação das Melhorias" class="article-image">
-                    <p class="article-content">
-                        Além de fortalecer a governança do processo, o novo modelo melhora a comunicação com as áreas envolvidas, tornando mais clara a evolução das entregas e os pontos de atenção por período. Como próximos passos, o time seguirá monitorando a aderência da Curva S, endereçando de forma focalizada as janelas com maior concentração de pendências e preservando os ganhos de ritmo onde o realizado supera o previsto.
-                    </p>
-                   </div>
-                        
+             
                     </div>
 
                     <div class="article">
-                    <div class="article-subtitle">CONTROLE DE MELHORIA - CURVA S</div>
-                    <h2 class="article-title">Notificações Técnicas: Progresso Sólido e Alinhado com o Planejamento na Frota da Vale</h2>
+                    <div class="article-subtitle">Controle de Melhorias em Novembro: Avanço com 12 Notificações Aplicadas</div>
+                    <h2 class="article-title">Execução das Notificações Técnicas Reforça a Manutenção Preventiva nos Equipamentos da Vale</h2>
                     
                     <p class="article-content">
-                        O mês de outubro marcou um avanço significativo no acompanhamento e aplicação das Notificações Técnicas nos equipamentos que operam em nosso cliente, a Vale. Durante este período, foram emitidas 4 novas notificações para as frotas <strong>XE5600, GR3505 e GR5505</strong>, reforçando nosso compromisso com a melhoria contínua da performance e segurança dos ativos.
+                        Em novembro de 2025, o controle de melhorias registrou a aplicação de 12 notificações técnicas em 24 equipamentos monitorados pelo cliente Vale. Essa ação reflete o compromisso com a otimização operacional, reduzindo riscos e elevando a disponibilidade da frota.
                     </p>
+                    <img src="images/Curva S.jpeg" alt="Curva S" class="article-image">
                     <p class="article-content">
-                        O empenho da equipe resultou em melhorias aplicadas a 10 equipamentos, comprovando a agilidade e a eficácia na implementação das ações corretivas e preventivas. Esse trabalho é essencial para assegurar a longevidade e a eficiência operacional dos ativos da Vale.
-                    </p>
-                    <h6 class="article-content">Curva S: Desempenho em Linha com o Planejado</h6>
-                    <img src="images/CurvaS.jpg" alt="Curva S" class="article-image">
-                    <p class="article-content">
-                        Um dos grandes destaques do mês é a performance da Curva S de aplicação de Notificações Técnicas. Esta ferramenta visual, que monitora o progresso do projeto de julho de 2024 a julho de 2026, revela que estamos rigorosamente em linha com o que foi planejado. A linha "Previsto", que iniciou com 0.4% de progresso em julho de 2024 e tem como meta atingir 100% em julho de 2026, está sendo acompanhada de perto pela linha "Realizado". O alinhamento quase perfeito entre o planejado e o executado é um testemunho da excelência em nosso planejamento e na execução das tarefas, assegurando que os objetivos de longo prazo estão sendo alcançados de forma consistente.
-                    </p>
-                    <p class="article-content">
-                        Este monitoramento detalhado permite identificar e agir proativamente, garantindo que as Notificações Técnicas sejam aplicadas no tempo certo e com a qualidade esperada. O sucesso desta iniciativa reforça a parceria com a Vale e o nosso foco em entregar soluções robustas e eficazes para a manutenção da frota.
-                    </p>
-                     
-                    <div class="article-subtitle">GESTÃO DOS DADOS DO FMS</div>
-                    <h2 class="article-title">Sistema FMS Apresenta Primeiros Resultados</h2>
-                    
-                    <p class="article-content">
-                        Após a implantação do Sistema FMS (Fleet Management System) no mês anterior, os primeiros resultados já demonstram o valor da iniciativa. Um total de <strong>547 eventos de parada para 55 equipamentos do cliente VALE foi lançado no sistema</strong>, criando uma base de dados robusta que serve como insumo essencial para a criação de dashboards e análise de falhas. Com esses dados estruturados, a equipe agora dispõe de informações confiáveis para identificar padrões e tomar decisões baseadas em evidências.
-                    </p>
-                    <p class="article-content">
-                        Foi desenvolvida uma página no Power BI que apresenta, através de uma linha do tempo, a recorrência de falhas nos sistemas dos equipamentos. Esta visualização permite acompanhar a evolução dos problemas e identificar tendências ao longo do tempo.
-                        </p>
-                    <img src="images/SistemaFMS.jpg" alt="Sistema FMS" class="article-image">
-                    <p class="article-content">
-                       A análise inicial, abrangendo o período de setembro a outubro de 2025, identificou um total de 343 falhas distribuídas entre os sistemas mais críticos. Os dados revelam a seguinte distribuição:
+                      <strong>Destaques do Mês:</strong>  
                     </p>
                     <ul class="article-content2">
-                        <li><strong>Estrutura:</strong> 79 falhas (23%)</li>
-                        <li><strong>Motor Diesel:</strong> 69 falhas (20%)</li>
-                        <li><strong>Elétrico:</strong> 52 falhas (15%)</li>
-                        <li><strong>Hidráulico:</strong> 34 falhas (10%)</li>
-                        <li><strong>Transmissão:</strong> 16 falhas (5%)</li>
-                        <li><strong>Locomoção:</strong> 14 falhas (4%)</li>
-                        <li><strong>Lubrificação:</strong> 11 falhas (3%)</li>
-                    </ul>
-                
-                    <p class="article-content">
-                       Esses resultados representam um passo importante na trajetória da manutenção preditiva e na otimização dos processos produtivos. Os dashboards continuarão sendo alimentados e refinados para oferecer insights cada vez mais precisos.
-                    </p> 
+                        <li><strong>Aplicações Realizadas:</strong> As 12 notificações cobriram melhorias em sistemas críticos, como elétricos, hidráulicos e estruturais, alinhadas ao planejamento de notificações técnicas.</li>
+                        <li><strong>Equipamentos Beneficiados:</strong> 24 unidades receberam as intervenções, abrangendo modelos como GR3505 e GR5505, com foco em prevenção de falhas recorrentes.</li>
+                        <li><strong>Progresso Geral:</strong> O volume de aplicações mantém o ritmo em linha com a curva S projetada, contribuindo para uma redução projetada de downtime.</li>
+                        </ul>
 
-        </div>
+                    <p class="article-content">
+                        <strong>Análise e Próximos Passos</strong>
+                    </p>
+                    <p class="article-content">
+                        Esses resultados demonstram a efetividade do desdobramento por período de publicação, permitindo priorizações assertivas e identificação de gaps. O acompanhamento via FMS continuará, com ênfase em acelerar as pendências para sustentar a produtividade e a parceria estratégica com a Vale.
+                    </p>
+                     
+                </div>
    </div>             
 </section>
     
@@ -1541,46 +1479,63 @@
                         <div class="subsection-header">Kickoff, Histórico de Homologações e Testes</div>
                         <div class="article">
                             <div class="article force-no-break">
-                    <div class="article-subtitle">XE5600</div>
-                    <h2 class="article-title">Escavadeira XE5600 da XCMG Enfrenta Desafios de Manutenção na Mina de Carajás; Soluções de Engenharia Estão em Curso</h2>
+                    <div class="article-subtitle">XE5600 - GESTÃO DE CRISE E RECUPERAÇÃO</div>
+                    <h2 class="article-title">XCMG Mobiliza Equipe Técnica para Recuperação da Escavadeira XE5600 Após Falha em Motor Diesel</h2>
                     <div class="image-container-flex">
-                    <img src="images/XE5600.jpeg" alt="Escavadeira XE5600" class="flex-image">
-                    <img src="images/PPXE5600.png" alt="Perfil de Perda XE5600" class="flex-image">
+                    <img src="images/XE5600.jpeg" alt="XE5600" class="flex-image">
+                    <img src="images/Motor XE5600.jpeg" alt="Motor XE5600" class="flex-image">
                         </div>
                         <p class="article-content">
-                            A escavadeira de grande porte XE5600, utilizada nas operações da Vale na mina de Carajás, tem sido o foco de uma série de ações de engenharia e manutenção após a identificação de falhas recorrentes em componentes críticos. Um relatório de performance de outubro de 2025 detalha os desafios enfrentados pelo equipamento, que incluem problemas no sistema hidráulico, elétrico e de conforto operacional, mas também aponta para um esforço contínuo da XCMG e da Vale para implementar soluções definitivas.
+                           A Escavadeira XCMG XE5600, em operação na Serra Norte (Carajás), enfrentou um desafio significativo em novembro, com a falha em um dos motores diesel impactando diretamente sua Disponibilidade Física (DF). Conforme o relatório de Evolução Mensal, o ativo registrou uma DF Acumulada de apenas 53,9% e uma DF Mensal crítica de 28,3% em novembro, exigindo uma resposta imediata e coordenada da Engenharia de Aplicação da XCMG.
                         </p>
                          <p class="article-content">
-                            Entre os principais "Pontos Críticos" listados para a XE5600, destacam-se a falha no conjunto de cilindros e vazamentos no comando final. A análise de falha para o vazamento no comando final, ocorrido em outubro, descartou problemas de montagem e contaminação, indicando preliminarmente um excesso de óleo na câmara. Após a correção do nível e testes, o equipamento foi solicitado a retornar à operação. No sistema hidráulico, vazamentos nos cilindros do stick (lança) foram atribuídos a trincas na camisa e incompatibilidade da área de amortecimento interna, levando à substituição por novos cilindros modificados, com previsão de conclusão para 07 de novembro de 2025.
+                           A falha, classificada como "Manutenção corretiva – Falha no motor", desencadeou um plano de ação detalhado para a recuperação total do equipamento. O relatório de serviços executados, com atualização em 03 de dezembro de 2025, detalha as atividades em andamento, que incluem a substituição do coxim do PTO (LD), a avaliação do flange do espelho do motor através de revelador de trincas e a substituição da proteção superior do silencioso LE.
                         </p>
                          <p class="article-content">
-                            O sistema de ar-condicionado da XE5600 tem sido uma fonte de falhas recorrentes, mas a maior parte das ações corretivas já foi concluída. O relatório indica que problemas como vibração excessiva do suporte, baixa qualidade do motor do eletro ventilador e falha no sistema elétrico (queima de fusível) foram endereçados com melhorias de fixação, aumento da impermeabilidade dos ventiladores (de IP55 para IP66), inclusão de sistema de redução de corrente de partida e melhoria do layout elétrico. A modificação do modelo do compressor de ar-condicionado, no entanto, estava em andamento com prazo de conclusão para meados de novembro de 2025.
-                        </p>
-                         <p class="article-content">
-                            As ações de engenharia demonstram um compromisso em elevar a performance e a confiabilidade da escavadeira. Além das correções de falhas, o relatório também lista um "Ponto de melhoria" em andamento, que é a habilitação da telemetria para o acompanhamento de alarmes de falhas. Este passo é crucial para a manutenção preditiva, permitindo que as equipes de engenharia e pós-vendas, responsáveis pelas ações, monitorem o equipamento em tempo real e atuem de forma mais proativa para evitar paradas não programadas.
-                        </p>
+                           Apesar dos esforços, o cronograma de recuperação enfrentou desvios devido a condições climáticas adversas e a atrasos na liberação de apoio logístico, como o guindaste e a liberação de bloqueio pela Vale. A XCMG, no entanto, mantém o foco na conclusão dos serviços para que a XE5600, que possui um horímetro de 1218.9 horas, retorne à plena capacidade operacional o mais breve possível. A gestão transparente da crise e a mobilização de recursos técnicos reforçam o compromisso da XCMG em garantir a longevidade e a confiabilidade de seus ativos de grande porte.
+                         </p>
                             </div>
                         </div>
                 
 <!-- Início testes -->
 <div class="article">
-    <div class="article-subtitle">TESTES - DESEMPENHO PROMISSOR</div>
-    <h2 class="article-title">Primeiro Caminhão Fora de Estrada XDE260 da XCMG no Brasil Supera Expectativas em Testes na CSN Casa de Pedra</h2>
+    <div class="article-subtitle">XDE260 EM TESTE - DESEMPENHO SÓLIDO EM NOVEMBRO</div>
+    <h2 class="article-title">XCMG XDE260 Demonstra Alta Confiabilidade em Teste na CSN Casa de Pedra, Superando Metas de Disponibilidade</h2>
     <div class="image-container-flex">
-                    <img src="images/xde260.jpeg" alt="Caminhão XDE260" class="flex-image">
-                    <img src="images/PERFORMANCE260.png" alt="Performance XDE260" class="flex-image">
-    </div>
+                    <img src="images/XDE260-performance.png" alt="Caminhão XDE260" class="flex-image">
+                    <img src="images/XDE260-estados.png" alt="Caminhão XDE260" class="flex-image">
+                    </div>
     <p class="article-content">
-        O primeiro caminhão fora de estrada XDE260 da XCMG em operação no Brasil concluiu uma fase de testes na mina Casa de Pedra, da CSN, apresentando resultados promissores sobre a robustez e a confiabilidade do equipamento em um ambiente de mineração de grande escala. O foco da avaliação foi o desempenho em condições operacionais reais, com a coleta de dados de indicadores-chave de performance (KPIs) para análise técnica e otimização contínua.
+       O caminhão fora de estrada XDE260, em operação na CSN Casa de Pedra, apresentou um desempenho notável em confiabilidade durante o período de análise de novembro, conforme detalhado no relatório de Performance Operacional. O ativo superou a meta de Disponibilidade Física (DF), atingindo 92,34% contra uma meta de 82,19%, e demonstrou um excelente Tempo Médio Entre Falhas (MTBF) de 97,95 horas, superando a meta de 42,12 horas. Esses indicadores reforçam a robustez e a confiabilidade do equipamento em um ambiente de mineração de alta exigência.
     </p>
     <p class="article-content">
-        O desempenho do XDE260 em outubro foi notável no que se refere à Disponibilidade Física (DF), alcançando 95,51%, um índice significativamente superior à meta estabelecida de 82,19%. O equipamento registrou 308,63 horas trabalhadas e um Tempo Médio Entre Falhas (MTBF) de 61,73 horas, superando a meta de 42,12 horas. A Utilização Efetiva (UF Efetiva), que atingiu 42,26%, reflete a complexidade da operação e a influência de fatores externos, como a indisponibilidade de operador (37,55 horas) e condições climáticas (56,49 horas de cerração), que estão sendo analisados em conjunto com a CSN para aprimorar a gestão do fluxo de trabalho. 
+        Apesar da alta confiabilidade, a Utilização Efetiva (UF Efetiva) e a Utilização Global (UF Global) ficaram abaixo das metas, registrando 42,82% (meta de 59,36%) e 44,20%, respectivamente. A análise da distribuição de horas operacionais revela que o tempo de "Falta Operador" e "Viajando Cheio" foram os principais fatores que consumiram o tempo disponível, com 157,48 horas (21,87%) e 148,11 horas (20,57%) do total, respectivamente. Fatores externos como "Acesso Interditado" (65,63h) e "Mau Tempo - Chuva" (47,63h) também contribuíram significativamente para a redução da utilização.
     </p>
     <p class="article-content">
-        A análise das paradas programadas e não programadas indica que as intervenções de manutenção foram pontuais e eficientes. As paradas programadas para rotinas como lubrificação centralizada e ajustes elétricos somaram apenas 10 horas no período. Uma intervenção preventiva no sistema de propulsão foi realizada em 7 horas, demonstrando a agilidade da equipe de suporte técnico da XCMG e a facilidade de manutenção do modelo XDE260. O monitoramento proativo de componentes, como a pressão e temperatura dos pneus, contribuiu para a segurança operacional e a maximização da vida útil do equipamento. 
+        Em relação ao consumo de combustível, o relatório aponta um Consumo Médio de Combustível de 136,90 L/h, com um volume total de 293,86 horas trabalhadas no período. A análise de manutenção indica que a maior parte das paradas foi para Manutenção Preventiva Sistemática (35 horas), seguida por Corretiva (18 horas) e Preventiva Não Sistemática (8 horas). O sistema funcional que mais demandou tempo de parada foi o "Não Classificado" (42,25 horas), seguido pelo "Motor Combustão" (15,43 horas), indicando a necessidade de aprimoramento na classificação das ocorrências para otimizar a gestão de ativos.
     </p>
     <p class="article-content">
-        Os resultados obtidos nos testes do XDE260 na CSN Casa de Pedra no mês de outubro são animadores para a validação da tecnologia XCMG no mercado brasileiro de mineração. A alta Disponibilidade Física e o MTBF acima da meta demonstram o potencial do equipamento para contribuir com a produtividade e a eficiência das operações. A colaboração entre XCMG e CSN no acompanhamento e otimização dos testes reforça o compromisso mútuo com a excelência operacional e o desenvolvimento de soluções adequadas aos desafios do setor.
+        O monitoramento de pneus, essencial para a segurança e a eficiência, não apresentou anomalias críticas de pressão ou temperatura no período, com picos pontuais que foram rapidamente normalizados. O desempenho do XDE260 na CSN Casa de Pedra, com destaque para a confiabilidade e o baixo MTTR (5,25 horas contra meta de 5,20 horas), fornece dados valiosos para a XCMG e a CSN na busca contínua pela excelência operacional e na otimização da gestão de ativos de grande porte.
+    </p>
+
+</div>
+<div class="article">
+    <div class="article-subtitle">PERFORMANCE EM CAMPO</div>
+    <h2 class="article-title">XG110 Supera Média da Frota em Produtividade e Consumo em Teste na Mina de Viga</h2>
+  <div class="chart-container">
+                     <img src="images/Teste XG110.jpeg" alt="Dados do Teste XG110">
+</div>
+    <p class="article-content">
+       Depois de passar por testes na Mina de Fábrica, o caminhão XG110 demonstrou um desempenho superior em indicadores-chave de eficiência durante o período de análise de novembro (11 a 30) na Mina de Viga. O relatório de Análise de Performance Operacional, que compara o ativo da XCMG com a média da frota de referência (775G), revela que o XG110 superou a média em Disponibilidade Física (DF), Tempo Médio Entre Falhas (MTBF), Produtividade e Consumo de Combustível, consolidando a competitividade do equipamento em condições reais de operação.
+    </p>
+    <p class="article-content">
+        Os dados de performance mostram que o XG110 alcançou uma Produtividade de 126,9 t/h, superando a média da frota de 109,9 t/h. A eficiência no consumo de combustível é ainda mais notável, registrando 22,87 L/ht contra 41,27 L/ht da média. Em termos de confiabilidade, o XG110 apresentou uma DF de 84,0% e um MTBF de 55 horas, ambos acima da média da frota (70,3% e 46 horas, respectivamente). Entre os Pontos Positivos do período, destacam-se a liberação da operação assistida, a aderência à precisão da balança e o treinamento operacional realizado com a equipe do turno da noite.
+    </p>
+    <p class="article-content">
+        Apesar do excelente desempenho em confiabilidade e eficiência, a Utilização Física (UF) e o Rendimento Operacional (RO) do XG110 ficaram abaixo da média (15,4% e 15,2%, respectivamente). Os comentários do relatório explicam que essa baixa utilização se deve a fatores como o processo inicial de ramp-up, a operação assistida, manutenções programadas e, principalmente, fatores externos como a falta de máquina de carga e de operador em dias específicos. O relatório também aponta a necessidade de ajuste no Payload de 75t para 70t, devido às características do local, e a correção e calibração do sistema de balança, que garantiu uma variação de carga média em +/-5% em relação ao caminhão de referência.
+    </p>
+    <p class="article-content">
+        Os Pontos de Atenção identificados, como a operação em horário diurno, a manutenção inicial do sistema de balança e a falha no monitoramento de pneus, foram cruciais para o aprendizado e aprimoramento contínuo. A rápida atuação da engenharia da XCMG na correção do sistema de balança e a identificação da falha no sensor de pneu demonstram o compromisso em garantir a confiabilidade do ativo. O teste na Mina de Viga reforça a capacidade do XG110 de entregar alta produtividade e economia de combustível, posicionando-o como uma alternativa de alto valor agregado no mercado de mineração.
     </p>
 
 </div>
@@ -1611,113 +1566,193 @@
         <section class="part">
                         <div class="subsection-header">Novas Homologações de Máquinas e Componentes</div>
 
-                        <div class="article">
-                            <div class="article-subtitle">INOVAÇÃO E SUSTENTABILIDADE</div>
-                            <h2 class="article-title">XCMG Anuncia Novas Atualiza Cronograma de Homologação para o Mercado Brasileiro</h2>
-                            <p class="article-content">A XCMG continua a impulsionar a inovação no setor de equipamentos pesados, com uma série de novas máquinas de alta tecnologia atualmente em processo de homologação. Esses equipamentos, que prometem maior eficiência e sustentabilidade, estão passando por rigorosos testes e avaliações para garantir que atendam aos mais altos padrões de qualidade e desempenho antes de sua plena introdução no mercado brasileiro. A empresa também anunciou a inclusão de novos modelos em seu cronograma e atualizou o status de outros processos em andamento.
-                            </p>
-                             
-                            <img src="images/Homologacaomaquina.png" alt="Nova Máquinas" class="homologation-image-machine">
-                            
-                            <br> 
+                        <div class="part-columns">
+                   
+                    <div class="article">
+                        <div class="article-subtitle">XGE150 EV PLUS</div>
+                        <h2 class="article-title">Planejamento do Caminhão 100% Elétrico XGE150 EV PLUS segue em andamento na Mina CPX</h2>
+                          <img src="images/XGE150.png" alt="XGE150EVPLUS" class="article-image">  
+                        <p class="article-content">
+                           O projeto do caminhão 100% elétrico XGE150 EV PLUS, destinado à Vale – Mina CPX, segue avançando conforme o planejamento, com nova previsão de entrega ajustada para 10 de dezembro de 2025. A data, inicialmente marcada para 30 de novembro, foi revisada devido a adequações técnicas em andamento.
+                        </p>
+                        <p class="article-content">
+                            O modelo está inserido em um contrato de venda com garantia padrão de um ano, e toda a documentação já se encontra disponível na biblioteca do projeto, incluindo o PMP concluído.
+                        </p>
+                        <p class="article-content">
+                            O processo de treinamento e familiarização do equipamento está sendo conduzido em Pouso Alegre pelo especialista Antônio Ribeiro, que acompanha de perto cada etapa da preparação operacional.
+                        </p>
+                        <p class="article-content">
+                           Na parte técnica, o kit de supressão de incêndio foi instalado. Durante as inspeções, foi identificada a necessidade de substituição da transmissão e de um reforço estrutural na caçamba, além da pendência na finalização de dois processos aéreos. Essas ações podem impactar novamente o cronograma, mas estão sendo tratadas com prioridade pelas equipes envolvidas.
+                        </p>
+                    </div>
+                    
+                    <div class="article">
+                        <div class="article-subtitle">GR350EP</div>
+                        <h2 class="article-title">Planejamento da Motoniveladora 100% Elétrica GR350EP Avança na Mina Cauê</h2>
+                        <img src="images/GR350EP.png" alt="GR350EP" class="article-image">
+                        <p class="article-content">
+                            O planejamento da motoniveladora GR350EP, totalmente elétrica e destinada à Vale – Mina Cauê, segue dentro do cronograma estabelecido. A previsão de entrega permanece para janeiro de 2026, período em que o equipamento iniciará um teste programado com duração de um ano, contemplando toda a garantia associada.
+                        </p>
                             <p class="article-content">
-                                O processo de homologação na XCMG é uma etapa fundamental que se inicia com a criação detalhada da ficha técnica do produto, alinhando o desenvolvimento às demandas do mercado e normas regulatórias. Em seguida, o equipamento é submetido a testes rigorosos, incluindo avaliações em campo e simulações, com a colaboração de clientes para otimização. A conclusão do processo é validada pelo aceite formal do cliente, assegurando que a XCMG entregue soluções robustas, eficientes e confiáveis.
-                            </p>
-                           
-                        <div class="image-container-flex">
-                            <img src="images/XGE150.jpeg" alt="XGE150" class="flex-image"> 
-                             <img src="images/XGE150 comp.jpeg" alt="XGE150" class="flex-image"> 
-                        </div> 
-                        
-                        <p class="metric-label" style="text-align: center;">Caminhão Elétrico XGE150 chega ao Brasil</p>
-                        <br>
+                            O equipamento já foi entregue na fábrica de Pouso Alegre, onde se encontram em andamento os preparativos necessários para sua entrada em operação. O kit de supressão de incêndio, também localizado em Pouso Alegre, está com instalação sob responsabilidade da empresa Franzen.
+                        </p>
+                        <p class="article-content">
+                            No âmbito documental, o contrato segue em análise pela Vale, aguardando assinatura para formalização definitiva do projeto.
+                        </p>
                             <p class="article-content">
-                                Entre as atualizações, destaca-se a inclusão da Empilhadeira Diesel (XCF1606K), que será destinada à operação S11D da Vale, e do Caminhão Diesel (XG70), que chegou à planta de Pouso Alegre para avaliação. O Caminhão Elétrico XGE150EV Plus e a Motoniveladora Elétrica GR350EP já estão no Brasil; esses equipamentos passarão por um processo de tropicalização antes de serem entregues ao cliente, com previsão de início de operação ainda este ano. Para o Terminal Tractor XPT90K, a empresa está na fase de levantamento de documentação e realização de reuniões semanais para garantir o melhor atendimento. O Caminhão Diesel-Elétrico XDE260 está em testes na CSN, e a data de conclusão da Carregadeira XC9150 foi postergada para o final de Novembro.
-                            </p>
-                            <p class="article-content">
-                               Este portfólio em constante evolução demonstra o empenho da XCMG em expandir sua oferta com máquinas de ponta, adaptadas às necessidades específicas de grandes clientes como Vale e CSN. A empresa garante que cada novo equipamento passe por todas as etapas necessárias para assegurar sua excelência, contribuindo significativamente para a eficiência e a produtividade das operações no Brasil.
-                            </p>
+                            Além disso, a equipe técnica aguarda a chegada de um adaptador para o carregador, item essencial para permitir as movimentações do equipamento durante esta fase inicial. A tratativa segue priorizada para evitar impactos no calendário previsto.
+                        </p>
+                    </div>
+
+                    <div class="article">
+                        <div class="article-subtitle">XC9150</div>
+                        <h2 class="article-title">Entrega do XC9150 avança, mas depende de definição do cronograma e instalação do LTE pelo cliente</h2>
+                        <img src="images/XC9150.png" alt="XC9150" class="article-image">
+                        <p class="article-content">
+                            O processo de entrega do XC9150 permanece em andamento, enquanto a equipe aguarda a definição da programação oficial do cliente para dar continuidade às próximas etapas. Assim que o cronograma for disponibilizado, será possível avançar com a instalação dos periféricos e, na sequência, agendar a entrega definitiva do equipamento.
+                        </p>
+                        <p class="article-content">
+                            Antes dessa fase, é necessário que o cliente finalize a instalação do sistema LTE, condição indispensável para o prosseguimento dos ajustes técnicos previstos.
+                        </p>
+                        <p class="article-content">
+                          Do lado da XCMG, ainda permanece em aberto a formalização da escada fixa, uma vez que a FD atual descreve o modelo como escada retrátil. Além disso, há tratativas pendentes relacionadas à iluminação, que também serão adequadas conforme os requisitos acordados.
+                        </p>
+
+        </div>
                         </div>
+                        <div class="part-columns" style="grid-template-columns: 1fr 1fr;">
+                    <div class="article">
+                        <div class="article-subtitle">XDE260 - SEGUNDA UNIDADE</div>
+                        <h2 class="article-title">XCMG Inicia Montagem do Segundo XDE260 na CSN Casa de Pedra com Mudanças em Tração e Báscula</h2>
+                        <img src="images/XDE260 Montagem.jpeg" alt="Perfil de Perda GR3505" class="article-image">
+                        <p class="article-content">
+                           A XCMG Brasil deu início à montagem da segunda unidade do caminhão fora de estrada XDE260 no Pátio de Montagem Vila II da CSN Casa de Pedra, reforçando a parceria estratégica entre as empresas. Este novo equipamento chega com inovações técnicas significativas em relação ao primeiro XDE260 em operação, demonstrando o compromisso da XCMG com a evolução contínua e a adaptação às necessidades do cliente.
+                        </p>
+                        <p class="article-content">
+                            A principal mudança técnica reside no sistema de tração. Enquanto o primeiro caminhão utilizava o sistema Wabtec GE, esta segunda unidade será equipada com o sistema CRRC XCMG, uma solução que integra a expertise do XCMG Group. Essa alteração visa otimizar a performance e a confiabilidade do caminhão em um dos ambientes de mineração mais exigentes do país.
+                        </p>
+                        <img src="images/Báscula XDE260.jpeg" alt="Báscula XDE260" class="article-image">
+                        <p class="article-content">
+                            Outra inovação importante está na báscula. A montagem da caçamba está sendo realizada na Trend Serviços, em Nova Lima, e o novo modelo é mais compacto e incorpora placas de revestimento para maior durabilidade e resistência ao desgaste. A previsão é que a báscula seja entregue na CSN para instalação no caminhão até o dia 15 de dezembro. A finalização completa da montagem do caminhão e a entrega oficial à CSN Casa de Pedra estão agendadas para o dia 22 de dezembro, marcando mais um passo na consolidação da frota XCMG na operação.
+                        </p>
+                        <p class="article-content">
+                            Este segundo XDE260 com o novo sistema de tração e a báscula aprimorada servirá como um importante campo de testes para a XCMG, permitindo a coleta de dados comparativos e a validação das novas tecnologias em condições reais de mineração. A iniciativa sublinha a agilidade da XCMG em incorporar inovações e aprofundar sua colaboração com a CSN, um dos players mais importantes do setor.
+                        </p>
+
+                    </div>
+
+                    <div class="article">
+                    <div class="article-subtitle">XGA70</div>
+                    <h2 class="article-title">XCMG Conclui Avança na Homologação do Caminhão XGA70 com Foco em Melhorias Estratégicas</h2>
+                    <img src="images/XGA70.jpeg" alt="XGA70" class="article-image">
+                    <p class="article-content">
+                       A XCMG Brasil, em sua busca contínua pela excelência e pela oferta de equipamentos perfeitamente adaptados às rigorosas demandas do mercado nacional, avançou no processo de homologação do caminhão fora de estrada XGA70. A ação, coordenada pela Engenharia e em estreita colaboração com a matriz na China, concentrou-se na análise detalhada do desempenho e na identificação de melhorias estratégicas e adequações de fábrica, visando o lançamento comercial do robusto modelo.
+                    </p>
+                    
+                    <p class="article-content">
+                      O foco desta fase inicial de desenvolvimento, foi a configuração de mercado e a avaliação técnica do produto. Foram levantadas as necessidades de aprimoramento e adequação, que agora aguardam a emissão das Notas Técnicas (NTs) para a implementação. Este procedimento garante que o XGA70, já reconhecido por sua cabine segura ROPS/FOPS, assentos com suspensão pneumática e baixo ruído (inferior a 70 dB), atenda a todos os padrões de conforto e segurança operacional exigidos no Brasil.
+                    </p>
+                    <p class="article-content">
+                        Um ponto de destaque na análise foi a robustez intrínseca do XGA70. O caminhão é equipado com o motor Cummins ISZ13 de alto desempenho, que entrega uma potência bruta de 392kW, e foi projetado para operar em minas de poeira pesada e alta carga, com um sistema de motor que atende ao Estágio III não rodoviário da China. A Engenharia concentrou-se em garantir que recursos como a suspensão hidropneumática, o sistema hidráulico simples e confiável, e o recipiente durável com placa de revestimento de alta dureza, sejam otimizados para a máxima longevidade, superando 15.000 horas de vida útil.
+                    </p>
+                    <p class="article-content">
+                        A proatividade da XCMG em antecipar as adequações de fábrica é um reflexo do seu compromisso com a qualidade. A montagem de definições e opcionais, bem como o gerenciamento de entrega da segunda etapa do projeto, estão diretamente ligados à rápida implementação das melhorias identificadas. Isso inclui a otimização de acessos e serviços, como a escada diagonal e o sistema de enchimento rápido de óleo e refrigerante, essenciais para a comodidade e a manutenção eficiente em campo.
+                    </p>
+                     <p class="article-content">
+                        O processo de homologação do XGA70 reitera a estratégia da XCMG de aliar a força de seus produtos globais com a atenção minuciosa às especificidades locais. Este alinhamento técnico e a gestão de melhorias garantem que, ao ser lançado no mercado, o XGA70 represente o ápice em performance, confiabilidade e adequação operacional para os clientes brasileiros.
+                     </p>
+ 
+   </div>             
+                </div>
 
                         <div class="article">
-                            <div class="article-subtitle">AVANÇO CONTÍNUO</div>
-                            <h2 class="article-title">XCMG Mantém Foco na Inovação com Portfólio de Homologações em Constante Evolução</h2>
+                            <div class="article-subtitle">INOVAÇÃO NA MINERAÇÃO</div>
+                            <h2 class="article-title">XCMG Desenvolve Novo Sistema de Balança para o Caminhão XG110 em Testes na Vale</h2>
                             <p class="article-content">
-                                A XCMG Brasil segue firme em seu compromisso com a inovação e a qualidade, mantendo um portfólio de homologações de componentes em constante evolução. Embora o mês de outubro não tenha trazido novas conclusões de homologação, a empresa continua a trabalhar no desenvolvimento e na validação de uma série de projetos que prometem elevar ainda mais o patamar tecnológico de seus equipamentos. Este processo contínuo de aprimoramento é um pilar fundamental para garantir que cada máquina XCMG entregue a máxima performance, segurança e eficiência a seus clientes.
+                                A XCMG Brasil, em resposta à demanda do cliente Vale por um sistema de registro de pesagens a cada carregamento no caminhão XG110, desenvolveu e implementou uma nova versão de seu sistema de balança. O projeto, que passou por um rigoroso processo de evolução, está em fase de testes na Mina de Viga e tem demonstrado um desempenho mecânico robusto, essencial para a precisão e a continuidade operacional.
                             </p>
-                            <img src="images/Homologacaocomponente.png" alt="Homologação de Componentes" class="homologation-image-comp"> <br><br>
+                            <div class="chart-container">
+                            <img src="images/Balança.png" alt="Nova Balança" class="flex-image">
+                            </div>
                             <p class="article-content">
-                                Atualmente, diversos projetos inovadores estão em andamento. Para as carregadeiras, o desenvolvimento do Joystick JS1-H Steer by Wire da Danfoss segue em andamento, com o objetivo de aprimorar a precisão e o conforto na operação. Outros projetos, como o sistema de lubrificação automática para a XGA5905 e os sistemas de balança para o XE2000 e caminhões de 3 eixos, também avançam, com foco na durabilidade, na eficiência e na precisão dos equipamentos.
+                                O desenvolvimento do sistema de balança enfrentou desafios iniciais, como a deformação plástica da mola e quebras nos suportes soldados do primeiro protótipo, além de avarias no registro das pesagens. A partir de reuniões e discussões aprofundadas com o fornecedor, e com base em estudos da cinemática e do comportamento da suspensão, a engenharia da XCMG concebeu uma solução mecânica aprimorada, que está atualmente em testes de campo.
                             </p>
                             <p class="article-content">
-                                Para aprimorar a gestão e a transparência de seus processos, a engenharia de aplicação está desenvolvendo uma nova plataforma no SharePoint. Essa ferramenta permitirá um acompanhamento mais claro e objetivo do status de cada componente em processo de homologação, otimizando a comunicação interna e com parceiros. A iniciativa reflete o compromisso da empresa com a melhoria contínua e a eficiência em todas as suas operações.
+                                A nova versão do sistema de balança se destaca pela sua robustez. Ela incorpora molas mais resistentes, desenvolvidas especificamente para a aplicação, além de olhais para fixação e correntes que conectam a célula de carga à mola. O sistema é fixado no eixo na parte inferior e no chassi por meio de uma barra na parte superior, garantindo maior estabilidade e precisão. O resultado em campo é promissor: desde a sua instalação, não houve paradas operacionais devido a falhas mecânicas, e o sistema tem respondido de forma eficaz, sem relatos de perda de informação.
                             </p>
                             <p class="article-content">
-                               A XCMG reitera seu empenho em impulsionar a inovação e a qualidade em todos os seus produtos e processos. A empresa continua a investir no desenvolvimento e na validação de novos componentes, e as atualizações sobre as conclusões de homologação serão compartilhadas assim que disponíveis, reforçando o compromisso da XCMG em oferecer ao mercado equipamentos cada vez mais avançados e confiáveis.
+                               O projeto da nova solução mecânica permite que o foco da equipe de desenvolvimento se concentre em ajustes finos no aplicativo de registro, garantindo a precisão dos dados de pesagem. Este projeto de inovação reforça o compromisso da XCMG em fornecer soluções customizadas e de alta confiabilidade, atendendo às necessidades específicas de seus clientes e contribuindo para a otimização dos processos de carregamento e transporte na mineração.
                             </p>
                             
                            
                            
             </div>
     </section>
+    <section class="part">
+                        <div class="subsection-header">Viagens Estratégicas</div>
+
+                        <div class="article">
+                            <div class="article-subtitle">ESTUDO DE CAMPO</div>
+                            <h2 class="article-title">XCMG Realiza Estudo de Campo Detalhado na LHG Mining e Identifica Oportunidades de Suporte e Expansão</h2>
+                            <p class="article-content">A XCMG Brasil, por meio de sua equipe de mineração, concluiu um estudo de campo aprofundado na unidade da LHG Mining em Corumbá/MS, no dia 30 de outubro de 2025. O objetivo da visita, conduzida pelo responsável da XCMG Tiago Bertolini, foi realizar um levantamento técnico e operacional detalhado da mina, que se destaca pela extração de minério de ferro de alto teor (acima de 65% de Fe), considerado um dos mais puros do mundo. O estudo visa alinhar as soluções da XCMG às necessidades de expansão da LHG, que projeta alcançar 25 milhões de toneladas/ano.
+                            </p>
+                            <div class="image-container-flex">
+                            <img src="images/Lhg mining.jpg" alt="LHG Mining" class="flex-image"> 
+                             <img src="images/lhg mining2.jpg" alt="LHG Mining" class="flex-image"> 
+                        </div> 
+                            <p class="article-content">
+                                O relatório de Field Follow da XCMG atesta a maturidade operacional da mina, que opera em regime contínuo (24/7) com infraestrutura consolidada. Os dados técnicos coletados revelam uma operação de alta performance, com Disponibilidade Mecânica de 89% e Utilização Efetiva de 76%. As condições de via são classificadas como excelentes, com manutenção constante, e a Distância Média de Transporte (DMT) varia entre 1 km e 2,5 km. A análise detalhada da frota atual e das condições geológicas do Maciço do Urucum forneceu a base técnica para as futuras propostas de equipamentos e serviços.
+                            </p>
+                            <p class="article-content">
+                                Diante dos desafios logísticos impostos pela distância do centro de mineração da XCMG em Contagem/MG, a principal recomendação estratégica é a implantação de uma Loja In Company na unidade de Corumbá. Essa estrutura, que evoluirá para um atendimento 24/7, garantirá o armazenamento local de peças críticas e suporte técnico dedicado, reduzindo o tempo de resposta e aumentando a disponibilidade operacional. Essa iniciativa é vista como essencial para a competitividade da XCMG e para o fortalecimento da parceria com a LHG.
+                            </p>
+                            <p class="article-content">
+                                O estudo de campo também identificou oportunidades claras para a introdução de equipamentos XCMG, como o caminhão fora de estrada XDE130 e a carregadeira de grande porte XC9350, ambos alinhados à estratégia de expansão da LHG. Além disso, a proximidade com a mina de manganês underground, a apenas 10 km, abriu uma nova frente de estudos técnicos, demonstrando o potencial de sinergia e a visão de longo prazo da XCMG em se consolidar como parceira estratégica no setor de mineração do Mato Grosso do Sul.
+                            </p>
+                        </div>
+    </section>
             <!-- PARTE 3: Eficiência Operacional -->
             <section class="part">
                 <h2 class="section-header">EFICIÊNCIA OPERACIONAL</h2>
-                <div class="part-columns">
+                <div class="part-columns" style="grid-template-columns: 1fr 1fr;">
                    
                     <div class="article">
-                        <div class="article-subtitle">EFICIÊNCIA E PARCERIA EM FOCO</div>
-                        <h2 class="article-title">XCMG Realiza Visita Técnica à Mina S11D da Vale e Avança na Homologação da Carregadeira XC9150</h2>
-                          <img src="images/Eficienciaoperacional9150.png" alt="Eficiencia Operacional 9150" class="article-image">  
+                        <div class="article-subtitle">VISITAS A CLIENTES</div>
+                        <h2 class="article-title">Engenharia da XCMG Reforça Suporte Técnico em Visitas à VALE e Harsco para Otimizar Performance de Ativos</h2>
+                          <img src="images/Eficiencia Operacional - Vale.png" alt="Eficiencia Operacional Vale" class="article-image">  
                         <p class="article-content">
-                           Entre os dias 21 e 24 de outubro de 2025, a equipe da XCMG (composta por Eduardo Teles, Analista de Performance, e João Luís Menezes, Instrutor de Eficiência Operacional) realizou uma visita técnica estratégica à mina S11D da Vale, em Canaã dos Carajás (PA). O objetivo da visita foi duplo: acompanhar a operação da pá carregadeira de grande porte LeTourneau L-2350 em condições reais de mineração e avançar no processo de homologação da nova carregadeira XCMG XC9150, um marco para a entrada da marca no segmento de equipamentos de grande porte no Brasil.
+                           A XCMG Brasil, por meio de sua Engenharia de Performance, realizou uma série de visitas técnicas estratégicas às operações dos clientes VALE (Porto de Tubarão) e Harsco, em Vitória-ES, entre os dias 22 e 24 de outubro de 2025. O objetivo central foi trabalhar em conjunto com as equipes de manutenção e operação para identificar e mitigar pontos críticos que impactam a disponibilidade e a confiabilidade dos equipamentos XCMG em campo, reforçando o compromisso da empresa com a excelência operacional.
                         </p>
                         <p class="article-content">
-                            A análise da LeTourneau L-2350, uma máquina com capacidade para 70 toneladas e peso operacional de 262 toneladas, revelou um desempenho robusto, com 94% de disponibilidade mecânica, próximo à meta de 96% da Vale. Operando em um ambiente desafiador, com rochas de alta dureza como jaspelito e canga laterítica, a L-2350 demonstrou alta eficiência no carregamento em “V”, com um ciclo médio de 3 minutos para 4 passes em caminhões CAT 793. A visita permitiu à equipe da XCMG observar de perto as boas práticas operacionais da Vale e coletar dados valiosos para o aprimoramento de seus próprios equipamentos.
+                            Na visita à Harsco, a equipe da XCMG, recepcionada pelo Gerente de Manutenção Gustavo de Paula, identificou problemas relacionados aos suportes do sistema de suspensão dos caminhões, indisponibilidade de óleos para manutenções preventivas e o alto índice de avarias nos pneus, diretamente ligado às condições de operação. O acompanhamento in loco permitiu um alinhamento direto com a gestão do PCM e a equipe de manutenção de pneus, visando a solução rápida e eficiente desses desafios.
                         </p>
                         <p class="article-content">
-                            Paralelamente, a equipe da XCMG participou de uma reunião técnica crucial com representantes da Vale e da Progen para tratar da liberação da nova carregadeira XCMG XC9150. Com uma caçamba de 15 m³ e peso operacional de 50 toneladas, a XC9150 representa um avanço significativo para a XCMG no mercado de grande porte. Durante a reunião, foram discutidas as pendências para a liberação do equipamento, que incluem a substituição dos pneus para adequação às normas da Vale, a apresentação de laudos técnicos e a instalação de sistemas de segurança, como o cinto de três pontas e o sistema AVI.
+                            Já nas instalações da VALE, no Porto de Tubarão, o foco da reunião com a engenharia foi a reincidência de falhas relacionadas à obstrução de filtros de combustível nas carregadeiras XC978. A análise técnica da XCMG constatou que o modelo de filtro separador utilizado no motor Cummins QSM11 da XC978 possui uma área de filtragem menor em comparação com o filtro das motoniveladoras GR3505 (que utilizam o mesmo motor), o que pode ser um fator contribuinte. Outros pontos levantados foram o posicionamento e a qualidade do respiro do tanque de combustível, que fica exposto a particulados.
                         </p>
                         <p class="article-content">
-                           A visita técnica à mina S11D reforça o compromisso da XCMG em entender as necessidades de seus clientes e em desenvolver soluções de alta performance para o setor de mineração. O acompanhamento da operação da L-2350 e os avanços na homologação da XC9150 demonstram a capacidade da empresa em competir no segmento de grande porte, oferecendo equipamentos robustos, eficientes e seguros, e consolidando sua presença como uma parceira estratégica para as maiores mineradoras do país.
+                           Como resultado das visitas, a XCMG definiu um plano de ação imediato para mitigar as falhas, incluindo a avaliação técnica do sistema de filtragem e alternativas de melhoria, a análise do posicionamento e especificação dos respiros dos tanques, e a implementação do sistema de telemetria XCMG nas carregadeiras XC978 da VALE. Essa plataforma permitirá o monitoramento ampliado da performance e a antecipação de anomalias, consolidando a parceria técnica e o suporte contínuo da XCMG aos seus clientes.
                         </p>
                     </div>
                     
                     <div class="article">
     <div class="article-subtitle">CONEXÃO E COMPROMETIMENTO</div>
-    <h2 class="article-title">XCMG em Campo: Proximidade com o Cliente e Suporte Técnico Marcam a Semana</h2>
-    <img src="images/cronogramavisita.png" alt="cronogramavisita" class="article-image">
+    <h2 class="article-title">XCMG Intensifica Presença no Campo com Cronograma Estratégico de Visitas em Novembro</h2>
+    <img src="images/Cronograma de Visitas.png" alt="cronogramavisita" class="article-image">
     <p class="article-content">
-        A XCMG Brasil reafirma seu compromisso com a excelência e a proximidade junto a seus clientes por meio de uma agenda intensa de visitas e atividades em campo, que demonstra a dedicação de sua equipe. O cronograma da primeira semana de novembro destacou a presença estratégica da empresa em diferentes regiões do país, com o objetivo de oferecer suporte técnico, treinamento e análise para aplicação de equipamentos, fortalecendo parcerias e garantindo a máxima performance das soluções XCMG.
+       A XCMG Brasil reforçou seu compromisso com a excelência operacional e o suporte técnico ao cliente com um cronograma de visitas estratégico e abrangente durante o mês de novembro. As ações, coordenadas pela Engenharia de Aplicação, abrangeram desde o suporte direto em campo até a preparação de materiais de treinamento para as novas tecnologias da marca.
     </p>
         <p class="article-content">
-        Entre os dias 3 e 7 de novembro, a equipe da XCMG esteve mobilizada em diversas frentes. Em Pouso Alegre (MG), Antônio Ribeiro se dedicou à preparação de material para o treinamento do caminhão elétrico XGE150, uma iniciativa que reforça o compromisso da empresa com a inovação e a sustentabilidade. Simultaneamente, Bruno Custódio prestou suporte geral na mesma localidade, garantindo o bom andamento das operações e o apoio necessário aos clientes da região.
+       O foco em Carajás (PA), na operação S11D da Vale, foi mantido com a presença constante de João Luiz, que dedicou tempo à revisão do plano de manutenção e à reciclagem de operadores, além da montagem de Procedimentos Operacionais para as escavadeiras XE5600 e XE2000. Paralelamente, a XCMG demonstrou sua proatividade em novos negócios com a visita de Eduardo Teles à Destaq Mineração em Itinga (MG), visando a análise de aplicação de equipamentos.
     </p>
     <p class="article-content">
-        No mesmo período, Eduardo Teles realizou uma visita à Destac Mineração, em Itinga (MG), para analisar a aplicação de equipamentos XCMG, uma ação que visou otimizar o uso das máquinas e identificar novas oportunidades de colaboração. Em outra frente, João Luiz esteve em Canaã dos Carajás (PA) para a mobilização em S11D da Vale, onde realizou a revisão do plano de manutenção, uma atividade crucial para garantir a confiabilidade e a longevidade dos equipamentos em uma das maiores operações de mineração do mundo.
+        Um ponto de destaque foi o suporte à nova frota e a preparação para a eletrificação. Antônio Ribeiro concentrou esforços na preparação de material para treinamento dos caminhões elétricos XGE150 e XGE150EV PLUS, além dos modelos XDR80te e XGE95, demonstrando a antecipação da XCMG na capacitação para as tecnologias do futuro. A montagem de PMPs (Planos de Manutenção Preventiva) para o novo caminhão XDE130 e a montagem de PMPs para as escavadeiras em Carajás também fizeram parte da agenda.
     </p>
         <p class="article-content">
-        Essa presença constante em campo, com uma equipe de especialistas dedicada a entender e atender às necessidades de cada cliente, é um diferencial que consolida a XCMG como uma parceira estratégica e confiável. A empresa demonstrou, mais uma vez, que seu compromisso vai além da venda de equipamentos, englobando um suporte completo e uma busca contínua pela excelência operacional de seus clientes.
+        O mês foi encerrado com uma ação conjunta em Pontes e Lacerda (MT), onde Bruno Custódio e Eduardo Teles realizaram uma visita à G3 de Apoena para análise de falhas, reforçando o suporte técnico imediato e a proximidade com o cliente. O cronograma de novembro reflete a estratégia da XCMG de aliar a presença em campo com o desenvolvimento de soluções e a capacitação técnica, garantindo a máxima performance e confiabilidade de seus ativos.
     </p>
 </div>
 
-                    <div class="article">
-                        <div class="article-subtitle">ESTRATÉGIA DE SUCESSO</div>
-                        <h2 class="article-title">XCMG e Terra Minas: Field Follow de Britadores Resulta em Aumento de 60% na Produtividade</h2>
-                        <img src="images/britadorfieldfollow.jpeg" alt="Britador" class="article-image">
-                        <p class="article-content">
-                            Durante o mês de outubro, a XCMG Brasil realizou um acompanhamento técnico (Field Follow) na operação da Terra Minas, em Barão de Cocais (MG), com foco no desempenho do conjunto de britagem composto pelos modelos XPE0912 (mandíbulas) e XFY1561 (cônico). A visita, conduzida pelo engenheiro de aplicação Christiano Gomes, não apenas estreitou o relacionamento com o cliente, mas também resultou em um impressionante aumento de 60% na produtividade, saltando de 315 t/h para 500 t/h. Esse resultado foi alcançado através da otimização do processo de alimentação do conjunto de britagem, que passou a ser realizado por uma escavadeira de maior porte, a XCMG XE490DK.
-                        </p>
-                        <p class="article-content">
-                            A operação da Terra Minas, que iniciou suas atividades há cerca de 10 meses, se dá em um cenário desafiador, com a extração de minério de ferro (Canga e Itabirito) de alta dureza. Os equipamentos XCMG, recém-adquiridos e com aproximadamente 400 horas de uso, têm demonstrado excelente performance e confiabilidade. O operador Eduardo Santos, com 10 anos de experiência, destacou a facilidade de controle, a estabilidade e a potência dos britadores XCMG, classificando a performance como "excelente" e ressaltando a boa eficiência e o fácil acesso para manutenção.
-                        </p>
-                        <p class="article-content">
-                           Além do ganho de produtividade, a visita técnica identificou uma forte oportunidade de padronização da frota da Terra Minas com equipamentos XCMG. Atualmente, a frota é composta por um mix de marcas, e a padronização traria benefícios como a simplificação da manutenção, a otimização da gestão de peças e a redução de custos operacionais. A XCMG se posiciona como uma parceira estratégica, oferecendo uma solução integrada que vai além do fornecimento de equipamentos, incluindo suporte técnico, treinamento e contratos de manutenção.
-                        </p>
-                        <p class="article-content">
-                            Como próximos passos, a XCMG irá desenvolver um plano de transição para a padronização da frota, estruturar uma proposta de contrato de manutenção e suporte técnico, e propor um programa de capacitação contínua para operadores e técnicos. A visita à Terra Minas reforça o compromisso da XCMG em oferecer soluções completas e personalizadas, que impulsionam a produtividade e a eficiência de seus clientes, consolidando parcerias de longo prazo e maximizando os resultados em campo.
-                        </p>
-        </div>
+                    
                 </div>
             </section>
 
@@ -1731,139 +1766,131 @@
             <div class="market-news-grid">
 <div class="article">
     <div class="article-subtitle">CONCORRENTES</div>
-    <h2 class="article-title">Komatsu e Applied Intuition formam aliança para acelerar inovação na mineração</h2>
-    <p class="article-date">Publicado em: 27 de Outubro de 2025</p>
-    <p class="article-content">A fabricante japonesa e a empresa do Vale do Silício desenvolverão em conjunto uma plataforma unificada de veículos definidos por software (SDV, na sigla em inglês) e autonomia para a próxima geração de equipamentos de mineração, com atualizações contínuas, maior precisão operacional e implantações mais rápidas.</p>
-    <a href="https://mercadovial.tv/2025/10/27/komatsu-applied-intuition-alianza-sdv-autonomia-minera/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <h2 class="article-title">Komatsu avança com nova unidade e ampliará centro de remanufatura</h2>
+    <p class="article-date">Publicado em: 15 de Novembro de 2025</p>
+    <p class="article-content">A Komatsu avançou na construção de sua nova sede em Contagem (MG), um projeto para sua Divisão de Mineração no Brasil, e anunciou a expansão de seu centro de remanufatura. O projeto, lançado em 2024, recebeu um investimento inicial de aproximadamente R$168 milhões e já está em fase de construção do prédio administrativo.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/komatsu-avanca-em-nova-unidade-e-vai-ampliar-centro-de-remanufatura" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
     <div class="article-subtitle">CONCORRENTES</div>
-    <h2 class="article-title">Hitachi avança na tecnologia autônoma</h2>
-    <p class="article-date">Publicado em: 21 de Outubro de 2025</p>
-    <p class="article-content">Hitachi assinou um acordo de 5 anos com a Technological Resources Pty, subsidiária da Rio Tinto, para avançar tecnologias de operação remota para escavadeiras hidráulicas ultra-grandes.</p>
-    <a href="https://www.constructionbriefing.com/news/hitachi-pushes-forward-on-autonomous-technology/8087405.article?zephr_sso_ott=WbmETy" class="saiba-mais" target="_blank">Saiba mais</a>
+    <h2 class="article-title">Peru tem um marco na mineração: a primeira perfuratriz autônoma da CAT</h2>
+    <p class="article-date">Publicado em: 26 de Novembro de 2025</p>
+    <p class="article-content">A perfuratriz elétrica CAT MD6640 começa a operar na mina Toromocho, controlada 100% de forma remota de Lima. A perfuratriz, lançada pela Ferreyros e a Mineradora Chinalco Perú com tecnologia MineStar Comand da Caterpillar, é a primeira da CAT com uma estação de controle remoto localizada em uma cidade para executar e monitorar o plano de perfuração autônoma.</p>
+    <a href="https://www.horizonteminero.com/peru-marca-un-hito-en-mineria-la-primera-perforadora-autonoma-cat-inicia-operaciones-en-mina-toromocho-controlada-100-de-forma-remota-desde-lima/" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">EXPANSÃO</div>
-    <h2 class="article-title">Fundo de US$ 1 bilhão financiará expansão do projeto Santa Rita da Atlantic Nickel</h2>
-    <p class="article-date">Publicado em: 21 de Outubro de 2025</p>
-    <p class="article-content">A mina Santa Rita, na Bahia, e operada pela Atlantic Nickel, é o 1º investimento do novo fundo de US$ 1 bilhão criado pela parceria entre Appian Capital Advisory e International Finance Corporation (IFC). A operação produz níquel, cobre e cobalto – fundamentais para transição energética e tecnologias digitais.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/fundo-de-us-1-bilhao-financiara-expansao-do-projeto-santa-rita-da-atlantic-nickel" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">BIODIESEL</div>
+    <h2 class="article-title">Vale inicia testes de veículos a biodiesel e nova fase com caminhão elétrico</h2>
+    <p class="article-date">Publicado em: 18 de Novembro de 2025</p>
+    <p class="article-content">Vale começou testes de campo com caminhões fora de estrada usando biodiesel B30 e B50, que podem levar a uma redução e emissões de até 35% em relação ao diesel consumido atualmente pela companhia. Vale pretende aumentar a mistura de biodiesel em caminhões fora de estrada dos atuais 15% estabelecidos pela legislação brasileira, para 30%-50%.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/vale-inicia-testes-com-veiculos-a-biodiesel-e-nova-etapa-com-caminhao-eletrico" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">PROJETOS</div>
-    <h2 class="article-title">Australiana Liberty Metals adquire 3 projetos no Brasil</h2>
-    <p class="article-date">Publicado em: 21 de Outubro de 2025</p>
-    <p class="article-content">A Liberty Metals Ltd firmou um contrato para adquirir 100% de participação em três projetos de minerais críticos: o Projeto de Rutilo de Rocha Dura da Paraíba, o Projeto de Areias Pesadas de Minerais do Rio Grande (HMS), no Rio Grande do Sul, e o Projeto de Areias Pesadas de Minerais de Alcobaça e Terras Raras, na Bahia.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/australiana-liberty-metals-adquire-de-tres-projetos-no-brasil" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">PRODUÇÃO</div>
+    <h2 class="article-title">Vale quer voltar ao topo na produção de minério de ferro</h2>
+    <p class="article-date">Publicado em: 25 de Novembro de 2025</p>
+    <p class="article-content">O futuro da empresa está moldado em três parâmetros: o primeiro é o portfólio, ou seja, o que empresa quer vender e em que negócio pretende estar. Em segundo, o relacionamento com os clientes e, em terceiro, o crescimento em cobre. A Vale quer estar exposta às commodities favoráveis ou beneficiadas pelo processo de transição energética, a começar com o minério de ferro.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/vale-quer-voltar-ao-topo-na-producao-mundial-de-minerio-de-ferro" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">RESULTADOS</div>
-    <h2 class="article-title">GoldMining divulga novos resultados do projeto São Jorge</h2>
-    <p class="article-date">Publicado em: 20 de Outubro de 2025</p>
-    <p class="article-content">A GoldMining Inc. divulgou os resultados iniciais dos ensaios de seu programa de perfuração RC de 2025, em seu Projeto São Jorge, no Pará. O programa em andamento foi projetado para testar novos alvos fora das áreas conhecidas de mineralização.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/goldmining-divulga-novos-resultados-do-projeto-sao-jorge" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">MODERNIZAÇÃO</div>
+    <h2 class="article-title">Samarco recebe equipamentos para modernizar usinas</h2>
+    <p class="article-date">Publicado em: 24 de Novembro de 2025</p>
+    <p class="article-content">Além da modernização das unidades de pelotização 1 e 2 da Samarco, o projeto em Ubu prevê a implantação de novas áreas de filtragem, uma estação de tratamento de efluentes industriais e sistemas de peneiramento.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/samarco-recebe-equipamentos-para-modernizar-usinas-1-e-2-em-ubu" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">MINERAÇÃO EM ALTA</div>
-    <h2 class="article-title">Receita da mineração brasileira salta 34% no 3T</h2>
-    <p class="article-date">Publicado em: 21 de Outubro de 2025</p>
-    <p class="article-content">O setor mineral brasileiro faturou R$ 76,2 bilhões no terceiro trimestre, um salto de 34% ano a ano, impulsionado principalmente pelo incremento da receita do minério de ferro no período.</p>
-    <a href="https://www.noticiasdemineracao.com/dados/news-articles/4521943/receita-da-mineracao-brasileira-salta-34-3t?utm_campaign=NMB%20Daily%20Newsletter%20-%20OCT%2021%202025%20-%2019%3A03%3A34%20UTC&utm_content=Receita%20da%20minera%C3%A7%C3%A3o%20brasileira%20salta%2034%25%20no%203T&utm_term=&utm_medium=email&utm_source=Adestra" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">DEMANDA</div>
+    <h2 class="article-title">Hochschild Mining instala usina para suprir demanda em Mara Rosa</h2>
+    <p class="article-date">Publicado em: 26 de Novembro de 2025</p>
+    <p class="article-content">A iniciativa, implantada em Jaboticatubas (MG), tem como objetivo suprir toda a demanda de energia para a operação durante a vida útil da mina em Mara Rosa, norte de Goiás (GO). Com isto, a operação torna-se mais sustentável e competitiva, devido à redução de custos da operação.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/hochschild-mining-instala-usina-para-suprir-demanda-em-mara-rosa" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">TERRAS RARAS</div>
+    <h2 class="article-title">Terras raras: Estados Unidos financiam projeto em Goiás com até U$ 465 milhões</h2>
+    <p class="article-date">Publicado em: 11 de Novembro de 2025</p>
+    <p class="article-content">Projeto Pela Ema, da Serra Verde Pesquisa e Mineração (SVPM), está localizado em Minaçu. Mineradora, considerada a única fora da Ásia que produz esses elementos em escala comercial, ganhou destaque mundial ao produzir os quatro elementos magnéticos essenciais de terras raras: disprósio (Dy) e térbio (Tb), além de neodímio (Nd) e praseodímio (Pr).</p>
+    <a href="https://g1.globo.com/go/goias/noticia/2025/11/11/terras-raras-estados-unidos-financiam-projeto-em-goias-com-ate-u-465-milhoes.ghtml" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
     <div class="article-subtitle">LICENCIAMENTO</div>
-    <h2 class="article-title">Lara Exploration assina acordo para obter licença adjacente para projeto Planalto</h2>
-    <p class="article-date">Publicado em: 17 de Outubro de 2025</p>
-    <p class="article-content">A Lara Exploration Ltd informa que sua subsidiária integral brasileira assinou um contrato de compra e venda para adquirir uma licença de exploração adjacente ao Projeto de Cobre e Ouro Planalto da Lara, em Carajás.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/lara-exploration-assina-acordo-para-obter-licenca-adjacente-para-projeto-planalto" class="saiba-mais" target="_blank">Saiba mais</a>
+    <h2 class="article-title">MPF emitiu recomendação para suspender licenciamento do projeto Colossus</h2>
+    <p class="article-date">Publicado em: 26 de Novembro de 2025</p>
+    <p class="article-content">O Projeto de terras raras Colossus, em Poços de Caldas (MG), visa a produção de terras raras através da lixiviação ácida de cinco milhões de toneladas anuais de argila iônica, um processo considerado limpo e sem riscos para o meio ambiente. Mas um documento de 24/11/2025 menciona inúmeras irregularidades e riscos ambientais.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/mpf-quer-suspender-licenciamento-do-projeto-colossus" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">POLÍTICA</div>
-    <h2 class="article-title">Deputado Arnaldo Jardim antecipa pontos do relatório sobre a Política Nacional de Minerais Críticos e Estratégicos</h2>
-    <p class="article-date">Publicado em: 15 de Outubro de 2025</p>
-    <p class="article-content">O parecer estabelece metas e indicadores mais objetivos, entre eles: o fortalecimento da divulgação de dados gerados pelo comitê de minerais críticos estratégicos, de instrumentos de fomento à extração e beneficiamento dos desses materiais; reforça a estrutura de apoio ao licenciamento já existente.</p>
-    <a href="https://ibram.org.br/noticia/deputado-arnaldo-jardim-antecipa-pontos-do-relatorio-sobre-a-politica-nacional-de-minerais-criticos-e-estrategicos/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">INTEGRAÇÃO</div>
+    <h2 class="article-title">Associação de Minerais Críticos visa integrar atuação das empresas</h2>
+    <p class="article-date">Publicado em: 24 de Novembro de 2025</p>
+    <p class="article-content">O Brasil criou a Associação de Minerais Críticos (AMC), uma entidade nacional para atuar em toda a cadeia, desde a exploração e mineração até o processamento, tecnologia e inovação. A iniciativa encontra corrida internacional por lítio, níquel, terras raras, grafite, cobre e outros minerais essenciais.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/associacao-de-minerais-criticos-visa-integrar-atuacao-das-empresas" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">CRESCIMENTO</div>
-    <h2 class="article-title">Demanda anual por cobre deve aumentar 24% até 2035 superando 42,7 milhões t</h2>
-    <p class="article-date">Publicado em: 15 de Outubro de 2025</p>
-    <p class="article-content">De acordo com projeções da Wood Mackenzie, no cenário base a demanda total por cobre deverá aumentar 24%, para 42,7 Mtpa, até 2035, impulsionada principalmente pelo desenvolvimento econômico global e pela eletrificação.</p>
-    <a href="https://www.brasilmineral.com.br/noticias/demanda-anual-por-cobre-deve-aumentar-24-ate-2035-superando-427-milhoes-t" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">INVESTIMENTOS</div>
+    <h2 class="article-title">Governo brasileiro lança títulos para estimular investimentos em minerais estratégicos</h2>
+    <p class="article-date">Publicado em: 14 de Novembro de 2025</p>
+    <p class="article-content">Ministro das Minas e Energia, Alexandre Silveira, assinou portaria nº 120 que institui debêntures com benefícios fiscais para financiar projetos de transformação mineral, fortalecer a indústria nacional e o compromisso com a neutralidade climática até 2050.</p>
+    <a href="https://agenciagov.ebc.com.br/noticias/202511/governo-brasil-titulos-estimular-investimentos-minerais-estrategicos-terras-raras" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">TECNOLOGIA</div>
-    <h2 class="article-title">Data Centers pré fabricados impulsam a mineração moderna</h2>
-    <p class="article-date">Publicado em: 16 de Outubro de 2025</p>
-    <p class="article-content">A combinação de infraestrutura modular e software inteligente torna os data centers pré-fabricados aliados para uma mineração mais eficiente e com menor pegada de carbono.</p>
-    <a href="https://www.horizonteminero.com/data-centers-prefabricados-impulsan-la-mineria-moderna/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">RECEITA</div>
+    <h2 class="article-title">Receita líquida cresce 69% em relação ao trimestre anterior</h2>
+    <p class="article-date">Publicado em: 15 de Novembro de 2025</p>
+    <p class="article-content">A Sigma Lithium reportou receita líquida de US$ 28,5 milhões no terceiro trimestre de 2025, um aumento de 69% em relação ao trimestre anterior e de 36% em relação ao mesmo período do ano anterior. O aumento em relação ao trimestre anterior também refletiu um melhor volume de vendas, que cresceu 21%.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/receita-liquida-cresce-69-em-relacao-ao-trimestre-anterior" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">TRANSIÇÃO ENERGÉTICA</div>
-    <h2 class="article-title">Cajamarca, protagonista do futuro da mineração e da transição energética, segundo NORMIN 2025</h2>
-    <p class="article-date">Publicado em: 17 de Outubro de 2025</p>
-    <p class="article-content">A PERUMIN 37 confirmou a importância estratégica do Primeiro Congresso de mineração do Norte – NORMIN 2025. A feira em Arequipa confirmou que a região de Cajamarca se posiciona como peça-chave no fornecimento global de minerais críticos para a revolução energética do século XXI.</p>
-    <a href="A PERUMIN 37 confirmou a importância estratégica do Primeiro Congresso de mineração do Norte – NORMIN 2025. A feira em Arequipa confirmou que a região de Cajamarca se posiciona como peça-chave no fornecimento global de minerais críticos para a revolução energética do século XXI." class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">LICITAÇÕES</div>
+    <h2 class="article-title">Dezembro marca onda de licitações que deve gerar R$60 bi no Brasil</h2>
+    <p class="article-date">Publicado em: 01 de Dezembro de 2025</p>
+    <p class="article-content">O Brasil terá nove licitações ao longo de dezembro que podem gerar investimentos combinados futuros de cerca de R$60 bilhões (bi) (US$11 bilhões). Os contratos a serem leiloados referem-se a ativos de óleo e gás, bem como a diversas concessões e PPPs ligadas à infraestrutura.</p>
+    <a href="https://www.bnamericas.com/pt/feature/dezembro-marca-onda-de-licitacoes-que-deve-gerar-r60bi-no-brasil" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
-    <div class="article-subtitle">NEGÓCIOS</div>
-    <h2 class="article-title">Relatório de Negócios Global: Peru poderia viver um novo superciclo de mineração se assegurar estabilidade política</h2>
-    <p class="article-date">Publicado em: 17 de Outubro de 2025</p>
-    <p class="article-content">O país enfrenta um momento decisivo com contexto internacional favorável, impulsionado por um novo superciclo de minerais, com preços recordes do cobre e do ouro. Porém, a incerteza política e a falta de previsibilidade nas decisões públicas ameaçam enfraquecer essa situação.</p>
-    <a href="https://www.horizonteminero.com/global-business-reports-peru-podria-vivir-un-nuevo-superciclo-minero-si-asegura-estabilidad-politica/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">EXPORTAÇÕES</div>
-    <h2 class="article-title">Exportações de mineração cresceram 16,2% e somaram US$35.608 milhões até agosto</h2>
-    <p class="article-date">Publicado em: 21 de Outubro de 2025</p>
-    <p class="article-content">As exportações de mineração do Peru alcançaram US$ 35,608 milhões entre janeiro e agosto de 2025, refletindo um crescimento de 16,2% em relação a 2024. O aumento nos preços do ouro e do cobre impulsionou as vendas de mineração, que representaram 65% do total das exportações do Peru.</p>
-    <a href="https://www.rumbominero.com/peru/noticias/mineria/exportaciones-mineras-crecieron-16-2-y-sumaron-us-35608-millones-a-agosto/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">METAIS PRECIOSOS</div>
-    <h2 class="article-title">Projeto Callanquitas reporta intersecção de ouro, prata e cobre</h2>
-    <p class="article-date">Publicado em: 21 de Outubro de 2025</p>
-    <p class="article-content">PPX Mining Mantém 100% do Proyecto Igor, um ativo de ouro e prata localizado na faixa de prateada e dourada do norte peruano. A companhia busca expandir sua pegada de mineração e desenvolver um projeto de escala distrital com múltiplas zonas e depósitos minerais.</p>
-    <a href="https://www.rumbominero.com/peru/noticias/mineria/ppx-mining-proyecto-callanquitas-oro-plata-cobre/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">INOVAÇÃO</div>
+    <h2 class="article-title">Andrade Gutierrez fortalece presença na mineração subterrânea com foco em ESG e inovação</h2>
+    <p class="article-date">Sem Data de Publicação</p>
+    <p class="article-content">Com mais de 75 anos de experiência, a companhia tem investido fortemente em práticas alinhadas aos princípios ESG, como sustentabilidade, segurança e inovação. Todos seus projetos são pautados pela sua Política de ESG, adotando práticas de prevenção e mitigação de impactos.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/andrade-gutierrez-fortalece-presenca-na-mineracao-subterranea-com-foco-em-esg-e-inovacao" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <div class="article">
     <div class="article-subtitle">ESG</div>
-    <h2 class="article-title">Setor alinha papel da mineração para soluções climáticas com presidente e diretora da COP30</h2>
-    <p class="article-date">Publicado em: 16 de Outubro de 2025</p>
-    <p class="article-content">O diretor-presidente do IBRAM, Raul Jungmann, sublinhou o papel da mineração como agente estratégico na transição climática global e reafirmou o compromisso do setor com uma atuação responsável e alinhada à agenda da COP30.</p>
-    <a href="https://ibram.org.br/noticia/setor-alinha-papel-da-mineracao-para-solucoes-climaticas-com-presidente-e-diretora-da-cop30/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <h2 class="article-title">RHI Magnesita apresenta tecnologia que converte CO2 em insumo industrial</h2>
+    <p class="article-date">Publicado em: 18 de Novembro de 2025</p>
+    <p class="article-content">Durante a COP30, a RHI Magnesita apresentou a parceria estratégica com a MCi Carbon, startup australiana que também participou do painel, no desenvolvimento de uma tecnologia que converte CO2 em materiais em pó utilizados na indústria.</p>
+    <a href="https://www.brasilmineral.com.br/noticias/rhi-magnesita-apresenta-tecnologia-que-converte-co2-em-insumo-industrial" class="saiba-mais" target="_blank">Saiba mais</a>
+</div>
+
+<div class="article">
+    <div class="article-subtitle">COP30</div>
+    <h2 class="article-title">Transição energética e cooperação Brasil-China na COP30</h2>
+    <p class="article-date">Publicado em: 17 de Novembro de 2025</p>
+    <p class="article-content">A cooperação entre Brasil e China no campo da transição energética esteve presente no painel Energy Transition and China–Brazil Cooperation, realizado durante a COP30. O debate, que contou com participação do IBRAM, abordou o futuro tecnológico e o papel estratégico dos minerais críticos na transição energética, onde Brasil e China têm potencial para se tornarem líderes globais.</p>
+    <a href="https://ibram.org.br/noticia/ibram-participa-de-debate-sobre-transicao-energetica-e-cooperacao-brasil-china-na-cop30/" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 
 <div class="article">
-    <div class="article-subtitle">CLIMA</div>
-    <h2 class="article-title">Mudança climática e a mineração estão na mesma equação, destaca vice-presidente do IBRAM em evento da CNI</h2>
-    <p class="article-date">Publicado em: 16 de Outubro de 2025</p>
-    <p class="article-content">O vice-presidente do IBRAM destacou que o Brasil possui vantagens estratégicas importantes para liderar uma transição sustentável no setor mineral, como a diversidade geológica, uma matriz energética majoritariamente limpa, elevado potencial de industrialização e uma legislação ambiental sofisticada.</p>
-    <a href="https://ibram.org.br/noticia/mudanca-climatica-e-a-mineracao-estao-na-mesma-equacao-destaca-vice-presidente-do-ibram-em-evento-da-cni/" class="saiba-mais" target="_blank">Saiba mais</a>
-</div>
-
-<div class="article">
-    <div class="article-subtitle">INVESTIMENTO</div>
-    <h2 class="article-title">Embaixada dos EUA propõe ao IBRAM grupo de trabalho com o setor privado para orientar investimentos norte-americanos em produção de minerais críticos no Brasil</h2>
-    <p class="article-date">Publicado em: 29 de Outubro de 2025</p>
-    <p class="article-content">A articulação inédita envolvendo o governo dos EUA, a indústria da mineração brasileira e o governo do Brasil, busca canalizar investimentos norte-americanos em projetos de produção de minerais críticos e estratégicos em território nacional. A participação do governo brasileiro ainda será tratada.</p>
-    <a href="https://ibram.org.br/noticia/embaixada-dos-eua-propoe-ao-ibram-grupo-de-trabalho-com-o-setor-privado-para-orientar-investimentos-norte-americanos-em-producao-de-minerais-criticos-no-brasil/" class="saiba-mais" target="_blank">Saiba mais</a>
+    <div class="article-subtitle">ENERGIA LIMPA</div>
+    <h2 class="article-title">COP30: Futuro da energia limpa passa pela mineração</h2>
+    <p class="article-date">Publicado em: 17 de Novembro de 2025</p>
+    <p class="article-content">O IBRAM participou do painel “Transição energética: Novos pilares da energia no Brasil e no mundo”, promovido pelo Consórcio Amazônia Legal e pela mineradora Norsk Hydro na COP30. O debate destacou a importância da mineração para tecnologias de energia limpa, veículos elétricos e infraestrutura elétrica, e discutiu avanços e desafios na descarbonização da cadeia produtiva, especialmente na produção de alumina.</p>
+    <a href="https://ibram.org.br/noticia/cop30-futuro-da-energia-limpa-passa-pela-mineracao-afirma-ibram/" class="saiba-mais" target="_blank">Saiba mais</a>
 </div>
 
 <!-- Agenda -->
@@ -1872,14 +1899,14 @@
     <h2 class="article-title">Eventos e Feiras</h2>
     <div class="events-list">
                       <div class="event-item">
-                <div class="event-date">25-27 Nov</div>
-                <a class="event-link" href="https://www.mossorooilgas.com.br/" target="_blank">Mossoró Oil & Gas (petróleo, gás e energia)</a>
-                <div class="event-location">Mossoró, RN</div>
+                <div class="event-date">08-09 Dez</div>
+                <a class="event-link" href="https://www.miningtechsouthamerica.com/" target="_blank">Miningtech South America (Inovação e sustentabilidade na mineração)</a>
+                <div class="event-location">São Paulo, SP</div>
             </div>
             <div class="event-item">
-                <div class="event-date">26-28 Nov</div>
-                <a class="event-link" href="https://expominerio.com.br/" target="_blank">Expominério (mineração)</a>
-                <div class="event-location">Cuiabá, MT</div>
+                <div class="event-date">10-11 Dez</div>
+                <a class="event-link" href="https://www.mininglatinamerica.com/" target="_blank">Mining & Critical Minerals Latin America 2025 (Minerais críticos e energia de baixo carbono)</a>
+                <div class="event-location">São Paulo, SP</div>
             </div>
             
         </div>
@@ -1891,9 +1918,9 @@
 <div class="article">
     <div class="subsection-header">Distribuição de Máquinas</div>
     <div class="article-subtitle">MAPEAMENTO ESTRATÉGICO</div>
-    <h2 class="article-title">XCMG Amplia Cobertura e Atinge a Marca de 1.993 Equipamentos em Operação no Brasil</h2>
-    <p class="article-content">Um novo levantamento sobre a distribuição de equipamentos da XCMG no Brasil, realizado em outubro de 2025, revela um crescimento expressivo e uma capilaridade cada vez maior da marca no território nacional. O mapa de cobertura da Engenharia de Aplicação, atualizado com os dados mais recentes, mostra que a XCMG atingiu a marca de 1.993 equipamentos em operação, um aumento significativo em relação ao levantamento anterior, que registrava 1.608 máquinas. A maior concentração de equipamentos continua na região Sudeste, seguida pelo Centro-Oeste, Nordeste, Norte e Sul, respectivamente, além de uma unidade em operação na Guiana.</p>
-    <p class="article-content">O mapa interativo, que utiliza círculos para representar o volume de equipamentos em cada região, evidencia a forte presença da XCMG em áreas estratégicas para a mineração, construção e agronegócio. Os círculos maiores indicam um alto volume de máquinas, enquanto os menores representam uma presença mais pontual. As áreas em vermelho no mapa indicam regiões e máquinas que ainda não possuem cobertura de um analista responsável, enquanto as áreas em azul representam as máquinas que já contam com o suporte da equipe de Engenharia de Aplicação da XCMG.</p>
+    <h2 class="article-title">XCMG Atinge Nova Marca de 2.110 Equipamentos em Operação no Brasil</h2>
+    <p class="article-content">O mapa abaixo produzido pela Engenharia de Aplicações, apresenta a cobertura dos equipamentos por estado. Do total de 2.110 equipamentos, 1.476 estão concentrados na região Sudeste, o que corresponde a quase 70% dos equipamentos totais em funcionamento hoje. Em segundo lugar está o Centro-Oeste, com 345 equipamentos em funcionamento, número bem abaixo do volume presente no Sudeste, mas ainda muito relevante. Em seguida, estão as regiões Nordeste com 170 equipamentos, Norte com 82 e, por fim, Sul com 35, além de duas máquinas em operação na Guiana.</p>
+    <p class="article-content">Os círculos azuis no mapa indicam os equipamentos com cobertura de um analista responsável da XCMG nessas áreas. Minas Gerais, Bahia, Pará e Maranhão contam com maior cobertura, enquanto o restante do Nordeste e Centro-Oeste têm menor cobertura, além do Sudeste, que ainda possui várias áreas em vermelho sem cobertura. As áreas em círculos vermelhos mostram onde há equipamentos, mas não há cobertura da XCMG. É importante ressaltar, no entanto, que atualmente ainda há 1.683 equipamentos sem cobertura de um analista responsável, o que evidencia que ainda temos um longo trabalho à frente apesar dos diversos avanços.</p>
     <div class="chart-container">
         <a href="https://app.powerbi.com/view?r=eyJrIjoiNmEzNjRjYzEtODdkMS00MDJlLTk1MDEtY2IwYzNmNjQ5NjBlIiwidCI6ImZmNGQ4ZGY1LWYwNTAtNDdiOC04Y2Y4LWFlNzk5NGYwYTAxZCJ9" target="_blank">
         <img src="images/mapa_distribuicao.png" alt="Mapa de Distribuição das Máquinas" >
@@ -1911,41 +1938,48 @@
     <section class="part">  
                 <div class="part-columns" style="grid-template-columns: 1fr 1fr;">
                     <div class="article">
-                        <div class="article-subtitle">LINHA AMARELA - MOTONIVELADORA</div>
-                        <h2 class="article-title">Estudo Detalhado do Mercado de Motoniveladoras no Brasil Revela Liderança da Caterpillar-SEM e Oportunidades em 2025</h2>
+                        <div class="article-subtitle">MINERAÇÃO E LOGÍSTICA</div>
+                        <h2 class="article-title">XCMG Lidera o Mercado de Caminhões de Mineração no Brasil em 2025 e Domina Segmentos de Alta Capacidade</h2>
                         <p class="article-content">
-                            Um estudo aprofundado sobre o mercado de importação de motoniveladoras no Brasil, realizado entre janeiro e julho de 2025, revelou um cenário competitivo e dinâmico, com a Caterpillar-SEM consolidando sua liderança em volume de unidades importadas. A análise, que abrangeu um total de 144 equipamentos, oferece insights valiosos sobre as tendências do setor, as estratégias dos principais fabricantes e as oportunidades para a XCMG fortalecer sua presença no mercado nacional.
+                            Um relatório de análise de mercado sobre a importação de caminhões de mineração e diesel elétricos no Brasil, abrangendo o período de janeiro a julho de 2025, revela a liderança consolidada da XCMG no segmento de caminhões de mineração. O estudo, que analisou um total de 240 unidades importadas, fornece dados detalhados sobre o volume de importações, o valor FOB total e a distribuição por capacidade de carga, servindo como base para decisões estratégicas no mercado nacional.
                         </p>
-                        <img src="images/Tabelamoto.png" alt="Tabela Motoniveladora" class="article-image">
+                        <img src="images/tabela caminhao inteligencia de mercado.png" alt="Tabela Caminhão" class="article-image">
+                        <h6 class="article-content">Liderança em Volume e Valor FOB</h6>
                         <p class="article-content">
-                            A Caterpillar-SEM destacou-se como a principal importadora, com 70 unidades, o que representa 48,6% do total de motoniveladoras importadas no período. A LiuGong seguiu de perto, com 49 unidades (34%), enquanto a SDLG ocupou a terceira posição, com 11 unidades (7,6%). A XCMG, por sua vez, registrou a importação de 2 unidades (1,4%), posicionando-se em sexto lugar no ranking. A análise por peso operacional revelou que a Caterpillar-SEM domina a faixa de 15 toneladas, com 44 unidades, enquanto a LiuGong lidera na faixa de 15,2 toneladas, com 40 unidades. A SDLG também demonstrou força em nichos específicos, como as faixas de 13,2 e 16 toneladas.
+                            A XCMG se destacou como a principal importadora de caminhões de mineração (diesel), com 116 unidades, o que representa 48,3% do volume total. A SANY aparece em segundo lugar com 79 unidades (32,9%), seguida pela LIUGONG com 34 unidades (14,2%). Em termos de valor FOB total, a XCMG também lidera com 51,8% do montante (US$ 30,5 milhões), evidenciando sua forte presença tanto em quantidade quanto em valor agregado. A análise por capacidade de carga mostra a XCMG como líder na faixa de 70 toneladas (60 unidades) e a única fabricante a importar nas faixas de 91 toneladas (3 unidades) e 120 toneladas (12 unidades, modelo XDE130), reforçando sua competitividade em nichos de alta capacidade.
                         </p>
-                        <img src="images/expoimpomoto.png" alt="Gráfico de Importação e Destino" class="article-image">
+                        
+                        <h6 class="article-content">Segmentação no Mercado de Caminhões Diesel Elétricos</h6>
                         <p class="article-content">
-                            O estudo também mapeou as rotas de importação, identificando o Porto de Vitória como o principal ponto de entrada de motoniveladoras no país. A LiuGong utiliza o porto para direcionar suas operações para Vitória (ES), enquanto a Sany utiliza o mesmo porto com destino a Cariacica (ES). O Porto de Santos também se destaca, sendo utilizado pela Soimpex, com destino final em Serra (ES), e pelo exportador Xuzhou, que direciona suas cargas para Pouso Alegre (MG), onde está localizada a fábrica da XCMG. Essa logística de importação e distribuição é um fator crucial para a competitividade das marcas no mercado brasileiro.
+                            No segmento de caminhões diesel elétricos, foram importadas 21 unidades no período. A KOMATSU lidera em volume (11 unidades, 52,4%) e valor (90,8% do total), concentrando-se nas faixas de 240 e 320 toneladas. A SANY (10 unidades, 47,6%) atua na faixa de 90 toneladas. O relatório aponta que, até o momento, a XCMG não realizou importações de caminhões elétricos. Essa informação, baseada estritamente nos dados de importação do período, demonstra a segmentação clara do mercado entre os fabricantes.
                         </p>
+                        <img src="images/caminhão inteligencia de mercado.png" alt="Gráfico de Importação e Destino" class="article-image">
+                        <h6 class="article-content">Logística e Estratégia de Distribuição</h6>
                         <p class="article-content">
-                           Diante deste cenário, a XCMG tem a oportunidade de fortalecer sua estratégia comercial e operacional, focando em nichos de mercado e expandindo sua participação. A análise detalhada do volume de importações, das faixas de peso mais demandadas e das rotas logísticas fornece uma base sólida para a tomada de decisões estratégicas, permitindo que a empresa aprimore seu posicionamento competitivo, negocie com fornecedores e planeje suas importações de forma mais eficiente. O mercado de motoniveladoras no Brasil, embora competitivo, apresenta oportunidades para crescimento e consolidação da marca XCMG.
+                           O estudo logístico mapeou o Porto de Vitória como o principal ponto de entrada, utilizado por importadores como SANY e LIUGONG. A XCMG, por sua vez, utiliza o Porto de Santos para o desembarque de suas cargas, que são direcionadas para Pouso Alegre (MG), onde está localizada sua fábrica. Essa estratégia logística, detalhada no relatório, é um fator crucial para a competitividade e o planejamento de importações da XCMG, permitindo uma distribuição eficiente para o mercado nacional.
                         </p>
                     </div>
 
                     <div class="article">
-                    <div class="article-subtitle">LINHA AMARELA - GUINDASTES</div>
-                    <h2 class="article-title">Mercado de Guindastes no Brasil: XCMG Lidera em Volume, mas Competição Feroz Marca o Primeiro Semestre de 2025</h2>
+                    <div class="article-subtitle">INFRAESTRUTURA E CONSTRUÇÃO</div>
+                    <h2 class="article-title">XCMG Consolida Posição no Mercado de Rolos Compactadores e Demonstra Competitividade em Segmentos Estratégicos</h2>
                     
                     <p class="article-content">
-                        Uma análise detalhada do mercado de importação de guindastes no Brasil, referente ao período de janeiro a julho de 2025, revela um cenário de intensa disputa entre os principais fabricantes. A XCMG se destacou na liderança de volume, trazendo 171 unidades para o país, o que corresponde a 41,3% do total de 414 equipamentos importados. Este estudo aprofundado oferece uma visão clara das tendências do setor, das estratégias adotadas pelos concorrentes e das oportunidades para as marcas se consolidarem no mercado nacional.
+                        Uma análise detalhada do mercado brasileiro de importação de rolos compactadores, realizada entre janeiro e julho de 2025, revela um cenário altamente segmentado e competitivo. O estudo abrangeu os principais tipos de equipamentos – Asfalto, Vala, Solo e Pneumáticos – e posiciona a XCMG como um player de destaque, especialmente nos segmentos de Asfalto e Pneumáticos, onde a empresa demonstra forte competitividade em volume e valor FOB.
                     </p>
-                    <img src="images/Tabelaguindaste.png" alt="Tabela Guindaste" class="article-image">
+                    <img src="images/tabela rolo.png" alt="Tabela Rolo Compactador" class="article-image">
+                    <h6 class="article-content">Destaque em Rolos de Asfalto e Pneumáticos</h6>
                     <p class="article-content">
-                       A Zoomlion e a SANY seguem de perto a líder, com 121 e 117 unidades importadas, respectivamente, representando 29,2% e 28,3% do mercado. A competição se acirra em nichos específicos: a XCMG mostra força nas categorias de 40 e 90 toneladas, com 40 e 37 unidades, enquanto a SANY concentra sua força nos segmentos de 80 e 120 toneladas, com 17 e 22 unidades. A Zoomlion, por sua vez, se mostra uma forte concorrente na faixa de 90 toneladas, com 34 equipamentos.
+                       No segmento de Rolos Compactadores de Asfalto, a XCMG se posiciona em segundo lugar em volume, com 100 unidades importadas, representando 33,2% do total, logo atrás da líder HAMM (36,9%). Em termos de valor FOB, a XCMG detém 21,5% do mercado (US$ 3 milhões). A análise por capacidade de carga mostra a XCMG liderando a faixa de 4 toneladas (56 unidades) e com forte presença na faixa de 10 toneladas. De forma similar, nos Rolos Pneumáticos, a XCMG ocupa a segunda posição com 22 unidades (27,8% do volume) e 23,2% do valor FOB, com foco estratégico na faixa de 26 toneladas, onde lidera as importações.
                     </p>
-                    <img src="images/expoimpoguind.png" alt="Gráfico de Importação Guindaste" class="article-image">
+                    <img src="images/importacao rolo.png" alt="Gráfico de Importação Rolo Compactador" class="article-image">
+                    <h6 class="article-content">Segmentação e Oportunidades em Solo e Vala</h6>
                     <p class="article-content">
-                        Em relação à logística, o Porto de Vitória se consolidou como o principal ponto de entrada para esses equipamentos, sendo o hub logístico para SANY, XCMG e Zoomlion, que direcionam suas operações para Cariacica (ES). O Porto de Santos funciona como uma rota estratégica para a XCMG, que o utiliza para abastecer sua fábrica em Pouso Alegre (MG), evidenciando a importância da logística para a competitividade no país.
+                        O mercado de Rolos Compactadores de Solo é liderado pela SANY (37,3% do volume), com a XCMG ocupando a quinta posição com 21 unidades (4,3% do volume e 8,4% do valor FOB). A estratégia da XCMG neste segmento é marcada por atuações pontuais em faixas como 10, 22 e 39 toneladas. Já no nicho de Rolos de Vala, o mercado é dominado pela HUSQVARNA (51,5% do volume), com a XCMG não registrando importações no período. Essa segmentação por tipo de equipamento e capacidade de carga evidencia as diferentes estratégias de penetração adotadas pelos fabricantes no Brasil.
                     </p> 
+                    <h6 class="article-content">Competitividade e Posicionamento Estratégico</h6>
                        <p class="article-content">
-                        Este cenário dinâmico abre um leque de oportunidades para os fabricantes fortalecerem suas estratégias comerciais, com foco em segmentos de mercado específicos e na expansão de sua presença. A análise do volume de importações e das capacidades de carga mais demandadas serve como um guia para a tomada de decisões, permitindo que as empresas aprimorem seu posicionamento e se preparem para um mercado que, embora desafiador, se mostra promissor para o crescimento e crescimento.
+                        Os dados do relatório confirmam a competitividade da XCMG em segmentos cruciais para a infraestrutura nacional. A forte presença em Rolos de Asfalto e Pneumáticos, aliada à atuação estratégica em nichos do Rolo de Solo, fornece à empresa uma base sólida para aprimorar seu posicionamento. A análise detalhada do volume de importações e do valor FOB por segmento e capacidade de carga é uma ferramenta essencial para o planejamento de custos, negociação com fornecedores e a definição de estratégias comerciais mais eficientes para o crescimento contínuo da XCMG no mercado brasileiro.
                     </p>
         </div>
    </div>             
@@ -1976,21 +2010,37 @@
     <div class="subsection-header">Novos Grandes Projetos</div>
     <div class="article allow-break">
 
-        <div class="article-subtitle">PARCERIA ESTRATÉGICA</div>
-        <h2 class="article-title">XCMG e CMOC Planejam Testes com Caminhões Elétricos Visando a Descarbonização da Mineração</h2>
+        <div class="article-subtitle">MARCO NACIONAL</div>
+        <h2 class="article-title">XCMG e G3 Mineração Concluem Montagem do Primeiro Caminhão Fora de Estrada XDE130 do Brasil</h2>
 
-        <p class="article-content">A XCMG Brasil, em um movimento estratégico alinhado às crescentes demandas por sustentabilidade no setor de mineração, planeja um programa de testes com caminhões elétricos na operação da CMOC, uma das maiores produtoras de nióbio e fosfatos do mundo. A iniciativa, que visa avaliar a viabilidade e a performance dos modelos XGE95E e XDR80TE em condições reais de operação, surge como um passo decisivo para a CMOC em seu processo de descarbonização, podendo redefinir o futuro de sua frota, que hoje conta com 43 caminhões a combustão.</p>
-        <div class="chart-container">
-        <img src="images/TesteCMOC.png" alt="Resumo do Teste na CMOC" >
+        <p class="article-content">Um marco significativo para a indústria de mineração brasileira foi alcançado no final de novembro com a conclusão da montagem do primeiro caminhão fora de estrada XCMG XDE130 no país. O equipamento, resultado de uma parceria estratégica entre a XCMG e a G3 Mineração e Construção, está pronto para iniciar suas operações de extração de ouro em Pontes e Lacerda, no Mato Grosso.</p>
+        <div class="image-container-flex">
+        <img src="images/XDE130.jpeg" alt="XDE130" class="flex-image">
+        <img src="images/XDE130xcmg.jpeg" alt="XDE130" class="flex-image">
         </div>
-        <p class="article-content">Os testes, com duração prevista de três meses e com início ainda este ano, foram um convite da própria CMOC, que busca alternativas para substituir sua frota atual por soluções mais limpas e eficientes. O principal objetivo é coletar dados precisos sobre o desempenho dos caminhões elétricos em uma trajetória de 5 a 6 quilômetros, transportando estéril e fosfato. A performance será medida em ciclos de bateria, tempo de recarga e consumo de energia, fornecendo a base técnica para uma futura licitação focada exclusivamente em equipamentos elétricos.</p>
-        <p class="article-content">Uma vez que os equipamentos sejam aprovados neste rigoroso processo de validação, a CMOC planeja lançar um novo edital de contratação, marcando a transição de sua frota de equipamentos a combustão para uma operação puramente elétrica. Esta parceria não apenas reforça o compromisso da CMOC com a redução de sua pegada de carbono, mas também posiciona a XCMG como uma fornecedora chave na eletrificação da indústria de mineração no Brasil.</p>
-        <p class="article-content">O programa de testes é uma demonstração da visão de futuro de ambas as empresas, que buscam aliar produtividade com responsabilidade ambiental. A colaboração entre a engenharia da XCMG e a equipe da CMOC será fundamental para garantir a confiabilidade e o desempenho dos caminhões nas primeiras 1.000 horas de operação, abrindo caminho para uma mineração mais sustentável e tecnologicamente avançada no país.</p>
+        <p class="article-content">A chegada do XDE130 ao Brasil representa um avanço tecnológico para o setor, oferecendo uma solução de alta capacidade e eficiência para as operações de mineração. A montagem bem-sucedida, realizada por equipes especializadas da XCMG, reforça a capacidade da empresa em fornecer suporte técnico e logístico de ponta para seus clientes, mesmo em equipamentos de grande porte e complexidade.</p>
+        <p class="article-content">O caminhão XDE130 será o protagonista nas operações da G3 Mineração e Construção, contribuindo diretamente para a otimização da extração de ouro na região de Pontes e Lacerda (MT). Essa parceria não apenas consolida a presença da XCMG no mercado brasileiro de mineração pesada, mas também sublinha o compromisso da G3 em investir em tecnologia de ponta para maximizar a produtividade e a eficiência em suas operações.</p>
+        <p class="article-content">O XDE130 é mais um equipamento que a XCMG traz para o país, prometendo redefinir os padrões de desempenho e confiabilidade no transporte de materiais em ambientes de mineração.</p>
     </div>
 </section>
 <!-- Fim da Seção Novos Grandes Projetos -->
-  </div>      
+   
+  <section class="part">
+    <h2 class="section-header">SUPORTE GERAL</h2>
+    <div class="article allow-break">
 
+        <div class="article-subtitle">SUPORTE COMERCIAL</div>
+        <h2 class="article-title">Engenharia de Aplicações Fortalece Área Comercial com Levantamento Técnico e Novo Mapeamento de Máquinas</h2>
+
+        <p class="article-content">O time de Engenharia de Aplicações, responsável pelo suporte técnico ao departamento comercial, realizou um levantamento dos documentos técnicos produzidos para clientes de diversos tipos de projetos. O estudo evidencia a importância e a efetividade do departamento no apoio às áreas Comercial e de Vendas, destacando a assertividade e a confiabilidade na entrega das documentações técnicas, sempre garantindo a configuração correta dos equipamentos e o atendimento às necessidades de cada cliente.</p>
+        <div class="chart-container">
+        <img src="images/levantamento para o comercial.png" alt="Suporte Técnico ao comercial" class="flex-image">
+        </div>
+        <p class="article-content">Além disso, o departamento de Engenharia de Aplicações planeja, no próximo ano, realizar um mapeamento de todos os modelos de máquinas envolvidos nos diferentes projetos. O objetivo é acompanhar a conversão de vendas e avaliar a eficácia do suporte prestado ao time comercial, identificando possíveis gargalos e clientes estratégicos. Esse trabalho permitirá, ainda, mensurar a performance das máquinas a partir das configurações adequadas que são definidas no início do processo de venda, além de gerar diversos outros indicadores que poderão agregar valor à empresa durante a estruturação desse levantamento.</p>
+        
+    </div>
+  </section>   
+</div>  
    <!-- Canal de Comunicação -->
     <section class="communication-channel">
         <div class="communication-header">
